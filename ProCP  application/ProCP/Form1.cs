@@ -16,7 +16,11 @@ namespace ProCP
         {
             InitializeComponent();
         }
+        int t1 = 42;
+        int t2 = 42;
+        int t3 = 42;
 
+        int t4 = 42;
         private void button1_Click(object sender, EventArgs e)
         {
 
@@ -83,6 +87,21 @@ namespace ProCP
         }
 
         private void domainUpDown1_SelectedItemChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void domainUpDown2_SelectedItemChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

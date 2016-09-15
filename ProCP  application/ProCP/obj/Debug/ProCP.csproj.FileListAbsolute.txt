@@ -19,3 +19,12 @@ C:\Users\raima\Downloads\ProCP  XXX\ProCP\obj\Debug\ProCP.csprojResolveAssemblyR
 C:\Users\raima\Downloads\ProCP  XXX\ProCP\obj\Debug\ProCP.Form1.resources
 C:\Users\raima\Downloads\ProCP  XXX\ProCP\obj\Debug\ProCP.Properties.Resources.resources
 C:\Users\raima\Downloads\ProCP  XXX\ProCP\obj\Debug\ProCP.csproj.GenerateResource.Cache
+C:\Users\raima\Documents\GitHub\Procp\ProCp\ProCP  application\ProCP\bin\Debug\ProCP.exe.config
+C:\Users\raima\Documents\GitHub\Procp\ProCp\ProCP  application\ProCP\obj\Debug\ProCP.exe
+C:\Users\raima\Documents\GitHub\Procp\ProCp\ProCP  application\ProCP\obj\Debug\ProCP.pdb
+C:\Users\raima\Documents\GitHub\Procp\ProCp\ProCP  application\ProCP\bin\Debug\ProCP.exe
+C:\Users\raima\Documents\GitHub\Procp\ProCp\ProCP  application\ProCP\bin\Debug\ProCP.pdb
+C:\Users\raima\Documents\GitHub\Procp\ProCp\ProCP  application\ProCP\obj\Debug\ProCP.csprojResolveAssemblyReference.cache
+C:\Users\raima\Documents\GitHub\Procp\ProCp\ProCP  application\ProCP\obj\Debug\ProCP.Form1.resources
+C:\Users\raima\Documents\GitHub\Procp\ProCp\ProCP  application\ProCP\obj\Debug\ProCP.Properties.Resources.resources
+C:\Users\raima\Documents\GitHub\Procp\ProCp\ProCP  application\ProCP\obj\Debug\ProCP.csproj.GenerateResource.Cache
