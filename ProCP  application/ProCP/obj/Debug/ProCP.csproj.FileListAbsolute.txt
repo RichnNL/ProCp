@@ -28,3 +28,6 @@ C:\Users\raima\Documents\GitHub\Procp\ProCp\ProCP  application\ProCP\obj\Debug\P
 C:\Users\raima\Documents\GitHub\Procp\ProCp\ProCP  application\ProCP\obj\Debug\ProCP.Form1.resources
 C:\Users\raima\Documents\GitHub\Procp\ProCp\ProCP  application\ProCP\obj\Debug\ProCP.Properties.Resources.resources
 C:\Users\raima\Documents\GitHub\Procp\ProCp\ProCP  application\ProCP\obj\Debug\ProCP.csproj.GenerateResource.Cache
+C:\Users\Dyer\Documents\GitHub\ProCp\ProCP  application\ProCP\bin\Debug\ProCP.exe.config
+C:\Users\Dyer\Documents\GitHub\ProCp\ProCP  application\ProCP\obj\Debug\ProCP.exe
+C:\Users\Dyer\Documents\GitHub\ProCp\ProCP  application\ProCP\obj\Debug\ProCP.pdb
