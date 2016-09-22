@@ -40,10 +40,8 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.domainUpDown2 = new System.Windows.Forms.DomainUpDown();
             this.domainUpDown1 = new System.Windows.Forms.DomainUpDown();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.button5 = new System.Windows.Forms.Button();
@@ -51,7 +49,6 @@
             this.messageQueue1 = new System.Messaging.MessageQueue();
             this.messageQueue2 = new System.Messaging.MessageQueue();
             this.listBox2 = new System.Windows.Forms.ListBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblCosts = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
@@ -59,9 +56,19 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
+            this.Fertilizer = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -96,19 +103,19 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.openToolStripMenuItem.Text = "Open";
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.saveToolStripMenuItem.Text = "Save";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // helpToolStripMenuItem
@@ -128,77 +135,60 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox2.Controls.Add(this.comboBox2);
+            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.Fertilizer);
             this.groupBox2.Controls.Add(this.domainUpDown2);
             this.groupBox2.Controls.Add(this.domainUpDown1);
-            this.groupBox2.Controls.Add(this.textBox1);
-            this.groupBox2.Controls.Add(this.dateTimePicker2);
             this.groupBox2.Controls.Add(this.dateTimePicker1);
-            this.groupBox2.Controls.Add(this.menuStrip2);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.White;
-            this.groupBox2.Location = new System.Drawing.Point(20, 255);
+            this.groupBox2.Location = new System.Drawing.Point(27, 269);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(184, 343);
+            this.groupBox2.Size = new System.Drawing.Size(184, 394);
             this.groupBox2.TabIndex = 20;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Current Land Data";
             // 
             // domainUpDown2
             // 
-            this.domainUpDown2.Location = new System.Drawing.Point(7, 188);
-            this.domainUpDown2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.domainUpDown2.Location = new System.Drawing.Point(77, 284);
+            this.domainUpDown2.Margin = new System.Windows.Forms.Padding(2);
             this.domainUpDown2.Name = "domainUpDown2";
-            this.domainUpDown2.Size = new System.Drawing.Size(177, 26);
+            this.domainUpDown2.Size = new System.Drawing.Size(105, 26);
             this.domainUpDown2.TabIndex = 55;
-            this.domainUpDown2.Text = "Water";
+            this.domainUpDown2.Text = "Amount";
             // 
             // domainUpDown1
             // 
-            this.domainUpDown1.Location = new System.Drawing.Point(7, 148);
-            this.domainUpDown1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.domainUpDown1.Location = new System.Drawing.Point(77, 254);
+            this.domainUpDown1.Margin = new System.Windows.Forms.Padding(2);
             this.domainUpDown1.Name = "domainUpDown1";
-            this.domainUpDown1.Size = new System.Drawing.Size(177, 26);
+            this.domainUpDown1.Size = new System.Drawing.Size(104, 26);
             this.domainUpDown1.TabIndex = 54;
-            this.domainUpDown1.Text = "Fertilizer ";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(7, 224);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(177, 26);
-            this.textBox1.TabIndex = 51;
+            this.domainUpDown1.Text = "Amount";
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(5, 289);
-            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePicker2.Location = new System.Drawing.Point(27, 651);
+            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(179, 26);
+            this.dateTimePicker2.Size = new System.Drawing.Size(179, 20);
             this.dateTimePicker2.TabIndex = 53;
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(7, 259);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePicker1.Location = new System.Drawing.Point(0, 348);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(179, 26);
             this.dateTimePicker1.TabIndex = 52;
             // 
-            // menuStrip2
-            // 
-            this.menuStrip2.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.menuStrip2.Location = new System.Drawing.Point(3, 22);
-            this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
-            this.menuStrip2.Size = new System.Drawing.Size(178, 24);
-            this.menuStrip2.TabIndex = 56;
-            this.menuStrip2.Text = "menuStrip2";
-            // 
             // trackBar1
             // 
             this.trackBar1.Location = new System.Drawing.Point(210, 618);
-            this.trackBar1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.trackBar1.Margin = new System.Windows.Forms.Padding(2);
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(853, 45);
             this.trackBar1.TabIndex = 50;
@@ -206,7 +196,7 @@
             // button5
             // 
             this.button5.Location = new System.Drawing.Point(571, 667);
-            this.button5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(81, 24);
             this.button5.TabIndex = 51;
@@ -216,10 +206,10 @@
             // button6
             // 
             this.button6.BackColor = System.Drawing.Color.Transparent;
-            this.button6.Location = new System.Drawing.Point(1171, 389);
-            this.button6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button6.Location = new System.Drawing.Point(1160, 586);
+            this.button6.Margin = new System.Windows.Forms.Padding(2);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(81, 24);
+            this.button6.Size = new System.Drawing.Size(107, 41);
             this.button6.TabIndex = 57;
             this.button6.Text = "Report";
             this.button6.UseVisualStyleBackColor = false;
@@ -237,23 +227,11 @@
             // listBox2
             // 
             this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(1086, 137);
-            this.listBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listBox2.Location = new System.Drawing.Point(1085, 128);
+            this.listBox2.Margin = new System.Windows.Forms.Padding(2);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(251, 225);
+            this.listBox2.Size = new System.Drawing.Size(240, 121);
             this.listBox2.TabIndex = 59;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Mistral", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(200, 40);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(918, 57);
-            this.label2.TabIndex = 60;
-            this.label2.Text = "Rural Cultivation Atmospheric Enulation Application";
             // 
             // panel1
             // 
@@ -270,9 +248,9 @@
             this.lblCosts.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblCosts.Location = new System.Drawing.Point(1082, 102);
             this.lblCosts.Name = "lblCosts";
-            this.lblCosts.Size = new System.Drawing.Size(148, 24);
+            this.lblCosts.Size = new System.Drawing.Size(138, 24);
             this.lblCosts.TabIndex = 62;
-            this.lblCosts.Text = "Estimated Costs:";
+            this.lblCosts.Text = "Plot Information";
             // 
             // button3
             // 
@@ -320,6 +298,90 @@
             this.button7.Text = "Year Round";
             this.button7.UseVisualStyleBackColor = true;
             // 
+            // Fertilizer
+            // 
+            this.Fertilizer.AutoSize = true;
+            this.Fertilizer.Location = new System.Drawing.Point(6, 260);
+            this.Fertilizer.Name = "Fertilizer";
+            this.Fertilizer.Size = new System.Drawing.Size(69, 20);
+            this.Fertilizer.TabIndex = 57;
+            this.Fertilizer.Text = "Fertilizer";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 290);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(52, 20);
+            this.label1.TabIndex = 58;
+            this.label1.Text = "Water";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 230);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(69, 20);
+            this.label3.TabIndex = 60;
+            this.label3.Text = "Province";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(77, 227);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(107, 28);
+            this.comboBox1.TabIndex = 61;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Location = new System.Drawing.Point(1086, 269);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(239, 141);
+            this.groupBox1.TabIndex = 69;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Overview";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(19, 29);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(55, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Total Cost";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(19, 57);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(67, 13);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Profit to date";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(19, 87);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(58, 13);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Total Profit";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(27, 0);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(107, 28);
+            this.comboBox2.TabIndex = 62;
+            this.comboBox2.Text = "Soil Type";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -327,14 +389,15 @@
             this.BackColor = System.Drawing.Color.DarkGreen;
             this.BackgroundImage = global::ProCP.Properties.Resources.TjUG3t2;
             this.ClientSize = new System.Drawing.Size(1336, 741);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button4);
+            this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.lblCosts);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
@@ -343,13 +406,15 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Rural Cultivation Atmospheric Emulation Application";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -369,17 +434,14 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.DomainUpDown domainUpDown2;
         private System.Windows.Forms.DomainUpDown domainUpDown1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.MenuStrip menuStrip2;
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Messaging.MessageQueue messageQueue1;
         private System.Windows.Forms.ListBox listBox2;
         private System.Messaging.MessageQueue messageQueue2;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblCosts;
         private System.Windows.Forms.Button button3;
@@ -387,6 +449,15 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label Fertilizer;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label2;
     }
 }
 

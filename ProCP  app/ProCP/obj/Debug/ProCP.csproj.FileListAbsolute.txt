@@ -25,3 +25,12 @@ C:\Users\Tsanko\Downloads\ProCP  XXX\ProCP\obj\Debug\ProCP.csprojResolveAssembly
 C:\Users\Tsanko\Downloads\ProCP  XXX\ProCP\obj\Debug\ProCP.Form1.resources
 C:\Users\Tsanko\Downloads\ProCP  XXX\ProCP\obj\Debug\ProCP.Properties.Resources.resources
 C:\Users\Tsanko\Downloads\ProCP  XXX\ProCP\obj\Debug\ProCP.csproj.GenerateResource.Cache
+C:\Users\Tsanko\Documents\GitHub\ProCp-master\ProCp\ProCP  app\ProCP\bin\Debug\ProCP.exe.config
+C:\Users\Tsanko\Documents\GitHub\ProCp-master\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.exe
+C:\Users\Tsanko\Documents\GitHub\ProCp-master\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.pdb
+C:\Users\Tsanko\Documents\GitHub\ProCp-master\ProCp\ProCP  app\ProCP\bin\Debug\ProCP.exe
+C:\Users\Tsanko\Documents\GitHub\ProCp-master\ProCp\ProCP  app\ProCP\bin\Debug\ProCP.pdb
+C:\Users\Tsanko\Documents\GitHub\ProCp-master\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.csprojResolveAssemblyReference.cache
+C:\Users\Tsanko\Documents\GitHub\ProCp-master\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.Form1.resources
+C:\Users\Tsanko\Documents\GitHub\ProCp-master\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.Properties.Resources.resources
+C:\Users\Tsanko\Documents\GitHub\ProCp-master\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.csproj.GenerateResource.Cache
