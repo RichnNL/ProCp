@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -38,10 +39,15 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.Fertilizer = new System.Windows.Forms.Label();
             this.domainUpDown2 = new System.Windows.Forms.DomainUpDown();
             this.domainUpDown1 = new System.Windows.Forms.DomainUpDown();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.button5 = new System.Windows.Forms.Button();
@@ -56,19 +62,23 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.Fertilizer = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.mushroomsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.olivesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.onionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.potatoesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.snowPeasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lettuceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.menuStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -88,6 +98,7 @@
             this.menuStrip1.Size = new System.Drawing.Size(1336, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // fileToolStripMenuItem
             // 
@@ -151,6 +162,50 @@
             this.groupBox2.TabIndex = 20;
             this.groupBox2.TabStop = false;
             // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(27, 0);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(107, 28);
+            this.comboBox2.TabIndex = 62;
+            this.comboBox2.Text = "Soil Type";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(77, 227);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(107, 28);
+            this.comboBox1.TabIndex = 61;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 230);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(69, 20);
+            this.label3.TabIndex = 60;
+            this.label3.Text = "Province";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 290);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(52, 20);
+            this.label1.TabIndex = 58;
+            this.label1.Text = "Water";
+            // 
+            // Fertilizer
+            // 
+            this.Fertilizer.AutoSize = true;
+            this.Fertilizer.Location = new System.Drawing.Point(6, 260);
+            this.Fertilizer.Name = "Fertilizer";
+            this.Fertilizer.Size = new System.Drawing.Size(69, 20);
+            this.Fertilizer.TabIndex = 57;
+            this.Fertilizer.Text = "Fertilizer";
+            // 
             // domainUpDown2
             // 
             this.domainUpDown2.Location = new System.Drawing.Point(77, 284);
@@ -169,14 +224,6 @@
             this.domainUpDown1.TabIndex = 54;
             this.domainUpDown1.Text = "Amount";
             // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(27, 651);
-            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(2);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(179, 20);
-            this.dateTimePicker2.TabIndex = 53;
-            // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(0, 348);
@@ -184,6 +231,14 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(179, 26);
             this.dateTimePicker1.TabIndex = 52;
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Location = new System.Drawing.Point(27, 651);
+            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(2);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(179, 20);
+            this.dateTimePicker2.TabIndex = 53;
             // 
             // trackBar1
             // 
@@ -298,41 +353,6 @@
             this.button7.Text = "Year Round";
             this.button7.UseVisualStyleBackColor = true;
             // 
-            // Fertilizer
-            // 
-            this.Fertilizer.AutoSize = true;
-            this.Fertilizer.Location = new System.Drawing.Point(6, 260);
-            this.Fertilizer.Name = "Fertilizer";
-            this.Fertilizer.Size = new System.Drawing.Size(69, 20);
-            this.Fertilizer.TabIndex = 57;
-            this.Fertilizer.Text = "Fertilizer";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 290);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 20);
-            this.label1.TabIndex = 58;
-            this.label1.Text = "Water";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 230);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 20);
-            this.label3.TabIndex = 60;
-            this.label3.Text = "Province";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(77, 227);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(107, 28);
-            this.comboBox1.TabIndex = 61;
-            // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.DarkSeaGreen;
@@ -346,14 +366,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Overview";
             // 
-            // label2
+            // label5
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(19, 29);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Total Cost";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(19, 87);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(58, 13);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Total Profit";
             // 
             // label4
             // 
@@ -364,23 +384,78 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "Profit to date";
             // 
-            // label5
+            // label2
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(19, 87);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(58, 13);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Total Profit";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(19, 29);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(55, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Total Cost";
             // 
-            // comboBox2
+            // toolStrip1
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(27, 0);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(107, 28);
-            this.comboBox2.TabIndex = 62;
-            this.comboBox2.Text = "Soil Type";
+            this.toolStrip1.AutoSize = false;
+            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripDropDownButton1});
+            this.toolStrip1.Location = new System.Drawing.Point(27, 67);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(75, 31);
+            this.toolStrip1.TabIndex = 70;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // mushroomsToolStripMenuItem
+            // 
+            this.mushroomsToolStripMenuItem.Name = "mushroomsToolStripMenuItem";
+            this.mushroomsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.mushroomsToolStripMenuItem.Text = "Mushrooms";
+            // 
+            // olivesToolStripMenuItem
+            // 
+            this.olivesToolStripMenuItem.Name = "olivesToolStripMenuItem";
+            this.olivesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.olivesToolStripMenuItem.Text = "Olives";
+            // 
+            // onionsToolStripMenuItem
+            // 
+            this.onionsToolStripMenuItem.Name = "onionsToolStripMenuItem";
+            this.onionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.onionsToolStripMenuItem.Text = "Onions";
+            // 
+            // potatoesToolStripMenuItem
+            // 
+            this.potatoesToolStripMenuItem.Name = "potatoesToolStripMenuItem";
+            this.potatoesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.potatoesToolStripMenuItem.Text = "Potatoes";
+            // 
+            // snowPeasToolStripMenuItem
+            // 
+            this.snowPeasToolStripMenuItem.Name = "snowPeasToolStripMenuItem";
+            this.snowPeasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.snowPeasToolStripMenuItem.Text = "Snow Peas";
+            // 
+            // lettuceToolStripMenuItem
+            // 
+            this.lettuceToolStripMenuItem.Name = "lettuceToolStripMenuItem";
+            this.lettuceToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.lettuceToolStripMenuItem.Text = "Lettuce";
+            // 
+            // toolStripDropDownButton1
+            // 
+            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mushroomsToolStripMenuItem,
+            this.olivesToolStripMenuItem,
+            this.onionsToolStripMenuItem,
+            this.potatoesToolStripMenuItem,
+            this.snowPeasToolStripMenuItem,
+            this.lettuceToolStripMenuItem});
+            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
+            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(29, 28);
+            this.toolStripDropDownButton1.Text = "toolStripDropDownButton1";
             // 
             // Form1
             // 
@@ -389,6 +464,7 @@
             this.BackColor = System.Drawing.Color.DarkGreen;
             this.BackgroundImage = global::ProCP.Properties.Resources.TjUG3t2;
             this.ClientSize = new System.Drawing.Size(1336, 741);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button4);
@@ -415,6 +491,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -458,6 +536,14 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
+        private System.Windows.Forms.ToolStripMenuItem mushroomsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem olivesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem onionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem potatoesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem snowPeasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lettuceToolStripMenuItem;
     }
 }
 
