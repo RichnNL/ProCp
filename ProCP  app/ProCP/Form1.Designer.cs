@@ -39,6 +39,11 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -60,19 +65,15 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.mushroomsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.olivesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.onionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.potatoesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.snowPeasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lettuceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -100,7 +101,6 @@
             this.toolStripMenuItem16 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem17 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem18 = new System.Windows.Forms.ToolStripMenuItem();
-            this.label13 = new System.Windows.Forms.Label();
             this.toolStrip5 = new System.Windows.Forms.ToolStrip();
             this.toolStripDropDownButton5 = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStripMenuItem19 = new System.Windows.Forms.ToolStripMenuItem();
@@ -109,6 +109,13 @@
             this.toolStripMenuItem22 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem23 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem24 = new System.Windows.Forms.ToolStripMenuItem();
+            this.yrSplitButton = new wyDay.Controls.SplitButton();
+            this.yrMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.lettuceMenuStripItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mushroomMenuStripItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.onionMenuStripItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.peasMenuStripItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.potatoMenuStripItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -118,6 +125,7 @@
             this.toolStrip3.SuspendLayout();
             this.toolStrip4.SuspendLayout();
             this.toolStrip5.SuspendLayout();
+            this.yrMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -204,6 +212,58 @@
             this.groupBox2.Size = new System.Drawing.Size(226, 254);
             this.groupBox2.TabIndex = 20;
             this.groupBox2.TabStop = false;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.Black;
+            this.label13.Location = new System.Drawing.Point(6, 80);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(76, 22);
+            this.label13.TabIndex = 67;
+            this.label13.Text = "soil type";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Black;
+            this.label9.Location = new System.Drawing.Point(11, 256);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(75, 22);
+            this.label9.TabIndex = 66;
+            this.label9.Text = "end date";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Black;
+            this.label8.Location = new System.Drawing.Point(4, 215);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(88, 22);
+            this.label8.TabIndex = 65;
+            this.label8.Text = "Start date";
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker2.Location = new System.Drawing.Point(104, 256);
+            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(2);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(116, 18);
+            this.dateTimePicker2.TabIndex = 64;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.Location = new System.Drawing.Point(104, 217);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(117, 18);
+            this.dateTimePicker1.TabIndex = 63;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // comboBox2
             // 
@@ -391,42 +451,6 @@
             this.toolStrip1.TabIndex = 70;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // mushroomsToolStripMenuItem
-            // 
-            this.mushroomsToolStripMenuItem.Name = "mushroomsToolStripMenuItem";
-            this.mushroomsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.mushroomsToolStripMenuItem.Text = "Mushrooms";
-            // 
-            // olivesToolStripMenuItem
-            // 
-            this.olivesToolStripMenuItem.Name = "olivesToolStripMenuItem";
-            this.olivesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.olivesToolStripMenuItem.Text = "Olives";
-            // 
-            // onionsToolStripMenuItem
-            // 
-            this.onionsToolStripMenuItem.Name = "onionsToolStripMenuItem";
-            this.onionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.onionsToolStripMenuItem.Text = "Onions";
-            // 
-            // potatoesToolStripMenuItem
-            // 
-            this.potatoesToolStripMenuItem.Name = "potatoesToolStripMenuItem";
-            this.potatoesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.potatoesToolStripMenuItem.Text = "Potatoes";
-            // 
-            // snowPeasToolStripMenuItem
-            // 
-            this.snowPeasToolStripMenuItem.Name = "snowPeasToolStripMenuItem";
-            this.snowPeasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.snowPeasToolStripMenuItem.Text = "Snow Peas";
-            // 
-            // lettuceToolStripMenuItem
-            // 
-            this.lettuceToolStripMenuItem.Name = "lettuceToolStripMenuItem";
-            this.lettuceToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.lettuceToolStripMenuItem.Text = "Lettuce";
-            // 
             // toolStripDropDownButton1
             // 
             this.toolStripDropDownButton1.AutoSize = false;
@@ -443,6 +467,42 @@
             this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
             this.toolStripDropDownButton1.Size = new System.Drawing.Size(13, 4);
             this.toolStripDropDownButton1.Text = "toolStripDropDownButton1";
+            // 
+            // mushroomsToolStripMenuItem
+            // 
+            this.mushroomsToolStripMenuItem.Name = "mushroomsToolStripMenuItem";
+            this.mushroomsToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.mushroomsToolStripMenuItem.Text = "Mushrooms";
+            // 
+            // olivesToolStripMenuItem
+            // 
+            this.olivesToolStripMenuItem.Name = "olivesToolStripMenuItem";
+            this.olivesToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.olivesToolStripMenuItem.Text = "Olives";
+            // 
+            // onionsToolStripMenuItem
+            // 
+            this.onionsToolStripMenuItem.Name = "onionsToolStripMenuItem";
+            this.onionsToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.onionsToolStripMenuItem.Text = "Onions";
+            // 
+            // potatoesToolStripMenuItem
+            // 
+            this.potatoesToolStripMenuItem.Name = "potatoesToolStripMenuItem";
+            this.potatoesToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.potatoesToolStripMenuItem.Text = "Potatoes";
+            // 
+            // snowPeasToolStripMenuItem
+            // 
+            this.snowPeasToolStripMenuItem.Name = "snowPeasToolStripMenuItem";
+            this.snowPeasToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.snowPeasToolStripMenuItem.Text = "Snow Peas";
+            // 
+            // lettuceToolStripMenuItem
+            // 
+            this.lettuceToolStripMenuItem.Name = "lettuceToolStripMenuItem";
+            this.lettuceToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.lettuceToolStripMenuItem.Text = "Lettuce";
             // 
             // label6
             // 
@@ -465,47 +525,6 @@
             this.label7.Size = new System.Drawing.Size(61, 22);
             this.label7.TabIndex = 73;
             this.label7.Text = "Spring";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(104, 217);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(117, 18);
-            this.dateTimePicker1.TabIndex = 63;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker2.Location = new System.Drawing.Point(104, 256);
-            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(2);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(116, 18);
-            this.dateTimePicker2.TabIndex = 64;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(4, 215);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(88, 22);
-            this.label8.TabIndex = 65;
-            this.label8.Text = "Start date";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(11, 256);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(75, 22);
-            this.label9.TabIndex = 66;
-            this.label9.Text = "end date";
             // 
             // toolStrip2
             // 
@@ -702,49 +721,38 @@
             // toolStripMenuItem13
             // 
             this.toolStripMenuItem13.Name = "toolStripMenuItem13";
-            this.toolStripMenuItem13.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem13.Size = new System.Drawing.Size(138, 22);
             this.toolStripMenuItem13.Text = "Bell Peppers";
             // 
             // toolStripMenuItem14
             // 
             this.toolStripMenuItem14.Name = "toolStripMenuItem14";
-            this.toolStripMenuItem14.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem14.Size = new System.Drawing.Size(138, 22);
             this.toolStripMenuItem14.Text = "Zucchini";
             // 
             // toolStripMenuItem15
             // 
             this.toolStripMenuItem15.Name = "toolStripMenuItem15";
-            this.toolStripMenuItem15.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem15.Size = new System.Drawing.Size(138, 22);
             this.toolStripMenuItem15.Text = "Cucumbers";
             // 
             // toolStripMenuItem16
             // 
             this.toolStripMenuItem16.Name = "toolStripMenuItem16";
-            this.toolStripMenuItem16.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem16.Size = new System.Drawing.Size(138, 22);
             this.toolStripMenuItem16.Text = "Eggplant";
             // 
             // toolStripMenuItem17
             // 
             this.toolStripMenuItem17.Name = "toolStripMenuItem17";
-            this.toolStripMenuItem17.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem17.Size = new System.Drawing.Size(138, 22);
             this.toolStripMenuItem17.Text = "Tomatoes";
             // 
             // toolStripMenuItem18
             // 
             this.toolStripMenuItem18.Name = "toolStripMenuItem18";
-            this.toolStripMenuItem18.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem18.Size = new System.Drawing.Size(138, 22);
             this.toolStripMenuItem18.Text = "Shallots";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.Black;
-            this.label13.Location = new System.Drawing.Point(6, 80);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(76, 22);
-            this.label13.TabIndex = 67;
-            this.label13.Text = "soil type";
             // 
             // toolStrip5
             // 
@@ -811,6 +819,72 @@
             this.toolStripMenuItem24.Size = new System.Drawing.Size(167, 22);
             this.toolStripMenuItem24.Text = "Delicata Squash";
             // 
+            // yrSplitButton
+            // 
+            this.yrSplitButton.AutoSize = true;
+            this.yrSplitButton.ContextMenuStrip = this.yrMenuStrip;
+            this.yrSplitButton.Image = ((System.Drawing.Image)(resources.GetObject("yrSplitButton.Image")));
+            this.yrSplitButton.Location = new System.Drawing.Point(130, 47);
+            this.yrSplitButton.Name = "yrSplitButton";
+            this.yrSplitButton.Size = new System.Drawing.Size(140, 54);
+            this.yrSplitButton.SplitMenuStrip = this.yrMenuStrip;
+            this.yrSplitButton.TabIndex = 81;
+            this.yrSplitButton.Text = "Year Round";
+            this.yrSplitButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.yrSplitButton.UseVisualStyleBackColor = true;
+            // 
+            // yrMenuStrip
+            // 
+            this.yrMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lettuceMenuStripItem,
+            this.mushroomMenuStripItem,
+            this.onionMenuStripItem,
+            this.peasMenuStripItem,
+            this.potatoMenuStripItem});
+            this.yrMenuStrip.Name = "yrMenuStrip";
+            this.yrMenuStrip.Size = new System.Drawing.Size(134, 114);
+            this.yrMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.yrMenuStrip_Opening);
+            // 
+            // lettuceMenuStripItem
+            // 
+            this.lettuceMenuStripItem.Image = ((System.Drawing.Image)(resources.GetObject("lettuceMenuStripItem.Image")));
+            this.lettuceMenuStripItem.Name = "lettuceMenuStripItem";
+            this.lettuceMenuStripItem.Size = new System.Drawing.Size(133, 22);
+            this.lettuceMenuStripItem.Text = "Lettuce";
+            this.lettuceMenuStripItem.Click += new System.EventHandler(this.lettuceMenuStripItem_Click);
+            // 
+            // mushroomMenuStripItem
+            // 
+            this.mushroomMenuStripItem.Image = ((System.Drawing.Image)(resources.GetObject("mushroomMenuStripItem.Image")));
+            this.mushroomMenuStripItem.Name = "mushroomMenuStripItem";
+            this.mushroomMenuStripItem.Size = new System.Drawing.Size(133, 22);
+            this.mushroomMenuStripItem.Text = "Mushroom";
+            this.mushroomMenuStripItem.Click += new System.EventHandler(this.mushroomMenuStripItem_Click);
+            // 
+            // onionMenuStripItem
+            // 
+            this.onionMenuStripItem.Image = ((System.Drawing.Image)(resources.GetObject("onionMenuStripItem.Image")));
+            this.onionMenuStripItem.Name = "onionMenuStripItem";
+            this.onionMenuStripItem.Size = new System.Drawing.Size(133, 22);
+            this.onionMenuStripItem.Text = "Onion";
+            this.onionMenuStripItem.Click += new System.EventHandler(this.onionMenuStripItem_Click);
+            // 
+            // peasMenuStripItem
+            // 
+            this.peasMenuStripItem.Image = ((System.Drawing.Image)(resources.GetObject("peasMenuStripItem.Image")));
+            this.peasMenuStripItem.Name = "peasMenuStripItem";
+            this.peasMenuStripItem.Size = new System.Drawing.Size(133, 22);
+            this.peasMenuStripItem.Text = "Peas";
+            this.peasMenuStripItem.Click += new System.EventHandler(this.peasMenuStripItem_Click);
+            // 
+            // potatoMenuStripItem
+            // 
+            this.potatoMenuStripItem.Image = ((System.Drawing.Image)(resources.GetObject("potatoMenuStripItem.Image")));
+            this.potatoMenuStripItem.Name = "potatoMenuStripItem";
+            this.potatoMenuStripItem.Size = new System.Drawing.Size(133, 22);
+            this.potatoMenuStripItem.Text = "Potato";
+            this.potatoMenuStripItem.Click += new System.EventHandler(this.potatoMenuStripItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -818,6 +892,7 @@
             this.BackColor = System.Drawing.Color.DarkGreen;
             this.BackgroundImage = global::ProCP.Properties.Resources.TjUG3t2;
             this.ClientSize = new System.Drawing.Size(1336, 741);
+            this.Controls.Add(this.yrSplitButton);
             this.Controls.Add(this.toolStrip5);
             this.Controls.Add(this.toolStrip4);
             this.Controls.Add(this.toolStrip3);
@@ -858,6 +933,7 @@
             this.toolStrip4.PerformLayout();
             this.toolStrip5.ResumeLayout(false);
             this.toolStrip5.PerformLayout();
+            this.yrMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -944,6 +1020,13 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem22;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem23;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem24;
+        private wyDay.Controls.SplitButton yrSplitButton;
+        private System.Windows.Forms.ContextMenuStrip yrMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem lettuceMenuStripItem;
+        private System.Windows.Forms.ToolStripMenuItem mushroomMenuStripItem;
+        private System.Windows.Forms.ToolStripMenuItem onionMenuStripItem;
+        private System.Windows.Forms.ToolStripMenuItem peasMenuStripItem;
+        private System.Windows.Forms.ToolStripMenuItem potatoMenuStripItem;
     }
 }
 
