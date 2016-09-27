@@ -66,5 +66,10 @@ namespace ProCP
             yrSplitBtn.Image = potatoMenuStripItem.Image;
             yrSplitBtn.Text = potatoMenuStripItem.Text;
         }
+
+        private void soilTypeLbl_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
