@@ -40,6 +40,7 @@
             this.overviewTotalCostLbl = new System.Windows.Forms.Label();
             this.reportBtn = new System.Windows.Forms.Button();
             this.plotInfoGroupBox = new System.Windows.Forms.GroupBox();
+            this.plotInfoLstbx = new System.Windows.Forms.ListBox();
             this.timeTrackBar = new System.Windows.Forms.TrackBar();
             this.playBtn = new System.Windows.Forms.Button();
             this.globalVariablesGroupBox = new System.Windows.Forms.GroupBox();
@@ -90,7 +91,6 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.plotInfoLstbx = new System.Windows.Forms.ListBox();
             this.overviewGroupBox.SuspendLayout();
             this.plotInfoGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.timeTrackBar)).BeginInit();
@@ -195,6 +195,14 @@
             this.plotInfoGroupBox.TabStop = false;
             this.plotInfoGroupBox.Text = "Plot Information";
             // 
+            // plotInfoLstbx
+            // 
+            this.plotInfoLstbx.FormattingEnabled = true;
+            this.plotInfoLstbx.Location = new System.Drawing.Point(10, 27);
+            this.plotInfoLstbx.Name = "plotInfoLstbx";
+            this.plotInfoLstbx.Size = new System.Drawing.Size(183, 225);
+            this.plotInfoLstbx.TabIndex = 0;
+            // 
             // timeTrackBar
             // 
             this.timeTrackBar.Location = new System.Drawing.Point(210, 562);
@@ -218,16 +226,14 @@
             this.globalVariablesGroupBox.Controls.Add(this.wateringCbx);
             this.globalVariablesGroupBox.Controls.Add(this.fertilizerCbx);
             this.globalVariablesGroupBox.Controls.Add(this.provinceCbx);
-            this.globalVariablesGroupBox.Controls.Add(this.soilTypeCbx);
             this.globalVariablesGroupBox.Controls.Add(this.endDateLbl);
             this.globalVariablesGroupBox.Controls.Add(this.startDateLbl);
             this.globalVariablesGroupBox.Controls.Add(this.waterLbl);
             this.globalVariablesGroupBox.Controls.Add(this.fertilizerLbl);
             this.globalVariablesGroupBox.Controls.Add(this.provinceLbl);
-            this.globalVariablesGroupBox.Controls.Add(this.soilTypeLbl);
-            this.globalVariablesGroupBox.Location = new System.Drawing.Point(4, 331);
+            this.globalVariablesGroupBox.Location = new System.Drawing.Point(4, 404);
             this.globalVariablesGroupBox.Name = "globalVariablesGroupBox";
-            this.globalVariablesGroupBox.Size = new System.Drawing.Size(200, 269);
+            this.globalVariablesGroupBox.Size = new System.Drawing.Size(200, 224);
             this.globalVariablesGroupBox.TabIndex = 6;
             this.globalVariablesGroupBox.TabStop = false;
             this.globalVariablesGroupBox.Text = "Global Variables";
@@ -235,14 +241,14 @@
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(9, 232);
+            this.dateTimePicker2.Location = new System.Drawing.Point(9, 194);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(186, 20);
             this.dateTimePicker2.TabIndex = 11;
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(9, 184);
+            this.dateTimePicker1.Location = new System.Drawing.Point(9, 146);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(186, 20);
             this.dateTimePicker1.TabIndex = 10;
@@ -250,7 +256,7 @@
             // wateringCbx
             // 
             this.wateringCbx.FormattingEnabled = true;
-            this.wateringCbx.Location = new System.Drawing.Point(69, 130);
+            this.wateringCbx.Location = new System.Drawing.Point(69, 92);
             this.wateringCbx.Name = "wateringCbx";
             this.wateringCbx.Size = new System.Drawing.Size(121, 21);
             this.wateringCbx.TabIndex = 9;
@@ -258,7 +264,7 @@
             // fertilizerCbx
             // 
             this.fertilizerCbx.FormattingEnabled = true;
-            this.fertilizerCbx.Location = new System.Drawing.Point(69, 94);
+            this.fertilizerCbx.Location = new System.Drawing.Point(69, 56);
             this.fertilizerCbx.Name = "fertilizerCbx";
             this.fertilizerCbx.Size = new System.Drawing.Size(121, 21);
             this.fertilizerCbx.TabIndex = 8;
@@ -266,7 +272,7 @@
             // provinceCbx
             // 
             this.provinceCbx.FormattingEnabled = true;
-            this.provinceCbx.Location = new System.Drawing.Point(69, 58);
+            this.provinceCbx.Location = new System.Drawing.Point(69, 20);
             this.provinceCbx.Name = "provinceCbx";
             this.provinceCbx.Size = new System.Drawing.Size(121, 21);
             this.provinceCbx.TabIndex = 7;
@@ -274,7 +280,7 @@
             // soilTypeCbx
             // 
             this.soilTypeCbx.FormattingEnabled = true;
-            this.soilTypeCbx.Location = new System.Drawing.Point(69, 22);
+            this.soilTypeCbx.Location = new System.Drawing.Point(77, 328);
             this.soilTypeCbx.Name = "soilTypeCbx";
             this.soilTypeCbx.Size = new System.Drawing.Size(121, 21);
             this.soilTypeCbx.TabIndex = 6;
@@ -282,7 +288,7 @@
             // endDateLbl
             // 
             this.endDateLbl.AutoSize = true;
-            this.endDateLbl.Location = new System.Drawing.Point(8, 216);
+            this.endDateLbl.Location = new System.Drawing.Point(8, 178);
             this.endDateLbl.Name = "endDateLbl";
             this.endDateLbl.Size = new System.Drawing.Size(52, 13);
             this.endDateLbl.TabIndex = 5;
@@ -291,7 +297,7 @@
             // startDateLbl
             // 
             this.startDateLbl.AutoSize = true;
-            this.startDateLbl.Location = new System.Drawing.Point(6, 168);
+            this.startDateLbl.Location = new System.Drawing.Point(6, 130);
             this.startDateLbl.Name = "startDateLbl";
             this.startDateLbl.Size = new System.Drawing.Size(55, 13);
             this.startDateLbl.TabIndex = 4;
@@ -300,7 +306,7 @@
             // waterLbl
             // 
             this.waterLbl.AutoSize = true;
-            this.waterLbl.Location = new System.Drawing.Point(6, 133);
+            this.waterLbl.Location = new System.Drawing.Point(6, 95);
             this.waterLbl.Name = "waterLbl";
             this.waterLbl.Size = new System.Drawing.Size(50, 13);
             this.waterLbl.TabIndex = 3;
@@ -309,7 +315,7 @@
             // fertilizerLbl
             // 
             this.fertilizerLbl.AutoSize = true;
-            this.fertilizerLbl.Location = new System.Drawing.Point(6, 97);
+            this.fertilizerLbl.Location = new System.Drawing.Point(6, 59);
             this.fertilizerLbl.Name = "fertilizerLbl";
             this.fertilizerLbl.Size = new System.Drawing.Size(45, 13);
             this.fertilizerLbl.TabIndex = 2;
@@ -318,7 +324,7 @@
             // provinceLbl
             // 
             this.provinceLbl.AutoSize = true;
-            this.provinceLbl.Location = new System.Drawing.Point(6, 61);
+            this.provinceLbl.Location = new System.Drawing.Point(6, 23);
             this.provinceLbl.Name = "provinceLbl";
             this.provinceLbl.Size = new System.Drawing.Size(49, 13);
             this.provinceLbl.TabIndex = 1;
@@ -327,11 +333,12 @@
             // soilTypeLbl
             // 
             this.soilTypeLbl.AutoSize = true;
-            this.soilTypeLbl.Location = new System.Drawing.Point(8, 25);
+            this.soilTypeLbl.Location = new System.Drawing.Point(14, 331);
             this.soilTypeLbl.Name = "soilTypeLbl";
             this.soilTypeLbl.Size = new System.Drawing.Size(51, 13);
             this.soilTypeLbl.TabIndex = 0;
             this.soilTypeLbl.Text = "Soil Type";
+            this.soilTypeLbl.Click += new System.EventHandler(this.soilTypeLbl_Click);
             // 
             // yrSplitBtn
             // 
@@ -633,19 +640,13 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "About";
             // 
-            // plotInfoLstbx
-            // 
-            this.plotInfoLstbx.FormattingEnabled = true;
-            this.plotInfoLstbx.Location = new System.Drawing.Point(10, 27);
-            this.plotInfoLstbx.Name = "plotInfoLstbx";
-            this.plotInfoLstbx.Size = new System.Drawing.Size(183, 225);
-            this.plotInfoLstbx.TabIndex = 0;
-            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1277, 630);
+            this.Controls.Add(this.soilTypeLbl);
+            this.Controls.Add(this.soilTypeCbx);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.winterSplitBtn);
             this.Controls.Add(this.fallSplitBtn);
