@@ -61,5 +61,40 @@ namespace ProCP
         {
 
         }
+
+        private void yrMenuStrip_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void lettuceMenuStripItem_Click(object sender, EventArgs e)
+        {
+            yrSplitButton.Image = lettuceMenuStripItem.Image;
+            yrSplitButton.Text = lettuceMenuStripItem.Text;
+        }
+
+        private void mushroomMenuStripItem_Click(object sender, EventArgs e)
+        {
+            yrSplitButton.Image = mushroomMenuStripItem.Image;
+            yrSplitButton.Text = mushroomMenuStripItem.Text;
+        }
+
+        private void onionMenuStripItem_Click(object sender, EventArgs e)
+        {
+            yrSplitButton.Image = onionMenuStripItem.Image;
+            yrSplitButton.Text = onionMenuStripItem.Text;
+        }
+
+        private void peasMenuStripItem_Click(object sender, EventArgs e)
+        {
+            yrSplitButton.Image = peasMenuStripItem.Image;
+            yrSplitButton.Text = peasMenuStripItem.Text;
+        }
+
+        private void potatoMenuStripItem_Click(object sender, EventArgs e)
+        {
+            yrSplitButton.Image = potatoMenuStripItem.Image;
+            yrSplitButton.Text = potatoMenuStripItem.Text;
+        }
     }
 }
