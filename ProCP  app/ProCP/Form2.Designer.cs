@@ -49,12 +49,12 @@
             this.wateringCbx = new System.Windows.Forms.ComboBox();
             this.fertilizerCbx = new System.Windows.Forms.ComboBox();
             this.provinceCbx = new System.Windows.Forms.ComboBox();
-            this.soilTypeCbx = new System.Windows.Forms.ComboBox();
             this.endDateLbl = new System.Windows.Forms.Label();
             this.startDateLbl = new System.Windows.Forms.Label();
             this.waterLbl = new System.Windows.Forms.Label();
             this.fertilizerLbl = new System.Windows.Forms.Label();
             this.provinceLbl = new System.Windows.Forms.Label();
+            this.soilTypeCbx = new System.Windows.Forms.ComboBox();
             this.soilTypeLbl = new System.Windows.Forms.Label();
             this.yrSplitBtn = new wyDay.Controls.SplitButton();
             this.yrMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -91,6 +91,10 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.overviewGroupBox.SuspendLayout();
             this.plotInfoGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.timeTrackBar)).BeginInit();
@@ -277,14 +281,6 @@
             this.provinceCbx.Size = new System.Drawing.Size(121, 21);
             this.provinceCbx.TabIndex = 7;
             // 
-            // soilTypeCbx
-            // 
-            this.soilTypeCbx.FormattingEnabled = true;
-            this.soilTypeCbx.Location = new System.Drawing.Point(77, 328);
-            this.soilTypeCbx.Name = "soilTypeCbx";
-            this.soilTypeCbx.Size = new System.Drawing.Size(121, 21);
-            this.soilTypeCbx.TabIndex = 6;
-            // 
             // endDateLbl
             // 
             this.endDateLbl.AutoSize = true;
@@ -329,6 +325,14 @@
             this.provinceLbl.Size = new System.Drawing.Size(49, 13);
             this.provinceLbl.TabIndex = 1;
             this.provinceLbl.Text = "Province";
+            // 
+            // soilTypeCbx
+            // 
+            this.soilTypeCbx.FormattingEnabled = true;
+            this.soilTypeCbx.Location = new System.Drawing.Point(77, 328);
+            this.soilTypeCbx.Name = "soilTypeCbx";
+            this.soilTypeCbx.Size = new System.Drawing.Size(121, 21);
+            this.soilTypeCbx.TabIndex = 6;
             // 
             // soilTypeLbl
             // 
@@ -640,11 +644,52 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "About";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(205, 594);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(55, 13);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "Start Date";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(897, 594);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(52, 13);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "End Date";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(412, 594);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(30, 13);
+            this.label3.TabIndex = 20;
+            this.label3.Text = "Date";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(697, 594);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(30, 13);
+            this.label4.TabIndex = 21;
+            this.label4.Text = "Date";
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1277, 630);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.soilTypeLbl);
             this.Controls.Add(this.soilTypeCbx);
             this.Controls.Add(this.menuStrip1);
@@ -744,5 +789,9 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ListBox plotInfoLstbx;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }

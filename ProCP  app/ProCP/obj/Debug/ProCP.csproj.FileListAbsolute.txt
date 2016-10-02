@@ -65,3 +65,6 @@ C:\Users\Dyer\Documents\GitHub\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.Form1.reso
 C:\Users\Dyer\Documents\GitHub\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.Form2.resources
 C:\Users\Dyer\Documents\GitHub\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.Properties.Resources.resources
 C:\Users\Dyer\Documents\GitHub\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.csproj.GenerateResource.Cache
+C:\Users\zdami\Desktop\ProCP\ProCp\ProCP  app\ProCP\bin\Debug\ProCP.exe.config
+C:\Users\zdami\Desktop\ProCP\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.exe
+C:\Users\zdami\Desktop\ProCP\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.pdb
