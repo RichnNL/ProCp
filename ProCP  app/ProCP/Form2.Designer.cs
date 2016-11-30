@@ -1219,7 +1219,7 @@
             // 
             this.yrSplitBtn.AutoSize = true;
             this.yrSplitBtn.ContextMenuStrip = this.yrMenuStrip;
-            this.yrSplitBtn.Image = ((System.Drawing.Image)(resources.GetObject("yrSplitBtn.Image")));
+            this.yrSplitBtn.Image = ((System.Drawing.Image)(resources.GetObject("yrSplitBtn.Images")));
             this.yrSplitBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.yrSplitBtn.Location = new System.Drawing.Point(37, 27);
             this.yrSplitBtn.Name = "yrSplitBtn";
@@ -1244,7 +1244,7 @@
             // 
             // lettuceMenuStripItem
             // 
-            this.lettuceMenuStripItem.Image = ((System.Drawing.Image)(resources.GetObject("lettuceMenuStripItem.Image")));
+            this.lettuceMenuStripItem.Image = ((System.Drawing.Image)(resources.GetObject("lettuceMenuStripItem.Images")));
             this.lettuceMenuStripItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lettuceMenuStripItem.Name = "lettuceMenuStripItem";
             this.lettuceMenuStripItem.Size = new System.Drawing.Size(133, 22);
@@ -1253,7 +1253,7 @@
             // 
             // mushroomMenuStripItem
             // 
-            this.mushroomMenuStripItem.Image = ((System.Drawing.Image)(resources.GetObject("mushroomMenuStripItem.Image")));
+            this.mushroomMenuStripItem.Image = ((System.Drawing.Image)(resources.GetObject("mushroomMenuStripItem.Images")));
             this.mushroomMenuStripItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.mushroomMenuStripItem.Name = "mushroomMenuStripItem";
             this.mushroomMenuStripItem.Size = new System.Drawing.Size(133, 22);
@@ -1262,7 +1262,7 @@
             // 
             // onionMenuStripItem
             // 
-            this.onionMenuStripItem.Image = ((System.Drawing.Image)(resources.GetObject("onionMenuStripItem.Image")));
+            this.onionMenuStripItem.Image = ((System.Drawing.Image)(resources.GetObject("onionMenuStripItem.Images")));
             this.onionMenuStripItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.onionMenuStripItem.Name = "onionMenuStripItem";
             this.onionMenuStripItem.Size = new System.Drawing.Size(133, 22);
@@ -1271,7 +1271,7 @@
             // 
             // peasMenuStripItem
             // 
-            this.peasMenuStripItem.Image = ((System.Drawing.Image)(resources.GetObject("peasMenuStripItem.Image")));
+            this.peasMenuStripItem.Image = ((System.Drawing.Image)(resources.GetObject("peasMenuStripItem.Images")));
             this.peasMenuStripItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.peasMenuStripItem.Name = "peasMenuStripItem";
             this.peasMenuStripItem.Size = new System.Drawing.Size(133, 22);
@@ -1280,7 +1280,7 @@
             // 
             // potatoMenuStripItem
             // 
-            this.potatoMenuStripItem.Image = ((System.Drawing.Image)(resources.GetObject("potatoMenuStripItem.Image")));
+            this.potatoMenuStripItem.Image = ((System.Drawing.Image)(resources.GetObject("potatoMenuStripItem.Images")));
             this.potatoMenuStripItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.potatoMenuStripItem.Name = "potatoMenuStripItem";
             this.potatoMenuStripItem.Size = new System.Drawing.Size(133, 22);
@@ -1291,7 +1291,7 @@
             // 
             this.springSplitBtn.AutoSize = true;
             this.springSplitBtn.ContextMenuStrip = this.springMenuStrip;
-            this.springSplitBtn.Image = ((System.Drawing.Image)(resources.GetObject("springSplitBtn.Image")));
+            this.springSplitBtn.Image = ((System.Drawing.Image)(resources.GetObject("springSplitBtn.Images")));
             this.springSplitBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.springSplitBtn.Location = new System.Drawing.Point(37, 87);
             this.springSplitBtn.Name = "springSplitBtn";
@@ -1333,7 +1333,7 @@
             // 
             this.summerSplitBtn.AutoSize = true;
             this.summerSplitBtn.ContextMenuStrip = this.summerMenuStrip;
-            this.summerSplitBtn.Image = ((System.Drawing.Image)(resources.GetObject("summerSplitBtn.Image")));
+            this.summerSplitBtn.Image = ((System.Drawing.Image)(resources.GetObject("summerSplitBtn.Images")));
             this.summerSplitBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.summerSplitBtn.Location = new System.Drawing.Point(37, 147);
             this.summerSplitBtn.Name = "summerSplitBtn";
@@ -1375,7 +1375,7 @@
             // 
             this.fallSplitBtn.AutoSize = true;
             this.fallSplitBtn.ContextMenuStrip = this.fallMenuStrip;
-            this.fallSplitBtn.Image = ((System.Drawing.Image)(resources.GetObject("fallSplitBtn.Image")));
+            this.fallSplitBtn.Image = ((System.Drawing.Image)(resources.GetObject("fallSplitBtn.Images")));
             this.fallSplitBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.fallSplitBtn.Location = new System.Drawing.Point(37, 207);
             this.fallSplitBtn.Name = "fallSplitBtn";
@@ -1417,7 +1417,7 @@
             // 
             this.winterSplitBtn.AutoSize = true;
             this.winterSplitBtn.ContextMenuStrip = this.winterMenuStrip;
-            this.winterSplitBtn.Image = ((System.Drawing.Image)(resources.GetObject("winterSplitBtn.Image")));
+            this.winterSplitBtn.Image = ((System.Drawing.Image)(resources.GetObject("winterSplitBtn.Images")));
             this.winterSplitBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.winterSplitBtn.Location = new System.Drawing.Point(37, 267);
             this.winterSplitBtn.Name = "winterSplitBtn";

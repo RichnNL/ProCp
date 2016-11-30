@@ -25,7 +25,7 @@ namespace ProCP.Classes
         public List<Crop> GetAllCrops() { return null; }
         public Crop GetCrop(string name) { return null; }
        // public Weather GetWeather(string province,int season) { return null; }
-       //public Image GetImage(string Cropname,int ImageNumber) { return null; }
+       //public Images GetImage(string Cropname,int ImageNumber) { return null; }
        // public SoilType  GetDefaultSoiType(){return null;}
         
 

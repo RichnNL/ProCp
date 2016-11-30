@@ -26,7 +26,7 @@ namespace ProCP.Classes
         public int GetSunlightMinimum() { return 0; }
         public int GetNeededNutrition() { return 0; }
         public int GetNeededSunLight() { return 0; }
-       // public Image GetImage(int ImageNum) { }
+       // public Images GetImage(int ImageNum) { }
 
 
 
