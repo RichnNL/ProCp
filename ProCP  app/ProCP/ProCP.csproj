@@ -51,10 +51,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Crop.cs" />
     <Compile Include="Classes\CropData.cs" />
+    <Compile Include="Classes\Crop_Week.cs" />
+    <Compile Include="Classes\Database.cs" />
     <Compile Include="Classes\Plot.cs" />
+    <Compile Include="Classes\Price.cs" />
+    <Compile Include="Classes\Report.cs" />
     <Compile Include="Classes\Simulation.cs" />
+    <Compile Include="Classes\SoilType.cs" />
     <Compile Include="Classes\Statistics.cs" />
+    <Compile Include="Classes\Weather.cs" />
     <Compile Include="Form2.cs">
       <SubType>Form</SubType>
     </Compile>

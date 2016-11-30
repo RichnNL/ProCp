@@ -34,6 +34,7 @@ namespace ProCP.Classes
         public void SetEndDate(DateTime date) { }
         public void SetCurrentDate() { }
         private void InitialPlots() { }
+        
 
 
 
