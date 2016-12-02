@@ -24,13 +24,22 @@ namespace ProCP.Classes
         public DateTime BeginDate { get { return beginDate; } set { value = beginDate; } }
 
         private DateTime endDate;
-        public DateTime EndDate { get; set; }
+        public DateTime EndDate { get { return endDate; } set { endDate = value; } }
 
         public CropData(DateTime begin, DateTime end)
-        { }
+        {
 
-        public DateTime GetBeginDate() { return DateTime.Now; }
-        public DateTime GetEndDate() { return DateTime.Now; }
+        }
+
+        public DateTime GetBeginDate()
+        {
+
+            return BeginDate;
+        }
+        public DateTime GetEndDate()
+        {
+            return EndDate;
+        }
         public int GetYield()
         {
             return 0; 

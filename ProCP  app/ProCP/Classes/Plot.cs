@@ -10,9 +10,17 @@ namespace ProCP.Classes
     {
         public int PlotId;
        //private SoilTtype sotype;
-        private int PlotSize;
+        private int plotSize;
+        public int PlotSize { get { return plotSize; } set { plotSize = value; } }
         public bool IsEmpty;
+        private List<PlotWeek> plotWeeks;
+        
 
+
+        public Plot()
+        {
+            plotWeeks = new List<PlotWeek>();
+        }
       //  public Plot(SoilTypr sotype, int PlotSize) { }
         public void setPlotsize(int sqmeters) { }
         public int getPlotsize() { return 0; }
@@ -26,7 +34,25 @@ namespace ProCP.Classes
         //Needs some explanation
         public void DrawSelf() { }
         public void NurishLand() { }
-        public void Manageweeks() { }
+
+        // WRONG WRONG WRONG !
+        private void Manageweeks(int nbrWeeks)
+        {
+            for (int i = 0; i < nbrWeeks; i++)
+            {
+                plotWeeks.Add(new PlotWeek());
+            }
+        }
+        /// <summary>
+        /// Assigning PlotSize of the current plot object
+        /// </summary>
+        /// <param name="size"></param>
+        public void SetPlotSize(int size)
+        {
+            PlotSize = size;
+        }
+
+
         public void CalBeginToEnd() { }
         public void CalCurrentDate() { }
 

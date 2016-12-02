@@ -58,6 +58,7 @@
     <Compile Include="Classes\FileHandler.cs" />
     <Compile Include="Classes\Image.cs" />
     <Compile Include="Classes\Plot.cs" />
+    <Compile Include="Classes\PlotWeek.cs" />
     <Compile Include="Classes\Price.cs" />
     <Compile Include="Classes\Report.cs" />
     <Compile Include="Classes\Simulation.cs" />

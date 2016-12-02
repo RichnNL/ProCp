@@ -20,6 +20,15 @@ namespace ProCP.Classes
         private string province;
         public DateTime Province { get; set; }
 
+        //Number of selects for the selected start 
+        private int weeks;
+        public int Weeks
+        {
+            get { return weeks; }
+            set { weeks = value; }
+        }
+
+
        // public Simulation() { plots = new List<Plot>(); }
        
         public void Run() { }
@@ -29,13 +38,29 @@ namespace ProCP.Classes
         public void SetFertilizer(string fer) { }
         public void Setwatering(string water) { }
         public void SetProvince(int sqmeters) { }
-     // public int getPlotPosition(int pictureboxid) { return 0;}
-        public void SetBeginDate(DateTime date) { }
-        public void SetEndDate(DateTime date) { }
+        // public int getPlotPosition(int pictureboxid) { return 0;}
+        public void SetBeginDate(DateTime date)
+        {
+            beginDate = date;
+        }
+        public void SetEndDate(DateTime date)
+        {
+            endDate = date;
+        }
         public void SetCurrentDate() { }
         private void InitialPlots() { }
         
-
+        /// <summary>
+        /// Method which takes the start date and end date as a parameter and return the number of weeks between selected dates.
+        /// </summary>
+        /// <param name="startDate"></param>
+        /// <param name="endDate"></param>
+        /// <returns></returns>
+        public int GetNumberOfWeeks(DateTime startDate, DateTime endDate)
+        {
+            weeks =Convert.ToInt32( (startDate.Subtract(endDate)).TotalDays / 7);
+            return weeks;
+        }
 
 
 
