@@ -12,16 +12,16 @@ namespace ProCP.Classes
        
 
         private decimal totalCosts;
-        public decimal totalCosts { get; set; }
+        public decimal TotalCosts { get; set; }
 
         private decimal waterCosts;
-        public decimal waterCosts { get; set; }
+        public decimal WaterCosts { get; set; }
 
         private decimal fertilizerCosts;
-        public decimal fertilizerCosts { get; set; }
+        public decimal FertilizerCosts { get { return fertilizerCosts; } set { value = fertilizerCosts; } }
 
         private DateTime beginDate;
-        public DateTime BeginDate { get; set; }
+        public DateTime BeginDate { get { return beginDate; } set { value = beginDate; } }
 
         private DateTime endDate;
         public DateTime EndDate { get; set; }
