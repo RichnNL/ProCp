@@ -21,7 +21,8 @@ namespace ProCP
             dateTimePicker1.MinDate = DateTime.Now;
           
                 dateTimePicker2.MinDate = dateTimePicker1.Value.AddMonths(3);
-          
+            dateTimePicker2.MaxDate = dateTimePicker1.Value.AddMonths(36);
+
         }
 
         private void overviewTotalCostLbl_Click(object sender, EventArgs e)
@@ -104,6 +105,7 @@ namespace ProCP
            
 
             dateTimePicker2.MinDate = dateTimePicker1.Value.AddMonths(3);
+            dateTimePicker2.MaxDate = dateTimePicker1.Value.AddMonths(36);
         }
     }
 }
