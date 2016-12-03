@@ -123,6 +123,8 @@
             this.timeTrackBar = new System.Windows.Forms.TrackBar();
             this.playBtn = new System.Windows.Forms.Button();
             this.globalVariablesGroupBox = new System.Windows.Forms.GroupBox();
+            this.plotSizeNmr = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.wateringCbx = new System.Windows.Forms.ComboBox();
@@ -174,8 +176,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.plotSizeNmr = new System.Windows.Forms.NumericUpDown();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox71)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox72)).BeginInit();
@@ -261,13 +261,13 @@
             this.plotInfoGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.timeTrackBar)).BeginInit();
             this.globalVariablesGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.plotSizeNmr)).BeginInit();
             this.yrMenuStrip.SuspendLayout();
             this.springMenuStrip.SuspendLayout();
             this.summerMenuStrip.SuspendLayout();
             this.fallMenuStrip.SuspendLayout();
             this.winterMenuStrip.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.plotSizeNmr)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -357,6 +357,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(853, 528);
             this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // pictureBox71
             // 
@@ -1208,6 +1209,42 @@
             this.globalVariablesGroupBox.Text = "Global Variables";
             this.globalVariablesGroupBox.Enter += new System.EventHandler(this.globalVariablesGroupBox_Enter);
             // 
+            // plotSizeNmr
+            // 
+            this.plotSizeNmr.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.plotSizeNmr.Location = new System.Drawing.Point(69, 134);
+            this.plotSizeNmr.Maximum = new decimal(new int[] {
+            250,
+            0,
+            0,
+            0});
+            this.plotSizeNmr.Minimum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.plotSizeNmr.Name = "plotSizeNmr";
+            this.plotSizeNmr.Size = new System.Drawing.Size(120, 20);
+            this.plotSizeNmr.TabIndex = 13;
+            this.plotSizeNmr.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(4, 136);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(46, 13);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Plot size";
+            // 
             // dateTimePicker2
             // 
             this.dateTimePicker2.Location = new System.Drawing.Point(4, 220);
@@ -1222,6 +1259,7 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(186, 20);
             this.dateTimePicker1.TabIndex = 10;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // wateringCbx
             // 
@@ -1637,42 +1675,6 @@
             this.label4.TabIndex = 21;
             this.label4.Text = "Date";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(4, 136);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(46, 13);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "Plot size";
-            // 
-            // plotSizeNmr
-            // 
-            this.plotSizeNmr.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.plotSizeNmr.Location = new System.Drawing.Point(69, 134);
-            this.plotSizeNmr.Maximum = new decimal(new int[] {
-            250,
-            0,
-            0,
-            0});
-            this.plotSizeNmr.Minimum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.plotSizeNmr.Name = "plotSizeNmr";
-            this.plotSizeNmr.Size = new System.Drawing.Size(120, 20);
-            this.plotSizeNmr.TabIndex = 13;
-            this.plotSizeNmr.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1787,6 +1789,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.timeTrackBar)).EndInit();
             this.globalVariablesGroupBox.ResumeLayout(false);
             this.globalVariablesGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.plotSizeNmr)).EndInit();
             this.yrMenuStrip.ResumeLayout(false);
             this.springMenuStrip.ResumeLayout(false);
             this.summerMenuStrip.ResumeLayout(false);
@@ -1794,7 +1797,6 @@
             this.winterMenuStrip.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.plotSizeNmr)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

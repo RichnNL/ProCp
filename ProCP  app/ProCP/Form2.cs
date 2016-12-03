@@ -12,9 +12,17 @@ namespace ProCP
 {
     public partial class Form2 : Form
     {
+       
         public Form2()
         {
+           
+           
             InitializeComponent();
+            dateTimePicker1.MinDate = DateTime.Now;
+          
+                dateTimePicker2.MinDate = dateTimePicker1.Value.AddMonths(3);
+            dateTimePicker2.MaxDate = dateTimePicker1.Value.AddMonths(36);
+
         }
 
         private void overviewTotalCostLbl_Click(object sender, EventArgs e)
@@ -80,6 +88,24 @@ namespace ProCP
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+           
+
+            dateTimePicker2.MinDate = dateTimePicker1.Value.AddMonths(3);
+            dateTimePicker2.MaxDate = dateTimePicker1.Value.AddMonths(36);
         }
     }
 }

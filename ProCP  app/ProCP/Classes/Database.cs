@@ -17,11 +17,11 @@ namespace ProCP.Classes
       // private List<Weather> Weathers;
       // public Database(MYSQLConnection,String connectionInfo){}
         public bool connectToDataBase() { return false; }
-        public void LoadSellPRices();
-        public void LoadWeather();
-        public void LoadImage();
-        public Decimal GetBuyPrice(string CropName);
-        public Decimal GetSellPrice(string CropName);
+        public void LoadSellPRices() { }
+        public void LoadWeather() { }
+        public void LoadImage() { }
+        public Decimal GetBuyPrice(string CropName) { return 0; }
+        public Decimal GetSellPrice(string CropName) { return 0; }
         public List<Crop> GetAllCrops() { return null; }
         public Crop GetCrop(string name) { return null; }
        // public Weather GetWeather(string province,int season) { return null; }
