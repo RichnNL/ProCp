@@ -57,6 +57,20 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Classes\Crop.cs" />
+    <Compile Include="Classes\CropData.cs" />
+    <Compile Include="Classes\Crop_Week.cs" />
+    <Compile Include="Classes\Database.cs" />
+    <Compile Include="Classes\FileHandler.cs" />
+    <Compile Include="Classes\Image.cs" />
+    <Compile Include="Classes\Plot.cs" />
+    <Compile Include="Classes\Price.cs" />
+    <Compile Include="Classes\Report.cs" />
+    <Compile Include="Classes\Simulation.cs" />
+    <Compile Include="Classes\SimulationStorage.cs" />
+    <Compile Include="Classes\SoilType.cs" />
+    <Compile Include="Classes\Statistics.cs" />
+    <Compile Include="Classes\Weather.cs" />
     <Compile Include="Form2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,9 +79,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>

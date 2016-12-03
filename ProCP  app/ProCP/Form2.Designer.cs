@@ -29,8 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox71 = new System.Windows.Forms.PictureBox();
+            this.pictureBox72 = new System.Windows.Forms.PictureBox();
+            this.pictureBox73 = new System.Windows.Forms.PictureBox();
+            this.pictureBox74 = new System.Windows.Forms.PictureBox();
+            this.pictureBox75 = new System.Windows.Forms.PictureBox();
+            this.pictureBox76 = new System.Windows.Forms.PictureBox();
+            this.pictureBox77 = new System.Windows.Forms.PictureBox();
+            this.pictureBox78 = new System.Windows.Forms.PictureBox();
+            this.pictureBox79 = new System.Windows.Forms.PictureBox();
+            this.pictureBox80 = new System.Windows.Forms.PictureBox();
             this.pictureBox61 = new System.Windows.Forms.PictureBox();
             this.pictureBox62 = new System.Windows.Forms.PictureBox();
             this.pictureBox63 = new System.Windows.Forms.PictureBox();
@@ -165,17 +174,19 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.pictureBox71 = new System.Windows.Forms.PictureBox();
-            this.pictureBox72 = new System.Windows.Forms.PictureBox();
-            this.pictureBox73 = new System.Windows.Forms.PictureBox();
-            this.pictureBox74 = new System.Windows.Forms.PictureBox();
-            this.pictureBox75 = new System.Windows.Forms.PictureBox();
-            this.pictureBox76 = new System.Windows.Forms.PictureBox();
-            this.pictureBox77 = new System.Windows.Forms.PictureBox();
-            this.pictureBox78 = new System.Windows.Forms.PictureBox();
-            this.pictureBox79 = new System.Windows.Forms.PictureBox();
-            this.pictureBox80 = new System.Windows.Forms.PictureBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.plotSizeNmr = new System.Windows.Forms.NumericUpDown();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox71)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox72)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox73)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox74)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox75)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox76)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox77)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox78)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox79)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox80)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox61)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox62)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox63)).BeginInit();
@@ -256,16 +267,7 @@
             this.fallMenuStrip.SuspendLayout();
             this.winterMenuStrip.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox71)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox72)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox73)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox74)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox75)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox76)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox77)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox78)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox79)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox80)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.plotSizeNmr)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -355,6 +357,96 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(853, 528);
             this.panel1.TabIndex = 0;
+            // 
+            // pictureBox71
+            // 
+            this.pictureBox71.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox71.Location = new System.Drawing.Point(728, 430);
+            this.pictureBox71.Name = "pictureBox71";
+            this.pictureBox71.Size = new System.Drawing.Size(77, 60);
+            this.pictureBox71.TabIndex = 79;
+            this.pictureBox71.TabStop = false;
+            // 
+            // pictureBox72
+            // 
+            this.pictureBox72.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox72.Location = new System.Drawing.Point(652, 430);
+            this.pictureBox72.Name = "pictureBox72";
+            this.pictureBox72.Size = new System.Drawing.Size(78, 60);
+            this.pictureBox72.TabIndex = 78;
+            this.pictureBox72.TabStop = false;
+            // 
+            // pictureBox73
+            // 
+            this.pictureBox73.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox73.Location = new System.Drawing.Point(576, 430);
+            this.pictureBox73.Name = "pictureBox73";
+            this.pictureBox73.Size = new System.Drawing.Size(81, 60);
+            this.pictureBox73.TabIndex = 77;
+            this.pictureBox73.TabStop = false;
+            // 
+            // pictureBox74
+            // 
+            this.pictureBox74.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox74.Location = new System.Drawing.Point(500, 430);
+            this.pictureBox74.Name = "pictureBox74";
+            this.pictureBox74.Size = new System.Drawing.Size(79, 60);
+            this.pictureBox74.TabIndex = 76;
+            this.pictureBox74.TabStop = false;
+            // 
+            // pictureBox75
+            // 
+            this.pictureBox75.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox75.Location = new System.Drawing.Point(421, 430);
+            this.pictureBox75.Name = "pictureBox75";
+            this.pictureBox75.Size = new System.Drawing.Size(86, 60);
+            this.pictureBox75.TabIndex = 75;
+            this.pictureBox75.TabStop = false;
+            // 
+            // pictureBox76
+            // 
+            this.pictureBox76.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox76.Location = new System.Drawing.Point(345, 430);
+            this.pictureBox76.Name = "pictureBox76";
+            this.pictureBox76.Size = new System.Drawing.Size(78, 60);
+            this.pictureBox76.TabIndex = 74;
+            this.pictureBox76.TabStop = false;
+            // 
+            // pictureBox77
+            // 
+            this.pictureBox77.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox77.Location = new System.Drawing.Point(269, 430);
+            this.pictureBox77.Name = "pictureBox77";
+            this.pictureBox77.Size = new System.Drawing.Size(77, 60);
+            this.pictureBox77.TabIndex = 73;
+            this.pictureBox77.TabStop = false;
+            // 
+            // pictureBox78
+            // 
+            this.pictureBox78.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox78.Location = new System.Drawing.Point(192, 430);
+            this.pictureBox78.Name = "pictureBox78";
+            this.pictureBox78.Size = new System.Drawing.Size(80, 60);
+            this.pictureBox78.TabIndex = 72;
+            this.pictureBox78.TabStop = false;
+            // 
+            // pictureBox79
+            // 
+            this.pictureBox79.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox79.Location = new System.Drawing.Point(116, 430);
+            this.pictureBox79.Name = "pictureBox79";
+            this.pictureBox79.Size = new System.Drawing.Size(80, 60);
+            this.pictureBox79.TabIndex = 71;
+            this.pictureBox79.TabStop = false;
+            // 
+            // pictureBox80
+            // 
+            this.pictureBox80.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox80.Location = new System.Drawing.Point(40, 430);
+            this.pictureBox80.Name = "pictureBox80";
+            this.pictureBox80.Size = new System.Drawing.Size(77, 60);
+            this.pictureBox80.TabIndex = 70;
+            this.pictureBox80.TabStop = false;
             // 
             // pictureBox61
             // 
@@ -1096,6 +1188,8 @@
             // 
             // globalVariablesGroupBox
             // 
+            this.globalVariablesGroupBox.Controls.Add(this.plotSizeNmr);
+            this.globalVariablesGroupBox.Controls.Add(this.label5);
             this.globalVariablesGroupBox.Controls.Add(this.dateTimePicker2);
             this.globalVariablesGroupBox.Controls.Add(this.dateTimePicker1);
             this.globalVariablesGroupBox.Controls.Add(this.wateringCbx);
@@ -1106,9 +1200,9 @@
             this.globalVariablesGroupBox.Controls.Add(this.waterLbl);
             this.globalVariablesGroupBox.Controls.Add(this.fertilizerLbl);
             this.globalVariablesGroupBox.Controls.Add(this.provinceLbl);
-            this.globalVariablesGroupBox.Location = new System.Drawing.Point(4, 404);
+            this.globalVariablesGroupBox.Location = new System.Drawing.Point(4, 367);
             this.globalVariablesGroupBox.Name = "globalVariablesGroupBox";
-            this.globalVariablesGroupBox.Size = new System.Drawing.Size(200, 224);
+            this.globalVariablesGroupBox.Size = new System.Drawing.Size(200, 251);
             this.globalVariablesGroupBox.TabIndex = 6;
             this.globalVariablesGroupBox.TabStop = false;
             this.globalVariablesGroupBox.Text = "Global Variables";
@@ -1116,14 +1210,15 @@
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(9, 194);
+            this.dateTimePicker2.Location = new System.Drawing.Point(4, 220);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(186, 20);
             this.dateTimePicker2.TabIndex = 11;
+            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(9, 146);
+            this.dateTimePicker1.Location = new System.Drawing.Point(4, 181);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(186, 20);
             this.dateTimePicker1.TabIndex = 10;
@@ -1155,7 +1250,7 @@
             // endDateLbl
             // 
             this.endDateLbl.AutoSize = true;
-            this.endDateLbl.Location = new System.Drawing.Point(8, 178);
+            this.endDateLbl.Location = new System.Drawing.Point(6, 204);
             this.endDateLbl.Name = "endDateLbl";
             this.endDateLbl.Size = new System.Drawing.Size(52, 13);
             this.endDateLbl.TabIndex = 5;
@@ -1164,7 +1259,7 @@
             // startDateLbl
             // 
             this.startDateLbl.AutoSize = true;
-            this.startDateLbl.Location = new System.Drawing.Point(6, 130);
+            this.startDateLbl.Location = new System.Drawing.Point(3, 165);
             this.startDateLbl.Name = "startDateLbl";
             this.startDateLbl.Size = new System.Drawing.Size(55, 13);
             this.startDateLbl.TabIndex = 4;
@@ -1219,7 +1314,6 @@
             // 
             this.yrSplitBtn.AutoSize = true;
             this.yrSplitBtn.ContextMenuStrip = this.yrMenuStrip;
-            this.yrSplitBtn.Image = ((System.Drawing.Image)(resources.GetObject("yrSplitBtn.Image")));
             this.yrSplitBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.yrSplitBtn.Location = new System.Drawing.Point(37, 27);
             this.yrSplitBtn.Name = "yrSplitBtn";
@@ -1244,7 +1338,6 @@
             // 
             // lettuceMenuStripItem
             // 
-            this.lettuceMenuStripItem.Image = ((System.Drawing.Image)(resources.GetObject("lettuceMenuStripItem.Image")));
             this.lettuceMenuStripItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lettuceMenuStripItem.Name = "lettuceMenuStripItem";
             this.lettuceMenuStripItem.Size = new System.Drawing.Size(133, 22);
@@ -1253,7 +1346,6 @@
             // 
             // mushroomMenuStripItem
             // 
-            this.mushroomMenuStripItem.Image = ((System.Drawing.Image)(resources.GetObject("mushroomMenuStripItem.Image")));
             this.mushroomMenuStripItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.mushroomMenuStripItem.Name = "mushroomMenuStripItem";
             this.mushroomMenuStripItem.Size = new System.Drawing.Size(133, 22);
@@ -1262,7 +1354,6 @@
             // 
             // onionMenuStripItem
             // 
-            this.onionMenuStripItem.Image = ((System.Drawing.Image)(resources.GetObject("onionMenuStripItem.Image")));
             this.onionMenuStripItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.onionMenuStripItem.Name = "onionMenuStripItem";
             this.onionMenuStripItem.Size = new System.Drawing.Size(133, 22);
@@ -1271,7 +1362,6 @@
             // 
             // peasMenuStripItem
             // 
-            this.peasMenuStripItem.Image = ((System.Drawing.Image)(resources.GetObject("peasMenuStripItem.Image")));
             this.peasMenuStripItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.peasMenuStripItem.Name = "peasMenuStripItem";
             this.peasMenuStripItem.Size = new System.Drawing.Size(133, 22);
@@ -1280,7 +1370,6 @@
             // 
             // potatoMenuStripItem
             // 
-            this.potatoMenuStripItem.Image = ((System.Drawing.Image)(resources.GetObject("potatoMenuStripItem.Image")));
             this.potatoMenuStripItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.potatoMenuStripItem.Name = "potatoMenuStripItem";
             this.potatoMenuStripItem.Size = new System.Drawing.Size(133, 22);
@@ -1291,7 +1380,6 @@
             // 
             this.springSplitBtn.AutoSize = true;
             this.springSplitBtn.ContextMenuStrip = this.springMenuStrip;
-            this.springSplitBtn.Image = ((System.Drawing.Image)(resources.GetObject("springSplitBtn.Image")));
             this.springSplitBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.springSplitBtn.Location = new System.Drawing.Point(37, 87);
             this.springSplitBtn.Name = "springSplitBtn";
@@ -1333,7 +1421,6 @@
             // 
             this.summerSplitBtn.AutoSize = true;
             this.summerSplitBtn.ContextMenuStrip = this.summerMenuStrip;
-            this.summerSplitBtn.Image = ((System.Drawing.Image)(resources.GetObject("summerSplitBtn.Image")));
             this.summerSplitBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.summerSplitBtn.Location = new System.Drawing.Point(37, 147);
             this.summerSplitBtn.Name = "summerSplitBtn";
@@ -1375,7 +1462,6 @@
             // 
             this.fallSplitBtn.AutoSize = true;
             this.fallSplitBtn.ContextMenuStrip = this.fallMenuStrip;
-            this.fallSplitBtn.Image = ((System.Drawing.Image)(resources.GetObject("fallSplitBtn.Image")));
             this.fallSplitBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.fallSplitBtn.Location = new System.Drawing.Point(37, 207);
             this.fallSplitBtn.Name = "fallSplitBtn";
@@ -1417,7 +1503,6 @@
             // 
             this.winterSplitBtn.AutoSize = true;
             this.winterSplitBtn.ContextMenuStrip = this.winterMenuStrip;
-            this.winterSplitBtn.Image = ((System.Drawing.Image)(resources.GetObject("winterSplitBtn.Image")));
             this.winterSplitBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.winterSplitBtn.Location = new System.Drawing.Point(37, 267);
             this.winterSplitBtn.Name = "winterSplitBtn";
@@ -1552,95 +1637,41 @@
             this.label4.TabIndex = 21;
             this.label4.Text = "Date";
             // 
-            // pictureBox71
+            // label5
             // 
-            this.pictureBox71.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox71.Location = new System.Drawing.Point(728, 430);
-            this.pictureBox71.Name = "pictureBox71";
-            this.pictureBox71.Size = new System.Drawing.Size(77, 60);
-            this.pictureBox71.TabIndex = 79;
-            this.pictureBox71.TabStop = false;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(4, 136);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(46, 13);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Plot size";
             // 
-            // pictureBox72
+            // plotSizeNmr
             // 
-            this.pictureBox72.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox72.Location = new System.Drawing.Point(652, 430);
-            this.pictureBox72.Name = "pictureBox72";
-            this.pictureBox72.Size = new System.Drawing.Size(78, 60);
-            this.pictureBox72.TabIndex = 78;
-            this.pictureBox72.TabStop = false;
-            // 
-            // pictureBox73
-            // 
-            this.pictureBox73.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox73.Location = new System.Drawing.Point(576, 430);
-            this.pictureBox73.Name = "pictureBox73";
-            this.pictureBox73.Size = new System.Drawing.Size(81, 60);
-            this.pictureBox73.TabIndex = 77;
-            this.pictureBox73.TabStop = false;
-            // 
-            // pictureBox74
-            // 
-            this.pictureBox74.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox74.Location = new System.Drawing.Point(500, 430);
-            this.pictureBox74.Name = "pictureBox74";
-            this.pictureBox74.Size = new System.Drawing.Size(79, 60);
-            this.pictureBox74.TabIndex = 76;
-            this.pictureBox74.TabStop = false;
-            // 
-            // pictureBox75
-            // 
-            this.pictureBox75.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox75.Location = new System.Drawing.Point(421, 430);
-            this.pictureBox75.Name = "pictureBox75";
-            this.pictureBox75.Size = new System.Drawing.Size(86, 60);
-            this.pictureBox75.TabIndex = 75;
-            this.pictureBox75.TabStop = false;
-            // 
-            // pictureBox76
-            // 
-            this.pictureBox76.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox76.Location = new System.Drawing.Point(345, 430);
-            this.pictureBox76.Name = "pictureBox76";
-            this.pictureBox76.Size = new System.Drawing.Size(78, 60);
-            this.pictureBox76.TabIndex = 74;
-            this.pictureBox76.TabStop = false;
-            // 
-            // pictureBox77
-            // 
-            this.pictureBox77.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox77.Location = new System.Drawing.Point(269, 430);
-            this.pictureBox77.Name = "pictureBox77";
-            this.pictureBox77.Size = new System.Drawing.Size(77, 60);
-            this.pictureBox77.TabIndex = 73;
-            this.pictureBox77.TabStop = false;
-            // 
-            // pictureBox78
-            // 
-            this.pictureBox78.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox78.Location = new System.Drawing.Point(192, 430);
-            this.pictureBox78.Name = "pictureBox78";
-            this.pictureBox78.Size = new System.Drawing.Size(80, 60);
-            this.pictureBox78.TabIndex = 72;
-            this.pictureBox78.TabStop = false;
-            // 
-            // pictureBox79
-            // 
-            this.pictureBox79.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox79.Location = new System.Drawing.Point(116, 430);
-            this.pictureBox79.Name = "pictureBox79";
-            this.pictureBox79.Size = new System.Drawing.Size(80, 60);
-            this.pictureBox79.TabIndex = 71;
-            this.pictureBox79.TabStop = false;
-            // 
-            // pictureBox80
-            // 
-            this.pictureBox80.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox80.Location = new System.Drawing.Point(40, 430);
-            this.pictureBox80.Name = "pictureBox80";
-            this.pictureBox80.Size = new System.Drawing.Size(77, 60);
-            this.pictureBox80.TabIndex = 70;
-            this.pictureBox80.TabStop = false;
+            this.plotSizeNmr.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.plotSizeNmr.Location = new System.Drawing.Point(69, 134);
+            this.plotSizeNmr.Maximum = new decimal(new int[] {
+            250,
+            0,
+            0,
+            0});
+            this.plotSizeNmr.Minimum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.plotSizeNmr.Name = "plotSizeNmr";
+            this.plotSizeNmr.Size = new System.Drawing.Size(120, 20);
+            this.plotSizeNmr.TabIndex = 13;
+            this.plotSizeNmr.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
             // 
             // Form2
             // 
@@ -1670,6 +1701,16 @@
             this.Name = "Form2";
             this.Text = "Rural Cultivation Atmospheric Emulation Application";
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox71)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox72)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox73)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox74)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox75)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox76)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox77)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox78)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox79)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox80)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox61)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox62)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox63)).EndInit();
@@ -1753,16 +1794,7 @@
             this.winterMenuStrip.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox71)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox72)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox73)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox74)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox75)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox76)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox77)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox78)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox79)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox80)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.plotSizeNmr)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1915,5 +1947,7 @@
         private System.Windows.Forms.PictureBox pictureBox78;
         private System.Windows.Forms.PictureBox pictureBox79;
         private System.Windows.Forms.PictureBox pictureBox80;
+        private System.Windows.Forms.NumericUpDown plotSizeNmr;
+        private System.Windows.Forms.Label label5;
     }
 }
