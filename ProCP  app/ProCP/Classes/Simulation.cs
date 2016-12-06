@@ -28,15 +28,79 @@ namespace ProCP.Classes
             set { weeks = value; }
         }
 
+        private int fertilizer;
+        public int Fertilizer
+        {
+            get { return fertilizer; }
+            set { fertilizer = value; }
+        }
 
-       // public Simulation() { plots = new List<Plot>(); }
-       
+        private int water;
+        public int Watering
+        {
+            get { return water; }
+            set { water = value; }
+        }
+
+
+        // public Simulation() { plots = new List<Plot>(); }
+
         public void Run() { }
         public void Stop() { }
         public void Restart() { }
         public void Seek() { }
-        public void SetFertilizer(string fer) { }
-        public void Setwatering(string water) { }
+
+        /// <summary>
+        /// Seting Fertilizer
+        /// </summary>
+        /// <param name="fer"></param>
+        public void SetFertilizer(string fer)
+        {
+            switch (fer)
+            {
+                case "small":
+                    {
+                        this.Fertilizer = 1000;
+                    }
+                    break;
+                case "medium":
+                    {
+                        this.Fertilizer = 2000;
+                    }
+                    break;
+                case "large":
+                    {
+                        this.Fertilizer = 3000;
+                    }
+                    break;
+            }
+        }
+        /// <summary>
+        /// Seting watering
+        /// </summary>
+        /// <param name="water"></param>
+        public void Setwatering(string water)
+        {
+            switch (water)
+            {
+                case "small":
+                    {
+                        this.Watering = 3000;
+                    }
+                    break;
+                case "medium":
+                    {
+                        this.Watering = 6000;
+                    }
+                    break;
+                case "large":
+                    {
+                        this.Watering = 9000;
+                    }
+                    break;
+            }
+        }
+
         public void SetProvince(int sqmeters) { }
         // public int getPlotPosition(int pictureboxid) { return 0;}
         public void SetBeginDate(DateTime date)
@@ -61,12 +125,5 @@ namespace ProCP.Classes
             weeks =Convert.ToInt32( (startDate.Subtract(endDate)).TotalDays / 7);
             return weeks;
         }
-
-
-
-
-
-        
-        
     }
 }
