@@ -107,5 +107,20 @@ namespace ProCP
             dateTimePicker2.MinDate = dateTimePicker1.Value.AddMonths(3);
             dateTimePicker2.MaxDate = dateTimePicker1.Value.AddMonths(36);
         }
+
+        private void pb86_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pb16_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pb84_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
