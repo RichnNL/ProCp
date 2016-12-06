@@ -111,3 +111,11 @@ C:\Users\Khan\Documents\GitHub\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.csproj.Gen
 C:\Users\zdami\Desktop\ProCP_Git\ProCp\ProCP  app\ProCP\bin\Debug\ProCP.exe.config
 C:\Users\zdami\Desktop\ProCP_Git\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.exe
 C:\Users\zdami\Desktop\ProCP_Git\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.pdb
+C:\Users\zdami\Desktop\ProCP_Git\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.csprojResolveAssemblyReference.cache
+C:\Users\zdami\Desktop\ProCP_Git\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.Form2.resources
+C:\Users\zdami\Desktop\ProCP_Git\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.csproj.GenerateResource.Cache
+C:\Users\zdami\Desktop\ProCP_Git\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.Properties.Resources.resources
+C:\Users\zdami\Desktop\ProCP_Git\ProCp\ProCP  app\ProCP\bin\Debug\ProCP.exe
+C:\Users\zdami\Desktop\ProCP_Git\ProCp\ProCP  app\ProCP\bin\Debug\ProCP.pdb
+C:\Users\zdami\Desktop\ProCP_Git\ProCp\ProCP  app\ProCP\bin\Debug\MySql.Data.dll
+C:\Users\zdami\Desktop\ProCP_Git\ProCp\ProCP  app\ProCP\bin\Debug\SplitButton.dll

@@ -18,7 +18,7 @@ namespace ProCP.Classes
         //private int neededSunLight;
         private int nutritionRate;
         private int temperature;
-        private int cropYield
+        private int cropYield;
         private String cropSeason;
 
         public Crop(String name, int maturity, int wmin, int wmax, int thirst, int nr, int temp, String season, int yield)

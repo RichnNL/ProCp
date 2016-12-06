@@ -12,5 +12,7 @@ namespace ProCP.Classes
        // private List<Image> CropImage;
         public Images(string cname) { }
         public void GetImage(int image) { }
+
+        
     }
 }

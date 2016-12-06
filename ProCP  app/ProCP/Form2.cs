@@ -7,22 +7,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ProCP.Classes;
+
 
 namespace ProCP
 {
     public partial class Form2 : Form
     {
-       
+
+        DatabaseConnection dc;
+
         public Form2()
         {
            
            
             InitializeComponent();
             dateTimePicker1.MinDate = DateTime.Now;
-          
-                dateTimePicker2.MinDate = dateTimePicker1.Value.AddMonths(3);
+            dateTimePicker2.MinDate = dateTimePicker1.Value.AddMonths(3);
             dateTimePicker2.MaxDate = dateTimePicker1.Value.AddMonths(36);
 
+            dc = new DatabaseConnection();
+
+            
+            
+            
         }
 
         private void overviewTotalCostLbl_Click(object sender, EventArgs e)

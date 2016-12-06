@@ -79,6 +79,7 @@ namespace ProCP.Classes
                 int temperature;
                 String season;
                 int yield;
+                
 
                 while (reader.Read())
                 {
@@ -89,8 +90,9 @@ namespace ProCP.Classes
                     thirst = Convert.ToInt32(reader["Thirst"]);
                     hunger = Convert.ToInt32(reader["Nutrition_Need"]);
                     temperature = Convert.ToInt32(reader["Temperature"]);
-                    season = Convert.ToString(reader["Season"];
+                    season = Convert.ToString(reader["Season"]);
                     yield = Convert.ToInt32(reader["Yield"]);
+
 
                     temp.Add(new Crop(cropName, maturity, waterMin, waterMax, thirst, hunger, temperature, season, yield));
 
@@ -118,7 +120,46 @@ namespace ProCP.Classes
         public Crop GetCrop(string name) { return null; }
         // public Weather GetWeather(string province,int season) { return null; }
         //public Images GetImage(string Cropname,int ImageNumber) { return null; }
-        // public SoilType  GetDefaultSoiType(){return null;}
+        
+        
+        public List<SoilType>  GetAllSoilTypes()
+        {
+            String sql = "SELECT * FROM soil";
+            MySqlCommand command = new MySqlCommand(sql, connection);
+
+            List<SoilType> temp = new List<SoilType>();
+
+            try
+            {
+                connection.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+
+                String name;
+                int max_water;
+                int nutrients;
+
+                while (reader.Read())
+                {
+                    name = Convert.ToString(reader["Type"]);
+                    max_water = Convert.ToInt32(reader["Water_Retention"]);
+                    nutrients = Convert.ToInt32(reader["Nutrients"]);
+
+                    temp.Add(new SoilType(name, max_water, nutrients));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return temp;
+
+            
+        }
         
 
 
