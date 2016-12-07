@@ -8,58 +8,119 @@ namespace ProCP.Classes
 {
     class CropData
     {
-        private int yield;
+        private int yield = 0;
        
 
-        private decimal totalCosts;
-        public decimal TotalCosts { get; set; }
+        private decimal totalCosts = 0;
+        
 
-        private decimal waterCosts;
-        public decimal WaterCosts { get; set; }
+        private decimal waterCosts = 0;
+        
 
-        private decimal fertilizerCosts;
-        public decimal FertilizerCosts { get { return fertilizerCosts; } set { value = fertilizerCosts; } }
+        private decimal fertilizerCosts = 0;
+        
 
         private DateTime beginDate;
-        public DateTime BeginDate { get { return beginDate; } set { value = beginDate; } }
+        
 
         private DateTime endDate;
-        public DateTime EndDate { get { return endDate; } set { endDate = value; } }
 
-        public CropData(DateTime begin, DateTime end)
+        private bool isAlive =true;
+
+        private string Crop_Health = "";
+   
+
+        public CropData(DateTime begin, DateTime end, bool Alive, string health)
         {
-
+            this.beginDate = begin;
+            this.endDate = end;
+            this.isAlive = Alive;
+            this.Crop_Health = health;
+        }
+        public CropData(DateTime begin, DateTime end, bool Alive, string health, decimal watercosts, decimal fertilizer)
+        {
+            this.beginDate = begin;
+            this.endDate = end;
+            this.isAlive = Alive;
+            this.Crop_Health = health;
+            this.waterCosts = watercosts;
+            this.fertilizerCosts = fertilizer;
+        }
+        public CropData(DateTime begin, DateTime end, bool Alive, string health, decimal watercosts, decimal fertilizer,decimal totalcosts)
+        {
+            this.beginDate = begin;
+            this.endDate = end;
+            this.isAlive = Alive;
+            this.Crop_Health = health;
+            this.waterCosts = watercosts;
+            this.fertilizerCosts = fertilizer;
+            this.totalCosts = totalcosts;
+        }
+        public CropData(DateTime begin, DateTime end, bool Alive, string health, decimal watercosts, decimal fertilizer, decimal totalcosts,int yield)
+        {
+            this.beginDate = begin;
+            this.endDate = end;
+            this.isAlive = Alive;
+            this.Crop_Health = health;
+            this.waterCosts = watercosts;
+            this.fertilizerCosts = fertilizer;
+            this.totalCosts = totalcosts;
+            this.yield = yield;
+        }
+        public CropData(DateTime begin, DateTime end, bool Alive, string health, int yield)
+        {
+            this.beginDate = begin;
+            this.endDate = end;
+            this.isAlive = Alive;
+            this.Crop_Health = health;
+            this.yield = yield;
+        }
+        public CropData(DateTime begin, DateTime end, bool Alive, string health, decimal totalcosts, int yield)
+        {
+            this.beginDate = begin;
+            this.endDate = end;
+            this.isAlive = Alive;
+            this.Crop_Health = health;
+            this.totalCosts = totalcosts;
+            this.yield = yield;
         }
 
         public DateTime GetBeginDate()
         {
 
-            return BeginDate;
+            return beginDate;
         }
         public DateTime GetEndDate()
         {
-            return EndDate;
+            return endDate;
         }
         public int GetYield()
         {
-            return 0; 
+            return yield ; 
         }
         public decimal GetTotalCost()
         {
-            return 0;
+            return totalCosts;
         }
 
         public decimal GetWaterCost()
         {
-            return 0;
+            return waterCosts;
         }
 
         public decimal GetFertilizerCost()
         {
-            return 0;
+            return fertilizerCosts;
         }
 
-        ///crop health?????
+        public string getHealth()
+        {
+            return Crop_Health;
+        }
+        public bool getIsAlive()
+        {
+            return isAlive;
+        }
        
 
     }

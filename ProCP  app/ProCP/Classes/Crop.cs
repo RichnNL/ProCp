@@ -8,29 +8,45 @@ namespace ProCP.Classes
 {
     class Crop
     {
-        private String cropName;
+        private string cropName;
         private int maturityLength;
-        private int waterMinimum;
-        private int waterMaximum;
-        private int waterThirst;
-        //private int sunLightMinimum;
-        private int neededNutrition;
-        //private int neededSunLight;
-        private int nutritionRate;
-        private int temperature;
+        private decimal waterMinimum;
+        private decimal waterMaximum;
+        private decimal waterThirst;
+        private decimal neededNutrition;
+        private decimal nutritionRate;
+        private decimal temperature;
         private int cropYield;
-        private String cropSeason;
-
-        public Crop(String name, int maturity, int wmin, int wmax, int thirst, int nr, int temp, String season, int yield)
-        { }
-        public int GetMaturityLength() { return 0; }
-        public int GetWaterMinimum() { return 0; }
-        public int GetWaterMaximum() { return 0; }
-        public int GetThirst() { return 0; }
-        //public int GetSunlightMinimum() { return 0; }
-        public int GetNeededNutrition() { return 0; }
-        public int GetNeededSunLight() { return 0; }
-       // public Images GetImage(int ImageNum) { }
+        private string cropSeason;
+        public List<Crop_Week> weeks;
+        public Crop(string name, int maturity, decimal wmin, decimal wmax, decimal thirst,decimal nN, decimal nr, decimal temp, string season, int yield)
+        {
+            this.cropName = name;
+            this.maturityLength = maturity;
+            this.waterMinimum = wmin;
+            this.waterMaximum = wmax;
+            this.waterThirst = thirst;
+            this.neededNutrition = nN;
+            this.temperature = temp;
+            this.cropSeason = season;
+            this.cropYield = yield;
+            weeks = new List<Crop_Week>();
+            for(int i = 0; i < maturityLength; i++)
+            {
+                weeks.Add(new Crop_Week());
+            }
+        }
+        public int GetMaturityLength() { return maturityLength; }
+        public decimal GetWaterMinimum() { return waterMinimum; }
+        public decimal GetWaterMaximum() { return waterMaximum; }
+        public decimal GetThirst() { return waterThirst; }
+        public decimal GetTemperature() { return temperature; }
+        public string GetSeason() { return cropSeason; }
+        public int GetCropYield() { return cropYield; }
+       
+        public decimal GetNeededNutrition() { return 0; }
+        
+      
 
 
 
