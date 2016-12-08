@@ -8,15 +8,22 @@ namespace ProCP.Classes
 {
     class Weather
     {
-        private int rainamount;
-        private int SunLight;
-        private int Temperature;
-        private int Province;
-        private int Season;
+        private decimal rainamount;
+        private decimal Temperature;
+        private string Province;
+        private int Month {
+            set { if (value > 12) { Month = 12; }else if (value < 1) { Month = 1; } }
+            get { return Month; } }
 
-        public Weather(int rainamount, int Sunlight, int temp) { }
-        public int GetRain() { return 0; }
-        public int GetSunLight() { return 0; }
-        public int GetTemp() { return 0; }
+        public Weather(string province, int month, decimal rainamount, decimal temp) {
+            this.Province = province;
+            this.Month = month;
+            this.rainamount = rainamount;
+            this.Temperature = temp;
+        }
+        public decimal GetRain() { return rainamount; }
+        public decimal GetTemp() { return Temperature; }
+        public string GetProvince() { return Province; }
+        public int getMonth() { return Month; }
     }
 }

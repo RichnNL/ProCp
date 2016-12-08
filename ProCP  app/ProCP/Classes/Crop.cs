@@ -46,6 +46,10 @@ namespace ProCP.Classes
         public int GetCropYield() { return cropYield; }
        
         public decimal GetNeededNutrition() { return 0; }
+        public string GetCropName()
+        {
+            return this.cropName;
+        }
         
       
 

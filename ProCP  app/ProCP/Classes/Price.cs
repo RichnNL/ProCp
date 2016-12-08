@@ -12,8 +12,15 @@ namespace ProCP.Classes
         private decimal sellPrice;
         private decimal buyPrice;
 
-        public decimal GetSellPrice() { return 0; }
-        public decimal GetBuyPrice() { return 0; }
+        public Price(string cropName, decimal sellPrice, decimal buyPrice)
+        {
+            this.cropName = cropName;
+            this.sellPrice = sellPrice;
+            this.buyPrice = buyPrice;
+        }
+
+        public decimal GetSellPrice() { return sellPrice; }
+        public decimal GetBuyPrice() { return buyPrice; }
     }
 
 }
