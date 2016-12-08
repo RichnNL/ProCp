@@ -36,6 +36,7 @@ namespace ProCP.Classes
                 weeks.Add(new Crop_Week());
             }
         }
+        public Crop(string name) { }
         public int GetMaturityLength() { return maturityLength; }
         public decimal GetWaterMinimum() { return waterMinimum; }
         public decimal GetWaterMaximum() { return waterMaximum; }

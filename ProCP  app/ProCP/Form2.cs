@@ -14,6 +14,9 @@ namespace ProCP
 {
     public partial class Form2 : Form
     {
+        
+        List<PictureBox> pb;
+        Plot ptr;
 
         DatabaseConnection dc;
 
@@ -27,11 +30,46 @@ namespace ProCP
             dateTimePicker2.MaxDate = dateTimePicker1.Value.AddMonths(36);
 
             dc = new DatabaseConnection();
+            dc.GetAllCrops();
+            AddSoilTypestoComboBox();
+            pb = new List<PictureBox>() { };
+            AddPbToList();
 
             
             
             
         }
+        public void AddPbToList()
+        {
+            foreach (PictureBox p in panel1.Controls)
+            {
+                pb.Add(p);
+                p.Click += p_Click;
+            }
+
+        }
+
+        void p_Click(object sender, EventArgs e)
+        {
+            PictureBox pbox = (PictureBox)sender;
+            string str = yrSplitBtn.SplitMenuStrip.Text;
+            ptr.AddCrop(str, pbox.Name);
+
+
+
+        }
+
+        public void AddSoilTypestoComboBox()
+        {
+
+
+            foreach (var st in dc.GetAllSoilTypes())
+            {
+                this.soilTypeCbx.Items.Add(st);
+            }
+
+        }
+
 
         private void overviewTotalCostLbl_Click(object sender, EventArgs e)
         {
@@ -81,6 +119,11 @@ namespace ProCP
         {
             yrSplitBtn.Image = potatoMenuStripItem.Image;
             yrSplitBtn.Text = potatoMenuStripItem.Text;
+        }
+        private void CauliFlowerMenuStripItem_Click(object sender, EventArgs e)
+        {
+            springSplitBtn.Image = Cauliflower.Image;
+            springSplitBtn.Text = Cauliflower.Text;
         }
 
         private void soilTypeLbl_Click(object sender, EventArgs e)

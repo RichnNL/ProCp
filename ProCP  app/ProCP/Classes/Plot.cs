@@ -8,7 +8,7 @@ namespace ProCP.Classes
 {
     class Plot
     {
-        public int PlotId;
+        public string PlotId;
        //private SoilTtype sotype;
         private int plotSize;
         public int PlotSize { get { return plotSize; } set { plotSize = value; } }
@@ -24,7 +24,25 @@ namespace ProCP.Classes
       //  public Plot(SoilTypr sotype, int PlotSize) { }
         public void setPlotsize(int sqmeters) { }
         public int getPlotsize() { return 0; }
-     //   public bool AddCrop(Crop crop,int position id ) { return false; }
+        public bool AddCrop(string crop, string pictureboxId)
+        {
+            if (IsEmpty)
+            {
+                Crop c = new Crop(crop);
+                Manageweeks(c.GetMaturityLength());
+                foreach (PlotWeek p in plotWeeks)
+                {
+                    p.setCrop(c);
+                }
+                PlotId = pictureboxId;
+                IsEmpty = false;
+                return true;
+            }
+            else
+
+                return false;
+        }
+
      //   public void setSoilType( SoilType so) { }
         public bool RemoveCrop(int getploposition) { return false; }
         public bool RemoveAllCrop(List<int> getploposition) { return false; }
