@@ -53,7 +53,10 @@ namespace ProCP
         {
             PictureBox pbox = (PictureBox)sender;
             string str = yrSplitBtn.SplitMenuStrip.Text;
-            ptr.AddCrop(str, pbox.Name);
+            if (!ptr.AddCrop(str, pbox.Name))
+            {
+                MessageBox.Show("alreadycultivated ");
+}
 
 
 

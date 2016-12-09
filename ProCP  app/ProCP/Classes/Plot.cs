@@ -14,7 +14,7 @@ namespace ProCP.Classes
         public int PlotSize { get { return plotSize; } set { plotSize = value; } }
         public bool IsEmpty;
         private List<PlotWeek> plotWeeks;
-        
+        private Database db;
 
 
         public Plot()
@@ -28,11 +28,12 @@ namespace ProCP.Classes
         {
             if (IsEmpty)
             {
-                Crop c = new Crop(crop);
-                Manageweeks(c.GetMaturityLength());
+                
+                Crop cr= db.GetCrop(crop);
+                Manageweeks(cr.GetMaturityLength());
                 foreach (PlotWeek p in plotWeeks)
                 {
-                    p.setCrop(c);
+                    p.setCrop(cr);
                 }
                 PlotId = pictureboxId;
                 IsEmpty = false;
