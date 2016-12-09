@@ -145,10 +145,10 @@ namespace ProCP.Classes
             
         }
 
-        public Crop GetCrop(string name) { return null;
+        public Crop GetCrop(string name) { 
             foreach(Crop c in Crops)
             {
-                if(c.GetName() == name)
+                if(c.GetCropName() == name)
                 {
                     return c;
                 }
