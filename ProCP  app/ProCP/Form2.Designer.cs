@@ -1284,10 +1284,13 @@
             // provinceCbx
             // 
             this.provinceCbx.FormattingEnabled = true;
+            this.provinceCbx.Items.AddRange(new object[] {
+            "North Brabant"});
             this.provinceCbx.Location = new System.Drawing.Point(69, 20);
             this.provinceCbx.Name = "provinceCbx";
             this.provinceCbx.Size = new System.Drawing.Size(121, 21);
             this.provinceCbx.TabIndex = 7;
+            this.provinceCbx.SelectedIndexChanged += new System.EventHandler(this.provinceCbx_SelectedIndexChanged);
             // 
             // endDateLbl
             // 
@@ -1596,7 +1599,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1275, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1268, 24);
             this.menuStrip1.TabIndex = 17;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -1690,7 +1693,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1275, 630);
+            this.ClientSize = new System.Drawing.Size(1268, 630);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
