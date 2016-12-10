@@ -18,8 +18,8 @@ namespace ProCP
         List<PictureBox> pb;
         Plot ptr;
 
-        DatabaseConnection dc;
-
+       // DatabaseConnection dc;
+//
         public Form2()
         {
            
@@ -29,8 +29,8 @@ namespace ProCP
             dateTimePicker2.MinDate = dateTimePicker1.Value.AddMonths(3);
             dateTimePicker2.MaxDate = dateTimePicker1.Value.AddMonths(36);
 
-            dc = new DatabaseConnection();
-            dc.GetAllCrops();
+         //   dc = new DatabaseConnection();
+           // dc.GetAllCrops();
             AddSoilTypestoComboBox();
             pb = new List<PictureBox>() { };
             AddPbToList();
@@ -53,7 +53,10 @@ namespace ProCP
         {
             PictureBox pbox = (PictureBox)sender;
             string str = yrSplitBtn.SplitMenuStrip.Text;
-            ptr.AddCrop(str, pbox.Name);
+            if (!ptr.AddCrop(str, pbox.Name))
+            {
+                MessageBox.Show("alreadycultivated ");
+}
 
 
 
@@ -63,10 +66,10 @@ namespace ProCP
         {
 
 
-            foreach (var st in dc.GetAllSoilTypes())
-            {
-                this.soilTypeCbx.Items.Add(st);
-            }
+            //foreach (var st in dc.GetAllSoilTypes())
+            //{
+            //    this.soilTypeCbx.Items.Add(st);
+            //}
 
         }
 
@@ -172,6 +175,11 @@ namespace ProCP
         private void pb84_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void provinceCbx_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }
