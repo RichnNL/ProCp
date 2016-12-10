@@ -58,7 +58,7 @@ namespace ProCP.Classes
         private void LoadSellPrices() {
             List<Price> temp = new List<Price>();
 
-            String sql = "SELECT * FROM seed_cost";
+            String sql = "SELECT crop_info.Name, sell_prices.Price_Per_Unit FROM crop_info INNER JOIN sell_prices ON crop_info.CROP_ID=sell_prices.Crop_ID;";
             MySqlCommand command = new MySqlCommand(sql, connection);
 
             try
@@ -93,7 +93,7 @@ namespace ProCP.Classes
 
         }
         private void LoadImages() {
-            string sql = "SELECT Name,Image_0,Image_1,Image_2,Image_3 FROM crop_info";
+            string sql = "SELECT Name,Image_0,Image_1,Image_2,Image_3 FROM crop_info;";
 
 
             MySqlCommand command = new MySqlCommand(sql, connection);
@@ -194,7 +194,7 @@ namespace ProCP.Classes
         public Image GetImage(string Cropname,int ImageNumber) {
             foreach(Images i in images)
             {
-                if (i.GetCropname() == Cropname)
+                if (i.GetCropName() == Cropname)
                 {
                     return i.GetImage(ImageNumber);
                 }
@@ -207,7 +207,7 @@ namespace ProCP.Classes
         }
         public List<Weather> loadWeather(string Province)
         {
-            string sql = "SELECT " + Province + " FROM weather";
+            string sql = "SELECT * from weather where Province = \""+Province+"\"";
             MySqlCommand command = new MySqlCommand(sql, connection);
 
             List<Weather> temp = new List<Weather>();
@@ -250,7 +250,7 @@ namespace ProCP.Classes
 
         }
 
-        private List<SoilType>  GetAllSoilTypes()
+        public List<SoilType>  GetAllSoilTypes()
         {
             String sql = "SELECT * FROM soil";
             MySqlCommand command = new MySqlCommand(sql, connection);
