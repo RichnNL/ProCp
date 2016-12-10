@@ -7,6 +7,8 @@ using MySql.Data;
 using MySql.Data.MySqlClient;
 using System.IO;
 using System.Windows.Forms;
+using System.Drawing;
+using System.Data;
 
 namespace ProCP.Classes
 {
@@ -17,15 +19,20 @@ namespace ProCP.Classes
         private List<SoilType> SoilTypes;
         private List<Weather> weathers;
         private List<Price> prices;
+        private List<Images> images;
 
-        public Database(string ConnectionInfo)
+        public Database(string ConnectionInfo, string Province)
         {
             string connect = connectToDataBase(ConnectionInfo);
             this.connection = new MySqlConnection(connect);
 
+            images = new List<Images>();
+            weathers = new List<Weather>();
+            SoilTypes = GetAllSoilTypes();
             Crops = GetAllCrops();
-            weathers = loadWeather();
+            loadWeather(Province);
             LoadSellPrices();
+            LoadImages();
 
         
         }
@@ -48,10 +55,10 @@ namespace ProCP.Classes
             return cnx;
         }
        
-        public void LoadSellPrices() {
+        private void LoadSellPrices() {
             List<Price> temp = new List<Price>();
 
-            String sql = "SELECT * FROM weather";
+            String sql = "SELECT * FROM seed_cost";
             MySqlCommand command = new MySqlCommand(sql, connection);
 
             try
@@ -85,10 +92,30 @@ namespace ProCP.Classes
 
 
         }
-        public void LoadWeather() { }
-        public void LoadImage() { }
-        public Decimal GetBuyPrice(string CropName) { return 0; }
-        public Decimal GetSellPrice(string CropName) { return 0; }
+        private void LoadImages() {
+            string sql = "SELECT Name,Image_0,Image_1,Image_2,Image_3 FROM crop_info";
+
+
+            MySqlCommand command = new MySqlCommand(sql, connection);
+            MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+            DataTable table = new DataTable();
+            adapter.Fill(table);
+
+            foreach(DataRow row in table.Rows)
+            {
+                string CropName = Convert.ToString(row["Name"]);
+                Image Im1 = ConverttoImage((byte[])row["Image_0"]);
+                Image Im2 = ConverttoImage((byte[])row["Image_1"]);
+                Image Im3 = ConverttoImage((byte[])row["Image_2"]);
+                Image Im4 = ConverttoImage((byte[])row["Image_3"]);
+                images.Add(new Images(CropName, Im1, Im2, Im3, Im4));
+            }
+
+
+
+        }
+        public decimal GetBuyPrice(string CropName) { return 0; }
+        public decimal GetSellPrice(string CropName) { return 0; }
         
         public List<Crop> GetAllCrops() 
         {
@@ -108,7 +135,6 @@ namespace ProCP.Classes
                 decimal waterMax;
                 decimal thirst;
                 decimal neededNutrition;
-                decimal nutritionRate;
                 decimal temperature;
                 string season;
                 int yield;
@@ -122,13 +148,12 @@ namespace ProCP.Classes
                     waterMax = Convert.ToDecimal(reader["Water_Max"]);
                     thirst = Convert.ToDecimal(reader["Thirst"]);
                     neededNutrition = Convert.ToDecimal(reader["Nutrition_Need"]);
-                    nutritionRate = Convert.ToDecimal(reader["Nutrition_Rate"]);
                     temperature = Convert.ToDecimal(reader["Temperature"]);
                     season = Convert.ToString(reader["Season"]);
                     yield = Convert.ToInt32(reader["Yield"]);
 
 
-                    temp.Add(new Crop(cropName, maturity, waterMin, waterMax, thirst, neededNutrition,nutritionRate, temperature, season, yield));
+                    temp.Add(new Crop(cropName, maturity, waterMin, waterMax, thirst, neededNutrition, temperature, season, yield));
                 }
 
             }
@@ -155,21 +180,34 @@ namespace ProCP.Classes
             }
             return null;
         }
-        public Weather GetWeather(string province, int month)
+        public Weather GetWeather(string province, int month, int year)
         {
             foreach (Weather w in weathers)
             {
-                if(w.GetProvince() == province && w.getMonth() == month)
+                if(w.GetProvince() == province && w.getMonth() == month && w.getYear() == year)
                 {
                     return w;
                 }
             }
             return null;
         }
-        //public Images GetImage(string Cropname,int ImageNumber) { return null; }
-        private List<Weather> loadWeather()
+        public Image GetImage(string Cropname,int ImageNumber) {
+            foreach(Images i in images)
+            {
+                if (i.GetCropname() == Cropname)
+                {
+                    return i.GetImage(ImageNumber);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            return null;
+        }
+        public List<Weather> loadWeather(string Province)
         {
-            String sql = "SELECT * FROM weather";
+            string sql = "SELECT " + Province + " FROM weather";
             MySqlCommand command = new MySqlCommand(sql, connection);
 
             List<Weather> temp = new List<Weather>();
@@ -181,17 +219,21 @@ namespace ProCP.Classes
 
                 decimal rainamount;
                 decimal Temperature;
-                string Province;
+                string province;
                 int Month;
+                int Year;
+                string date;
 
                 while (reader.Read())
                 {
-                    Province = Convert.ToString(reader["Province"]);
+                    province = Convert.ToString(reader["Province"]);
                     Temperature = Convert.ToDecimal(reader["Temperature"]);
                     rainamount = Convert.ToDecimal(reader["Nutrients"]);
-                    Month = Convert.ToInt32(reader["Months"]);
-                    // Zisis input right reader properties
-                    temp.Add(new Weather(Province,Month,rainamount,Temperature));
+                    date = Convert.ToString(reader["Month_Year"]);
+
+                    Year= Convert.ToInt32(date.Substring(0, 4));
+                    Month = Convert.ToInt32(date.Substring(5, 2));
+                    temp.Add(new Weather(province,Month,Year,rainamount,Temperature));
 
                 }
             }
@@ -208,7 +250,7 @@ namespace ProCP.Classes
 
         }
 
-        public List<SoilType>  GetAllSoilTypes()
+        private List<SoilType>  GetAllSoilTypes()
         {
             String sql = "SELECT * FROM soil";
             MySqlCommand command = new MySqlCommand(sql, connection);
@@ -245,6 +287,29 @@ namespace ProCP.Classes
             return temp;
 
             
+        }
+        
+        private Image ConverttoImage(byte[] data)
+        {
+            using(MemoryStream ms = new MemoryStream(data))
+            {
+                return Image.FromStream(ms);
+            }
+        }
+        public SoilType getDefaultSoilType()
+        {
+            return SoilTypes[0];
+        }
+        public SoilType getSoilType(string SoilType)
+        {
+            foreach(SoilType st in SoilTypes)
+            {
+                if(st.GetName() == SoilType)
+                {
+                    return st;
+                }
+            }
+            return null;
         }
         
         

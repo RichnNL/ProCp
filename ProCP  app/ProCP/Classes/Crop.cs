@@ -14,12 +14,11 @@ namespace ProCP.Classes
         private decimal waterMaximum;
         private decimal waterThirst;
         private decimal neededNutrition;
-        private decimal nutritionRate;
         private decimal temperature;
         private int cropYield;
         private string cropSeason;
         public List<Crop_Week> weeks;
-        public Crop(string name, int maturity, decimal wmin, decimal wmax, decimal thirst,decimal nN, decimal nr, decimal temp, string season, int yield)
+        public Crop(string name, int maturity, decimal wmin, decimal wmax, decimal thirst,decimal nN, decimal temp, string season, int yield)
         {
             this.cropName = name;
             this.maturityLength = maturity;

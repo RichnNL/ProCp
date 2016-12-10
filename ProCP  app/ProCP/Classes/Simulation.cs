@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace ProCP.Classes
 {
     class Simulation
-    {  // private List<Plot> plots;
+    {   private List<Plot> plots;
+    
         private DateTime beginDate;
         public DateTime BeginDate { get; set; }
         
@@ -16,9 +18,43 @@ namespace ProCP.Classes
 
         private DateTime currentDate;
         public DateTime CurrentDate { get; set; }
+        private int numberOfPlotRows;
+        private int numberofPlotColumns;
 
         private string province;
-        public DateTime Province { get; set; }
+        
+        public string Province { get { return province; } set
+            {
+                province = value;
+                database.loadWeather(province);
+            }
+        }
+
+        private int PlotSize
+        {
+            get { return PlotSize; }
+
+            set
+            {
+                if (value < 50)
+                {
+                    PlotSize = 50;
+                }
+                else if (value > 250)
+                {
+                    PlotSize = 250;
+                }
+            ;}
+        }
+      
+
+
+        public static Database database;
+        private SimulationStorage simulationStorage;
+        public Statistics statistics;
+
+
+
 
         //Number of selects for the selected start 
         private int weeks;
@@ -43,12 +79,21 @@ namespace ProCP.Classes
         }
 
 
-        // public Simulation() { plots = new List<Plot>(); }
+        public Simulation(string DataBaseConnection,string SimulationStorageDatabase,string Province) {
+            PlotSize = 100;
+            numberofPlotColumns = 10;
+            numberOfPlotRows = 8;
+            plots = new List<Plot>();
+            database = new Database(DataBaseConnection,province);
+            simulationStorage = new SimulationStorage(SimulationStorageDatabase);
+            InitialPlots();
+
+        }
 
         public void Run() { }
         public void Stop() { }
         public void Restart() { }
-        public void Seek() { }
+        public void Seek(int percentage) { }
 
         /// <summary>
         /// Seting Fertilizer
@@ -112,7 +157,17 @@ namespace ProCP.Classes
             endDate = date;
         }
         public void SetCurrentDate() { }
-        private void InitialPlots() { }
+        private void InitialPlots() {
+            
+            for(int i = 0; i< numberofPlotColumns; i++)
+            {
+                string plotId = "pb";
+                for(int j = 0; j < numberOfPlotRows; j++)
+                {
+                    //will finish later
+                }
+            }
+        }
         
         /// <summary>
         /// Method which takes the start date and end date as a parameter and return the number of weeks between selected dates.
@@ -124,6 +179,10 @@ namespace ProCP.Classes
         {
             weeks =Convert.ToInt32( (startDate.Subtract(endDate)).TotalDays / 7);
             return weeks;
+        }
+        private void setInitalDate()
+        {
+            //Tsank to do
         }
     }
 }

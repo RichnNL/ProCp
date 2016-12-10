@@ -9,7 +9,7 @@ namespace ProCP.Classes
     class Plot
     {
         public string PlotId;
-       //private SoilTtype sotype;
+        private SoilType soiltype;
         private int plotSize;
         public int PlotSize { get { return plotSize; } set { plotSize = value; } }
         public bool IsEmpty;
@@ -17,9 +17,11 @@ namespace ProCP.Classes
         
 
 
-        public Plot()
+        public Plot(string PlotId,SoilType soiltype, int PlotSize)
         {
             plotWeeks = new List<PlotWeek>();
+            setPlotsize(PlotSize);
+
         }
       //  public Plot(SoilTypr sotype, int PlotSize) { }
         public void setPlotsize(int sqmeters) { }
@@ -74,7 +76,11 @@ namespace ProCP.Classes
         public void CalBeginToEnd() { }
         public void CalCurrentDate() { }
 
-
+        private void setSoilType(SoilType soiltype)
+        {
+            this.soiltype = soiltype;
+            //Will do later need to change first plot week
+        }
 
 
 

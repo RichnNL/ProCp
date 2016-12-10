@@ -59,7 +59,7 @@
     <Compile Include="Classes\Crop_Week.cs" />
     <Compile Include="Classes\Database.cs" />
     <Compile Include="Classes\FileHandler.cs" />
-    <Compile Include="Classes\Image.cs" />
+    <Compile Include="Classes\Images.cs" />
     <Compile Include="Classes\Plot.cs" />
     <Compile Include="Classes\PlotWeek.cs" />
     <Compile Include="Classes\Price.cs" />
