@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace ProCP.Classes
 {
     class Plot
@@ -32,10 +33,13 @@ namespace ProCP.Classes
             {
                 
                 Crop cr= db.GetCrop(crop);
+
                 Manageweeks(cr.GetMaturityLength());
                 foreach (PlotWeek p in plotWeeks)
-                {
+                {   
                     p.setCrop(cr);
+                    
+                    
                 }
                 PlotId = pictureboxId;
                 IsEmpty = false;
