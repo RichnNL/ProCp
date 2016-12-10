@@ -1268,6 +1268,10 @@
             // wateringCbx
             // 
             this.wateringCbx.FormattingEnabled = true;
+            this.wateringCbx.Items.AddRange(new object[] {
+            "small",
+            "medium",
+            "large"});
             this.wateringCbx.Location = new System.Drawing.Point(69, 92);
             this.wateringCbx.Name = "wateringCbx";
             this.wateringCbx.Size = new System.Drawing.Size(121, 21);
@@ -1276,6 +1280,10 @@
             // fertilizerCbx
             // 
             this.fertilizerCbx.FormattingEnabled = true;
+            this.fertilizerCbx.Items.AddRange(new object[] {
+            "small",
+            "medium",
+            "large"});
             this.fertilizerCbx.Location = new System.Drawing.Point(69, 56);
             this.fertilizerCbx.Name = "fertilizerCbx";
             this.fertilizerCbx.Size = new System.Drawing.Size(121, 21);
