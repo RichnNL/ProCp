@@ -28,10 +28,11 @@ namespace ProCP.Classes
 
             images = new List<Images>();
             weathers = new List<Weather>();
-            SoilTypes = GetAllSoilTypes();
-            Crops = GetAllCrops();
-            //loadWeather();
+            weathers = loadAllWeather(RCAEA.simulation.Province);
+             SoilTypes = GetAllSoilTypes();
+            Crops = LoadAllCrops();
             prices = LoadSellPrices();
+            
             LoadImages();
 
         
@@ -116,7 +117,7 @@ namespace ProCP.Classes
         public decimal GetBuyPrice(string CropName) { return 0; }
         public decimal GetSellPrice(string CropName) { return 0; }
         
-        public List<Crop> GetAllCrops() 
+        private List<Crop> LoadAllCrops() 
         {
             String sql = "SELECT * FROM crop_info";
             MySqlCommand command = new MySqlCommand(sql, connection);
@@ -169,6 +170,11 @@ namespace ProCP.Classes
             
         }
 
+        public List<Crop> getAllCrops()
+        {
+            return this.Crops;
+        }
+
         public Crop GetCrop(string name) { 
             foreach(Crop c in Crops)
             {
@@ -190,6 +196,17 @@ namespace ProCP.Classes
             }
             return null;
         }
+        public SoilType GetSoilType(string SoilType)
+        {
+            foreach (SoilType s in SoilTypes)
+            {
+                if (s.GetName() == SoilType)
+                {
+                    return s;
+                }
+            }
+            return null;
+        }
         //public Image GetImage(string Cropname,int ImageNumber) {
         //    foreach(Images i in images)
         //    {
@@ -204,7 +221,7 @@ namespace ProCP.Classes
         //    }
         //    return null;
         //}
-        public List<Weather> loadWeather(string Province)
+        public void loadAllWeather(string Province)
         {
             string sql = "SELECT * from weather where Province = \""+Province+"\"";
             MySqlCommand command = new MySqlCommand(sql, connection);
@@ -245,11 +262,11 @@ namespace ProCP.Classes
                 connection.Close();
             }
 
-            return temp;
+            weathers = temp;
 
         }
 
-        public List<SoilType>  GetAllSoilTypes()
+        private List<SoilType>  GetAllSoilTypes()
         {
             String sql = "SELECT * FROM soil";
             MySqlCommand command = new MySqlCommand(sql, connection);

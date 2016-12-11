@@ -14,7 +14,8 @@ namespace ProCP.Classes
         public DateTime BeginDate { get { return beginDate; } set { beginDate = value; } }
         
         private DateTime endDate;
-        public DateTime EndDate { get { return endDate; }  set { endDate = value; } }
+        public DateTime EndDate { get { return endDate; }  set { endDate = value;
+            } }
 
         private DateTime currentDate;
         public DateTime CurrentDate { get { return currentDate; } set { currentDate = value; } }
@@ -26,7 +27,8 @@ namespace ProCP.Classes
         public string Province { get { return province; } set
             {
                 province = value;
-                database.loadWeather(province);
+                database.loadAllWeather(this.province);
+                updatePlots();
             }
         }
 
@@ -44,6 +46,7 @@ namespace ProCP.Classes
                 {
                     PlotSize = 250;
                 }
+                updatePlots();
             ;}
         }
       
@@ -83,6 +86,8 @@ namespace ProCP.Classes
             PlotSize = 100;
             numberofPlotColumns = 10;
             numberOfPlotRows = 8;
+            this.province = Province;
+            setInitalDate();
             plots = new List<Plot>();
             database = new Database();
             simulationStorage = new SimulationStorage(SimulationStorageDatabase);
@@ -92,13 +97,11 @@ namespace ProCP.Classes
 
         public void Run() { }
         public void Stop() { }
-        public void Restart() { }
+        public void Restart() {
+            currentDate = beginDate;
+        }
         public void Seek(int percentage) { }
 
-        /// <summary>
-        /// Seting Fertilizer
-        /// </summary>
-        /// <param name="fer"></param>
         public void SetFertilizer(string fer)
         {
             switch (fer)
@@ -120,10 +123,7 @@ namespace ProCP.Classes
                     break;
             }
         }
-        /// <summary>
-        /// Seting watering
-        /// </summary>
-        /// <param name="water"></param>
+        
         public void Setwatering(string water)
         {
            
@@ -152,10 +152,16 @@ namespace ProCP.Classes
         public void SetBeginDate(DateTime date)
         {
             beginDate = date;
+            dateChanged();
         }
         public void SetEndDate(DateTime date)
         {
+            if(BeginDate.AddMonths(3) < date)
+            {
+                date = date.AddMonths(3);
+            }
             endDate = date;
+            dateChanged();
         }
         public void SetCurrentDate() { }
         private void InitialPlots() {
@@ -165,25 +171,38 @@ namespace ProCP.Classes
                 string plotId = "pb";
                 for(int j = 0; j < numberOfPlotRows; j++)
                 {
-                    //will finish later
+                    plotId = plotId + i.ToString() + j.ToString();
+                    plots.Add(new Plot(plotId, database.getDefaultSoilType()));
                 }
             }
         }
         
-        /// <summary>
-        /// Method which takes the start date and end date as a parameter and return the number of weeks between selected dates.
-        /// </summary>
-        /// <param name="startDate"></param>
-        /// <param name="endDate"></param>
-        /// <returns></returns>
-        public int GetNumberOfWeeks(DateTime startDate, DateTime endDate)
+        public int GetNumberOfWeeks()
         {
-            weeks =Convert.ToInt32( (startDate.Subtract(endDate)).TotalDays / 7);
+            weeks =Convert.ToInt32( (this.BeginDate.Subtract(this.EndDate)).TotalDays / 7);
             return weeks;
         }
         private void setInitalDate()
         {
-            //Tsank to do
+            DateTime now = DateTime.Today;
+            DateTime then = now.AddMonths(4);
+            this.beginDate = now;
+            this.endDate = then;
+        }
+
+        private void updatePlots()
+        {
+            foreach (Plot p in plots)
+            {
+                p.CalBeginToEnd();
+            }
+        }
+        private void dateChanged()
+        {
+            foreach(Plot p in plots)
+            {
+                p.Manageweeks();
+            }
         }
     }
 }

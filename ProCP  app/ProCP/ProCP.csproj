@@ -63,6 +63,7 @@
     <Compile Include="Classes\Plot.cs" />
     <Compile Include="Classes\PlotWeek.cs" />
     <Compile Include="Classes\Price.cs" />
+    <Compile Include="Classes\RCAEA.cs" />
     <Compile Include="Classes\Report.cs" />
     <Compile Include="Classes\Simulation.cs" />
     <Compile Include="Classes\SimulationStorage.cs" />
