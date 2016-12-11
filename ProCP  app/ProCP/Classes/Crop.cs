@@ -49,6 +49,11 @@ namespace ProCP.Classes
         {
             return this.cropName;
         }
+        public Crop_Week getCurrentCrop()
+        {
+            return null;
+            // will do
+        }
         
       
 

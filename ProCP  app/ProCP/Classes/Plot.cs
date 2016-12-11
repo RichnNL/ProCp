@@ -25,36 +25,46 @@ namespace ProCP.Classes
         }
      
        
-        public bool AddCrop(string crop, string pictureboxId)
+        public bool AddCrop(Crop crop)
         {
-            if (IsEmpty)
+            int length = crop.GetMaturityLength();
+            if (canInsertPlot(length))
             {
-                
-                Crop cr= db.GetCrop(crop);
-
-                Manageweeks(cr.GetMaturityLength());
-                foreach (PlotWeek p in plotWeeks)
-                {   
-                    p.setCrop(cr);
-                    
-                    
+                int week = RCAEA.simulation.getCurrentWeek();
+                for (int i = 0; i < length; i++, week++)
+                {
+                    plotWeeks[week].setCrop(crop);
                 }
-                PlotId = pictureboxId;
-                IsEmpty = false;
                 return true;
+                
             }
             else
 
                 return false;
         }
+        public bool RemoveCrop(Crop crop, DateTime date)
+        {
+           Crop remove = plotWeeks[RCAEA.simulation.getSpecificWeek(date)].getCrop();
+            if( crop.GetCropName() == remove.GetCropName())
+            {
+                //remove.weeks[]
+                //to do
+                return true;
+            }
+            else
+            {
+                return false;
+            }
 
-     //   public void setSoilType( SoilType so) { }
+        }
+
+     
         public bool RemoveCrop(int getploposition) { return false; }
         public bool RemoveAllCrop(List<int> getploposition) { return false; }
         public CropData GetCurrentCropData() { return null; }
         public CropData GetCropSummary() { return null; }
         public CropData GetCropataByDate(DateTime d) { return null; }
-        //Needs some explanation
+       
         public void DrawSelf() { }
         public void NurishLand() { }
 
@@ -74,9 +84,28 @@ namespace ProCP.Classes
         private void setSoilType(SoilType soiltype)
         {
             this.soiltype = soiltype;
-            //Will do later need to change first plot week
+            this.plotWeeks[0].MaximumSoilNutrition = soiltype.GetStartingSoilNutrition();
+            this.plotWeeks[0].SoilNutrition = soiltype.GetStartingSoilNutrition();
+            CalBeginToEnd();
         }
-       
+        private bool canInsertPlot(int maturity)
+        {
+            DateTime now = RCAEA.simulation.CurrentDate;
+            DateTime then = now.AddDays(maturity * 7);
+            if (RCAEA.simulation.EndDate > then)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        private PlotWeek getCurrentPlotWeek()
+        {
+            return plotWeeks[RCAEA.simulation.getCurrentWeek()];
+        }
+
 
 
 

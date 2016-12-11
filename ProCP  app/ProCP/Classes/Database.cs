@@ -268,7 +268,7 @@ namespace ProCP.Classes
 
         private List<SoilType>  GetAllSoilTypes()
         {
-            String sql = "SELECT * FROM soil";
+            string sql = "SELECT * FROM soil";
             MySqlCommand command = new MySqlCommand(sql, connection);
 
             List<SoilType> temp = new List<SoilType>();
@@ -278,7 +278,7 @@ namespace ProCP.Classes
                 connection.Open();
                 MySqlDataReader reader = command.ExecuteReader();
 
-                String name;
+                string name;
                 int max_water;
                 int nutrients;
 

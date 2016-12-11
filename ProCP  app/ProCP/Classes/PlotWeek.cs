@@ -9,36 +9,37 @@ namespace ProCP.Classes
     class PlotWeek
     {
         public bool isEmpty { get; set; }
-        public int WaterSaturation { get; set; }
-        public int SaturationLooseRate { get; set; }
-        public int SoilNutrition { get; set; }
-        public int MaximumSoilNutrition { get; set; }
+        public decimal WaterSaturation { get; set; }
+        public decimal SaturationLooseRate { get; set; }
+        public decimal SoilNutrition { get; set; }
+        public decimal MaximumSoilNutrition { get; set; }
         private Weather weather;
         private Crop crop;
 
-        // constructor
+        
         public  PlotWeek()
         {
-
+            this.isEmpty = true;
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="crop"></param>
+        
         public void setCrop(Crop crop)
         {
-           
-
+            this.crop = crop;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="crop"></param>
-        public void DeleteCrop(Crop crop)
+       
+        public void DeleteCrop()
         {
-
+            this.crop = null;
+            isEmpty = true;
+        }
+        public Crop getCrop()
+        {
+            if (!isEmpty)
+            {
+                return crop;
+            }
+            else return null;
         }
 
     }

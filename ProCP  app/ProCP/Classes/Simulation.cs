@@ -204,5 +204,37 @@ namespace ProCP.Classes
                 p.Manageweeks();
             }
         }
+        public int getCurrentWeek()
+        {
+            int currentWeek = Convert.ToInt32(this.currentDate.Subtract(this.beginDate).TotalDays) / 7;
+            if (currentWeek > 0)
+            {
+                currentWeek = currentWeek - 1;
+            }
+            return currentWeek;
+
+        }
+        public int getSpecificWeek(DateTime date)
+        {
+            int currentWeek = Convert.ToInt32(date.Subtract(this.beginDate).TotalDays) / 7;
+            if (currentWeek > 0)
+            {
+                currentWeek = currentWeek - 1;
+            }
+            return currentWeek;
+        }
+        public Plot getPlot(string position)
+        {
+            return null;
+            //to do;
+        }
+        public void addCrop(Crop crop,Plot plot)
+        {
+            // to do
+        }
+        public void removeCrop(Plot plot)
+        {
+            // to do
+        }
     }
 }
