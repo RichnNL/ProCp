@@ -76,6 +76,23 @@ namespace ProCP.Classes
             this.soiltype = soiltype;
             //Will do later need to change first plot week
         }
+        private bool canInsertPlot(int maturity)
+        {
+            DateTime now = RCAEA.simulation.CurrentDate;
+            DateTime then = now.AddDays(maturity * 7);
+            if(RCAEA.simulation.EndDate > then)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        private PlotWeek getCurrentPlotWeek()
+        {
+            
+        }
        
 
 

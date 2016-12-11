@@ -52,7 +52,7 @@ namespace ProCP.Classes
       
 
 
-        public static Database database;
+        public Database database;
         private SimulationStorage simulationStorage;
         public Statistics statistics;
 
@@ -203,6 +203,16 @@ namespace ProCP.Classes
             {
                 p.Manageweeks();
             }
+        }
+        public int getCurrentWeek()
+        {
+            int currentWeek = Convert.ToInt32(this.currentDate.Subtract(this.beginDate).TotalDays) / 7;
+            if(currentWeek > 0)
+            {
+                currentWeek = currentWeek - 1;
+            }
+            return currentWeek;
+
         }
     }
 }
