@@ -84,7 +84,7 @@ namespace ProCP.Classes
             numberofPlotColumns = 10;
             numberOfPlotRows = 8;
             plots = new List<Plot>();
-            database = new Database(DataBaseConnection,province);
+            database = new Database();
             simulationStorage = new SimulationStorage(SimulationStorageDatabase);
             InitialPlots();
 

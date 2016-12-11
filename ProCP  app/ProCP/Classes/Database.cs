@@ -15,28 +15,28 @@ namespace ProCP.Classes
     class Database
     {
         public MySqlConnection connection;
-        private List<Crop> Crops;
-        private List<SoilType> SoilTypes;
-        private List<Weather> weathers;
-        private List<Price> prices;
-        private List<Images> images;
+        public List<Crop> Crops;
+        public List<SoilType> SoilTypes;
+        public List<Weather> weathers;
+        public List<Price> prices;
+        public List<Images> images;
 
-        public Database(string ConnectionInfo, string Province)
+        public Database()
         {
-            string connect = connectToDataBase(ConnectionInfo);
-            this.connection = new MySqlConnection(connect);
+            string connectionInfo = getConnectionInfo();
+            this.connection = new MySqlConnection(connectionInfo);
 
             images = new List<Images>();
             weathers = new List<Weather>();
             SoilTypes = GetAllSoilTypes();
             Crops = GetAllCrops();
-            loadWeather(Province);
-            LoadSellPrices();
+            //loadWeather();
+            prices = LoadSellPrices();
             LoadImages();
 
         
         }
-        private string connectToDataBase(string connection)
+        private string getConnectionInfo()
         {
             string cnx = null;
             try
@@ -55,10 +55,10 @@ namespace ProCP.Classes
             return cnx;
         }
        
-        private void LoadSellPrices() {
+        private List<Price> LoadSellPrices() {
             List<Price> temp = new List<Price>();
 
-            String sql = "SELECT crop_info.Name, sell_prices.Price_Per_Unit FROM crop_info INNER JOIN sell_prices ON crop_info.CROP_ID=sell_prices.Crop_ID;";
+            String sql = "SELECT crop_info.Name, sell_prices.Price_Per_Unit, seed_cost.Cost_m2 FROM crop_info INNER JOIN sell_prices ON crop_info.CROP_ID=sell_prices.Crop_ID INNER JOIN seed_cost ON crop_info.CROP_ID=seed_cost.Crop_ID";
             MySqlCommand command = new MySqlCommand(sql, connection);
 
             try
@@ -72,10 +72,9 @@ namespace ProCP.Classes
 
                 while (reader.Read())
                 {
-                    cropName = Convert.ToString(reader["Type"]);
-                    sellPrice = Convert.ToDecimal(reader["Water_Retention"]);
-                    buyPrice = Convert.ToDecimal(reader["Nutrients"]);
-                    //Zisis fix reader properties
+                    cropName = Convert.ToString(reader["Name"]);
+                    sellPrice = Convert.ToDecimal(reader["Price_Per_Unit"]);
+                    buyPrice = Convert.ToDecimal(reader["Cost_m2"]);
                     temp.Add(new Price(cropName, sellPrice, buyPrice));
                 }
             }
@@ -88,7 +87,7 @@ namespace ProCP.Classes
                 connection.Close();
             }
 
-            prices = temp;
+            return temp;
 
 
         }
@@ -191,20 +190,20 @@ namespace ProCP.Classes
             }
             return null;
         }
-        public Image GetImage(string Cropname,int ImageNumber) {
-            foreach(Images i in images)
-            {
-                if (i.GetCropName() == Cropname)
-                {
-                    return i.GetImage(ImageNumber);
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            return null;
-        }
+        //public Image GetImage(string Cropname,int ImageNumber) {
+        //    foreach(Images i in images)
+        //    {
+        //        if (i.GetCropName() == Cropname)
+        //        {
+        //            return i.GetImage(ImageNumber);
+        //        }
+        //        else
+        //        {
+        //            return null;
+        //        }
+        //    }
+        //    return null;
+        //}
         public List<Weather> loadWeather(string Province)
         {
             string sql = "SELECT * from weather where Province = \""+Province+"\"";

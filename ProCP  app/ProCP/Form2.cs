@@ -18,7 +18,7 @@ namespace ProCP
         List<PictureBox> pb;
         Plot ptr;
 
-       // DatabaseConnection dc;
+       Database dc;
 //
         public Form2()
         {
@@ -29,7 +29,7 @@ namespace ProCP
             dateTimePicker2.MinDate = dateTimePicker1.Value.AddMonths(3);
             dateTimePicker2.MaxDate = dateTimePicker1.Value.AddMonths(36);
 
-         //   dc = new DatabaseConnection();
+            dc = new Database();
            // dc.GetAllCrops();
             AddSoilTypestoComboBox();
             pb = new List<PictureBox>() { };
