@@ -17,8 +17,9 @@ namespace ProCP
         
         List<PictureBox> pb;
         Plot ptr;
-
+        RCAEA rcaea; 
        Database dc;
+        string province;
 //
         public Form2()
         {
@@ -28,7 +29,8 @@ namespace ProCP
             dateTimePicker1.MinDate = DateTime.Now;
             dateTimePicker2.MinDate = dateTimePicker1.Value.AddMonths(3);
             dateTimePicker2.MaxDate = dateTimePicker1.Value.AddMonths(36);
-
+            province = provinceCbx.SelectedItem.ToString();
+            rcaea = new Classes.RCAEA(province);
             dc = new Database();
            // dc.GetAllCrops();
             AddSoilTypestoComboBox();
@@ -183,6 +185,11 @@ namespace ProCP
         }
 
         private void springSplitBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pb13_Click(object sender, EventArgs e)
         {
 
         }

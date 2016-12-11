@@ -812,6 +812,7 @@
             this.pb13.Size = new System.Drawing.Size(81, 59);
             this.pb13.TabIndex = 31;
             this.pb13.TabStop = false;
+            this.pb13.Click += new System.EventHandler(this.pb13_Click);
             // 
             // pb03
             // 
@@ -1272,7 +1273,7 @@
             "small",
             "medium",
             "large"});
-            this.wateringCbx.Location = new System.Drawing.Point(69, 92);
+            this.wateringCbx.Location = new System.Drawing.Point(62, 87);
             this.wateringCbx.Name = "wateringCbx";
             this.wateringCbx.Size = new System.Drawing.Size(121, 21);
             this.wateringCbx.TabIndex = 9;
@@ -1293,11 +1294,13 @@
             // 
             this.provinceCbx.FormattingEnabled = true;
             this.provinceCbx.Items.AddRange(new object[] {
-            "North Brabant"});
+            "North Brabant",
+            "Zuid Holland"});
             this.provinceCbx.Location = new System.Drawing.Point(69, 19);
             this.provinceCbx.Name = "provinceCbx";
             this.provinceCbx.Size = new System.Drawing.Size(121, 21);
             this.provinceCbx.TabIndex = 7;
+            this.provinceCbx.Text = "North Brabant";
             this.provinceCbx.SelectedIndexChanged += new System.EventHandler(this.provinceCbx_SelectedIndexChanged);
             // 
             // endDateLbl
