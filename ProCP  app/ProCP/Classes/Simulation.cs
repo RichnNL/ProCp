@@ -11,13 +11,13 @@ namespace ProCP.Classes
     {   private List<Plot> plots;
     
         private DateTime beginDate;
-        public DateTime BeginDate { get; set; }
+        public DateTime BeginDate { get { return beginDate; } set { beginDate = value; } }
         
         private DateTime endDate;
-        public DateTime EndDate { get; set; }
+        public DateTime EndDate { get { return endDate; }  set { endDate = value; } }
 
         private DateTime currentDate;
-        public DateTime CurrentDate { get; set; }
+        public DateTime CurrentDate { get { return currentDate; } set { currentDate = value; } }
         private int numberOfPlotRows;
         private int numberofPlotColumns;
 
