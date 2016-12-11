@@ -26,6 +26,7 @@ namespace ProCP.Classes
         
         public string Province { get { return province; } set
             {
+                plots = new List<Plot>();
                 province = value;
                 database.loadAllWeather(this.province);
                 updatePlots();
