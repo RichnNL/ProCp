@@ -48,13 +48,18 @@ namespace ProCP
         private void PictureBoxClicked(object sender, MouseEventArgs e)
         {
             PictureBox pbox = (PictureBox)sender;
+            rcaea.componentSelected = "Corn";
+            rcaea.selectedPlot = RCAEA.simulation.getPlot(pbox.Name);
             if (e.Button == MouseButtons.Left)
-            {
-                //add crop
+            {  
+                if(rcaea.componentSelected != "" && rcaea.componentSelected != null)
+                {
+                    RCAEA.simulation.addCrop(RCAEA.simulation.database.GetCrop(rcaea.componentSelected), rcaea.selectedPlot);
+                }
             }
             else if(e.Button == MouseButtons.Right)
             {
-                //delete crop
+                RCAEA.simulation.removeCrop(rcaea.selectedPlot);
             }
                 MessageBox.Show(pbox.Name);
             //rcaea.componentSelected = 
@@ -226,6 +231,7 @@ namespace ProCP
             //To do
             //rcaea.componentSelected = 
         }
+       
        
     }
 }

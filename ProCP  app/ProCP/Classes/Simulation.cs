@@ -268,16 +268,6 @@ namespace ProCP.Classes
                 p.Manageweeks();
             }
         }
-        public int getCurrentWeek()
-        {
-            int currentWeek = Convert.ToInt32(this.currentDate.Subtract(this.beginDate).TotalDays) / 7;
-            if (currentWeek > 0)
-            {
-                currentWeek = currentWeek - 1;
-            }
-            return currentWeek;
-
-        }
        
         public Plot getPlot(string position)
         {
@@ -336,6 +326,10 @@ namespace ProCP.Classes
             {
                 OnDraw(p.PlotId, p.plotWeeks[CurrentWeek].getCrop().GetCropName(), p.plotWeeks[CurrentWeek].imageNumber);
             }
+        }
+        public int totalWeek()
+        {
+            return totalWeeks;
         }
     }
 }

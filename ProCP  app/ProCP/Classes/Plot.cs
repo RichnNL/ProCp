@@ -162,18 +162,18 @@ namespace ProCP.Classes
         {
             int now = RCAEA.simulation.CurrentWeek;
             int then = maturity + now;
-            if (RCAEA.simulation.GetNumberOfWeeks() > then)
+            if (RCAEA.simulation.GetNumberOfWeeks() - then > 0)
             {
-                return false;
+                return true;
             }
             else
             {
-                return true;
+                return false;
             }
         }
         private PlotWeek getCurrentPlotWeek()
         {
-            return plotWeeks[RCAEA.simulation.getCurrentWeek()];
+            return plotWeeks[RCAEA.simulation.CurrentWeek];
         }
 
         private bool isNotEmptyAtSpecificWeek(int week)
