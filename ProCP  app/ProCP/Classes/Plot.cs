@@ -15,15 +15,19 @@ namespace ProCP.Classes
         private int hasCrop;
 
 
-        public Plot(string PlotId,SoilType soiltype)
+        public Plot(string PlotId,SoilType soiltype,int intialWeeks)
         {
             this.PlotId = PlotId;
             this.soiltype = soiltype;
             this.hasCrop = 0;
             plotWeeks = new List<PlotWeek>();
-            Manageweeks();
-           
+            for(int i = 0; i < intialWeeks; i++)
+            {
+                plotWeeks.Add(new PlotWeek());
+            }
+            setSoilType(this.soiltype);
         }
+        
      
        
         public bool AddCrop(Crop crop)
@@ -72,9 +76,6 @@ namespace ProCP.Classes
         public CropData GetCropSummary() { return null; }
         public CropData GetCropDataByDate(DateTime d) { return null; }
        
-        public void DrawSelf() {
-
-        }
         public void NurishLand() { }
 
         public void Manageweeks()
@@ -135,7 +136,7 @@ namespace ProCP.Classes
                 {
                     //if Crop is being intialized
                     crop.weeks[CropMaturity].maturity = 0;
-                    crop.weeks[CropMaturity].CurrentImage = 0;
+                    plotWeeks[week].imageNumber = 0;
                     plotWeeks[week].imageChange = true;
                 }
                 else if(crop.GetMaturityLength() > crop.weeks[CropMaturity].maturity)

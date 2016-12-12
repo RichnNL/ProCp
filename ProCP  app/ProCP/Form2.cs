@@ -15,7 +15,7 @@ namespace ProCP
     public partial class Form2 : Form
     {
         
-        List<PictureBox> pb;
+        
         RCAEA rcaea; 
         string province;
 //
@@ -26,15 +26,13 @@ namespace ProCP
             province = "Drenthe";
             //defeault province for now;
             rcaea = new RCAEA(province);
+
             dateTimePicker1.MinDate = DateTime.Now;
             setMinMaxDates();
             AddSoilTypestoComboBox();
-            pb = new List<PictureBox>() { };
-            AddPbToList();
+            RCAEA.simulation.OnDraw += new Simulation.DrawCropHandler(drawPictureBox);
 
-            
-            
-            
+            populateProvinceOption();
         }
         private void setMinMaxDates()
         {
@@ -44,15 +42,6 @@ namespace ProCP
             dateTimePicker2.MaxDate = dateTimePicker1.Value.AddMonths(36);
         }
         
-        public void AddPbToList()
-        {
-            foreach (PictureBox p in panel1.Controls)
-            {
-                pb.Add(p);
-                p.Click += p_Click;
-            }
-
-        }
 
         void p_Click(object sender, EventArgs e)
         {
@@ -67,15 +56,26 @@ namespace ProCP
 
         }
 
-        public void AddSoilTypestoComboBox()
+        private void AddSoilTypestoComboBox()
         {
-            
-            foreach (var st in RCAEA.simulation.database.getAllSoilTypeNames())
+            soilTypeCbx.Items.Clear();
+            string[] array = RCAEA.simulation.database.getAllSoilTypeNames();
+            foreach (var st in array)
             {
                 this.soilTypeCbx.Items.Add(st);
             }
 
         }
+    
+        private void populateProvinceOption()
+        { string[] array = RCAEA.simulation.database.getProvinceNames();
+            provinceCbx.Items.Clear();
+            foreach (var v in array)
+            {
+                this.provinceCbx.Items.Add(v);
+            }
+        }
+        
 
 
         private void overviewTotalCostLbl_Click(object sender, EventArgs e)
@@ -160,10 +160,8 @@ namespace ProCP
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-           
 
-            dateTimePicker2.MinDate = dateTimePicker1.Value.AddMonths(3);
-            dateTimePicker2.MaxDate = dateTimePicker1.Value.AddMonths(36);
+            setMinMaxDates();
         }
 
         private void pb86_Click(object sender, EventArgs e)
@@ -195,5 +193,11 @@ namespace ProCP
         {
 
         }
+        private void drawPictureBox(string pictureBox, string CropName, int ImageNumber)
+        {
+            ((PictureBox)this.panel1.Controls[pictureBox]).Image = RCAEA.simulation.database.GetImage(CropName, ImageNumber);
+           
+        }
+       
     }
 }

@@ -80,7 +80,8 @@ namespace ProCP.Classes
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                //MessageBox.Show(ex.Message);
+                MessageBox.Show("Error Loading Prices");
             }
             finally
             {
@@ -110,7 +111,7 @@ namespace ProCP.Classes
                 images.Add(new Images(CropName, Im1, Im2, Im3, Im4));
             }
 
-
+            MessageBox.Show("success loading images");
 
         }
         public decimal GetBuyPrice(string CropName) { return 0; }
@@ -159,6 +160,7 @@ namespace ProCP.Classes
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                MessageBox.Show("Error Loading Crops");
             }
             finally
             {
@@ -222,7 +224,8 @@ namespace ProCP.Classes
         }
         public void loadAllWeather(string Province)
         {
-            string sql = "SELECT * from weather where Province = \""+Province+"\"";
+            // string sql = "SELECT * from weather where Province = \""+Province+"\"";
+            string sql = "SELECT * FROM weather where Province = 'Province  '" ;
             MySqlCommand command = new MySqlCommand(sql, connection);
 
             List<Weather> temp = new List<Weather>();
@@ -255,6 +258,7 @@ namespace ProCP.Classes
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                MessageBox.Show("Error Loading Weather");
             }
             finally
             {
@@ -262,7 +266,7 @@ namespace ProCP.Classes
             }
 
             weathers = temp;
-
+            MessageBox.Show("Successful");
         }
 
         private List<SoilType>  GetAllSoilTypes()
@@ -334,6 +338,38 @@ namespace ProCP.Classes
                 names.Add(s.GetName());
             }
             return names.ToArray();
+        }
+        public string[] getProvinceNames()
+        {
+            string sql = "SELECT DISTINCT Province from weather";
+            MySqlCommand command = new MySqlCommand(sql, connection);
+
+            List<string> temp = new List<string>();
+
+            try
+            {
+                connection.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+                string province;
+                
+                while (reader.Read())
+                {
+                    province = Convert.ToString(reader["Province"]);
+         
+                    temp.Add(province);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                MessageBox.Show("Error Loading province names");
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return temp.ToArray();
         }
         
         

@@ -16,6 +16,7 @@ namespace ProCP.Classes
         private Weather weather;
         private Crop crop;
         public bool imageChange { get; set; }
+        public int imageNumber { get; set; }
 
         
         public  PlotWeek()

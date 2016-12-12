@@ -4,12 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
-
+using System.Timers;
 
 namespace ProCP.Classes
 {
     class Simulation
-    {   private List<Plot> plots;
+    {
+        public delegate void DrawCropHandler(string pictureBox, string CropName, int ImageNumber);
+        public event DrawCropHandler OnDraw;
+        Timer time;
+
+        private List<Plot> plots;
     
         private DateTime beginDate;
         public DateTime BeginDate { get { return beginDate; } set { beginDate = value; } }
@@ -22,12 +27,17 @@ namespace ProCP.Classes
         public DateTime CurrentDate { get { return currentDate; } set { currentDate = value; } }
         private int totalWeeks;
         private int currentWeek;
+        private int timeBetweenWeeks;
         public int CurrentWeek
         {
             get { return currentWeek; }
             set
             {
                 currentWeek = value;
+                if(currentWeek == totalWeeks)
+                {
+                    Stop();
+                }
                 if(numberOfCrops != 0)
                 {
                     currentWeekChanged();
@@ -99,6 +109,10 @@ namespace ProCP.Classes
 
         public Simulation(string DataBaseConnection,string SimulationStorageDatabase,string Province) {
             numberOfCrops = 0;
+            timeBetweenWeeks = 2000;
+            time = new Timer(timeBetweenWeeks);
+            time.Elapsed += new ElapsedEventHandler(tick);
+            //for testing
             plots = new List<Plot>();
             PlotSize = 100;
             numberofPlotColumns = 10;
@@ -111,12 +125,19 @@ namespace ProCP.Classes
             InitialPlots();
 
         }
-
+        private void tick(object o, ElapsedEventArgs e)
+        {
+            CurrentWeek++;
+        }
         public void Run() {
             
+            time.Start();
+
             
         }
-        public void Stop() { }
+        public void Stop() {
+            time.Stop();
+                }
         public void Restart() {
             CurrentWeek = 0 ;
         }
@@ -212,7 +233,7 @@ namespace ProCP.Classes
                 for(int j = 0; j < numberOfPlotRows; j++)
                 {
                     plotId = plotId + i.ToString() + j.ToString();
-                    plots.Add(new Plot(plotId, database.getDefaultSoilType()));
+                    plots.Add(new Plot(plotId, database.getDefaultSoilType(),totalWeeks));
                 }
             }
         }
@@ -300,8 +321,19 @@ namespace ProCP.Classes
             {
                 if (p.plotWeeks[CurrentWeek].imageChange)
                 {
-                    p.DrawSelf();
+                    drawPlot(p);
                 }
+            }
+        }
+        private void drawPlot(Plot p)
+        {
+            if(OnDraw == null)
+            {
+                return;
+            }
+            else
+            {
+                OnDraw(p.PlotId, p.plotWeeks[CurrentWeek].getCrop().GetCropName(), p.plotWeeks[CurrentWeek].imageNumber);
             }
         }
     }
