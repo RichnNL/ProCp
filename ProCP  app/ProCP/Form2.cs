@@ -168,7 +168,8 @@ namespace ProCP
 
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
-
+            //RCAEA.simulation.SetEndDate(dateTimePicker2.Value);
+           
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -183,8 +184,10 @@ namespace ProCP
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-
+            //RCAEA.simulation.SetBeginDate(dateTimePicker1.Value);
+            //MessageBox.Show("" + RCAEA.simulation.BeginDate.ToString());
             setMinMaxDates();
+            
         }
 
         private void pb86_Click(object sender, EventArgs e)
@@ -204,7 +207,8 @@ namespace ProCP
 
         private void provinceCbx_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            RCAEA.simulation.Province = provinceCbx.SelectedItem.ToString() ;
+            MessageBox.Show(RCAEA.simulation.Province);
         }
 
         private void springSplitBtn_Click(object sender, EventArgs e)
@@ -226,6 +230,22 @@ namespace ProCP
             //To do
             //rcaea.componentSelected = 
         }
-       
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fertilizerCbx_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RCAEA.simulation.SetFertilizer(fertilizerCbx.SelectedItem.ToString());
+            MessageBox.Show("Fertilizer set to " + RCAEA.simulation.Fertilizer.ToString());
+        }
+
+        private void wateringCbx_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RCAEA.simulation.Setwatering(wateringCbx.SelectedItem.ToString());
+            MessageBox.Show("Watering set to " + RCAEA.simulation.Fertilizer.ToString());
+        }
     }
 }
