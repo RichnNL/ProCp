@@ -337,5 +337,9 @@ namespace ProCP.Classes
                 OnDraw(p.PlotId, p.plotWeeks[CurrentWeek].getCrop().GetCropName(), p.plotWeeks[CurrentWeek].imageNumber);
             }
         }
+        public int GetNumber()
+        {
+            return numberOfCrops;
+        }
     }
 }

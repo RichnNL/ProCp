@@ -56,6 +56,18 @@ namespace ProCP
             {
                 //delete crop
             }
+            if (RCAEA.simulation.GetNumber()>0)
+            {
+                provinceCbx.Enabled = false;
+                wateringCbx.Enabled = false;
+                fertilizerCbx.Enabled = false;
+            }
+            else if ( RCAEA.simulation.GetNumber()==0)
+            {
+                provinceCbx.Enabled = true;
+                wateringCbx.Enabled = true;
+                fertilizerCbx.Enabled = true;
+            }
                 MessageBox.Show(pbox.Name);
             //rcaea.componentSelected = 
         }
