@@ -240,13 +240,13 @@ namespace ProCP.Classes
         
         public int GetNumberOfWeeks()
         {
-            int weeks =Convert.ToInt32( (this.BeginDate.Subtract(this.EndDate)).TotalDays / 7);
-            return weeks;
+            int weeks =Convert.ToInt32( (this.EndDate.Subtract(this.BeginDate)).TotalDays / 7);
+            return weeks - 1;
         }
         private void setInitalDate()
         {
             DateTime now = DateTime.Today;
-            DateTime then = now.AddMonths(4);
+            DateTime then = now.AddMonths(3);
             this.beginDate = now;
             this.endDate = then;
             this.totalWeeks = GetNumberOfWeeks();

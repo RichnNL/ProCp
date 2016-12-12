@@ -33,6 +33,9 @@ namespace ProCP.Classes
             Crops = LoadAllCrops();
             prices = LoadSellPrices();
             LoadImages();
+            //testing
+            string[] name = getProvinceNames();
+            
 
         
         }
@@ -111,7 +114,7 @@ namespace ProCP.Classes
                 images.Add(new Images(CropName, Im1, Im2, Im3, Im4));
             }
 
-            MessageBox.Show("success loading images");
+            
 
         }
         public decimal GetBuyPrice(string CropName) { return 0; }
@@ -224,7 +227,6 @@ namespace ProCP.Classes
         }
         public void loadAllWeather(string Province)
         {
-            // string sql = "SELECT * from weather where Province = \""+Province+"\"";
             string sql = "SELECT * FROM weather where Province = 'Province  '" ;
             MySqlCommand command = new MySqlCommand(sql, connection);
 
@@ -266,7 +268,7 @@ namespace ProCP.Classes
             }
 
             weathers = temp;
-            MessageBox.Show("Successful");
+            
         }
 
         private List<SoilType>  GetAllSoilTypes()
