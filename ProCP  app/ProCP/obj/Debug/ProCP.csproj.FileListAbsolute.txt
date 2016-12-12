@@ -61,7 +61,6 @@ C:\Users\Dyer\Documents\GitHub\ProCp\ProCP  app\ProCP\bin\Debug\ProCP.exe
 C:\Users\Dyer\Documents\GitHub\ProCp\ProCP  app\ProCP\bin\Debug\ProCP.pdb
 C:\Users\Dyer\Documents\GitHub\ProCp\ProCP  app\ProCP\bin\Debug\SplitButton.dll
 C:\Users\Dyer\Documents\GitHub\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.csprojResolveAssemblyReference.cache
-C:\Users\Dyer\Documents\GitHub\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.Form1.resources
 C:\Users\Dyer\Documents\GitHub\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.Form2.resources
 C:\Users\Dyer\Documents\GitHub\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.Properties.Resources.resources
 C:\Users\Dyer\Documents\GitHub\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.csproj.GenerateResource.Cache
@@ -120,3 +119,4 @@ C:\Users\zdami\Desktop\ProCP_Git\ProCp\ProCP  app\ProCP\bin\Debug\MySql.Data.dll
 C:\Users\zdami\Desktop\ProCP_Git\ProCp\ProCP  app\ProCP\bin\Debug\SplitButton.dll
 C:\Users\raima\Documents\GitHub\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.csprojResolveAssemblyReference.cache
 C:\Users\ADMIN\Documents\GitHub\ProCp\ProCP  app\ProCP\bin\Debug\MySql.Data.dll
+C:\Users\Dyer\Documents\GitHub\ProCp\ProCP  app\ProCP\bin\Debug\MySql.Data.dll

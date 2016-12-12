@@ -21,18 +21,17 @@ namespace ProCP.Classes
         public List<Price> prices;
         public List<Images> images;
 
-        public Database()
+        public Database(string StartingProvince)
         {
             string connectionInfo = getConnectionInfo();
             this.connection = new MySqlConnection(connectionInfo);
 
             images = new List<Images>();
             weathers = new List<Weather>();
-          //  weathers = loadAllWeather(RCAEA.simulation.Province);
+            loadAllWeather(StartingProvince);
              SoilTypes = GetAllSoilTypes();
             Crops = LoadAllCrops();
             prices = LoadSellPrices();
-            
             LoadImages();
 
         
@@ -207,20 +206,20 @@ namespace ProCP.Classes
             }
             return null;
         }
-        //public Image GetImage(string Cropname,int ImageNumber) {
-        //    foreach(Images i in images)
-        //    {
-        //        if (i.GetCropName() == Cropname)
-        //        {
-        //            return i.GetImage(ImageNumber);
-        //        }
-        //        else
-        //        {
-        //            return null;
-        //        }
-        //    }
-        //    return null;
-        //}
+        public Image GetImage(string Cropname,int ImageNumber) {
+            foreach(Images i in images)
+            {
+                if (i.getCropName() == Cropname)
+                {
+                    return i.GetImage(ImageNumber);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            return null;
+        }
         public void loadAllWeather(string Province)
         {
             string sql = "SELECT * from weather where Province = \""+Province+"\"";
@@ -243,8 +242,8 @@ namespace ProCP.Classes
                 while (reader.Read())
                 {
                     province = Convert.ToString(reader["Province"]);
-                    Temperature = Convert.ToDecimal(reader["Temperature"]);
-                    rainamount = Convert.ToDecimal(reader["Nutrients"]);
+                    Temperature = Convert.ToDecimal(reader["Temp_Avg"]);
+                    rainamount = Convert.ToDecimal(reader["Rain_Avg"]);
                     date = Convert.ToString(reader["Month_Year"]);
 
                     Year= Convert.ToInt32(date.Substring(0, 4));

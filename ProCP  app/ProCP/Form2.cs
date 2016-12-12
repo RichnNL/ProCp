@@ -29,10 +29,10 @@ namespace ProCP
             dateTimePicker1.MinDate = DateTime.Now;
             dateTimePicker2.MinDate = dateTimePicker1.Value.AddMonths(3);
             dateTimePicker2.MaxDate = dateTimePicker1.Value.AddMonths(36);
-            province = provinceCbx.SelectedItem.ToString();
-            rcaea = new Classes.RCAEA(province);
-            dc = new Database();
-           // dc.GetAllCrops();
+            province = "Drenthe";
+            //defeault province for now;
+            rcaea = new RCAEA(province);
+           
             AddSoilTypestoComboBox();
             pb = new List<PictureBox>() { };
             AddPbToList();

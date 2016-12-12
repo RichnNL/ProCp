@@ -19,6 +19,20 @@ namespace ProCP.Classes
 
         private DateTime currentDate;
         public DateTime CurrentDate { get { return currentDate; } set { currentDate = value; } }
+        private int totalWeeks;
+        private int currentWeek;
+        public int CurrentWeek
+        {
+            get { return currentWeek; }
+            set
+            {
+                currentWeek = value;
+                //displayWeek
+                ;
+            }
+        }
+        private int numberOfCrops;
+
         private int numberOfPlotRows;
         private int numberofPlotColumns;
 
@@ -26,29 +40,34 @@ namespace ProCP.Classes
         
         public string Province { get { return province; } set
             {
-              
+                if (numberOfCrops == 0) { 
                 province = value;
                 database.loadAllWeather(this.province);
                 updatePlots();
+                 }
             }
         }
 
-        private int PlotSize
+        public int PlotSize
         {
             get { return PlotSize; }
 
             set
             {
-                if (value < 50)
+                if (numberOfCrops == 0)
                 {
-                    PlotSize = 50;
+                    if (value < 50)
+                    {
+                        PlotSize = 50;
+                    }
+                    else if (value > 250)
+                    {
+                        PlotSize = 250;
+                    }
+                    updatePlots();
+                    ;
                 }
-                else if (value > 250)
-                {
-                    PlotSize = 250;
-                }
-                updatePlots();
-            ;}
+            }
         }
       
 
@@ -84,14 +103,14 @@ namespace ProCP.Classes
 
 
         public Simulation(string DataBaseConnection,string SimulationStorageDatabase,string Province) {
-            plots = new List<Classes.Plot>();
+            numberOfCrops = 0;
+            plots = new List<Plot>();
             PlotSize = 100;
             numberofPlotColumns = 10;
             numberOfPlotRows = 8;
             this.province = Province;
             setInitalDate();
-            plots = new List<Plot>();
-            database = new Database();
+            database = new Database(Province);
             simulationStorage = new SimulationStorage(SimulationStorageDatabase);
             InitialPlots();
 
@@ -100,72 +119,92 @@ namespace ProCP.Classes
         public void Run() { }
         public void Stop() { }
         public void Restart() {
-            currentDate = beginDate;
+            CurrentWeek = 0 ;
         }
-        public void Seek(int percentage) { }
+        public void Seek(int percentage) {
+            // to do change currentweek based on totalweeks
+        }
 
         public void SetFertilizer(string fer)
         {
-            switch (fer)
+            if (numberOfCrops == 0)
             {
-                case "small":
-                    {
-                        this.Fertilizer = 1000;
-                    }
-                    break;
-                case "medium":
-                    {
-                        this.Fertilizer = 2000;
-                    }
-                    break;
-                case "large":
-                    {
-                        this.Fertilizer = 3000;
-                    }
-                    break;
+
+
+                switch (fer)
+                {
+                    case "small":
+                        {
+                            this.Fertilizer = 1000;
+                        }
+                        break;
+                    case "medium":
+                        {
+                            this.Fertilizer = 2000;
+                        }
+                        break;
+                    case "large":
+                        {
+                            this.Fertilizer = 3000;
+                        }
+                        break;
+                }
             }
         }
         
         public void Setwatering(string water)
         {
-           
-            switch (water)
+            if (numberOfCrops == 0)
             {
-                case "small":
-                    {
-                        this.Watering = 3000;
-                    }
-                    break;
-                case "medium":
-                    {
-                        this.Watering = 6000;
-                    }
-                    break;
-                case "large":
-                    {
-                        this.Watering = 9000;
-                    }
-                    break;
+                switch (water)
+                {
+                    case "small":
+                        {
+                            this.Watering = 3000;
+                        }
+                        break;
+                    case "medium":
+                        {
+                            this.Watering = 6000;
+                        }
+                        break;
+                    case "large":
+                        {
+                            this.Watering = 9000;
+                        }
+                        break;
+                }
             }
         }
 
-        public void SetProvince(int sqmeters) { }
-        // public int getPlotPosition(int pictureboxid) { return 0;}
+      
         public void SetBeginDate(DateTime date)
         {
-            beginDate = date;
-            dateChanged();
+            if (numberOfCrops == 0)
+            {
+                if(date < EndDate.Subtract(new TimeSpan(90, 0, 0, 0)))
+                {
+                    beginDate = date;
+                    totalWeeks = GetNumberOfWeeks();
+                    dateChanged();
+                }
+
+            }
         }
         public void SetEndDate(DateTime date)
         {
-            if(BeginDate.AddMonths(3) < date)
+            if (numberOfCrops == 0)
             {
-                date = date.AddMonths(3);
+                if (BeginDate.AddMonths(3) < date)
+                {
+                    date = date.AddMonths(3);
+                }
+                endDate = date;
+                totalWeeks = GetNumberOfWeeks();
+                dateChanged();
             }
-            endDate = date;
-            dateChanged();
         }
-        public void SetCurrentDate() { }
+        
         private void InitialPlots() {
             
             for(int i = 0; i< numberofPlotColumns; i++)
@@ -190,6 +229,8 @@ namespace ProCP.Classes
             DateTime then = now.AddMonths(4);
             this.beginDate = now;
             this.endDate = then;
+            this.totalWeeks = GetNumberOfWeeks();
+            currentWeek = 0;
         }
 
         private void updatePlots()
@@ -227,16 +268,29 @@ namespace ProCP.Classes
         }
         public Plot getPlot(string position)
         {
+            foreach(Plot p in plots)
+            {
+                if(p.PlotId == position)
+                {
+                    return p;
+                }
+            }
             return null;
-            //to do;
         }
         public void addCrop(Crop crop,Plot plot)
         {
-            // to do
+            if (plot.AddCrop(crop))
+            {
+                numberOfCrops++;
+            }
         }
         public void removeCrop(Plot plot)
         {
-            // to do
+            if (plot.RemoveCrop(currentWeek))
+            {
+                numberOfCrops--;
+            }
+
         }
     }
 }

@@ -41,7 +41,10 @@ namespace ProCP.Classes
         {
             images.Add(image);
         }
-
+        public string getCropName()
+        {
+            return CropName;
+        }
         
     }
 }
