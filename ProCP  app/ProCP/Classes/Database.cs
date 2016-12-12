@@ -28,7 +28,7 @@ namespace ProCP.Classes
 
             images = new List<Images>();
             weathers = new List<Weather>();
-            weathers = loadAllWeather(RCAEA.simulation.Province);
+          //  weathers = loadAllWeather(RCAEA.simulation.Province);
              SoilTypes = GetAllSoilTypes();
             Crops = LoadAllCrops();
             prices = LoadSellPrices();

@@ -26,7 +26,7 @@ namespace ProCP.Classes
         
         public string Province { get { return province; } set
             {
-                plots = new List<Plot>();
+              
                 province = value;
                 database.loadAllWeather(this.province);
                 updatePlots();
@@ -84,6 +84,7 @@ namespace ProCP.Classes
 
 
         public Simulation(string DataBaseConnection,string SimulationStorageDatabase,string Province) {
+            plots = new List<Classes.Plot>();
             PlotSize = 100;
             numberofPlotColumns = 10;
             numberOfPlotRows = 8;
