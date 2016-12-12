@@ -326,6 +326,15 @@ namespace ProCP.Classes
             }
             return null;
         }
+        public string[] getAllSoilTypeNames()
+        {
+            List<string> names = new List<string>();
+            foreach(SoilType s in SoilTypes)
+            {
+                names.Add(s.GetName());
+            }
+            return names.ToArray();
+        }
         
         
 

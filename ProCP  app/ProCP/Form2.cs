@@ -16,23 +16,18 @@ namespace ProCP
     {
         
         List<PictureBox> pb;
-        Plot ptr;
         RCAEA rcaea; 
-       Database dc;
         string province;
 //
         public Form2()
         {
-           
-           
             InitializeComponent();
-            dateTimePicker1.MinDate = DateTime.Now;
-            dateTimePicker2.MinDate = dateTimePicker1.Value.AddMonths(3);
-            dateTimePicker2.MaxDate = dateTimePicker1.Value.AddMonths(36);
+            
             province = "Drenthe";
             //defeault province for now;
             rcaea = new RCAEA(province);
-           
+            dateTimePicker1.MinDate = DateTime.Now;
+            setMinMaxDates();
             AddSoilTypestoComboBox();
             pb = new List<PictureBox>() { };
             AddPbToList();
@@ -41,6 +36,14 @@ namespace ProCP
             
             
         }
+        private void setMinMaxDates()
+        {
+            // fix min date 
+           
+            dateTimePicker2.MinDate = dateTimePicker1.Value.AddMonths(3);
+            dateTimePicker2.MaxDate = dateTimePicker1.Value.AddMonths(36);
+        }
+        
         public void AddPbToList()
         {
             foreach (PictureBox p in panel1.Controls)
@@ -66,12 +69,11 @@ namespace ProCP
 
         public void AddSoilTypestoComboBox()
         {
-
-
-            //foreach (var st in dc.GetAllSoilTypes())
-            //{
-            //    this.soilTypeCbx.Items.Add(st);
-            //}
+            
+            foreach (var st in RCAEA.simulation.database.getAllSoilTypeNames())
+            {
+                this.soilTypeCbx.Items.Add(st);
+            }
 
         }
 

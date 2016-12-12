@@ -11,17 +11,18 @@ namespace ProCP.Classes
     {
         public string PlotId;
         private SoilType soiltype;
-        private List<PlotWeek> plotWeeks;
-        private Database db;
+        public List<PlotWeek> plotWeeks;
+        private int hasCrop;
 
 
         public Plot(string PlotId,SoilType soiltype)
         {
+            this.PlotId = PlotId;
+            this.soiltype = soiltype;
+            this.hasCrop = 0;
             plotWeeks = new List<PlotWeek>();
-            
             Manageweeks();
-
-
+           
         }
      
        
@@ -30,11 +31,12 @@ namespace ProCP.Classes
             int length = crop.GetMaturityLength();
             if (canInsertPlot(length))
             {
-                int week = RCAEA.simulation.getCurrentWeek();
+                int week = RCAEA.simulation.CurrentWeek;
                 for (int i = 0; i < length; i++, week++)
                 {
                     plotWeeks[week].setCrop(crop);
                 }
+                hasCrop++ ;
                 return true;
                 
             }
@@ -42,13 +44,19 @@ namespace ProCP.Classes
 
                 return false;
         }
-        public bool RemoveCrop(Crop crop, DateTime date)
+        public bool RemoveCrop(int RemoveAtWeek)
         {
-           Crop remove = plotWeeks[RCAEA.simulation.getSpecificWeek(date)].getCrop();
-            if( crop.GetCropName() == remove.GetCropName())
+            Crop crop;
+            int cropSetAtWeek;
+           if(isNotEmptyAtSpecificWeek(RemoveAtWeek,out crop,out cropSetAtWeek))
             {
-                //remove.weeks[]
-                //to do
+                int maturity = crop.GetMaturityLength();
+                for (int i = 0; i < maturity; i++,cropSetAtWeek++)
+                {
+                    plotWeeks[cropSetAtWeek].DeleteCrop();
+                }
+                hasCrop--;
+                CalBeginToEnd();
                 return true;
             }
             else
@@ -58,41 +66,102 @@ namespace ProCP.Classes
 
         }
 
-     
-        public bool RemoveCrop(int getploposition) { return false; }
+        
         public bool RemoveAllCrop(List<int> getploposition) { return false; }
         public CropData GetCurrentCropData() { return null; }
         public CropData GetCropSummary() { return null; }
-        public CropData GetCropataByDate(DateTime d) { return null; }
+        public CropData GetCropDataByDate(DateTime d) { return null; }
        
-        public void DrawSelf() { }
+        public void DrawSelf() {
+
+        }
         public void NurishLand() { }
 
         public void Manageweeks()
         {
             int nbrWeeks = RCAEA.simulation.GetNumberOfWeeks();
-            for (int i = 0; i < nbrWeeks; i++)
+            int pweeks = plotWeeks.Count;
+            if(nbrWeeks != pweeks)
             {
-                plotWeeks.Add(new PlotWeek());
+                List<PlotWeek> temp = new List<PlotWeek>();
+                for(int i = 1; i < nbrWeeks; i++)
+                {
+                    temp.Add(new PlotWeek());
+                }
+                plotWeeks = temp;
+                setSoilType(this.soiltype);
             }
+           
         }
   
       
-        public void CalBeginToEnd() { }
-        public void CalCurrentDate() { }
+        public void CalBeginToEnd() {
+            if(hasCrop == 0)
+            {
+                setSoilType(this.soiltype);
+                // resets the Plot
+            }
+            else
+            {
+                //to do only caluclates maturity for now
+                int startWeek = 0;
+                while(plotWeeks[startWeek] != null)
+                {
+                    // If null then has reached the end of PlotWeeks
+                    if (!plotWeeks[startWeek].isEmpty)
+                    {
+                        Crop c = plotWeeks[startWeek].getCrop();
+                        int end = c.GetMaturityLength();
+                        for(int i = 0; i < end; i++,startWeek++)
+                        {
+                            CalCurrentDate(startWeek, i,c);
+                        }
+                    }
+                    else
+                    {
+                        startWeek++;
+                    }
+                }
+               
+
+            }
+        }
+        private void CalCurrentDate(int week,int CropMaturity,Crop crop) {
+            // setting week entered based on last week
+            if(isNotEmptyAtSpecificWeek(week))
+            {
+                // run plotWeekCalculations
+                if(CropMaturity == 0)
+                {
+                    //if Crop is being intialized
+                    crop.weeks[CropMaturity].maturity = 0;
+                    crop.weeks[CropMaturity].CurrentImage = 0;
+                    plotWeeks[week].imageChange = true;
+                }
+                else if(crop.GetMaturityLength() > crop.weeks[CropMaturity].maturity)
+                {
+                    crop.weeks[CropMaturity].maturity++;
+                }
+                
+            }
+            
+        }
 
         private void setSoilType(SoilType soiltype)
         {
             this.soiltype = soiltype;
             this.plotWeeks[0].MaximumSoilNutrition = soiltype.GetStartingSoilNutrition();
             this.plotWeeks[0].SoilNutrition = soiltype.GetStartingSoilNutrition();
-            CalBeginToEnd();
+            if (hasCrop != 0)
+            {
+                CalBeginToEnd();
+            }
         }
         private bool canInsertPlot(int maturity)
         {
-            DateTime now = RCAEA.simulation.CurrentDate;
-            DateTime then = now.AddDays(maturity * 7);
-            if (RCAEA.simulation.EndDate > then)
+            int now = RCAEA.simulation.CurrentWeek;
+            int then = maturity + now;
+            if (RCAEA.simulation.GetNumberOfWeeks() > then)
             {
                 return false;
             }
@@ -106,8 +175,57 @@ namespace ProCP.Classes
             return plotWeeks[RCAEA.simulation.getCurrentWeek()];
         }
 
+        private bool isNotEmptyAtSpecificWeek(int week)
+        {
+            if (plotWeeks[week].isEmpty)
+            {
 
+                return false;
+            }
+            else{
+                return true;
+            }
+        }
+        private bool isNotEmptyAtSpecificWeek(int week, out Crop getCrop)
+        {
+            getCrop = null;
+            if (plotWeeks[week].isEmpty)
+            {
+                return false;
+            }
+            getCrop = plotWeeks[week].getCrop();
+            return true;
+        }
+        private bool isNotEmptyAtSpecificWeek(int week, out Crop getCrop, out int weekCropWasSet)
+        {
+            getCrop = null;
+            weekCropWasSet = -1;
+            if (plotWeeks[week].isEmpty)
+            {
+                return false;
+            }
+            if(week == 0)
+            {
+                weekCropWasSet = 0;
+            }
+            getCrop = plotWeeks[week].getCrop();
+            while (week != 0)
+            {
+                Crop test = plotWeeks[week - 1].getCrop();
+                if(test == null || test != getCrop)
+                {
+                    weekCropWasSet = week;
+                }
+                else
+                {
+                    week--;
+                }
+            }
+            return true;
+            
+        }
 
+        
 
     }
 }

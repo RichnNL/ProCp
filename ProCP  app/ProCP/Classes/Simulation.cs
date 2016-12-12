@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
+
 namespace ProCP.Classes
 {
     class Simulation
@@ -27,7 +28,11 @@ namespace ProCP.Classes
             set
             {
                 currentWeek = value;
-                //displayWeek
+                if(numberOfCrops != 0)
+                {
+                    currentWeekChanged();
+                }
+                
                 ;
             }
         }
@@ -72,20 +77,10 @@ namespace ProCP.Classes
       
 
 
-        public static Database database;
+        public  Database database;
         private SimulationStorage simulationStorage;
         public Statistics statistics;
 
-
-
-
-        //Number of selects for the selected start 
-        private int weeks;
-        public int Weeks
-        {
-            get { return weeks; }
-            set { weeks = value; }
-        }
 
         private int fertilizer;
         public int Fertilizer
@@ -112,11 +107,15 @@ namespace ProCP.Classes
             setInitalDate();
             database = new Database(Province);
             simulationStorage = new SimulationStorage(SimulationStorageDatabase);
+            statistics = new Statistics();
             InitialPlots();
 
         }
 
-        public void Run() { }
+        public void Run() {
+            
+            
+        }
         public void Stop() { }
         public void Restart() {
             CurrentWeek = 0 ;
@@ -220,7 +219,7 @@ namespace ProCP.Classes
         
         public int GetNumberOfWeeks()
         {
-            weeks =Convert.ToInt32( (this.BeginDate.Subtract(this.EndDate)).TotalDays / 7);
+            int weeks =Convert.ToInt32( (this.BeginDate.Subtract(this.EndDate)).TotalDays / 7);
             return weeks;
         }
         private void setInitalDate()
@@ -257,15 +256,7 @@ namespace ProCP.Classes
             return currentWeek;
 
         }
-        public int getSpecificWeek(DateTime date)
-        {
-            int currentWeek = Convert.ToInt32(date.Subtract(this.beginDate).TotalDays) / 7;
-            if (currentWeek > 0)
-            {
-                currentWeek = currentWeek - 1;
-            }
-            return currentWeek;
-        }
+       
         public Plot getPlot(string position)
         {
             foreach(Plot p in plots)
@@ -291,6 +282,27 @@ namespace ProCP.Classes
                 numberOfCrops--;
             }
 
+        }
+
+        public int getWeekNumAtSpecficDate(DateTime date)
+        {
+            int currentWeek = Convert.ToInt32(date.Subtract(this.beginDate).TotalDays) / 7;
+            if (currentWeek > 0)
+            {
+                currentWeek = currentWeek - 1;
+            }
+            return currentWeek;
+        }
+
+        private void currentWeekChanged()
+        {
+            foreach(Plot p in plots)
+            {
+                if (p.plotWeeks[CurrentWeek].imageChange)
+                {
+                    p.DrawSelf();
+                }
+            }
         }
     }
 }

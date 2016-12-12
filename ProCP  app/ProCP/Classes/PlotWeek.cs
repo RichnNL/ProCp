@@ -15,11 +15,13 @@ namespace ProCP.Classes
         public decimal MaximumSoilNutrition { get; set; }
         private Weather weather;
         private Crop crop;
+        public bool imageChange { get; set; }
 
         
         public  PlotWeek()
         {
             this.isEmpty = true;
+            this.imageChange = false;
         }
         
         public void setCrop(Crop crop)
