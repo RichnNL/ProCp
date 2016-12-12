@@ -18,7 +18,7 @@ namespace ProCP
         
         RCAEA rcaea; 
         string province;
-//
+
         public Form2()
         {
             InitializeComponent();
@@ -31,8 +31,9 @@ namespace ProCP
             setMinMaxDates();
             AddSoilTypestoComboBox();
             RCAEA.simulation.OnDraw += new Simulation.DrawCropHandler(drawPictureBox);
-
+  
             populateProvinceOption();
+            setClickEventForPictureBoxes();
         }
         private void setMinMaxDates()
         {
@@ -43,17 +44,39 @@ namespace ProCP
         }
         
 
-        void p_Click(object sender, EventArgs e)
+        
+        private void PictureBoxClicked(object sender, MouseEventArgs e)
         {
             PictureBox pbox = (PictureBox)sender;
-            string str = yrSplitBtn.SplitMenuStrip.Text;
-//            if (!ptr.AddCrop(str, pbox.Name))
-//            {
-//                MessageBox.Show("alreadycultivated ");
-//}
+            if (e.Button == MouseButtons.Left)
+            {
+                //add crop
+            }
+            else if(e.Button == MouseButtons.Right)
+            {
+                //delete crop
+            }
+                MessageBox.Show(pbox.Name);
+            //rcaea.componentSelected = 
+        }
+        private void setClickEventForPictureBoxes()
+        {
+            foreach(Plot p in RCAEA.simulation.plots)
+            {
+                
+                ((PictureBox)this.panel1.Controls[p.PlotId]).MouseClick += new MouseEventHandler((PictureBoxClicked));
+            }
+           
+        }
+        private void populateCropPanelSelection()
+        {
+            string[] all = RCAEA.simulation.database.getCropNamesBySeason("ALL");
+            string[] spring = RCAEA.simulation.database.getCropNamesBySeason("SPRING");
+            string[] summer = RCAEA.simulation.database.getCropNamesBySeason("SUMMER");
+            string[] fall = RCAEA.simulation.database.getCropNamesBySeason("FALL");
+            string[] winter = RCAEA.simulation.database.getCropNamesBySeason("WINTER");
 
-
-
+            // Zisis finish 
         }
 
         private void AddSoilTypestoComboBox()
@@ -197,6 +220,11 @@ namespace ProCP
         {
             ((PictureBox)this.panel1.Controls[pictureBox]).Image = RCAEA.simulation.database.GetImage(CropName, ImageNumber);
            
+        }
+        private void CropFromPanelSelected()
+        {
+            //To do
+            //rcaea.componentSelected = 
         }
        
     }

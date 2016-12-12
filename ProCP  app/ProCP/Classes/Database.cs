@@ -373,6 +373,18 @@ namespace ProCP.Classes
 
             return temp.ToArray();
         }
+        public string[] getCropNamesBySeason(string season)
+        {
+            List<string> temp = new List<string>();
+            foreach(Crop c in Crops)
+            {
+                if(c.GetSeason() == season)
+                {
+                    temp.Add(c.GetCropName());
+                }
+            }
+            return temp.ToArray();
+        }
         
         
 

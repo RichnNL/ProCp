@@ -11,6 +11,7 @@ namespace ProCP.Classes
         public static Simulation simulation;
         public Report report;
         public Plot selectedPlot;
+        public string componentSelected;
         public RCAEA(string province)
         {
             simulation = new Simulation("connection.ini", "connection.ini", province);

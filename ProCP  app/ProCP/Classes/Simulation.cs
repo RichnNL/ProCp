@@ -14,7 +14,7 @@ namespace ProCP.Classes
         public event DrawCropHandler OnDraw;
         Timer time;
 
-        private List<Plot> plots;
+        public List<Plot> plots;
     
         private DateTime beginDate;
         public DateTime BeginDate { get { return beginDate; } set { beginDate = value; } }
@@ -234,6 +234,7 @@ namespace ProCP.Classes
                 {
                     plotId = plotId + i.ToString() + j.ToString();
                     plots.Add(new Plot(plotId, database.getDefaultSoilType(),totalWeeks));
+                    plotId = "pb";
                 }
             }
         }
