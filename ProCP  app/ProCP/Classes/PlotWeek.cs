@@ -28,6 +28,7 @@ namespace ProCP.Classes
         public void setCrop(Crop crop)
         {
             this.crop = crop;
+            this.isEmpty = false;
         }
 
        

@@ -285,12 +285,14 @@ namespace ProCP.Classes
             if (plot.AddCrop(crop))
             {
                 numberOfCrops++;
+                drawPlot(plot);
             }
         }
         public void removeCrop(Plot plot)
         {
             if (plot.RemoveCrop(currentWeek))
             {
+                drawPlot(plot);
                 numberOfCrops--;
             }
 

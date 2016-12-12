@@ -41,6 +41,7 @@ namespace ProCP.Classes
                     plotWeeks[week].setCrop(crop);
                 }
                 hasCrop++ ;
+                CalBeginToEnd();
                 return true;
                 
             }
@@ -104,16 +105,16 @@ namespace ProCP.Classes
             }
             else
             {
-                //to do only caluclates maturity for now
+                //to do (only caluclates maturity for now)
                 int startWeek = 0;
-                while(plotWeeks[startWeek] != null)
+                for(int j = 0; j < plotWeeks.Count; j ++)
                 {
                     // If null then has reached the end of PlotWeeks
                     if (!plotWeeks[startWeek].isEmpty)
                     {
                         Crop c = plotWeeks[startWeek].getCrop();
                         int end = c.GetMaturityLength();
-                        for(int i = 0; i < end; i++,startWeek++)
+                        for(int i = 0; i < end; i++,startWeek++,j++)
                         {
                             CalCurrentDate(startWeek, i,c);
                         }
@@ -141,7 +142,7 @@ namespace ProCP.Classes
                 }
                 else if(crop.GetMaturityLength() > crop.weeks[CropMaturity].maturity)
                 {
-                    crop.weeks[CropMaturity].maturity++;
+                    crop.weeks[CropMaturity].maturity = crop.weeks[CropMaturity - 1].maturity + 1; ;
                 }
                 
             }
