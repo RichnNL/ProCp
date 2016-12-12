@@ -212,15 +212,11 @@ namespace ProCP.Classes
             return null;
         }
         public Image GetImage(string Cropname,int ImageNumber) {
-            foreach(Images i in images)
+            for(int i = 0;i < images.Count; i++)
             {
-                if (i.getCropName() == Cropname)
+                if (images[i].getCropName() == Cropname)
                 {
-                    return i.GetImage(ImageNumber);
-                }
-                else
-                {
-                    return null;
+                    return images[i].GetImage(ImageNumber);
                 }
             }
             return null;

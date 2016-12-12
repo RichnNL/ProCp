@@ -161,10 +161,18 @@ namespace ProCP.Classes
         }
         private bool canInsertPlot(int maturity)
         {
+            //Checks if Enough Weeks Available and if the plot is empty
             int now = RCAEA.simulation.CurrentWeek;
             int then = maturity + now;
             if (RCAEA.simulation.GetNumberOfWeeks() - then > 0)
             {
+                for(int c = now; c <= then; c++)
+                {
+                    if (!plotWeeks[c].isEmpty)
+                    {
+                        return false;
+                    }
+                }
                 return true;
             }
             else

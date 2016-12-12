@@ -48,7 +48,7 @@ namespace ProCP
         private void PictureBoxClicked(object sender, MouseEventArgs e)
         {
             PictureBox pbox = (PictureBox)sender;
-            rcaea.componentSelected = "Corn";
+            rcaea.componentSelected = "Strawberry";
             rcaea.selectedPlot = RCAEA.simulation.getPlot(pbox.Name);
             if (e.Button == MouseButtons.Left)
             {  
@@ -223,8 +223,13 @@ namespace ProCP
         }
         private void drawPictureBox(string pictureBox, string CropName, int ImageNumber)
         {
-            ((PictureBox)this.panel1.Controls[pictureBox]).Image = RCAEA.simulation.database.GetImage(CropName, ImageNumber);
-           
+            if (String.IsNullOrEmpty(pictureBox) || String.IsNullOrEmpty(CropName) || ImageNumber == -1)
+            {
+                ((PictureBox)this.panel1.Controls[pictureBox]).Image = null;
+            }
+            else {
+                ((PictureBox)this.panel1.Controls[pictureBox]).Image = RCAEA.simulation.database.GetImage(CropName, ImageNumber);
+            }
         }
         private void CropFromPanelSelected()
         {

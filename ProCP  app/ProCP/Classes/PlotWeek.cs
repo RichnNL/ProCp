@@ -23,6 +23,7 @@ namespace ProCP.Classes
         {
             this.isEmpty = true;
             this.imageChange = false;
+            this.imageNumber = -1;
         }
         
         public void setCrop(Crop crop)
@@ -44,6 +45,17 @@ namespace ProCP.Classes
                 return crop;
             }
             else return null;
+        }
+        public string getCropNameInPlot()
+        {
+            if (isEmpty)
+            {
+                return "";
+            }
+            else
+            {
+                return this.crop.GetCropName();
+            }
         }
 
     }
