@@ -77,7 +77,7 @@ namespace ProCP
                 wateringCbx.Enabled = true;
                 fertilizerCbx.Enabled = true;
             }
-                MessageBox.Show(pbox.Name);
+                
            
         }
         private void setClickEventForPictureBoxes()
@@ -280,7 +280,7 @@ namespace ProCP
         {
                 Plot p = RCAEA.simulation.getPlot(position);
                 p.setSoilType(RCAEA.simulation.database.getSoilType(soilTypeCbx.SelectedItem.ToString()));
-                MessageBox.Show(p.plotWeeks[0].SoilNutrition.ToString());
+                
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -334,7 +334,7 @@ namespace ProCP
 
 
                 RCAEA.simulation.Province = provinceCbx.SelectedItem.ToString();
-                MessageBox.Show(RCAEA.simulation.Province);
+               
             }
             else
             {
@@ -377,14 +377,38 @@ namespace ProCP
 
         private void fertilizerCbx_SelectedIndexChanged(object sender, EventArgs e)
         {
-            RCAEA.simulation.SetFertilizer(fertilizerCbx.SelectedItem.ToString());
-            MessageBox.Show("Fertilizer set to " + RCAEA.simulation.Fertilizer.ToString());
+            
+
+            if (RCAEA.simulation.getNumberOfCrops() == 0)
+            {
+
+
+                RCAEA.simulation.SetFertilizer(fertilizerCbx.SelectedItem.ToString());
+
+            }
+            else
+            {
+                error(true);
+            }
+
         }
 
         private void wateringCbx_SelectedIndexChanged(object sender, EventArgs e)
         {
-            RCAEA.simulation.Setwatering(wateringCbx.SelectedItem.ToString());
-            MessageBox.Show("Watering set to " + RCAEA.simulation.Fertilizer.ToString());
+            
+
+            if (RCAEA.simulation.getNumberOfCrops() == 0)
+            {
+
+
+                RCAEA.simulation.Setwatering(wateringCbx.SelectedItem.ToString());
+
+            }
+            else
+            {
+                error(true);
+            }
+
         }
 
         private void soilTypeCbx_SelectedIndexChanged(object sender, EventArgs e)
