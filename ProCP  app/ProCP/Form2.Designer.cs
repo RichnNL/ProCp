@@ -1277,6 +1277,7 @@
             this.wateringCbx.Name = "wateringCbx";
             this.wateringCbx.Size = new System.Drawing.Size(121, 21);
             this.wateringCbx.TabIndex = 9;
+            this.wateringCbx.Text = "medium";
             this.wateringCbx.SelectedIndexChanged += new System.EventHandler(this.wateringCbx_SelectedIndexChanged);
             // 
             // fertilizerCbx
@@ -1290,6 +1291,7 @@
             this.fertilizerCbx.Name = "fertilizerCbx";
             this.fertilizerCbx.Size = new System.Drawing.Size(121, 21);
             this.fertilizerCbx.TabIndex = 8;
+            this.fertilizerCbx.Text = "medium";
             this.fertilizerCbx.SelectedIndexChanged += new System.EventHandler(this.fertilizerCbx_SelectedIndexChanged);
             // 
             // provinceCbx
@@ -1299,7 +1301,7 @@
             this.provinceCbx.Name = "provinceCbx";
             this.provinceCbx.Size = new System.Drawing.Size(121, 21);
             this.provinceCbx.TabIndex = 7;
-            this.provinceCbx.Text = "North Brabant";
+            this.provinceCbx.Text = "Drenthe";
             this.provinceCbx.SelectedIndexChanged += new System.EventHandler(this.provinceCbx_SelectedIndexChanged);
             // 
             // endDateLbl
@@ -1354,6 +1356,7 @@
             this.soilTypeCbx.Name = "soilTypeCbx";
             this.soilTypeCbx.Size = new System.Drawing.Size(121, 21);
             this.soilTypeCbx.TabIndex = 6;
+            this.soilTypeCbx.SelectedIndexChanged += new System.EventHandler(this.soilTypeCbx_SelectedIndexChanged);
             // 
             // soilTypeLbl
             // 

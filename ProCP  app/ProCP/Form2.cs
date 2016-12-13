@@ -270,5 +270,11 @@ namespace ProCP
             RCAEA.simulation.Setwatering(wateringCbx.SelectedItem.ToString());
             MessageBox.Show("Watering set to " + RCAEA.simulation.Fertilizer.ToString());
         }
+
+        private void soilTypeCbx_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RCAEA.simulation.SetFertilizer(fertilizerCbx.SelectedItem.ToString());
+            MessageBox.Show("Fertilizer set to " + RCAEA.simulation.Fertilizer.ToString());
+        }
     }
 }
