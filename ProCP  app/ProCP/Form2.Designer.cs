@@ -1725,6 +1725,7 @@
             this.Controls.Add(this.reportBtn);
             this.Controls.Add(this.overviewGroupBox);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form2";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
