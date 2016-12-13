@@ -149,7 +149,7 @@ namespace ProCP.Classes
             
         }
 
-        private void setSoilType(SoilType soiltype)
+        public void setSoilType(SoilType soiltype)
         {
             this.soiltype = soiltype;
             this.plotWeeks[0].MaximumSoilNutrition = soiltype.GetStartingSoilNutrition();
