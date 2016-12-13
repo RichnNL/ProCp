@@ -333,5 +333,9 @@ namespace ProCP.Classes
         {
             return totalWeeks;
         }
+        public int getNumberOfCrops()
+        {
+            return numberOfCrops;
+        }
     }
 }

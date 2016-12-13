@@ -123,22 +123,6 @@
   <metadata name="springMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>172, 17</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="Cauliflower.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAe
-        wQAAHsEBw2lUUwAAAAd0SU1FB+ACCQUPA8UCIlYAAAIJSURBVGhD7da7TQNREIVhJzSAkCiBCiCgCyRT
-        BaIOBAklENABMSEZKRnFGO0yu/quPdcPMGaDO9IfMHtm5pyVbTFr1eqP6vjmcrGRq4uRGJtOpYaXaQEO
-        VJp+fDsamT+djBhGYkVf2fOOeNxX8Yy7NWJsfTnQAiTE476KZ9ytEWNDnV0PFIvg9P58I8UR5+n7ItT4
-        UgoNs2E2qxagx2PFPP3CHJofBMhNO+xSNS59eJ6PfHzejSwW7yP2nRVviXfD+FAtQM/kAhTDyaEODYmm
-        a6j3bo0wm1ULsEJmeBn13q0RZjdVHkbTu37W7Ysa8Vbx04yfMJtVC7Bizr6oEW9tGWCzafsvr7cjmYGO
-        zPA6fCma9nso+mkBMjKT6/hVAP9Q5CLDeKxmutYXNe73PwC9FX30LcBAzZx9UeP+wijeij76IoAiw6iR
-        XcOIJrLdHcX3Uz20AP8ewMqWdNS+D2oM40+tffXu9GX5EtWHxb70EK3vckA85rAajbYAuwXgc8aASz3m
-        sPoCNVDbo2lR8209rRZgFTVQ25OZ71ATZrPKA7jIMGpqsxp1VtQXYFrCbFYtwIQCMGAA8ZizokbT2+3Z
-        uTjcAsQeNAcIYGGCMNsdYxa9psX9sWAfhQkOaEhNDEUxiz4z3+H+WLCPwgQHNKQmhqKYRZ+Z73B/LJhS
-        5WE0LTE0pWoBtqzZ7AuN/SfJOO7RzQAAAABJRU5ErkJggg==
-</value>
-  </data>
   <metadata name="summerMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>327, 17</value>
   </metadata>
