@@ -33,7 +33,10 @@ namespace ProCP.Classes
             for(int i = 0; i < maturityLength; i++)
             {
                 weeks.Add(new Crop_Week());
+                weeks[i].maturity = i;
+                weeks[i].Health = 100;
             }
+            
         }
         public Crop(string name) { }
         public int GetMaturityLength() { return maturityLength; }
@@ -49,11 +52,19 @@ namespace ProCP.Classes
         {
             return this.cropName;
         }
-        public Crop_Week getCurrentCrop()
-        {
-            return null;
-            // will do
+        public void setCropHealth(int addOrSubtractHealthPoints,int atWeek)
+        {   if(atWeek < maturityLength)
+            {
+                for (int i = atWeek; i< maturityLength; i++)
+                {
+                    weeks[i].Health += addOrSubtractHealthPoints;
+                    
+                }
+            }
+           
         }
+       
+        
         
       
 

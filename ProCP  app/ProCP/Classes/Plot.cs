@@ -13,6 +13,7 @@ namespace ProCP.Classes
         private SoilType soiltype;
         public List<PlotWeek> plotWeeks;
         private int hasCrop;
+        private int cropsHarvested;
 
 
         public Plot(string PlotId,SoilType soiltype,int intialWeeks)
@@ -20,6 +21,7 @@ namespace ProCP.Classes
             this.PlotId = PlotId;
             this.soiltype = soiltype;
             this.hasCrop = 0;
+            this.cropsHarvested = 0;
             plotWeeks = new List<PlotWeek>();
             for(int i = 0; i < intialWeeks; i++)
             {
@@ -73,8 +75,72 @@ namespace ProCP.Classes
 
         
         public bool RemoveAllCrop(List<int> getploposition) { return false; }
-        public CropData GetCurrentCropData() { return null; }
-        public CropData GetCropSummary() { return null; }
+        public CropData GetCurrentCropData() {
+            CropData cropdata;
+            int now = RCAEA.simulation.CurrentWeek;
+            Crop crop;
+            int beginWeek;
+            if (isNotEmptyAtSpecificWeek(now,out crop, out beginWeek))
+            {
+                bool alive;
+                int health = plotWeeks[now].getCrop().weeks[now - beginWeek].Health;
+                string health_details = "Crop " + crop.GetCropName();
+                if ( health > 1){
+                    alive = false;
+                }
+                else
+                {
+                    alive = true;
+                }
+                if(health > 90)
+                {
+                    health_details += " is very healthly.";
+                }
+                else if(health < 90 && health > 50)
+                {
+                    health_details += " is need more care.";
+                }
+                else if(health < 50 && health > 20)
+                {
+                    health_details += " need more care.";
+                }
+                else
+                {
+                    health_details += " needs urgent care.";
+                }
+
+                cropdata = new CropData(RCAEA.simulation.weekToDate(beginWeek), RCAEA.simulation.weekToDate(now), alive, health_details, getSoilType(), PlotId);
+            }
+            else
+            {
+
+                cropdata = new CropData("Plot is Empty", getSoilType(), PlotId);
+            }
+            return cropdata;
+
+        }
+        public CropData GetCropSummary() {
+            CropData cropdata;
+            if(hasCrop != 0)
+            {
+                string cropshaverest = "Number of Crops in plot " + hasCrop.ToString() + ", crops harvested: " + cropsHarvested;
+                string[] crops = getAllCropNamesInPlot();
+                if(crops.Length != 0)
+                {
+                    foreach(string s in crops)
+                    {
+                        cropshaverest += s + ", ";
+                    }
+                }
+                cropdata = new CropData(cropshaverest, getSoilType(), PlotId);
+                
+            }
+            else
+            {
+                cropdata = new CropData("Plot is Empty", getSoilType(), PlotId);
+            }
+            return cropdata;
+        }
         public CropData GetCropDataByDate(DateTime d) { return null; }
        
         public void NurishLand() { }
@@ -98,6 +164,7 @@ namespace ProCP.Classes
   
       
         public void CalBeginToEnd() {
+            cropsHarvested = 0;
             if(hasCrop == 0)
             {
                 setSoilType(this.soiltype);
@@ -136,13 +203,12 @@ namespace ProCP.Classes
                 if(CropMaturity == 0)
                 {
                     //if Crop is being intialized
-                    crop.weeks[CropMaturity].maturity = 0;
                     plotWeeks[week].imageNumber = 0;
                     plotWeeks[week].imageChange = true;
                 }
-                else if(crop.GetMaturityLength() > crop.weeks[CropMaturity].maturity)
+                else if( CropMaturity == crop.GetMaturityLength() && plotWeeks[week].getCrop().weeks[CropMaturity].Health > 0)
                 {
-                    crop.weeks[CropMaturity].maturity = crop.weeks[CropMaturity - 1].maturity + 1; ;
+                    cropsHarvested++;
                 }
                 
             }
@@ -234,7 +300,34 @@ namespace ProCP.Classes
             return true;
             
         }
-
+        public string getSoilType()
+        {
+            return this.soiltype.GetName();
+        }
+        private string[] getAllCropNamesInPlot()
+        {
+            List<string> list = new List<string>();
+            for(int i = 1; i< plotWeeks.Count; i++)
+            {
+                if(!plotWeeks[i].isEmpty)
+                {
+                    if(plotWeeks[i - 1].isEmpty || plotWeeks[i].getCrop() != plotWeeks[i - 1].getCrop())
+                    {
+                        list.Add(plotWeeks[i - 1].getCrop().GetCropName());
+                    }
+                }
+                
+            }
+            return list.ToArray();
+        }
+        public int getNumberOfCrops()
+        {
+            return hasCrop;
+        }
+        public int getNumberOfHarvestedCrops()
+        {
+            return cropsHarvested;
+        }
         
 
     }

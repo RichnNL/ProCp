@@ -12,10 +12,13 @@ namespace ProCP.Classes
         public Report report;
         public Plot selectedPlot;
         public string componentSelected;
+        public bool submitChange;
+        public CropData cropdata_now;
+        public CropData cropdata_summary;
         public RCAEA(string province)
         {
             simulation = new Simulation("connection.ini", "connection.ini", province);
-
+            submitChange = false;
         }
         public void generateReport(Simulation sim)
         {

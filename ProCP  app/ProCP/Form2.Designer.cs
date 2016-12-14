@@ -354,126 +354,140 @@
             this.panel1.Controls.Add(this.pb20);
             this.panel1.Controls.Add(this.pb10);
             this.panel1.Controls.Add(this.pb00);
-            this.panel1.Location = new System.Drawing.Point(210, 27);
+            this.panel1.Location = new System.Drawing.Point(315, 42);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(860, 538);
+            this.panel1.Size = new System.Drawing.Size(1290, 828);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // pb97
             // 
             this.pb97.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb97.Location = new System.Drawing.Point(777, 473);
+            this.pb97.Location = new System.Drawing.Point(1166, 728);
+            this.pb97.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb97.Name = "pb97";
-            this.pb97.Size = new System.Drawing.Size(81, 59);
+            this.pb97.Size = new System.Drawing.Size(120, 90);
             this.pb97.TabIndex = 79;
             this.pb97.TabStop = false;
             // 
             // pb90
             // 
             this.pb90.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb90.Location = new System.Drawing.Point(777, 19);
+            this.pb90.Location = new System.Drawing.Point(1166, 29);
+            this.pb90.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb90.Name = "pb90";
-            this.pb90.Size = new System.Drawing.Size(81, 59);
+            this.pb90.Size = new System.Drawing.Size(120, 90);
             this.pb90.TabIndex = 9;
             this.pb90.TabStop = false;
             // 
             // pb87
             // 
             this.pb87.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb87.Location = new System.Drawing.Point(691, 473);
+            this.pb87.Location = new System.Drawing.Point(1036, 728);
+            this.pb87.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb87.Name = "pb87";
-            this.pb87.Size = new System.Drawing.Size(81, 59);
+            this.pb87.Size = new System.Drawing.Size(120, 90);
             this.pb87.TabIndex = 78;
             this.pb87.TabStop = false;
             // 
             // pb77
             // 
             this.pb77.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb77.Location = new System.Drawing.Point(607, 473);
+            this.pb77.Location = new System.Drawing.Point(910, 728);
+            this.pb77.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb77.Name = "pb77";
-            this.pb77.Size = new System.Drawing.Size(81, 59);
+            this.pb77.Size = new System.Drawing.Size(120, 90);
             this.pb77.TabIndex = 77;
             this.pb77.TabStop = false;
             // 
             // pb67
             // 
             this.pb67.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb67.Location = new System.Drawing.Point(521, 474);
+            this.pb67.Location = new System.Drawing.Point(782, 729);
+            this.pb67.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb67.Name = "pb67";
-            this.pb67.Size = new System.Drawing.Size(81, 59);
+            this.pb67.Size = new System.Drawing.Size(120, 90);
             this.pb67.TabIndex = 76;
             this.pb67.TabStop = false;
             // 
             // pb57
             // 
             this.pb57.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb57.Location = new System.Drawing.Point(435, 473);
+            this.pb57.Location = new System.Drawing.Point(652, 728);
+            this.pb57.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb57.Name = "pb57";
-            this.pb57.Size = new System.Drawing.Size(81, 59);
+            this.pb57.Size = new System.Drawing.Size(120, 90);
             this.pb57.TabIndex = 75;
             this.pb57.TabStop = false;
             // 
             // pb47
             // 
             this.pb47.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb47.Location = new System.Drawing.Point(350, 473);
+            this.pb47.Location = new System.Drawing.Point(525, 728);
+            this.pb47.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb47.Name = "pb47";
-            this.pb47.Size = new System.Drawing.Size(81, 59);
+            this.pb47.Size = new System.Drawing.Size(120, 90);
             this.pb47.TabIndex = 74;
             this.pb47.TabStop = false;
             // 
             // pb37
             // 
             this.pb37.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb37.Location = new System.Drawing.Point(265, 473);
+            this.pb37.Location = new System.Drawing.Point(398, 728);
+            this.pb37.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb37.Name = "pb37";
-            this.pb37.Size = new System.Drawing.Size(81, 59);
+            this.pb37.Size = new System.Drawing.Size(120, 90);
             this.pb37.TabIndex = 73;
             this.pb37.TabStop = false;
             // 
             // pb27
             // 
             this.pb27.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb27.Location = new System.Drawing.Point(180, 473);
+            this.pb27.Location = new System.Drawing.Point(270, 728);
+            this.pb27.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb27.Name = "pb27";
-            this.pb27.Size = new System.Drawing.Size(81, 59);
+            this.pb27.Size = new System.Drawing.Size(120, 90);
             this.pb27.TabIndex = 72;
             this.pb27.TabStop = false;
             // 
             // pb17
             // 
             this.pb17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb17.Location = new System.Drawing.Point(96, 474);
+            this.pb17.Location = new System.Drawing.Point(144, 729);
+            this.pb17.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb17.Name = "pb17";
-            this.pb17.Size = new System.Drawing.Size(81, 59);
+            this.pb17.Size = new System.Drawing.Size(120, 90);
             this.pb17.TabIndex = 71;
             this.pb17.TabStop = false;
             // 
             // pb07
             // 
             this.pb07.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb07.Location = new System.Drawing.Point(10, 473);
+            this.pb07.Location = new System.Drawing.Point(15, 728);
+            this.pb07.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb07.Name = "pb07";
-            this.pb07.Size = new System.Drawing.Size(81, 59);
+            this.pb07.Size = new System.Drawing.Size(120, 90);
             this.pb07.TabIndex = 70;
             this.pb07.TabStop = false;
             // 
             // pb96
             // 
             this.pb96.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb96.Location = new System.Drawing.Point(777, 408);
+            this.pb96.Location = new System.Drawing.Point(1166, 628);
+            this.pb96.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb96.Name = "pb96";
-            this.pb96.Size = new System.Drawing.Size(81, 59);
+            this.pb96.Size = new System.Drawing.Size(120, 90);
             this.pb96.TabIndex = 69;
             this.pb96.TabStop = false;
             // 
             // pb86
             // 
             this.pb86.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb86.Location = new System.Drawing.Point(692, 409);
+            this.pb86.Location = new System.Drawing.Point(1038, 629);
+            this.pb86.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb86.Name = "pb86";
-            this.pb86.Size = new System.Drawing.Size(81, 59);
+            this.pb86.Size = new System.Drawing.Size(120, 90);
             this.pb86.TabIndex = 68;
             this.pb86.TabStop = false;
             this.pb86.Click += new System.EventHandler(this.pb86_Click);
@@ -481,63 +495,70 @@
             // pb76
             // 
             this.pb76.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb76.Location = new System.Drawing.Point(606, 408);
+            this.pb76.Location = new System.Drawing.Point(909, 628);
+            this.pb76.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb76.Name = "pb76";
-            this.pb76.Size = new System.Drawing.Size(81, 59);
+            this.pb76.Size = new System.Drawing.Size(120, 90);
             this.pb76.TabIndex = 67;
             this.pb76.TabStop = false;
             // 
             // pb66
             // 
             this.pb66.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb66.Location = new System.Drawing.Point(521, 408);
+            this.pb66.Location = new System.Drawing.Point(782, 628);
+            this.pb66.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb66.Name = "pb66";
-            this.pb66.Size = new System.Drawing.Size(81, 59);
+            this.pb66.Size = new System.Drawing.Size(120, 90);
             this.pb66.TabIndex = 66;
             this.pb66.TabStop = false;
             // 
             // pb56
             // 
             this.pb56.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb56.Location = new System.Drawing.Point(435, 409);
+            this.pb56.Location = new System.Drawing.Point(652, 629);
+            this.pb56.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb56.Name = "pb56";
-            this.pb56.Size = new System.Drawing.Size(81, 59);
+            this.pb56.Size = new System.Drawing.Size(120, 90);
             this.pb56.TabIndex = 65;
             this.pb56.TabStop = false;
             // 
             // pb46
             // 
             this.pb46.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb46.Location = new System.Drawing.Point(350, 409);
+            this.pb46.Location = new System.Drawing.Point(525, 629);
+            this.pb46.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb46.Name = "pb46";
-            this.pb46.Size = new System.Drawing.Size(81, 59);
+            this.pb46.Size = new System.Drawing.Size(120, 90);
             this.pb46.TabIndex = 64;
             this.pb46.TabStop = false;
             // 
             // pb36
             // 
             this.pb36.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb36.Location = new System.Drawing.Point(265, 409);
+            this.pb36.Location = new System.Drawing.Point(398, 629);
+            this.pb36.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb36.Name = "pb36";
-            this.pb36.Size = new System.Drawing.Size(81, 59);
+            this.pb36.Size = new System.Drawing.Size(120, 90);
             this.pb36.TabIndex = 63;
             this.pb36.TabStop = false;
             // 
             // pb26
             // 
             this.pb26.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb26.Location = new System.Drawing.Point(180, 408);
+            this.pb26.Location = new System.Drawing.Point(270, 628);
+            this.pb26.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb26.Name = "pb26";
-            this.pb26.Size = new System.Drawing.Size(81, 59);
+            this.pb26.Size = new System.Drawing.Size(120, 90);
             this.pb26.TabIndex = 62;
             this.pb26.TabStop = false;
             // 
             // pb16
             // 
             this.pb16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb16.Location = new System.Drawing.Point(96, 408);
+            this.pb16.Location = new System.Drawing.Point(144, 628);
+            this.pb16.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb16.Name = "pb16";
-            this.pb16.Size = new System.Drawing.Size(81, 59);
+            this.pb16.Size = new System.Drawing.Size(120, 90);
             this.pb16.TabIndex = 61;
             this.pb16.TabStop = false;
             this.pb16.Click += new System.EventHandler(this.pb16_Click);
@@ -545,117 +566,130 @@
             // pb06
             // 
             this.pb06.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb06.Location = new System.Drawing.Point(10, 408);
+            this.pb06.Location = new System.Drawing.Point(15, 628);
+            this.pb06.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb06.Name = "pb06";
-            this.pb06.Size = new System.Drawing.Size(81, 59);
+            this.pb06.Size = new System.Drawing.Size(120, 90);
             this.pb06.TabIndex = 60;
             this.pb06.TabStop = false;
             // 
             // pb95
             // 
             this.pb95.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb95.Location = new System.Drawing.Point(777, 344);
+            this.pb95.Location = new System.Drawing.Point(1166, 529);
+            this.pb95.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb95.Name = "pb95";
-            this.pb95.Size = new System.Drawing.Size(81, 59);
+            this.pb95.Size = new System.Drawing.Size(120, 90);
             this.pb95.TabIndex = 59;
             this.pb95.TabStop = false;
             // 
             // pb85
             // 
             this.pb85.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb85.Location = new System.Drawing.Point(692, 344);
+            this.pb85.Location = new System.Drawing.Point(1038, 529);
+            this.pb85.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb85.Name = "pb85";
-            this.pb85.Size = new System.Drawing.Size(81, 59);
+            this.pb85.Size = new System.Drawing.Size(120, 90);
             this.pb85.TabIndex = 58;
             this.pb85.TabStop = false;
             // 
             // pb75
             // 
             this.pb75.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb75.Location = new System.Drawing.Point(607, 344);
+            this.pb75.Location = new System.Drawing.Point(910, 529);
+            this.pb75.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb75.Name = "pb75";
-            this.pb75.Size = new System.Drawing.Size(81, 59);
+            this.pb75.Size = new System.Drawing.Size(120, 90);
             this.pb75.TabIndex = 57;
             this.pb75.TabStop = false;
             // 
             // pb65
             // 
             this.pb65.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb65.Location = new System.Drawing.Point(521, 344);
+            this.pb65.Location = new System.Drawing.Point(782, 529);
+            this.pb65.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb65.Name = "pb65";
-            this.pb65.Size = new System.Drawing.Size(81, 59);
+            this.pb65.Size = new System.Drawing.Size(120, 90);
             this.pb65.TabIndex = 56;
             this.pb65.TabStop = false;
             // 
             // pb55
             // 
             this.pb55.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb55.Location = new System.Drawing.Point(435, 344);
+            this.pb55.Location = new System.Drawing.Point(652, 529);
+            this.pb55.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb55.Name = "pb55";
-            this.pb55.Size = new System.Drawing.Size(81, 59);
+            this.pb55.Size = new System.Drawing.Size(120, 90);
             this.pb55.TabIndex = 55;
             this.pb55.TabStop = false;
             // 
             // pb45
             // 
             this.pb45.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb45.Location = new System.Drawing.Point(350, 344);
+            this.pb45.Location = new System.Drawing.Point(525, 529);
+            this.pb45.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb45.Name = "pb45";
-            this.pb45.Size = new System.Drawing.Size(81, 59);
+            this.pb45.Size = new System.Drawing.Size(120, 90);
             this.pb45.TabIndex = 54;
             this.pb45.TabStop = false;
             // 
             // pb35
             // 
             this.pb35.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb35.Location = new System.Drawing.Point(265, 344);
+            this.pb35.Location = new System.Drawing.Point(398, 529);
+            this.pb35.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb35.Name = "pb35";
-            this.pb35.Size = new System.Drawing.Size(81, 59);
+            this.pb35.Size = new System.Drawing.Size(120, 90);
             this.pb35.TabIndex = 53;
             this.pb35.TabStop = false;
             // 
             // pb25
             // 
             this.pb25.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb25.Location = new System.Drawing.Point(180, 344);
+            this.pb25.Location = new System.Drawing.Point(270, 529);
+            this.pb25.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb25.Name = "pb25";
-            this.pb25.Size = new System.Drawing.Size(81, 59);
+            this.pb25.Size = new System.Drawing.Size(120, 90);
             this.pb25.TabIndex = 52;
             this.pb25.TabStop = false;
             // 
             // pb15
             // 
             this.pb15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb15.Location = new System.Drawing.Point(96, 344);
+            this.pb15.Location = new System.Drawing.Point(144, 529);
+            this.pb15.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb15.Name = "pb15";
-            this.pb15.Size = new System.Drawing.Size(81, 59);
+            this.pb15.Size = new System.Drawing.Size(120, 90);
             this.pb15.TabIndex = 51;
             this.pb15.TabStop = false;
             // 
             // pb05
             // 
             this.pb05.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb05.Location = new System.Drawing.Point(10, 344);
+            this.pb05.Location = new System.Drawing.Point(15, 529);
+            this.pb05.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb05.Name = "pb05";
-            this.pb05.Size = new System.Drawing.Size(81, 59);
+            this.pb05.Size = new System.Drawing.Size(120, 90);
             this.pb05.TabIndex = 50;
             this.pb05.TabStop = false;
             // 
             // pb94
             // 
             this.pb94.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb94.Location = new System.Drawing.Point(777, 279);
+            this.pb94.Location = new System.Drawing.Point(1166, 429);
+            this.pb94.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb94.Name = "pb94";
-            this.pb94.Size = new System.Drawing.Size(81, 59);
+            this.pb94.Size = new System.Drawing.Size(120, 90);
             this.pb94.TabIndex = 49;
             this.pb94.TabStop = false;
             // 
             // pb84
             // 
             this.pb84.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb84.Location = new System.Drawing.Point(692, 279);
+            this.pb84.Location = new System.Drawing.Point(1038, 429);
+            this.pb84.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb84.Name = "pb84";
-            this.pb84.Size = new System.Drawing.Size(81, 59);
+            this.pb84.Size = new System.Drawing.Size(120, 90);
             this.pb84.TabIndex = 48;
             this.pb84.TabStop = false;
             this.pb84.Click += new System.EventHandler(this.pb84_Click);
@@ -663,153 +697,170 @@
             // pb74
             // 
             this.pb74.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb74.Location = new System.Drawing.Point(606, 279);
+            this.pb74.Location = new System.Drawing.Point(909, 429);
+            this.pb74.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb74.Name = "pb74";
-            this.pb74.Size = new System.Drawing.Size(81, 59);
+            this.pb74.Size = new System.Drawing.Size(120, 90);
             this.pb74.TabIndex = 47;
             this.pb74.TabStop = false;
             // 
             // pb64
             // 
             this.pb64.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb64.Location = new System.Drawing.Point(521, 279);
+            this.pb64.Location = new System.Drawing.Point(782, 429);
+            this.pb64.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb64.Name = "pb64";
-            this.pb64.Size = new System.Drawing.Size(81, 59);
+            this.pb64.Size = new System.Drawing.Size(120, 90);
             this.pb64.TabIndex = 46;
             this.pb64.TabStop = false;
             // 
             // pb54
             // 
             this.pb54.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb54.Location = new System.Drawing.Point(435, 279);
+            this.pb54.Location = new System.Drawing.Point(652, 429);
+            this.pb54.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb54.Name = "pb54";
-            this.pb54.Size = new System.Drawing.Size(81, 59);
+            this.pb54.Size = new System.Drawing.Size(120, 90);
             this.pb54.TabIndex = 45;
             this.pb54.TabStop = false;
             // 
             // pb44
             // 
             this.pb44.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb44.Location = new System.Drawing.Point(350, 279);
+            this.pb44.Location = new System.Drawing.Point(525, 429);
+            this.pb44.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb44.Name = "pb44";
-            this.pb44.Size = new System.Drawing.Size(81, 59);
+            this.pb44.Size = new System.Drawing.Size(120, 90);
             this.pb44.TabIndex = 44;
             this.pb44.TabStop = false;
             // 
             // pb34
             // 
             this.pb34.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb34.Location = new System.Drawing.Point(265, 279);
+            this.pb34.Location = new System.Drawing.Point(398, 429);
+            this.pb34.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb34.Name = "pb34";
-            this.pb34.Size = new System.Drawing.Size(81, 59);
+            this.pb34.Size = new System.Drawing.Size(120, 90);
             this.pb34.TabIndex = 43;
             this.pb34.TabStop = false;
             // 
             // pb24
             // 
             this.pb24.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb24.Location = new System.Drawing.Point(180, 279);
+            this.pb24.Location = new System.Drawing.Point(270, 429);
+            this.pb24.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb24.Name = "pb24";
-            this.pb24.Size = new System.Drawing.Size(81, 59);
+            this.pb24.Size = new System.Drawing.Size(120, 90);
             this.pb24.TabIndex = 42;
             this.pb24.TabStop = false;
             // 
             // pb14
             // 
             this.pb14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb14.Location = new System.Drawing.Point(96, 279);
+            this.pb14.Location = new System.Drawing.Point(144, 429);
+            this.pb14.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb14.Name = "pb14";
-            this.pb14.Size = new System.Drawing.Size(81, 59);
+            this.pb14.Size = new System.Drawing.Size(120, 90);
             this.pb14.TabIndex = 41;
             this.pb14.TabStop = false;
             // 
             // pb04
             // 
             this.pb04.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb04.Location = new System.Drawing.Point(10, 279);
+            this.pb04.Location = new System.Drawing.Point(15, 429);
+            this.pb04.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb04.Name = "pb04";
-            this.pb04.Size = new System.Drawing.Size(81, 59);
+            this.pb04.Size = new System.Drawing.Size(120, 90);
             this.pb04.TabIndex = 40;
             this.pb04.TabStop = false;
             // 
             // pb93
             // 
             this.pb93.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb93.Location = new System.Drawing.Point(777, 214);
+            this.pb93.Location = new System.Drawing.Point(1166, 329);
+            this.pb93.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb93.Name = "pb93";
-            this.pb93.Size = new System.Drawing.Size(81, 59);
+            this.pb93.Size = new System.Drawing.Size(120, 90);
             this.pb93.TabIndex = 39;
             this.pb93.TabStop = false;
             // 
             // pb83
             // 
             this.pb83.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb83.Location = new System.Drawing.Point(692, 214);
+            this.pb83.Location = new System.Drawing.Point(1038, 329);
+            this.pb83.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb83.Name = "pb83";
-            this.pb83.Size = new System.Drawing.Size(81, 59);
+            this.pb83.Size = new System.Drawing.Size(120, 90);
             this.pb83.TabIndex = 38;
             this.pb83.TabStop = false;
             // 
             // pb73
             // 
             this.pb73.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb73.Location = new System.Drawing.Point(606, 214);
+            this.pb73.Location = new System.Drawing.Point(909, 329);
+            this.pb73.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb73.Name = "pb73";
-            this.pb73.Size = new System.Drawing.Size(81, 59);
+            this.pb73.Size = new System.Drawing.Size(120, 90);
             this.pb73.TabIndex = 37;
             this.pb73.TabStop = false;
             // 
             // pb63
             // 
             this.pb63.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb63.Location = new System.Drawing.Point(521, 214);
+            this.pb63.Location = new System.Drawing.Point(782, 329);
+            this.pb63.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb63.Name = "pb63";
-            this.pb63.Size = new System.Drawing.Size(81, 59);
+            this.pb63.Size = new System.Drawing.Size(120, 90);
             this.pb63.TabIndex = 36;
             this.pb63.TabStop = false;
             // 
             // pb53
             // 
             this.pb53.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb53.Location = new System.Drawing.Point(435, 214);
+            this.pb53.Location = new System.Drawing.Point(652, 329);
+            this.pb53.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb53.Name = "pb53";
-            this.pb53.Size = new System.Drawing.Size(81, 59);
+            this.pb53.Size = new System.Drawing.Size(120, 90);
             this.pb53.TabIndex = 35;
             this.pb53.TabStop = false;
             // 
             // pb43
             // 
             this.pb43.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb43.Location = new System.Drawing.Point(350, 214);
+            this.pb43.Location = new System.Drawing.Point(525, 329);
+            this.pb43.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb43.Name = "pb43";
-            this.pb43.Size = new System.Drawing.Size(81, 59);
+            this.pb43.Size = new System.Drawing.Size(120, 90);
             this.pb43.TabIndex = 34;
             this.pb43.TabStop = false;
             // 
             // pb33
             // 
             this.pb33.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb33.Location = new System.Drawing.Point(265, 214);
+            this.pb33.Location = new System.Drawing.Point(398, 329);
+            this.pb33.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb33.Name = "pb33";
-            this.pb33.Size = new System.Drawing.Size(81, 59);
+            this.pb33.Size = new System.Drawing.Size(120, 90);
             this.pb33.TabIndex = 33;
             this.pb33.TabStop = false;
             // 
             // pb23
             // 
             this.pb23.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb23.Location = new System.Drawing.Point(180, 214);
+            this.pb23.Location = new System.Drawing.Point(270, 329);
+            this.pb23.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb23.Name = "pb23";
-            this.pb23.Size = new System.Drawing.Size(81, 59);
+            this.pb23.Size = new System.Drawing.Size(120, 90);
             this.pb23.TabIndex = 32;
             this.pb23.TabStop = false;
             // 
             // pb13
             // 
             this.pb13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb13.Location = new System.Drawing.Point(96, 214);
+            this.pb13.Location = new System.Drawing.Point(144, 329);
+            this.pb13.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb13.Name = "pb13";
-            this.pb13.Size = new System.Drawing.Size(81, 59);
+            this.pb13.Size = new System.Drawing.Size(120, 90);
             this.pb13.TabIndex = 31;
             this.pb13.TabStop = false;
             this.pb13.Click += new System.EventHandler(this.pb13_Click);
@@ -817,270 +868,300 @@
             // pb03
             // 
             this.pb03.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb03.Location = new System.Drawing.Point(10, 214);
+            this.pb03.Location = new System.Drawing.Point(15, 329);
+            this.pb03.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb03.Name = "pb03";
-            this.pb03.Size = new System.Drawing.Size(81, 59);
+            this.pb03.Size = new System.Drawing.Size(120, 90);
             this.pb03.TabIndex = 30;
             this.pb03.TabStop = false;
             // 
             // pb92
             // 
             this.pb92.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb92.Location = new System.Drawing.Point(777, 149);
+            this.pb92.Location = new System.Drawing.Point(1166, 229);
+            this.pb92.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb92.Name = "pb92";
-            this.pb92.Size = new System.Drawing.Size(81, 59);
+            this.pb92.Size = new System.Drawing.Size(120, 90);
             this.pb92.TabIndex = 29;
             this.pb92.TabStop = false;
             // 
             // pb82
             // 
             this.pb82.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb82.Location = new System.Drawing.Point(692, 149);
+            this.pb82.Location = new System.Drawing.Point(1038, 229);
+            this.pb82.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb82.Name = "pb82";
-            this.pb82.Size = new System.Drawing.Size(81, 59);
+            this.pb82.Size = new System.Drawing.Size(120, 90);
             this.pb82.TabIndex = 28;
             this.pb82.TabStop = false;
             // 
             // pb72
             // 
             this.pb72.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb72.Location = new System.Drawing.Point(607, 149);
+            this.pb72.Location = new System.Drawing.Point(910, 229);
+            this.pb72.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb72.Name = "pb72";
-            this.pb72.Size = new System.Drawing.Size(81, 59);
+            this.pb72.Size = new System.Drawing.Size(120, 90);
             this.pb72.TabIndex = 27;
             this.pb72.TabStop = false;
             // 
             // pb62
             // 
             this.pb62.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb62.Location = new System.Drawing.Point(521, 149);
+            this.pb62.Location = new System.Drawing.Point(782, 229);
+            this.pb62.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb62.Name = "pb62";
-            this.pb62.Size = new System.Drawing.Size(81, 59);
+            this.pb62.Size = new System.Drawing.Size(120, 90);
             this.pb62.TabIndex = 26;
             this.pb62.TabStop = false;
             // 
             // pb52
             // 
             this.pb52.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb52.Location = new System.Drawing.Point(435, 149);
+            this.pb52.Location = new System.Drawing.Point(652, 229);
+            this.pb52.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb52.Name = "pb52";
-            this.pb52.Size = new System.Drawing.Size(81, 59);
+            this.pb52.Size = new System.Drawing.Size(120, 90);
             this.pb52.TabIndex = 25;
             this.pb52.TabStop = false;
             // 
             // pb42
             // 
             this.pb42.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb42.Location = new System.Drawing.Point(350, 149);
+            this.pb42.Location = new System.Drawing.Point(525, 229);
+            this.pb42.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb42.Name = "pb42";
-            this.pb42.Size = new System.Drawing.Size(81, 59);
+            this.pb42.Size = new System.Drawing.Size(120, 90);
             this.pb42.TabIndex = 24;
             this.pb42.TabStop = false;
             // 
             // pb32
             // 
             this.pb32.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb32.Location = new System.Drawing.Point(265, 149);
+            this.pb32.Location = new System.Drawing.Point(398, 229);
+            this.pb32.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb32.Name = "pb32";
-            this.pb32.Size = new System.Drawing.Size(81, 59);
+            this.pb32.Size = new System.Drawing.Size(120, 90);
             this.pb32.TabIndex = 23;
             this.pb32.TabStop = false;
             // 
             // pb22
             // 
             this.pb22.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb22.Location = new System.Drawing.Point(180, 149);
+            this.pb22.Location = new System.Drawing.Point(270, 229);
+            this.pb22.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb22.Name = "pb22";
-            this.pb22.Size = new System.Drawing.Size(81, 59);
+            this.pb22.Size = new System.Drawing.Size(120, 90);
             this.pb22.TabIndex = 22;
             this.pb22.TabStop = false;
             // 
             // pb12
             // 
             this.pb12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb12.Location = new System.Drawing.Point(96, 149);
+            this.pb12.Location = new System.Drawing.Point(144, 229);
+            this.pb12.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb12.Name = "pb12";
-            this.pb12.Size = new System.Drawing.Size(81, 59);
+            this.pb12.Size = new System.Drawing.Size(120, 90);
             this.pb12.TabIndex = 21;
             this.pb12.TabStop = false;
             // 
             // pb02
             // 
             this.pb02.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb02.Location = new System.Drawing.Point(11, 149);
+            this.pb02.Location = new System.Drawing.Point(16, 229);
+            this.pb02.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb02.Name = "pb02";
-            this.pb02.Size = new System.Drawing.Size(81, 59);
+            this.pb02.Size = new System.Drawing.Size(120, 90);
             this.pb02.TabIndex = 20;
             this.pb02.TabStop = false;
             // 
             // pb91
             // 
             this.pb91.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb91.Location = new System.Drawing.Point(777, 84);
+            this.pb91.Location = new System.Drawing.Point(1166, 129);
+            this.pb91.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb91.Name = "pb91";
-            this.pb91.Size = new System.Drawing.Size(81, 59);
+            this.pb91.Size = new System.Drawing.Size(120, 90);
             this.pb91.TabIndex = 19;
             this.pb91.TabStop = false;
             // 
             // pb81
             // 
             this.pb81.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb81.Location = new System.Drawing.Point(692, 84);
+            this.pb81.Location = new System.Drawing.Point(1038, 129);
+            this.pb81.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb81.Name = "pb81";
-            this.pb81.Size = new System.Drawing.Size(81, 59);
+            this.pb81.Size = new System.Drawing.Size(120, 90);
             this.pb81.TabIndex = 18;
             this.pb81.TabStop = false;
             // 
             // pb71
             // 
             this.pb71.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb71.Location = new System.Drawing.Point(607, 84);
+            this.pb71.Location = new System.Drawing.Point(910, 129);
+            this.pb71.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb71.Name = "pb71";
-            this.pb71.Size = new System.Drawing.Size(81, 59);
+            this.pb71.Size = new System.Drawing.Size(120, 90);
             this.pb71.TabIndex = 17;
             this.pb71.TabStop = false;
             // 
             // pb61
             // 
             this.pb61.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb61.Location = new System.Drawing.Point(521, 84);
+            this.pb61.Location = new System.Drawing.Point(782, 129);
+            this.pb61.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb61.Name = "pb61";
-            this.pb61.Size = new System.Drawing.Size(81, 59);
+            this.pb61.Size = new System.Drawing.Size(120, 90);
             this.pb61.TabIndex = 16;
             this.pb61.TabStop = false;
             // 
             // pb51
             // 
             this.pb51.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb51.Location = new System.Drawing.Point(435, 84);
+            this.pb51.Location = new System.Drawing.Point(652, 129);
+            this.pb51.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb51.Name = "pb51";
-            this.pb51.Size = new System.Drawing.Size(81, 59);
+            this.pb51.Size = new System.Drawing.Size(120, 90);
             this.pb51.TabIndex = 15;
             this.pb51.TabStop = false;
             // 
             // pb41
             // 
             this.pb41.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb41.Location = new System.Drawing.Point(350, 84);
+            this.pb41.Location = new System.Drawing.Point(525, 129);
+            this.pb41.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb41.Name = "pb41";
-            this.pb41.Size = new System.Drawing.Size(81, 59);
+            this.pb41.Size = new System.Drawing.Size(120, 90);
             this.pb41.TabIndex = 14;
             this.pb41.TabStop = false;
             // 
             // pb31
             // 
             this.pb31.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb31.Location = new System.Drawing.Point(265, 84);
+            this.pb31.Location = new System.Drawing.Point(398, 129);
+            this.pb31.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb31.Name = "pb31";
-            this.pb31.Size = new System.Drawing.Size(81, 59);
+            this.pb31.Size = new System.Drawing.Size(120, 90);
             this.pb31.TabIndex = 13;
             this.pb31.TabStop = false;
             // 
             // pb21
             // 
             this.pb21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb21.Location = new System.Drawing.Point(180, 84);
+            this.pb21.Location = new System.Drawing.Point(270, 129);
+            this.pb21.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb21.Name = "pb21";
-            this.pb21.Size = new System.Drawing.Size(81, 59);
+            this.pb21.Size = new System.Drawing.Size(120, 90);
             this.pb21.TabIndex = 12;
             this.pb21.TabStop = false;
             // 
             // pb11
             // 
             this.pb11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb11.Location = new System.Drawing.Point(96, 84);
+            this.pb11.Location = new System.Drawing.Point(144, 129);
+            this.pb11.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb11.Name = "pb11";
-            this.pb11.Size = new System.Drawing.Size(81, 59);
+            this.pb11.Size = new System.Drawing.Size(120, 90);
             this.pb11.TabIndex = 11;
             this.pb11.TabStop = false;
             // 
             // pb01
             // 
             this.pb01.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb01.Location = new System.Drawing.Point(11, 84);
+            this.pb01.Location = new System.Drawing.Point(16, 129);
+            this.pb01.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb01.Name = "pb01";
-            this.pb01.Size = new System.Drawing.Size(81, 59);
+            this.pb01.Size = new System.Drawing.Size(120, 90);
             this.pb01.TabIndex = 10;
             this.pb01.TabStop = false;
             // 
             // pb80
             // 
             this.pb80.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb80.Location = new System.Drawing.Point(691, 19);
+            this.pb80.Location = new System.Drawing.Point(1036, 29);
+            this.pb80.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb80.Name = "pb80";
-            this.pb80.Size = new System.Drawing.Size(81, 59);
+            this.pb80.Size = new System.Drawing.Size(120, 90);
             this.pb80.TabIndex = 8;
             this.pb80.TabStop = false;
             // 
             // pb70
             // 
             this.pb70.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb70.Location = new System.Drawing.Point(606, 19);
+            this.pb70.Location = new System.Drawing.Point(909, 29);
+            this.pb70.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb70.Name = "pb70";
-            this.pb70.Size = new System.Drawing.Size(81, 59);
+            this.pb70.Size = new System.Drawing.Size(120, 90);
             this.pb70.TabIndex = 7;
             this.pb70.TabStop = false;
             // 
             // pb60
             // 
             this.pb60.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb60.Location = new System.Drawing.Point(521, 19);
+            this.pb60.Location = new System.Drawing.Point(782, 29);
+            this.pb60.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb60.Name = "pb60";
-            this.pb60.Size = new System.Drawing.Size(81, 59);
+            this.pb60.Size = new System.Drawing.Size(120, 90);
             this.pb60.TabIndex = 6;
             this.pb60.TabStop = false;
             // 
             // pb50
             // 
             this.pb50.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb50.Location = new System.Drawing.Point(435, 19);
+            this.pb50.Location = new System.Drawing.Point(652, 29);
+            this.pb50.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb50.Name = "pb50";
-            this.pb50.Size = new System.Drawing.Size(81, 59);
+            this.pb50.Size = new System.Drawing.Size(120, 90);
             this.pb50.TabIndex = 5;
             this.pb50.TabStop = false;
             // 
             // pb40
             // 
             this.pb40.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb40.Location = new System.Drawing.Point(350, 19);
+            this.pb40.Location = new System.Drawing.Point(525, 29);
+            this.pb40.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb40.Name = "pb40";
-            this.pb40.Size = new System.Drawing.Size(81, 59);
+            this.pb40.Size = new System.Drawing.Size(120, 90);
             this.pb40.TabIndex = 4;
             this.pb40.TabStop = false;
             // 
             // pb30
             // 
             this.pb30.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb30.Location = new System.Drawing.Point(265, 19);
+            this.pb30.Location = new System.Drawing.Point(398, 29);
+            this.pb30.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb30.Name = "pb30";
-            this.pb30.Size = new System.Drawing.Size(81, 59);
+            this.pb30.Size = new System.Drawing.Size(120, 90);
             this.pb30.TabIndex = 3;
             this.pb30.TabStop = false;
             // 
             // pb20
             // 
             this.pb20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb20.Location = new System.Drawing.Point(180, 19);
+            this.pb20.Location = new System.Drawing.Point(270, 29);
+            this.pb20.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb20.Name = "pb20";
-            this.pb20.Size = new System.Drawing.Size(81, 59);
+            this.pb20.Size = new System.Drawing.Size(120, 90);
             this.pb20.TabIndex = 2;
             this.pb20.TabStop = false;
             // 
             // pb10
             // 
             this.pb10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb10.Location = new System.Drawing.Point(96, 19);
+            this.pb10.Location = new System.Drawing.Point(144, 29);
+            this.pb10.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb10.Name = "pb10";
-            this.pb10.Size = new System.Drawing.Size(81, 59);
+            this.pb10.Size = new System.Drawing.Size(120, 90);
             this.pb10.TabIndex = 1;
             this.pb10.TabStop = false;
             // 
             // pb00
             // 
             this.pb00.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb00.Location = new System.Drawing.Point(11, 19);
+            this.pb00.Location = new System.Drawing.Point(16, 29);
+            this.pb00.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pb00.Name = "pb00";
-            this.pb00.Size = new System.Drawing.Size(81, 59);
+            this.pb00.Size = new System.Drawing.Size(120, 90);
             this.pb00.TabIndex = 0;
             this.pb00.TabStop = false;
             // 
@@ -1092,68 +1173,77 @@
             this.overviewGroupBox.Controls.Add(this.overviewCost2DateLbl);
             this.overviewGroupBox.Controls.Add(this.overviewCost2DateTxt);
             this.overviewGroupBox.Controls.Add(this.overviewTotalCostLbl);
-            this.overviewGroupBox.Location = new System.Drawing.Point(1078, 317);
+            this.overviewGroupBox.Location = new System.Drawing.Point(1617, 488);
+            this.overviewGroupBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.overviewGroupBox.Name = "overviewGroupBox";
-            this.overviewGroupBox.Size = new System.Drawing.Size(188, 135);
+            this.overviewGroupBox.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.overviewGroupBox.Size = new System.Drawing.Size(282, 208);
             this.overviewGroupBox.TabIndex = 1;
             this.overviewGroupBox.TabStop = false;
             this.overviewGroupBox.Text = "Overview";
             // 
             // overviewTotalProfitTxt
             // 
-            this.overviewTotalProfitTxt.Location = new System.Drawing.Point(77, 86);
+            this.overviewTotalProfitTxt.Location = new System.Drawing.Point(116, 132);
+            this.overviewTotalProfitTxt.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.overviewTotalProfitTxt.Name = "overviewTotalProfitTxt";
-            this.overviewTotalProfitTxt.Size = new System.Drawing.Size(100, 20);
+            this.overviewTotalProfitTxt.Size = new System.Drawing.Size(148, 26);
             this.overviewTotalProfitTxt.TabIndex = 5;
             // 
             // overviewTotalCostTxt
             // 
-            this.overviewTotalCostTxt.Location = new System.Drawing.Point(77, 55);
+            this.overviewTotalCostTxt.Location = new System.Drawing.Point(116, 85);
+            this.overviewTotalCostTxt.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.overviewTotalCostTxt.Name = "overviewTotalCostTxt";
-            this.overviewTotalCostTxt.Size = new System.Drawing.Size(100, 20);
+            this.overviewTotalCostTxt.Size = new System.Drawing.Size(148, 26);
             this.overviewTotalCostTxt.TabIndex = 4;
             // 
             // overviewTotalProfitLbl
             // 
             this.overviewTotalProfitLbl.AutoSize = true;
-            this.overviewTotalProfitLbl.Location = new System.Drawing.Point(6, 92);
+            this.overviewTotalProfitLbl.Location = new System.Drawing.Point(9, 142);
+            this.overviewTotalProfitLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.overviewTotalProfitLbl.Name = "overviewTotalProfitLbl";
-            this.overviewTotalProfitLbl.Size = new System.Drawing.Size(61, 13);
+            this.overviewTotalProfitLbl.Size = new System.Drawing.Size(89, 20);
             this.overviewTotalProfitLbl.TabIndex = 3;
             this.overviewTotalProfitLbl.Text = "Total Profit:";
             // 
             // overviewCost2DateLbl
             // 
             this.overviewCost2DateLbl.AutoSize = true;
-            this.overviewCost2DateLbl.Location = new System.Drawing.Point(6, 26);
+            this.overviewCost2DateLbl.Location = new System.Drawing.Point(9, 40);
+            this.overviewCost2DateLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.overviewCost2DateLbl.Name = "overviewCost2DateLbl";
-            this.overviewCost2DateLbl.Size = new System.Drawing.Size(67, 13);
+            this.overviewCost2DateLbl.Size = new System.Drawing.Size(100, 20);
             this.overviewCost2DateLbl.TabIndex = 2;
             this.overviewCost2DateLbl.Text = "Cost to date:";
             this.overviewCost2DateLbl.Click += new System.EventHandler(this.label1_Click);
             // 
             // overviewCost2DateTxt
             // 
-            this.overviewCost2DateTxt.Location = new System.Drawing.Point(77, 24);
+            this.overviewCost2DateTxt.Location = new System.Drawing.Point(116, 37);
+            this.overviewCost2DateTxt.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.overviewCost2DateTxt.Name = "overviewCost2DateTxt";
-            this.overviewCost2DateTxt.Size = new System.Drawing.Size(100, 20);
+            this.overviewCost2DateTxt.Size = new System.Drawing.Size(148, 26);
             this.overviewCost2DateTxt.TabIndex = 1;
             // 
             // overviewTotalCostLbl
             // 
             this.overviewTotalCostLbl.AutoSize = true;
-            this.overviewTotalCostLbl.Location = new System.Drawing.Point(6, 59);
+            this.overviewTotalCostLbl.Location = new System.Drawing.Point(9, 91);
+            this.overviewTotalCostLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.overviewTotalCostLbl.Name = "overviewTotalCostLbl";
-            this.overviewTotalCostLbl.Size = new System.Drawing.Size(58, 13);
+            this.overviewTotalCostLbl.Size = new System.Drawing.Size(85, 20);
             this.overviewTotalCostLbl.TabIndex = 0;
             this.overviewTotalCostLbl.Text = "Total Cost:";
             this.overviewTotalCostLbl.Click += new System.EventHandler(this.overviewTotalCostLbl_Click);
             // 
             // reportBtn
             // 
-            this.reportBtn.Location = new System.Drawing.Point(1120, 481);
+            this.reportBtn.Location = new System.Drawing.Point(1680, 740);
+            this.reportBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.reportBtn.Name = "reportBtn";
-            this.reportBtn.Size = new System.Drawing.Size(108, 54);
+            this.reportBtn.Size = new System.Drawing.Size(162, 83);
             this.reportBtn.TabIndex = 2;
             this.reportBtn.Text = "Generate Report";
             this.reportBtn.UseVisualStyleBackColor = true;
@@ -1161,9 +1251,11 @@
             // plotInfoGroupBox
             // 
             this.plotInfoGroupBox.Controls.Add(this.plotInfoLstbx);
-            this.plotInfoGroupBox.Location = new System.Drawing.Point(1078, 41);
+            this.plotInfoGroupBox.Location = new System.Drawing.Point(1617, 63);
+            this.plotInfoGroupBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.plotInfoGroupBox.Name = "plotInfoGroupBox";
-            this.plotInfoGroupBox.Size = new System.Drawing.Size(188, 269);
+            this.plotInfoGroupBox.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.plotInfoGroupBox.Size = new System.Drawing.Size(282, 414);
             this.plotInfoGroupBox.TabIndex = 3;
             this.plotInfoGroupBox.TabStop = false;
             this.plotInfoGroupBox.Text = "Plot Information";
@@ -1171,23 +1263,27 @@
             // plotInfoLstbx
             // 
             this.plotInfoLstbx.FormattingEnabled = true;
-            this.plotInfoLstbx.Location = new System.Drawing.Point(10, 25);
+            this.plotInfoLstbx.ItemHeight = 20;
+            this.plotInfoLstbx.Location = new System.Drawing.Point(15, 38);
+            this.plotInfoLstbx.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.plotInfoLstbx.Name = "plotInfoLstbx";
-            this.plotInfoLstbx.Size = new System.Drawing.Size(167, 225);
+            this.plotInfoLstbx.Size = new System.Drawing.Size(248, 344);
             this.plotInfoLstbx.TabIndex = 0;
             // 
             // timeTrackBar
             // 
-            this.timeTrackBar.Location = new System.Drawing.Point(210, 576);
+            this.timeTrackBar.Location = new System.Drawing.Point(315, 886);
+            this.timeTrackBar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.timeTrackBar.Name = "timeTrackBar";
-            this.timeTrackBar.Size = new System.Drawing.Size(739, 45);
+            this.timeTrackBar.Size = new System.Drawing.Size(1108, 69);
             this.timeTrackBar.TabIndex = 4;
             // 
             // playBtn
             // 
-            this.playBtn.Location = new System.Drawing.Point(962, 574);
+            this.playBtn.Location = new System.Drawing.Point(1443, 883);
+            this.playBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.playBtn.Name = "playBtn";
-            this.playBtn.Size = new System.Drawing.Size(108, 54);
+            this.playBtn.Size = new System.Drawing.Size(162, 83);
             this.playBtn.TabIndex = 5;
             this.playBtn.Text = "Play";
             this.playBtn.UseVisualStyleBackColor = true;
@@ -1206,9 +1302,11 @@
             this.globalVariablesGroupBox.Controls.Add(this.waterLbl);
             this.globalVariablesGroupBox.Controls.Add(this.fertilizerLbl);
             this.globalVariablesGroupBox.Controls.Add(this.provinceLbl);
-            this.globalVariablesGroupBox.Location = new System.Drawing.Point(4, 367);
+            this.globalVariablesGroupBox.Location = new System.Drawing.Point(6, 565);
+            this.globalVariablesGroupBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.globalVariablesGroupBox.Name = "globalVariablesGroupBox";
-            this.globalVariablesGroupBox.Size = new System.Drawing.Size(200, 251);
+            this.globalVariablesGroupBox.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.globalVariablesGroupBox.Size = new System.Drawing.Size(300, 386);
             this.globalVariablesGroupBox.TabIndex = 6;
             this.globalVariablesGroupBox.TabStop = false;
             this.globalVariablesGroupBox.Text = "Global Variables";
@@ -1221,7 +1319,8 @@
             0,
             0,
             0});
-            this.plotSizeNmr.Location = new System.Drawing.Point(69, 134);
+            this.plotSizeNmr.Location = new System.Drawing.Point(104, 206);
+            this.plotSizeNmr.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.plotSizeNmr.Maximum = new decimal(new int[] {
             250,
             0,
@@ -1233,7 +1332,7 @@
             0,
             0});
             this.plotSizeNmr.Name = "plotSizeNmr";
-            this.plotSizeNmr.Size = new System.Drawing.Size(120, 20);
+            this.plotSizeNmr.Size = new System.Drawing.Size(180, 26);
             this.plotSizeNmr.TabIndex = 13;
             this.plotSizeNmr.Value = new decimal(new int[] {
             100,
@@ -1244,25 +1343,28 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(4, 136);
+            this.label5.Location = new System.Drawing.Point(6, 209);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(46, 13);
+            this.label5.Size = new System.Drawing.Size(68, 20);
             this.label5.TabIndex = 12;
             this.label5.Text = "Plot size";
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(4, 220);
+            this.dateTimePicker2.Location = new System.Drawing.Point(6, 338);
+            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(186, 20);
+            this.dateTimePicker2.Size = new System.Drawing.Size(277, 26);
             this.dateTimePicker2.TabIndex = 11;
             this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(4, 181);
+            this.dateTimePicker1.Location = new System.Drawing.Point(6, 278);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(186, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(277, 26);
             this.dateTimePicker1.TabIndex = 10;
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
@@ -1273,11 +1375,11 @@
             "small",
             "medium",
             "large"});
-            this.wateringCbx.Location = new System.Drawing.Point(68, 87);
+            this.wateringCbx.Location = new System.Drawing.Point(102, 134);
+            this.wateringCbx.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.wateringCbx.Name = "wateringCbx";
-            this.wateringCbx.Size = new System.Drawing.Size(121, 21);
+            this.wateringCbx.Size = new System.Drawing.Size(180, 28);
             this.wateringCbx.TabIndex = 9;
-            this.wateringCbx.Text = "medium";
             this.wateringCbx.SelectedIndexChanged += new System.EventHandler(this.wateringCbx_SelectedIndexChanged);
             // 
             // fertilizerCbx
@@ -1287,83 +1389,90 @@
             "small",
             "medium",
             "large"});
-            this.fertilizerCbx.Location = new System.Drawing.Point(69, 56);
+            this.fertilizerCbx.Location = new System.Drawing.Point(104, 86);
+            this.fertilizerCbx.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.fertilizerCbx.Name = "fertilizerCbx";
-            this.fertilizerCbx.Size = new System.Drawing.Size(121, 21);
+            this.fertilizerCbx.Size = new System.Drawing.Size(180, 28);
             this.fertilizerCbx.TabIndex = 8;
-            this.fertilizerCbx.Text = "medium";
             this.fertilizerCbx.SelectedIndexChanged += new System.EventHandler(this.fertilizerCbx_SelectedIndexChanged);
             // 
             // provinceCbx
             // 
             this.provinceCbx.FormattingEnabled = true;
-            this.provinceCbx.Location = new System.Drawing.Point(69, 19);
+            this.provinceCbx.Location = new System.Drawing.Point(104, 29);
+            this.provinceCbx.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.provinceCbx.Name = "provinceCbx";
-            this.provinceCbx.Size = new System.Drawing.Size(121, 21);
+            this.provinceCbx.Size = new System.Drawing.Size(180, 28);
             this.provinceCbx.TabIndex = 7;
-            this.provinceCbx.Text = "Drenthe";
             this.provinceCbx.SelectedIndexChanged += new System.EventHandler(this.provinceCbx_SelectedIndexChanged);
             // 
             // endDateLbl
             // 
             this.endDateLbl.AutoSize = true;
-            this.endDateLbl.Location = new System.Drawing.Point(6, 204);
+            this.endDateLbl.Location = new System.Drawing.Point(9, 314);
+            this.endDateLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.endDateLbl.Name = "endDateLbl";
-            this.endDateLbl.Size = new System.Drawing.Size(52, 13);
+            this.endDateLbl.Size = new System.Drawing.Size(77, 20);
             this.endDateLbl.TabIndex = 5;
             this.endDateLbl.Text = "End Date";
             // 
             // startDateLbl
             // 
             this.startDateLbl.AutoSize = true;
-            this.startDateLbl.Location = new System.Drawing.Point(3, 165);
+            this.startDateLbl.Location = new System.Drawing.Point(4, 254);
+            this.startDateLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.startDateLbl.Name = "startDateLbl";
-            this.startDateLbl.Size = new System.Drawing.Size(55, 13);
+            this.startDateLbl.Size = new System.Drawing.Size(83, 20);
             this.startDateLbl.TabIndex = 4;
             this.startDateLbl.Text = "Start Date";
             // 
             // waterLbl
             // 
             this.waterLbl.AutoSize = true;
-            this.waterLbl.Location = new System.Drawing.Point(6, 95);
+            this.waterLbl.Location = new System.Drawing.Point(9, 146);
+            this.waterLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.waterLbl.Name = "waterLbl";
-            this.waterLbl.Size = new System.Drawing.Size(50, 13);
+            this.waterLbl.Size = new System.Drawing.Size(73, 20);
             this.waterLbl.TabIndex = 3;
             this.waterLbl.Text = "Watering";
             // 
             // fertilizerLbl
             // 
             this.fertilizerLbl.AutoSize = true;
-            this.fertilizerLbl.Location = new System.Drawing.Point(6, 59);
+            this.fertilizerLbl.Location = new System.Drawing.Point(9, 91);
+            this.fertilizerLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.fertilizerLbl.Name = "fertilizerLbl";
-            this.fertilizerLbl.Size = new System.Drawing.Size(45, 13);
+            this.fertilizerLbl.Size = new System.Drawing.Size(69, 20);
             this.fertilizerLbl.TabIndex = 2;
             this.fertilizerLbl.Text = "Fertilizer";
             // 
             // provinceLbl
             // 
             this.provinceLbl.AutoSize = true;
-            this.provinceLbl.Location = new System.Drawing.Point(6, 23);
+            this.provinceLbl.Location = new System.Drawing.Point(9, 35);
+            this.provinceLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.provinceLbl.Name = "provinceLbl";
-            this.provinceLbl.Size = new System.Drawing.Size(49, 13);
+            this.provinceLbl.Size = new System.Drawing.Size(69, 20);
             this.provinceLbl.TabIndex = 1;
             this.provinceLbl.Text = "Province";
             // 
             // soilTypeCbx
             // 
             this.soilTypeCbx.FormattingEnabled = true;
-            this.soilTypeCbx.Location = new System.Drawing.Point(73, 331);
+            this.soilTypeCbx.Location = new System.Drawing.Point(110, 509);
+            this.soilTypeCbx.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.soilTypeCbx.Name = "soilTypeCbx";
-            this.soilTypeCbx.Size = new System.Drawing.Size(121, 21);
+            this.soilTypeCbx.Size = new System.Drawing.Size(180, 28);
             this.soilTypeCbx.TabIndex = 6;
             this.soilTypeCbx.SelectedIndexChanged += new System.EventHandler(this.soilTypeCbx_SelectedIndexChanged);
             // 
             // soilTypeLbl
             // 
             this.soilTypeLbl.AutoSize = true;
-            this.soilTypeLbl.Location = new System.Drawing.Point(10, 334);
+            this.soilTypeLbl.Location = new System.Drawing.Point(15, 514);
+            this.soilTypeLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.soilTypeLbl.Name = "soilTypeLbl";
-            this.soilTypeLbl.Size = new System.Drawing.Size(51, 13);
+            this.soilTypeLbl.Size = new System.Drawing.Size(73, 20);
             this.soilTypeLbl.TabIndex = 0;
             this.soilTypeLbl.Text = "Soil Type";
             this.soilTypeLbl.Click += new System.EventHandler(this.soilTypeLbl_Click);
@@ -1373,9 +1482,10 @@
             this.yrSplitBtn.AutoSize = true;
             this.yrSplitBtn.ContextMenuStrip = this.yrMenuStrip;
             this.yrSplitBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.yrSplitBtn.Location = new System.Drawing.Point(37, 27);
+            this.yrSplitBtn.Location = new System.Drawing.Point(56, 42);
+            this.yrSplitBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.yrSplitBtn.Name = "yrSplitBtn";
-            this.yrSplitBtn.Size = new System.Drawing.Size(140, 54);
+            this.yrSplitBtn.Size = new System.Drawing.Size(210, 83);
             this.yrSplitBtn.SplitMenuStrip = this.yrMenuStrip;
             this.yrSplitBtn.TabIndex = 7;
             this.yrSplitBtn.Text = "Year Round";
@@ -1393,13 +1503,13 @@
             this.peasMenuStripItem,
             this.potatoMenuStripItem});
             this.yrMenuStrip.Name = "yrMenuStrip";
-            this.yrMenuStrip.Size = new System.Drawing.Size(134, 114);
+            this.yrMenuStrip.Size = new System.Drawing.Size(186, 154);
             // 
             // lettuceMenuStripItem
             // 
             this.lettuceMenuStripItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lettuceMenuStripItem.Name = "lettuceMenuStripItem";
-            this.lettuceMenuStripItem.Size = new System.Drawing.Size(133, 22);
+            this.lettuceMenuStripItem.Size = new System.Drawing.Size(185, 30);
             this.lettuceMenuStripItem.Text = "Lettuce";
             this.lettuceMenuStripItem.Click += new System.EventHandler(this.lettuceStripMenuItem_Click);
             // 
@@ -1407,7 +1517,7 @@
             // 
             this.mushroomMenuStripItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.mushroomMenuStripItem.Name = "mushroomMenuStripItem";
-            this.mushroomMenuStripItem.Size = new System.Drawing.Size(133, 22);
+            this.mushroomMenuStripItem.Size = new System.Drawing.Size(185, 30);
             this.mushroomMenuStripItem.Text = "Mushroom";
             this.mushroomMenuStripItem.Click += new System.EventHandler(this.mushroomMenuStripItem_Click);
             // 
@@ -1415,7 +1525,7 @@
             // 
             this.onionMenuStripItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.onionMenuStripItem.Name = "onionMenuStripItem";
-            this.onionMenuStripItem.Size = new System.Drawing.Size(133, 22);
+            this.onionMenuStripItem.Size = new System.Drawing.Size(185, 30);
             this.onionMenuStripItem.Text = "Onion";
             this.onionMenuStripItem.Click += new System.EventHandler(this.onionMenuStripItem_Click);
             // 
@@ -1423,7 +1533,7 @@
             // 
             this.peasMenuStripItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.peasMenuStripItem.Name = "peasMenuStripItem";
-            this.peasMenuStripItem.Size = new System.Drawing.Size(133, 22);
+            this.peasMenuStripItem.Size = new System.Drawing.Size(185, 30);
             this.peasMenuStripItem.Text = "Peas";
             this.peasMenuStripItem.Click += new System.EventHandler(this.peasMenuStripItem_Click);
             // 
@@ -1431,7 +1541,7 @@
             // 
             this.potatoMenuStripItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.potatoMenuStripItem.Name = "potatoMenuStripItem";
-            this.potatoMenuStripItem.Size = new System.Drawing.Size(133, 22);
+            this.potatoMenuStripItem.Size = new System.Drawing.Size(185, 30);
             this.potatoMenuStripItem.Text = "Potatoes";
             this.potatoMenuStripItem.Click += new System.EventHandler(this.potatoMenuStripItem_Click);
             // 
@@ -1440,9 +1550,10 @@
             this.springSplitBtn.AutoSize = true;
             this.springSplitBtn.ContextMenuStrip = this.springMenuStrip;
             this.springSplitBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.springSplitBtn.Location = new System.Drawing.Point(37, 87);
+            this.springSplitBtn.Location = new System.Drawing.Point(56, 134);
+            this.springSplitBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.springSplitBtn.Name = "springSplitBtn";
-            this.springSplitBtn.Size = new System.Drawing.Size(140, 54);
+            this.springSplitBtn.Size = new System.Drawing.Size(210, 83);
             this.springSplitBtn.SplitMenuStrip = this.springMenuStrip;
             this.springSplitBtn.TabIndex = 8;
             this.springSplitBtn.Text = "Spring";
@@ -1458,25 +1569,25 @@
             this.testToolStripMenuItem1,
             this.testToolStripMenuItem2});
             this.springMenuStrip.Name = "contextMenuStrip1";
-            this.springMenuStrip.Size = new System.Drawing.Size(143, 94);
+            this.springMenuStrip.Size = new System.Drawing.Size(185, 94);
             // 
             // Cauliflower
             // 
             this.Cauliflower.Image = ((System.Drawing.Image)(resources.GetObject("Cauliflower.Image")));
             this.Cauliflower.Name = "Cauliflower";
-            this.Cauliflower.Size = new System.Drawing.Size(142, 30);
+            this.Cauliflower.Size = new System.Drawing.Size(184, 30);
             this.Cauliflower.Text = "Cauliflower";
             // 
             // testToolStripMenuItem1
             // 
             this.testToolStripMenuItem1.Name = "testToolStripMenuItem1";
-            this.testToolStripMenuItem1.Size = new System.Drawing.Size(142, 30);
+            this.testToolStripMenuItem1.Size = new System.Drawing.Size(184, 30);
             this.testToolStripMenuItem1.Text = "Test";
             // 
             // testToolStripMenuItem2
             // 
             this.testToolStripMenuItem2.Name = "testToolStripMenuItem2";
-            this.testToolStripMenuItem2.Size = new System.Drawing.Size(142, 30);
+            this.testToolStripMenuItem2.Size = new System.Drawing.Size(184, 30);
             this.testToolStripMenuItem2.Text = "Test";
             // 
             // summerSplitBtn
@@ -1484,9 +1595,10 @@
             this.summerSplitBtn.AutoSize = true;
             this.summerSplitBtn.ContextMenuStrip = this.summerMenuStrip;
             this.summerSplitBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.summerSplitBtn.Location = new System.Drawing.Point(37, 147);
+            this.summerSplitBtn.Location = new System.Drawing.Point(56, 226);
+            this.summerSplitBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.summerSplitBtn.Name = "summerSplitBtn";
-            this.summerSplitBtn.Size = new System.Drawing.Size(140, 54);
+            this.summerSplitBtn.Size = new System.Drawing.Size(210, 83);
             this.summerSplitBtn.SplitMenuStrip = this.summerMenuStrip;
             this.summerSplitBtn.TabIndex = 9;
             this.summerSplitBtn.Text = "Summer";
@@ -1501,24 +1613,24 @@
             this.testToolStripMenuItem4,
             this.testToolStripMenuItem5});
             this.summerMenuStrip.Name = "contextMenuStrip1";
-            this.summerMenuStrip.Size = new System.Drawing.Size(96, 70);
+            this.summerMenuStrip.Size = new System.Drawing.Size(128, 94);
             // 
             // testToolStripMenuItem3
             // 
             this.testToolStripMenuItem3.Name = "testToolStripMenuItem3";
-            this.testToolStripMenuItem3.Size = new System.Drawing.Size(95, 22);
+            this.testToolStripMenuItem3.Size = new System.Drawing.Size(127, 30);
             this.testToolStripMenuItem3.Text = "Test";
             // 
             // testToolStripMenuItem4
             // 
             this.testToolStripMenuItem4.Name = "testToolStripMenuItem4";
-            this.testToolStripMenuItem4.Size = new System.Drawing.Size(95, 22);
+            this.testToolStripMenuItem4.Size = new System.Drawing.Size(127, 30);
             this.testToolStripMenuItem4.Text = "Test";
             // 
             // testToolStripMenuItem5
             // 
             this.testToolStripMenuItem5.Name = "testToolStripMenuItem5";
-            this.testToolStripMenuItem5.Size = new System.Drawing.Size(95, 22);
+            this.testToolStripMenuItem5.Size = new System.Drawing.Size(127, 30);
             this.testToolStripMenuItem5.Text = "Test";
             // 
             // fallSplitBtn
@@ -1526,9 +1638,10 @@
             this.fallSplitBtn.AutoSize = true;
             this.fallSplitBtn.ContextMenuStrip = this.fallMenuStrip;
             this.fallSplitBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.fallSplitBtn.Location = new System.Drawing.Point(37, 207);
+            this.fallSplitBtn.Location = new System.Drawing.Point(56, 318);
+            this.fallSplitBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.fallSplitBtn.Name = "fallSplitBtn";
-            this.fallSplitBtn.Size = new System.Drawing.Size(140, 54);
+            this.fallSplitBtn.Size = new System.Drawing.Size(210, 83);
             this.fallSplitBtn.SplitMenuStrip = this.fallMenuStrip;
             this.fallSplitBtn.TabIndex = 10;
             this.fallSplitBtn.Text = "Fall";
@@ -1543,24 +1656,24 @@
             this.testToolStripMenuItem7,
             this.testToolStripMenuItem8});
             this.fallMenuStrip.Name = "contextMenuStrip1";
-            this.fallMenuStrip.Size = new System.Drawing.Size(96, 70);
+            this.fallMenuStrip.Size = new System.Drawing.Size(128, 94);
             // 
             // testToolStripMenuItem6
             // 
             this.testToolStripMenuItem6.Name = "testToolStripMenuItem6";
-            this.testToolStripMenuItem6.Size = new System.Drawing.Size(95, 22);
+            this.testToolStripMenuItem6.Size = new System.Drawing.Size(127, 30);
             this.testToolStripMenuItem6.Text = "Test";
             // 
             // testToolStripMenuItem7
             // 
             this.testToolStripMenuItem7.Name = "testToolStripMenuItem7";
-            this.testToolStripMenuItem7.Size = new System.Drawing.Size(95, 22);
+            this.testToolStripMenuItem7.Size = new System.Drawing.Size(127, 30);
             this.testToolStripMenuItem7.Text = "Test";
             // 
             // testToolStripMenuItem8
             // 
             this.testToolStripMenuItem8.Name = "testToolStripMenuItem8";
-            this.testToolStripMenuItem8.Size = new System.Drawing.Size(95, 22);
+            this.testToolStripMenuItem8.Size = new System.Drawing.Size(127, 30);
             this.testToolStripMenuItem8.Text = "Test";
             // 
             // winterSplitBtn
@@ -1568,9 +1681,10 @@
             this.winterSplitBtn.AutoSize = true;
             this.winterSplitBtn.ContextMenuStrip = this.winterMenuStrip;
             this.winterSplitBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.winterSplitBtn.Location = new System.Drawing.Point(37, 267);
+            this.winterSplitBtn.Location = new System.Drawing.Point(56, 411);
+            this.winterSplitBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.winterSplitBtn.Name = "winterSplitBtn";
-            this.winterSplitBtn.Size = new System.Drawing.Size(140, 54);
+            this.winterSplitBtn.Size = new System.Drawing.Size(210, 83);
             this.winterSplitBtn.SplitMenuStrip = this.winterMenuStrip;
             this.winterSplitBtn.TabIndex = 11;
             this.winterSplitBtn.Text = "Winter";
@@ -1585,24 +1699,24 @@
             this.testToolStripMenuItem10,
             this.testToolStripMenuItem11});
             this.winterMenuStrip.Name = "contextMenuStrip1";
-            this.winterMenuStrip.Size = new System.Drawing.Size(96, 70);
+            this.winterMenuStrip.Size = new System.Drawing.Size(128, 94);
             // 
             // testToolStripMenuItem9
             // 
             this.testToolStripMenuItem9.Name = "testToolStripMenuItem9";
-            this.testToolStripMenuItem9.Size = new System.Drawing.Size(95, 22);
+            this.testToolStripMenuItem9.Size = new System.Drawing.Size(127, 30);
             this.testToolStripMenuItem9.Text = "Test";
             // 
             // testToolStripMenuItem10
             // 
             this.testToolStripMenuItem10.Name = "testToolStripMenuItem10";
-            this.testToolStripMenuItem10.Size = new System.Drawing.Size(95, 22);
+            this.testToolStripMenuItem10.Size = new System.Drawing.Size(127, 30);
             this.testToolStripMenuItem10.Text = "Test";
             // 
             // testToolStripMenuItem11
             // 
             this.testToolStripMenuItem11.Name = "testToolStripMenuItem11";
-            this.testToolStripMenuItem11.Size = new System.Drawing.Size(95, 22);
+            this.testToolStripMenuItem11.Size = new System.Drawing.Size(127, 30);
             this.testToolStripMenuItem11.Text = "Test";
             // 
             // menuStrip1
@@ -1613,7 +1727,8 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(908, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
+            this.menuStrip1.Size = new System.Drawing.Size(1758, 35);
             this.menuStrip1.TabIndex = 17;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -1624,25 +1739,25 @@
             this.saveToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(50, 29);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // loadToolStripMenuItem
             // 
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(136, 30);
             this.loadToolStripMenuItem.Text = "Load";
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(136, 30);
             this.saveToolStripMenuItem.Text = "Save";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(136, 30);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // helpToolStripMenuItem
@@ -1651,36 +1766,38 @@
             this.helpToolStripMenuItem1,
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(61, 29);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // helpToolStripMenuItem1
             // 
             this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
-            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
+            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(147, 30);
             this.helpToolStripMenuItem1.Text = "Help";
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(147, 30);
             this.aboutToolStripMenuItem.Text = "About";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(217, 605);
+            this.label1.Location = new System.Drawing.Point(326, 931);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 13);
+            this.label1.Size = new System.Drawing.Size(83, 20);
             this.label1.TabIndex = 18;
             this.label1.Text = "Start Date";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(897, 605);
+            this.label2.Location = new System.Drawing.Point(1346, 931);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(52, 13);
+            this.label2.Size = new System.Drawing.Size(77, 20);
             this.label2.TabIndex = 19;
             this.label2.Text = "End Date";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -1688,27 +1805,29 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(413, 605);
+            this.label3.Location = new System.Drawing.Point(620, 931);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(30, 13);
+            this.label3.Size = new System.Drawing.Size(44, 20);
             this.label3.TabIndex = 20;
             this.label3.Text = "Date";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(689, 608);
+            this.label4.Location = new System.Drawing.Point(1034, 935);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(30, 13);
+            this.label4.Size = new System.Drawing.Size(44, 20);
             this.label4.TabIndex = 21;
             this.label4.Text = "Date";
             // 
             // Form2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(908, 482);
+            this.ClientSize = new System.Drawing.Size(1758, 742);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -1730,6 +1849,7 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form2";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Rural Cultivation Atmospheric Emulation Application";

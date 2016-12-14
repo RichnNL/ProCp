@@ -35,6 +35,7 @@ namespace ProCP
             setClickEventForPictureBoxes();
             populateCropPanelSelection();
             InitializeProperties();
+            plotInfoLstbx.Items.Add("No Plot Selected");
         }
         private void InitializeProperties()
         {
@@ -44,12 +45,48 @@ namespace ProCP
         }
         private void setMinMaxDates()
         {
-            // fix min date 
            
             dateTimePicker2.MinDate = dateTimePicker1.Value.AddMonths(3);
             dateTimePicker2.MaxDate = dateTimePicker1.Value.AddMonths(36);
         }
-        private void PictureBoxClicked(object sender, MouseEventArgs e)
+        private void showCropInfo()
+        {
+
+        }
+        private void PictureBoxSingleClicked(object sender, MouseEventArgs e)
+        {
+            PictureBox pbox = (PictureBox)sender;
+            if(rcaea.selectedPlot == RCAEA.simulation.getPlot(pbox.Name))
+            {
+                rcaea.selectedPlot = null;
+                soilTypeCbx.Enabled = false;
+                rcaea.submitChange = false;
+                plotInfoLstbx.Items.Clear();
+                plotInfoLstbx.Items.Add("No Plot Selected");
+            }
+            else
+            {
+                rcaea.submitChange = false;
+                rcaea.selectedPlot = RCAEA.simulation.getPlot(pbox.Name);
+                soilTypeCbx.Enabled = true;
+                string soiltype = rcaea.selectedPlot.getSoilType();
+                for(int i = 0; i < soilTypeCbx.Items.Count; i++)
+                {
+                    string value = soilTypeCbx.GetItemText(soilTypeCbx.Items[i]);
+                    if(value == soiltype)
+                    {
+                        soilTypeCbx.SelectedIndex = i;
+                        break;
+                    }
+                }
+                rcaea.submitChange = true;
+                FillPlotInfo(rcaea.selectedPlot);
+            }
+            
+            
+
+        }
+        private void PictureBoxDoubleClicked(object sender, MouseEventArgs e)
         {
             PictureBox pbox = (PictureBox)sender;
             
@@ -59,11 +96,13 @@ namespace ProCP
                 if(rcaea.componentSelected != "" && rcaea.componentSelected != null)
                 {
                     RCAEA.simulation.addCrop(RCAEA.simulation.database.GetCrop(rcaea.componentSelected), rcaea.selectedPlot);
+                    FillPlotInfo(rcaea.selectedPlot);
                 }
             }
             else if(e.Button == MouseButtons.Right)
             {
                 RCAEA.simulation.removeCrop(rcaea.selectedPlot);
+                FillPlotInfo(rcaea.selectedPlot);
             }
             if (RCAEA.simulation.getNumberOfCrops()>0)
             {
@@ -77,7 +116,7 @@ namespace ProCP
                 wateringCbx.Enabled = true;
                 fertilizerCbx.Enabled = true;
             }
-                MessageBox.Show(pbox.Name);
+             
            
         }
         private void setClickEventForPictureBoxes()
@@ -85,7 +124,8 @@ namespace ProCP
             foreach(Plot p in RCAEA.simulation.plots)
             {
                 
-                ((PictureBox)this.panel1.Controls[p.PlotId]).MouseClick += new MouseEventHandler((PictureBoxClicked));
+                ((PictureBox)this.panel1.Controls[p.PlotId]).MouseClick += new MouseEventHandler((PictureBoxSingleClicked));
+                ((PictureBox)this.panel1.Controls[p.PlotId]).MouseDoubleClick += new MouseEventHandler((PictureBoxDoubleClicked));
             }
            
         }
@@ -276,11 +316,16 @@ namespace ProCP
         {
            
         }
-        private void assignPlotSoil(string position)
+        private void assignPlotSoil(Plot p)
         {
-                Plot p = RCAEA.simulation.getPlot(position);
+                if(rcaea.selectedPlot != null || rcaea.submitChange)
+                 {
                 p.setSoilType(RCAEA.simulation.database.getSoilType(soilTypeCbx.SelectedItem.ToString()));
-                MessageBox.Show(p.plotWeeks[0].SoilNutrition.ToString());
+                FillPlotInfo(rcaea.selectedPlot);
+                
+            }
+                
+                
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -290,7 +335,7 @@ namespace ProCP
 
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
-            //RCAEA.simulation.SetEndDate(dateTimePicker2.Value);
+            RCAEA.simulation.SetEndDate(dateTimePicker2.Value);
            
         }
 
@@ -306,8 +351,7 @@ namespace ProCP
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            //RCAEA.simulation.SetBeginDate(dateTimePicker1.Value);
-            //MessageBox.Show("" + RCAEA.simulation.BeginDate.ToString());
+            RCAEA.simulation.SetBeginDate(dateTimePicker1.Value);
             setMinMaxDates();
             
         }
@@ -331,10 +375,11 @@ namespace ProCP
         {
             if (RCAEA.simulation.getNumberOfCrops() == 0)
             {
-
-
                 RCAEA.simulation.Province = provinceCbx.SelectedItem.ToString();
-                MessageBox.Show(RCAEA.simulation.Province);
+                if(rcaea.selectedPlot != null)
+                {
+                    FillPlotInfo(rcaea.selectedPlot);
+                }
             }
             else
             {
@@ -378,18 +423,46 @@ namespace ProCP
         private void fertilizerCbx_SelectedIndexChanged(object sender, EventArgs e)
         {
             RCAEA.simulation.SetFertilizer(fertilizerCbx.SelectedItem.ToString());
-            MessageBox.Show("Fertilizer set to " + RCAEA.simulation.Fertilizer.ToString());
+            if (rcaea.selectedPlot != null)
+            {
+                FillPlotInfo(rcaea.selectedPlot);
+            }
         }
 
         private void wateringCbx_SelectedIndexChanged(object sender, EventArgs e)
         {
             RCAEA.simulation.Setwatering(wateringCbx.SelectedItem.ToString());
-            MessageBox.Show("Watering set to " + RCAEA.simulation.Fertilizer.ToString());
+            if (rcaea.selectedPlot != null)
+            {
+                FillPlotInfo(rcaea.selectedPlot);
+            }
         }
 
         private void soilTypeCbx_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (rcaea.submitChange && rcaea.selectedPlot != null)
+            {
+                assignPlotSoil(rcaea.selectedPlot);
+            }
+        }
+        private void FillPlotInfo(Plot p)
+        {
+            plotInfoLstbx.Items.Clear();
+             CropData summary = p.GetCropSummary();
+            plotInfoLstbx.Items.Add("Plot Summary");
+            plotInfoLstbx.Items.Add(summary.getPlotID() + " SoilType: " + summary.getSoilType());
+            plotInfoLstbx.Items.Add("Total Crops Set in Plot" + p.getNumberOfCrops().ToString());
+            plotInfoLstbx.Items.Add("Crops Harvested: " + p.getNumberOfHarvestedCrops().ToString());
+            plotInfoLstbx.Items.Add(summary.getHealth());
+            plotInfoLstbx.Items.Add("------------------");
+            CropData currentPlot = p.GetCurrentCropData();
+            if (!currentPlot.getIsEmpty())
+            {
+                plotInfoLstbx.Items.Add("Currently Selected Crop");
+                plotInfoLstbx.Items.Add("Set at " + currentPlot.GetBeginDate() + " Matured at: " + currentPlot.GetEndDate());
+                plotInfoLstbx.Items.Add("Current Status: " + currentPlot.getHealth());
 
+            }
         }
     }
 }

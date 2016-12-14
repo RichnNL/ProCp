@@ -337,5 +337,11 @@ namespace ProCP.Classes
         {
             return numberOfCrops;
         }
+        public DateTime weekToDate(int week)
+        {
+            DateTime date = this.beginDate;
+            date = date.AddDays(week * 7);
+            return date;
+        }
     }
 }
