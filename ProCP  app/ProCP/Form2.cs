@@ -116,7 +116,7 @@ namespace ProCP
                 wateringCbx.Enabled = true;
                 fertilizerCbx.Enabled = true;
             }
-             
+
            
         }
         private void setClickEventForPictureBoxes()
@@ -321,10 +321,12 @@ namespace ProCP
                 if(rcaea.selectedPlot != null || rcaea.submitChange)
                  {
                 p.setSoilType(RCAEA.simulation.database.getSoilType(soilTypeCbx.SelectedItem.ToString()));
+
                 FillPlotInfo(rcaea.selectedPlot);
                 
             }
                 
+
                 
         }
 
@@ -376,10 +378,12 @@ namespace ProCP
             if (RCAEA.simulation.getNumberOfCrops() == 0)
             {
                 RCAEA.simulation.Province = provinceCbx.SelectedItem.ToString();
+
                 if(rcaea.selectedPlot != null)
                 {
                     FillPlotInfo(rcaea.selectedPlot);
                 }
+
             }
             else
             {
@@ -422,20 +426,43 @@ namespace ProCP
 
         private void fertilizerCbx_SelectedIndexChanged(object sender, EventArgs e)
         {
-            RCAEA.simulation.SetFertilizer(fertilizerCbx.SelectedItem.ToString());
-            if (rcaea.selectedPlot != null)
+
+            if (RCAEA.simulation.getNumberOfCrops() == 0)
+            {
+
+
+                RCAEA.simulation.SetFertilizer(fertilizerCbx.SelectedItem.ToString());
+		if (rcaea.selectedPlot != null)
             {
                 FillPlotInfo(rcaea.selectedPlot);
             }
+            }
+            else
+            {
+                error(true);
+            }
+
+
         }
 
         private void wateringCbx_SelectedIndexChanged(object sender, EventArgs e)
         {
-            RCAEA.simulation.Setwatering(wateringCbx.SelectedItem.ToString());
-            if (rcaea.selectedPlot != null)
+
+            if (RCAEA.simulation.getNumberOfCrops() == 0)
+            {
+
+
+                RCAEA.simulation.Setwatering(wateringCbx.SelectedItem.ToString());
+			    if (rcaea.selectedPlot != null)
             {
                 FillPlotInfo(rcaea.selectedPlot);
             }
+            }
+            else
+            {
+                error(true);
+            }
+
         }
 
         private void soilTypeCbx_SelectedIndexChanged(object sender, EventArgs e)

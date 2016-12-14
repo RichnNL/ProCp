@@ -58,3 +58,6 @@ ProCP  app/ProCP/obj/Debug/ProCP.pdb
 ProCP  app/ProCP/bin/Debug/ProCP.exe
 *.pdb
 ProCP  app/ProCP/bin/Debug/ProCP.exe
+ProCP  app/ProCP/obj/Debug/ProCP.exe
+*.pdb
+ProCP  app/ProCP/bin/Debug/ProCP.exe
