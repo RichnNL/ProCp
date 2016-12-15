@@ -13,6 +13,7 @@ namespace ProCP.Classes
         public delegate void DrawCropHandler(string pictureBox, string CropName, int ImageNumber);
         public event DrawCropHandler OnDraw;
         Timer time;
+        public string SimulationName;
 
         public List<Plot> plots;
     
@@ -88,7 +89,7 @@ namespace ProCP.Classes
 
 
         public  Database database;
-        private SimulationStorage simulationStorage;
+        public SimulationStorage simulationStorage;
         public Statistics statistics;
 
 
@@ -343,5 +344,10 @@ namespace ProCP.Classes
             date = date.AddDays(week * 7);
             return date;
         }
+        public string DateToString(DateTime date)
+        {
+            return date.ToString("dd/MM/yyyy");
+        }
+       
     }
 }

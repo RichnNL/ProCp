@@ -60,11 +60,23 @@
     <Compile Include="Classes\Database.cs" />
     <Compile Include="Classes\FileHandler.cs" />
     <Compile Include="Classes\Images.cs" />
+    <Compile Include="Classes\LoadWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Classes\LoadWindow.Designer.cs">
+      <DependentUpon>LoadWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Classes\Plot.cs" />
     <Compile Include="Classes\PlotWeek.cs" />
     <Compile Include="Classes\Price.cs" />
     <Compile Include="Classes\RCAEA.cs" />
     <Compile Include="Classes\Report.cs" />
+    <Compile Include="Classes\SaveWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Classes\SaveWindow.Designer.cs">
+      <DependentUpon>SaveWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Classes\Simulation.cs" />
     <Compile Include="Classes\SimulationStorage.cs" />
     <Compile Include="Classes\SoilType.cs" />
@@ -78,6 +90,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Classes\LoadWindow.resx">
+      <DependentUpon>LoadWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Classes\SaveWindow.resx">
+      <DependentUpon>SaveWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>

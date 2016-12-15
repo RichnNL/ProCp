@@ -475,21 +475,87 @@ namespace ProCP
         private void FillPlotInfo(Plot p)
         {
             plotInfoLstbx.Items.Clear();
-             CropData summary = p.GetCropSummary();
             plotInfoLstbx.Items.Add("Plot Summary");
-            plotInfoLstbx.Items.Add(summary.getPlotID() + " SoilType: " + summary.getSoilType());
-            plotInfoLstbx.Items.Add("Total Crops Set in Plot" + p.getNumberOfCrops().ToString());
-            plotInfoLstbx.Items.Add("Crops Harvested: " + p.getNumberOfHarvestedCrops().ToString());
-            plotInfoLstbx.Items.Add(summary.getHealth());
-            plotInfoLstbx.Items.Add("------------------");
-            CropData currentPlot = p.GetCurrentCropData();
-            if (!currentPlot.getIsEmpty())
+            plotInfoLstbx.Items.Add(p.PlotId + ":  SoilType: " + p.getSoilType());
+            if(p.getNumberOfCrops() != 0)
             {
-                plotInfoLstbx.Items.Add("Currently Selected Crop");
-                plotInfoLstbx.Items.Add("Set at " + currentPlot.GetBeginDate() + " Matured at: " + currentPlot.GetEndDate());
-                plotInfoLstbx.Items.Add("Current Status: " + currentPlot.getHealth());
+                plotInfoLstbx.Items.Add("Total Crops Set in Plot" + p.getNumberOfCrops().ToString());
+                plotInfoLstbx.Items.Add("Crops Harvested: " + p.getNumberOfHarvestedCrops().ToString());
+            }
+            else
+            {
+                plotInfoLstbx.Items.Add("No Crops Set in Plot");
+            }
+            
+            plotInfoLstbx.Items.Add("------------------");
+            if (p.getNumberOfCrops() != 0)
+            {
+                if (p.plotWeeks[RCAEA.simulation.CurrentWeek].isEmpty)
+                {
+                    string[] Crops = p.getAllCropNamesInPlotWithStartEndDates();
+                    foreach(string s in Crops)
+                    {
+                        plotInfoLstbx.Items.Add(s);
+                    }
+                }
+                else
+                {
+                    CropData currentPlot = p.GetCurrentCropData();
+                    plotInfoLstbx.Items.Add("Currently Selected Crop");
+                    plotInfoLstbx.Items.Add("Set at " + RCAEA.simulation.DateToString(currentPlot.GetBeginDate()));
+                    plotInfoLstbx.Items.Add("Matured at: " + RCAEA.simulation.DateToString(currentPlot.GetEndDate()));
+                    plotInfoLstbx.Items.Add("Current Status: ");
+                    plotInfoLstbx.Items.Add(currentPlot.getHealth());
+                }
+                
 
             }
+        }
+        private void saveAs()
+        {
+            SaveWindow save = new SaveWindow(this);
+            save.Show();
+        }
+        private void save()
+        {
+            if (!String.IsNullOrEmpty(RCAEA.simulation.SimulationName)){
+                RCAEA.simulation.simulationStorage.SaveSimulation(RCAEA.simulation.SimulationName);
+            }
+            else
+            {
+                saveAs();
+            }
+        }
+        private void load()
+        {
+            LoadWindow load = new LoadWindow();
+            load.Show();
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            save();
+        }
+
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveAs();
+        }
+
+        private void loadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            load();
+        }
+        private void newSimulation()
+        {
+            province = "Drenthe";
+            Simulation NewSimlation = new Simulation("connection.ini", "connection.ini", province);
+            RCAEA.simulation = NewSimlation;
+            }
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            newSimulation();
         }
     }
 }

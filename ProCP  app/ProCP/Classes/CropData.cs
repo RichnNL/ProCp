@@ -29,34 +29,21 @@ namespace ProCP.Classes
 
         private string Crop_Health = "";
 
-        private bool isEmpty ;
+       
 
-        private string SoilType;
-
-        private string plotPosition;
-
-        private int numberOfCrops;
-
-        private int numberOfCropsFinished;
-
-        public CropData(string health, string soilType, string plotposition)
+        public CropData(string health)
         {
             this.Crop_Health = health;
-            this.isEmpty = true;
-            this.SoilType = soilType;
-            this.plotPosition = plotposition;
         }
-        public CropData(DateTime begin, DateTime end, bool Alive, string health, string soilType, string plotposition)
+        public CropData(DateTime begin, DateTime end, bool Alive, string health)
         {
             this.beginDate = begin;
             this.endDate = end;
             this.isAlive = Alive;
             this.Crop_Health = health;
-            this.isEmpty = false;
-            this.SoilType = soilType;
-            this.plotPosition = plotposition;
+         
         }
-        public CropData(DateTime begin, DateTime end, bool Alive, string health, decimal watercosts, decimal fertilizer, string soilType, string plotposition)
+        public CropData(DateTime begin, DateTime end, bool Alive, string health, decimal watercosts, decimal fertilizer)
         {
             this.beginDate = begin;
             this.endDate = end;
@@ -64,11 +51,9 @@ namespace ProCP.Classes
             this.Crop_Health = health;
             this.waterCosts = watercosts;
             this.fertilizerCosts = fertilizer;
-            this.isEmpty = false;
-            this.SoilType = soilType;
-            this.plotPosition = plotposition;
+           
         }
-        public CropData(DateTime begin, DateTime end, bool Alive, string health, decimal watercosts, decimal fertilizer,decimal totalcosts, string soilType, string plotposition)
+        public CropData(DateTime begin, DateTime end, bool Alive, string health, decimal watercosts, decimal fertilizer,decimal totalcosts)
         {
             this.beginDate = begin;
             this.endDate = end;
@@ -77,11 +62,9 @@ namespace ProCP.Classes
             this.waterCosts = watercosts;
             this.fertilizerCosts = fertilizer;
             this.totalCosts = totalcosts;
-            this.isEmpty = false;
-            this.SoilType = soilType;
-            this.plotPosition = plotposition;
+            
         }
-        public CropData(DateTime begin, DateTime end, bool Alive, string health, decimal watercosts, decimal fertilizer, decimal totalcosts,int yield, string soilType, string plotposition)
+        public CropData(DateTime begin, DateTime end, bool Alive, string health, decimal watercosts, decimal fertilizer, decimal totalcosts,int yield)
         {
             this.beginDate = begin;
             this.endDate = end;
@@ -91,22 +74,18 @@ namespace ProCP.Classes
             this.fertilizerCosts = fertilizer;
             this.totalCosts = totalcosts;
             this.yield = yield;
-            this.isEmpty = false;
-            this.SoilType = soilType;
-            this.plotPosition = plotposition;
+          
         }
-        public CropData(DateTime begin, DateTime end, bool Alive, string health, int yield, string soilType, string plotposition)
+        public CropData(DateTime begin, DateTime end, bool Alive, string health, int yield)
         {
             this.beginDate = begin;
             this.endDate = end;
             this.isAlive = Alive;
             this.Crop_Health = health;
             this.yield = yield;
-            this.isEmpty = false;
-            this.SoilType = soilType;
-            this.plotPosition = plotposition;
+        
         }
-        public CropData(DateTime begin, DateTime end, bool Alive, string health, decimal totalcosts, int yield, string soilType, string plotposition)
+        public CropData(DateTime begin, DateTime end, bool Alive, string health, decimal totalcosts, int yield)
         {
             this.beginDate = begin;
             this.endDate = end;
@@ -114,9 +93,7 @@ namespace ProCP.Classes
             this.Crop_Health = health;
             this.totalCosts = totalcosts;
             this.yield = yield;
-            this.isEmpty = false;
-            this.SoilType = soilType;
-            this.plotPosition = plotposition;
+            
         }
 
         public DateTime GetBeginDate()
@@ -155,20 +132,6 @@ namespace ProCP.Classes
         {
             return isAlive;
         }
-        public bool getIsEmpty()
-        {
-            return isEmpty;
-        }
-        public string getPlotID()
-        {
-            return plotPosition;
-        }
-
-        public string getSoilType()
-        {
-            return SoilType;
-        }
        
-
     }
 }

@@ -30,13 +30,12 @@ namespace ProCP.Classes
             this.cropSeason = season;
             this.cropYield = yield;
             weeks = new List<Crop_Week>();
-            for(int i = 0; i < maturityLength; i++)
+            for (int i = 0; i < maturityLength; i++)
             {
                 weeks.Add(new Crop_Week());
                 weeks[i].maturity = i;
                 weeks[i].Health = 100;
             }
-            
         }
         public Crop(string name) { }
         public int GetMaturityLength() { return maturityLength; }
@@ -63,7 +62,17 @@ namespace ProCP.Classes
             }
            
         }
-       
+       public void setInitalValues()
+        {
+            List<Crop_Week> temp = new List<Crop_Week>();
+            for (int i = 0; i < maturityLength; i++)
+            {
+                temp.Add(new Crop_Week());
+                temp[i].maturity = i;
+                temp[i].Health = 100;
+            }
+            weeks = temp;
+        }
         
         
       

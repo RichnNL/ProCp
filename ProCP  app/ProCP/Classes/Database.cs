@@ -14,7 +14,7 @@ namespace ProCP.Classes
 {
     class Database
     {
-        public MySqlConnection connection;
+        private MySqlConnection connection;
         public List<Crop> Crops;
         public List<SoilType> SoilTypes;
         public List<Weather> weathers;
@@ -61,7 +61,7 @@ namespace ProCP.Classes
         private List<Price> LoadSellPrices() {
             List<Price> temp = new List<Price>();
 
-            String sql = "SELECT crop_info.Name, sell_prices.Price_Per_Unit, seed_cost.Cost_m2 FROM crop_info INNER JOIN sell_prices ON crop_info.CROP_ID=sell_prices.Crop_ID INNER JOIN seed_cost ON crop_info.CROP_ID=seed_cost.Crop_ID";
+            string sql = "SELECT crop_info.Name, sell_prices.Price_Per_Unit, seed_cost.Cost_m2 FROM crop_info INNER JOIN sell_prices ON crop_info.CROP_ID=sell_prices.Crop_ID INNER JOIN seed_cost ON crop_info.CROP_ID=seed_cost.Crop_ID";
             MySqlCommand command = new MySqlCommand(sql, connection);
 
             try
@@ -96,7 +96,7 @@ namespace ProCP.Classes
 
         }
         private void LoadImages() {
-            string sql = "SELECT Name,Image_0,Image_1,Image_2,Image_3 FROM crop_info;";
+            string sql = "SELECT Name,Image_0,Image_1,Image_2,Image_3 FROM crop_info";
 
 
             MySqlCommand command = new MySqlCommand(sql, connection);
