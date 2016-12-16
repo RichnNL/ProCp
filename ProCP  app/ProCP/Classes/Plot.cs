@@ -14,14 +14,16 @@ namespace ProCP.Classes
         public List<PlotWeek> plotWeeks;
         private int hasCrop;
         private int cropsHarvested;
+        private Simulation simulation;
 
 
-        public Plot(string PlotId,SoilType soiltype,int intialWeeks)
+        public Plot(string PlotId,SoilType soiltype,int intialWeeks,Simulation simulation)
         {
             this.PlotId = PlotId;
             this.soiltype = soiltype;
             this.hasCrop = 0;
             this.cropsHarvested = 0;
+            this.simulation = simulation;
             plotWeeks = new List<PlotWeek>();
             for(int i = 0; i < intialWeeks; i++)
             {
@@ -37,7 +39,7 @@ namespace ProCP.Classes
             int length = crop.GetMaturityLength();
             if (canInsertPlot(length))
             {
-                int week = RCAEA.simulation.CurrentWeek;
+                int week = simulation.CurrentWeek;
                 for (int i = 0; i < length; i++, week++)
                 {
                     plotWeeks[week].setCrop(crop);
@@ -77,7 +79,7 @@ namespace ProCP.Classes
         public bool RemoveAllCrop(List<int> getploposition) { return false; }
         public CropData GetCurrentCropData() {
             CropData cropdata;
-            int now = RCAEA.simulation.CurrentWeek;
+            int now = simulation.CurrentWeek;
             Crop crop;
             int beginWeek;
             if (isNotEmptyAtSpecificWeek(now,out crop, out beginWeek))
@@ -109,7 +111,7 @@ namespace ProCP.Classes
                     health_details += " needs urgent care.";
                 }
 
-                cropdata = new CropData(RCAEA.simulation.weekToDate(beginWeek), RCAEA.simulation.weekToDate(beginWeek + crop.GetMaturityLength()), alive, health_details);
+                cropdata = new CropData(simulation.weekToDate(beginWeek), simulation.weekToDate(beginWeek + crop.GetMaturityLength()), alive, health_details);
                 return cropdata;
             }
             else
@@ -129,7 +131,7 @@ namespace ProCP.Classes
 
         public void Manageweeks()
         {
-            int nbrWeeks = RCAEA.simulation.GetNumberOfWeeks();
+            int nbrWeeks = simulation.GetNumberOfWeeks();
             int pweeks = plotWeeks.Count;
             if(nbrWeeks != pweeks)
             {
@@ -138,7 +140,12 @@ namespace ProCP.Classes
                 {
                     temp.Add(new PlotWeek());
                 }
+                
                 plotWeeks = temp;
+                for(int i = 0; i < plotWeeks.Count; i++)
+                {
+                    setWeatherForWeek(i);
+                }
                 setSoilType(this.soiltype);
             }
            
@@ -211,9 +218,10 @@ namespace ProCP.Classes
         private bool canInsertPlot(int maturity)
         {
             //Checks if Enough Weeks Available and if the plot is empty
-            int now = RCAEA.simulation.CurrentWeek;
+            int now = simulation.CurrentWeek;
+           
             int then = maturity + now;
-            if (RCAEA.simulation.GetNumberOfWeeks() - then > 0)
+            if (simulation.GetNumberOfWeeks() - then > 0)
             {
                 for(int c = now; c <= then; c++)
                 {
@@ -231,7 +239,7 @@ namespace ProCP.Classes
         }
         private PlotWeek getCurrentPlotWeek()
         {
-            return plotWeeks[RCAEA.simulation.CurrentWeek];
+            return plotWeeks[simulation.CurrentWeek];
         }
 
         private bool isNotEmptyAtSpecificWeek(int week)
@@ -327,11 +335,11 @@ namespace ProCP.Classes
                                     endweek = i - 1;
                                 }
                                 list.Add(plotWeeks[i - 1].getCrop().GetCropName());
-                                DateTime date = RCAEA.simulation.weekToDate(startweek);
-                                string Date = RCAEA.simulation.DateToString(date);
+                                DateTime date = simulation.weekToDate(startweek);
+                                string Date = simulation.DateToString(date);
                                 list.Add("Start Date: " + Date);
-                                date = RCAEA.simulation.weekToDate(endweek);
-                                Date = RCAEA.simulation.DateToString(date);
+                                date = simulation.weekToDate(endweek);
+                                Date = simulation.DateToString(date);
                                 list.Add("End Date: " + Date);
                                 startweek = i;
                                 endweek = -1;
@@ -343,11 +351,11 @@ namespace ProCP.Classes
                     {   //The week holds no crop therefore the before is the end date
                         endweek = i - 1;
                         list.Add(plotWeeks[i - 1].getCrop().GetCropName());
-                        DateTime date = RCAEA.simulation.weekToDate(startweek);
-                        string Date = RCAEA.simulation.DateToString(date);
+                        DateTime date = simulation.weekToDate(startweek);
+                        string Date = simulation.DateToString(date);
                         list.Add("Start Date: " + Date);
-                        date = RCAEA.simulation.weekToDate(endweek);
-                        Date = RCAEA.simulation.DateToString(date);
+                        date = simulation.weekToDate(endweek);
+                        Date = simulation.DateToString(date);
                         list.Add("End Date: " + Date);
                         startweek = -1;
                         endweek = -1;
@@ -366,6 +374,12 @@ namespace ProCP.Classes
         {
             return cropsHarvested;
         }
+        private void setWeatherForWeek(int week)
+        {
+            DateTime date = simulation.weekToDate(week);
+            plotWeeks[week].weather = simulation.database.GetWeather(simulation.Province, date.Month, date.Year);
+        }
+    
         
 
     }

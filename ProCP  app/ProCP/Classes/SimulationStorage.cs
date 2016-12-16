@@ -19,17 +19,16 @@ namespace ProCP.Classes
         public  SimulationStorage(string connection) {
             string connectionInfo = getConnectionInfo();
         }
-        public bool SaveSimulation(string description) {
+        public bool SaveSimulation(Simulation simulation) {
             
             string sql = "INSERT INTO simulations (Name, Description, Date, Cost, Profit, Binary_File) VALUES (@name, @description, @Date, @Cost, @Profit, @Binary_File)";
             MySqlCommand command = new MySqlCommand(sql, connection);
-            command.Parameters.AddWithValue("name", RCAEA.simulation.SimulationName);
-            command.Parameters.AddWithValue("description", description);
-            command.Parameters.AddWithValue("Date", RCAEA.simulation.DateToString(RCAEA.simulation.BeginDate));
+            command.Parameters.AddWithValue("name", simulation.SimulationName);
+            command.Parameters.AddWithValue("description", simulation.SimulationDescription);
+            command.Parameters.AddWithValue("Date", simulation.DateToString(simulation.BeginDate));
             //command.Parameters.AddWithValue("Cost", cost); 
             // command.Parameters.AddWithValue("Profit", profit);
-            Simulation sim = 
-            var bite = SimulationToByte(sim);
+            var bite = SimulationToByte(simulation);
             command.Parameters.AddWithValue("Binary_File", bite);
             try
             {

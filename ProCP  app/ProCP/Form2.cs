@@ -15,7 +15,6 @@ namespace ProCP
     public partial class Form2 : Form
     {
         
-        
         RCAEA rcaea; 
         string province;
         public Form2()
@@ -29,7 +28,7 @@ namespace ProCP
             dateTimePicker1.MinDate = DateTime.Now;
             setMinMaxDates();
             AddSoilTypestoComboBox();
-            RCAEA.simulation.OnDraw += new Simulation.DrawCropHandler(drawPictureBox);
+            rcaea.simulation.OnDraw += new Simulation.DrawCropHandler(drawPictureBox);
   
             populateProvinceOption();
             setClickEventForPictureBoxes();
@@ -56,7 +55,7 @@ namespace ProCP
         private void PictureBoxSingleClicked(object sender, MouseEventArgs e)
         {
             PictureBox pbox = (PictureBox)sender;
-            if(rcaea.selectedPlot == RCAEA.simulation.getPlot(pbox.Name))
+            if(rcaea.selectedPlot == rcaea.simulation.getPlot(pbox.Name))
             {
                 rcaea.selectedPlot = null;
                 soilTypeCbx.Enabled = false;
@@ -67,7 +66,7 @@ namespace ProCP
             else
             {
                 rcaea.submitChange = false;
-                rcaea.selectedPlot = RCAEA.simulation.getPlot(pbox.Name);
+                rcaea.selectedPlot = rcaea.simulation.getPlot(pbox.Name);
                 soilTypeCbx.Enabled = true;
                 string soiltype = rcaea.selectedPlot.getSoilType();
                 for(int i = 0; i < soilTypeCbx.Items.Count; i++)
@@ -90,27 +89,27 @@ namespace ProCP
         {
             PictureBox pbox = (PictureBox)sender;
             
-            rcaea.selectedPlot = RCAEA.simulation.getPlot(pbox.Name);
+            rcaea.selectedPlot = rcaea.simulation.getPlot(pbox.Name);
             if (e.Button == MouseButtons.Left)
             {  
                 if(rcaea.componentSelected != "" && rcaea.componentSelected != null)
                 {
-                    RCAEA.simulation.addCrop(RCAEA.simulation.database.GetCrop(rcaea.componentSelected), rcaea.selectedPlot);
+                    rcaea.simulation.addCrop(rcaea.simulation.database.GetCrop(rcaea.componentSelected), rcaea.selectedPlot);
                     FillPlotInfo(rcaea.selectedPlot);
                 }
             }
             else if(e.Button == MouseButtons.Right)
             {
-                RCAEA.simulation.removeCrop(rcaea.selectedPlot);
+                rcaea.simulation.removeCrop(rcaea.selectedPlot);
                 FillPlotInfo(rcaea.selectedPlot);
             }
-            if (RCAEA.simulation.getNumberOfCrops()>0)
+            if (rcaea.simulation.getNumberOfCrops()>0)
             {
                 provinceCbx.Enabled = false;
                 wateringCbx.Enabled = false;
                 fertilizerCbx.Enabled = false;
             }
-            else if ( RCAEA.simulation.getNumberOfCrops()==0)
+            else if ( rcaea.simulation.getNumberOfCrops()==0)
             {
                 provinceCbx.Enabled = true;
                 wateringCbx.Enabled = true;
@@ -121,7 +120,7 @@ namespace ProCP
         }
         private void setClickEventForPictureBoxes()
         {
-            foreach(Plot p in RCAEA.simulation.plots)
+            foreach(Plot p in rcaea.simulation.plots)
             {
                 
                 ((PictureBox)this.panel1.Controls[p.PlotId]).MouseClick += new MouseEventHandler((PictureBoxSingleClicked));
@@ -131,11 +130,11 @@ namespace ProCP
         }
         private void populateCropPanelSelection()
         {
-            string[] all = RCAEA.simulation.database.getCropNamesBySeason("ALL");
-            string[] spring = RCAEA.simulation.database.getCropNamesBySeason("SPRING");
-            string[] summer = RCAEA.simulation.database.getCropNamesBySeason("SUMMER");
-            string[] fall = RCAEA.simulation.database.getCropNamesBySeason("FALL");
-            string[] winter = RCAEA.simulation.database.getCropNamesBySeason("WINTER");
+            string[] all = rcaea.simulation.database.getCropNamesBySeason("ALL");
+            string[] spring = rcaea.simulation.database.getCropNamesBySeason("SPRING");
+            string[] summer = rcaea.simulation.database.getCropNamesBySeason("SUMMER");
+            string[] fall = rcaea.simulation.database.getCropNamesBySeason("FALL");
+            string[] winter = rcaea.simulation.database.getCropNamesBySeason("WINTER");
 
             yrMenuStrip.Items.Clear();
             springMenuStrip.Items.Clear();
@@ -185,7 +184,7 @@ namespace ProCP
         private void AddSoilTypestoComboBox()
         {
             soilTypeCbx.Items.Clear();
-            string[] array = RCAEA.simulation.database.getAllSoilTypeNames();
+            string[] array = rcaea.simulation.database.getAllSoilTypeNames();
             foreach (var st in array)
             {
                 this.soilTypeCbx.Items.Add(st);
@@ -199,7 +198,7 @@ namespace ProCP
             if (e.Button == MouseButtons.Left)
             {
                 ToolStripItem item = (ToolStripItem)sender;
-                yrSplitBtn.Image = RCAEA.simulation.database.GetImage(item.Name, 3);
+                yrSplitBtn.Image = rcaea.simulation.database.GetImage(item.Name, 3);
                 yrSplitBtn.Text = item.Text;
                 rcaea.componentSelected = item.Text;
             }
@@ -210,7 +209,7 @@ namespace ProCP
             if (e.Button == MouseButtons.Left)
             {
                 ToolStripItem item = (ToolStripItem)sender;
-               summerSplitBtn.Image = RCAEA.simulation.database.GetImage(item.Name, 3);
+               summerSplitBtn.Image = rcaea.simulation.database.GetImage(item.Name, 3);
                summerSplitBtn.Text = item.Text;
                 rcaea.componentSelected = item.Text;
             }
@@ -221,7 +220,7 @@ namespace ProCP
             if (e.Button == MouseButtons.Left)
             {
                 ToolStripItem item = (ToolStripItem)sender;
-                winterSplitBtn.Image = RCAEA.simulation.database.GetImage(item.Name, 3);
+                winterSplitBtn.Image = rcaea.simulation.database.GetImage(item.Name, 3);
                 winterSplitBtn.Text = item.Text;
                 rcaea.componentSelected = item.Text;
             }
@@ -232,7 +231,7 @@ namespace ProCP
             if (e.Button == MouseButtons.Left)
             {
                 ToolStripItem item = (ToolStripItem)sender;
-                springSplitBtn.Image = RCAEA.simulation.database.GetImage(item.Name, 3);
+                springSplitBtn.Image = rcaea.simulation.database.GetImage(item.Name, 3);
                 springSplitBtn.Text = item.Text;
                 rcaea.componentSelected = item.Text;
             }
@@ -243,7 +242,7 @@ namespace ProCP
             if (e.Button == MouseButtons.Left)
             {
                 ToolStripItem item = (ToolStripItem)sender;
-                fallSplitBtn.Image = RCAEA.simulation.database.GetImage(item.Name, 3);
+                fallSplitBtn.Image = rcaea.simulation.database.GetImage(item.Name, 3);
                 fallSplitBtn.Text = item.Text;
                 rcaea.componentSelected = item.Text;
             }
@@ -251,7 +250,7 @@ namespace ProCP
 
 
         private void populateProvinceOption()
-        { string[] array = RCAEA.simulation.database.getProvinceNames();
+        { string[] array = rcaea.simulation.database.getProvinceNames();
             provinceCbx.Items.Clear();
             foreach (var v in array)
             {
@@ -320,7 +319,7 @@ namespace ProCP
         {
                 if(rcaea.selectedPlot != null || rcaea.submitChange)
                  {
-                p.setSoilType(RCAEA.simulation.database.getSoilType(soilTypeCbx.SelectedItem.ToString()));
+                p.setSoilType(rcaea.simulation.database.getSoilType(soilTypeCbx.SelectedItem.ToString()));
 
                 FillPlotInfo(rcaea.selectedPlot);
                 
@@ -337,7 +336,7 @@ namespace ProCP
 
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
-            RCAEA.simulation.SetEndDate(dateTimePicker2.Value);
+            rcaea.simulation.SetEndDate(dateTimePicker2.Value);
            
         }
 
@@ -353,7 +352,7 @@ namespace ProCP
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            RCAEA.simulation.SetBeginDate(dateTimePicker1.Value);
+            rcaea.simulation.SetBeginDate(dateTimePicker1.Value);
             setMinMaxDates();
             
         }
@@ -375,9 +374,9 @@ namespace ProCP
 
         private void provinceCbx_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (RCAEA.simulation.getNumberOfCrops() == 0)
+            if (rcaea.simulation.getNumberOfCrops() == 0)
             {
-                RCAEA.simulation.Province = provinceCbx.SelectedItem.ToString();
+                rcaea.simulation.Province = provinceCbx.SelectedItem.ToString();
 
                 if(rcaea.selectedPlot != null)
                 {
@@ -416,7 +415,7 @@ namespace ProCP
                 ((PictureBox)this.panel1.Controls[pictureBox]).Image = null;
             }
             else {
-                ((PictureBox)this.panel1.Controls[pictureBox]).Image = RCAEA.simulation.database.GetImage(CropName, ImageNumber);
+                ((PictureBox)this.panel1.Controls[pictureBox]).Image = rcaea.simulation.database.GetImage(CropName, ImageNumber);
             }
         }
         private void Form2_Load(object sender, EventArgs e)
@@ -427,11 +426,11 @@ namespace ProCP
         private void fertilizerCbx_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            if (RCAEA.simulation.getNumberOfCrops() == 0)
+            if (rcaea.simulation.getNumberOfCrops() == 0)
             {
 
 
-                RCAEA.simulation.SetFertilizer(fertilizerCbx.SelectedItem.ToString());
+                rcaea.simulation.SetFertilizer(fertilizerCbx.SelectedItem.ToString());
 		if (rcaea.selectedPlot != null)
             {
                 FillPlotInfo(rcaea.selectedPlot);
@@ -448,11 +447,11 @@ namespace ProCP
         private void wateringCbx_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            if (RCAEA.simulation.getNumberOfCrops() == 0)
+            if (rcaea.simulation.getNumberOfCrops() == 0)
             {
 
 
-                RCAEA.simulation.Setwatering(wateringCbx.SelectedItem.ToString());
+                rcaea.simulation.Setwatering(wateringCbx.SelectedItem.ToString());
 			    if (rcaea.selectedPlot != null)
             {
                 FillPlotInfo(rcaea.selectedPlot);
@@ -490,7 +489,7 @@ namespace ProCP
             plotInfoLstbx.Items.Add("------------------");
             if (p.getNumberOfCrops() != 0)
             {
-                if (p.plotWeeks[RCAEA.simulation.CurrentWeek].isEmpty)
+                if (p.plotWeeks[rcaea.simulation.CurrentWeek].isEmpty)
                 {
                     string[] Crops = p.getAllCropNamesInPlotWithStartEndDates();
                     foreach(string s in Crops)
@@ -502,8 +501,8 @@ namespace ProCP
                 {
                     CropData currentPlot = p.GetCurrentCropData();
                     plotInfoLstbx.Items.Add("Currently Selected Crop");
-                    plotInfoLstbx.Items.Add("Set at " + RCAEA.simulation.DateToString(currentPlot.GetBeginDate()));
-                    plotInfoLstbx.Items.Add("Matured at: " + RCAEA.simulation.DateToString(currentPlot.GetEndDate()));
+                    plotInfoLstbx.Items.Add("Set at " + rcaea.simulation.DateToString(currentPlot.GetBeginDate()));
+                    plotInfoLstbx.Items.Add("Matured at: " + rcaea.simulation.DateToString(currentPlot.GetEndDate()));
                     plotInfoLstbx.Items.Add("Current Status: ");
                     plotInfoLstbx.Items.Add(currentPlot.getHealth());
                 }
@@ -518,17 +517,27 @@ namespace ProCP
         }
         private void save()
         {
-            if (!String.IsNullOrEmpty(RCAEA.simulation.SimulationName)){
-                RCAEA.simulation.simulationStorage.SaveSimulation(RCAEA.simulation.SimulationName);
+            if (rcaea.SimulationNameIsSet())
+            {
+                if (rcaea.SaveSimulation())
+                {
+
+                    error("Save Succesful");
+                }
+                else
+                {
+                    error("Save unsucessful");
+                }
             }
             else
             {
                 saveAs();
             }
+          
         }
         private void load()
         {
-            LoadWindow load = new LoadWindow();
+            LoadWindow load = new LoadWindow(this);
             load.Show();
         }
 
@@ -549,13 +558,65 @@ namespace ProCP
         private void newSimulation()
         {
             province = "Drenthe";
-            Simulation NewSimlation = new Simulation("connection.ini", "connection.ini", province);
-            RCAEA.simulation = NewSimlation;
+            Simulation NewSimulation = new Simulation("connection.ini", "connection.ini", province);
+            NewSimulation.OnDraw += new Simulation.DrawCropHandler(drawPictureBox);
+            rcaea.newSimulation(NewSimulation);
             }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
             newSimulation();
+        }
+        public void setSimulationNameandDecription(string name, string description)
+        {
+            rcaea.setSimulationName(name);
+            if (!String.IsNullOrEmpty(description)){
+                rcaea.setSimulationDescription(description);
+            }
+            if (rcaea.SaveSimulation())
+            {
+
+                error("Save Succesful");
+            }
+            else
+            {
+                error("Save unsucessful");
+            }
+        }
+        public void loadSimulation(string simulationName)
+        {
+            if (rcaea.loadSimulation(simulationName))
+            {
+                error("Load Successful");
+            }
+            else
+            {
+                error("Load unsuccessful");
+            }
+        }
+        public string[] loadSimulationNames()
+        {
+            return rcaea.simulationStorage.LoadSimulationNames();
+        }
+        public string[] loadSimulationDescription()
+        {
+            return rcaea.simulationStorage.LoadSimulationDescriptions();
+        }
+        public string[] loadSimulationCosts()
+        {
+            return rcaea.simulationStorage.LoadSimulationCosts();
+        }
+        public string[] loadSimulationDescriptions()
+        {
+            return rcaea.simulationStorage.LoadSimulationDescriptions();
+        }
+        public string[] loadSimulationDates()
+        {
+            return rcaea.simulationStorage.LoadSimulationDates();
+        }
+        public string[] loadSimulationProfits()
+        {
+            return rcaea.simulationStorage.LoadSimulationProfit();
         }
     }
 }

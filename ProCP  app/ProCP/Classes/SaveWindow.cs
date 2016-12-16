@@ -12,8 +12,8 @@ namespace ProCP.Classes
 {
     public partial class SaveWindow : Form
     {
-        string filename;
         Form2 form;
+
         public SaveWindow(Form2 form)
         {
             InitializeComponent();
@@ -23,17 +23,10 @@ namespace ProCP.Classes
         private void OkButton_Click(object sender, EventArgs e)
         {
             if (!String.IsNullOrWhiteSpace(saveText.Text)){
-                RCAEA.simulation.SimulationName = saveText.Text;
-                if (RCAEA.simulation.simulationStorage.SaveSimulation(descriptionText.Text))
-                {
-                   DialogResult result = MessageBox.Show("Save Successful");
-                    if (result == DialogResult.OK)
-                    {
+                form.setSimulationNameandDecription(saveText.Text,descriptionText.Text);
                         this.Close();
-                    }
-
+                
                 }
-            }
             else
             {
                 MessageBox.Show("Please Enter a Filename");

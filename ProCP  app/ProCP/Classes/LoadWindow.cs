@@ -14,8 +14,10 @@ namespace ProCP.Classes
     {
         string simulationName;
         bool empty;
-        public LoadWindow()
+        Form2 form;
+        public LoadWindow(Form2 form2)
         {
+            this.form = form2;
             InitializeComponent();
             loadSimulationName();
         }
@@ -24,19 +26,14 @@ namespace ProCP.Classes
         {
             if (!String.IsNullOrEmpty(simulationName))
             {
-               Simulation loaded=  RCAEA.simulation.simulationStorage.LoadSimulation(simulationName);
-                RCAEA.simulation = loaded;
-                DialogResult result = MessageBox.Show("Load Successful");
-                if (result == DialogResult.OK)
-                {
-                    this.Close();
-                }
+                form.loadSimulation(simulationName);
+                    this.Close();  
             }
         }
         private void loadSimulationName()
         {
             string[] names = null;
-            names = RCAEA.simulation.simulationStorage.LoadSimulationNames();
+            names = form.loadSimulationNames();
             if(names != null)
             {
                 foreach (string s in names)
@@ -51,7 +48,7 @@ namespace ProCP.Classes
                 simulationList.Items.Add("No Simulations Saved");
                 return;
             }
-            names = RCAEA.simulation.simulationStorage.LoadSimulationDescriptions();
+            names = form.loadSimulationDescriptions();
             ListViewItem item = new ListViewItem();
             if(names != null)
             {
@@ -65,7 +62,7 @@ namespace ProCP.Classes
             {
                 simulationList.Columns.Remove(Description);
             }
-            names = RCAEA.simulation.simulationStorage.LoadSimulationDates();
+            names = form.loadSimulationDates();
             ListViewItem item2 = new ListViewItem();
             if (names != null)
             {
@@ -79,7 +76,7 @@ namespace ProCP.Classes
             {
                 simulationList.Columns.Remove(Date);
             }
-            names = RCAEA.simulation.simulationStorage.LoadSimulationCosts();
+            names = form.loadSimulationCosts();
             ListViewItem item3 = new ListViewItem();
             if (names != null)
             {
@@ -93,7 +90,7 @@ namespace ProCP.Classes
             {
                 simulationList.Columns.Remove(Cost);
             }
-            names = RCAEA.simulation.simulationStorage.LoadSimulationDescriptions();
+            names = form.loadSimulationProfits();
             ListViewItem item4 = new ListViewItem();
             if (names != null)
             {

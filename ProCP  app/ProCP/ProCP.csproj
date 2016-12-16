@@ -58,7 +58,6 @@
     <Compile Include="Classes\CropData.cs" />
     <Compile Include="Classes\Crop_Week.cs" />
     <Compile Include="Classes\Database.cs" />
-    <Compile Include="Classes\FileHandler.cs" />
     <Compile Include="Classes\Images.cs" />
     <Compile Include="Classes\LoadWindow.cs">
       <SubType>Form</SubType>
