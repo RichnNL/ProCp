@@ -135,3 +135,5 @@ C:\Users\Dyer\Documents\GitHub\ProCp\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.exe
 C:\Users\Dyer\Documents\GitHub\ProCp\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.pdb
 C:\Users\Dyer\Documents\GitHub\ProCp\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.Classes.LoadWindow.resources
 C:\Users\Dyer\Documents\GitHub\ProCp\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.Classes.SaveWindow.resources
+C:\Users\Khan\Documents\GitHub\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.Classes.LoadWindow.resources
+C:\Users\Khan\Documents\GitHub\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.Classes.SaveWindow.resources

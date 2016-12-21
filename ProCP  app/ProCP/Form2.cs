@@ -337,7 +337,9 @@ namespace ProCP
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
             rcaea.simulation.SetEndDate(dateTimePicker2.Value);
-           
+
+            label2.Text = rcaea.simulation.EndDate.ToString("yyyy-MM-dd");
+
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -354,7 +356,9 @@ namespace ProCP
         {
             rcaea.simulation.SetBeginDate(dateTimePicker1.Value);
             setMinMaxDates();
-            
+
+            label1.Text = rcaea.simulation.BeginDate.ToString("yyyy-MM-dd");
+
         }
 
         private void pb86_Click(object sender, EventArgs e)
@@ -617,6 +621,36 @@ namespace ProCP
         public string[] loadSimulationProfits()
         {
             return rcaea.simulationStorage.LoadSimulationProfit();
+        }
+
+        private void playBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+        /// <summary>
+        /// Asking user for confirmation whenever going to exit
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+
+            if (e.CloseReason == CloseReason.WindowsShutDown) return;
+
+            // Confirm user wants to close
+            switch (MessageBox.Show(this, "Do you really want to Exit?", "Exit", MessageBoxButtons.YesNo))
+            {
+                case DialogResult.No:
+                    e.Cancel = true;
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
