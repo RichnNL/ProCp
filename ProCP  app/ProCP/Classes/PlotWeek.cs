@@ -13,7 +13,7 @@ namespace ProCP.Classes
         public decimal SaturationLooseRate { get; set; }
         public decimal SoilNutrition { get; set; }
         public decimal MaximumSoilNutrition { get; set; }
-        private Weather weather;
+        public Weather weather;
         private Crop crop;
         public bool imageChange { get; set; }
         public int imageNumber { get; set; }

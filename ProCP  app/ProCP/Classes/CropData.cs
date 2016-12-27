@@ -25,17 +25,23 @@ namespace ProCP.Classes
 
         private DateTime endDate;
 
-        private bool isAlive =true;
+        private bool isAlive;
 
         private string Crop_Health = "";
-   
 
+       
+
+        public CropData(string health)
+        {
+            this.Crop_Health = health;
+        }
         public CropData(DateTime begin, DateTime end, bool Alive, string health)
         {
             this.beginDate = begin;
             this.endDate = end;
             this.isAlive = Alive;
             this.Crop_Health = health;
+         
         }
         public CropData(DateTime begin, DateTime end, bool Alive, string health, decimal watercosts, decimal fertilizer)
         {
@@ -45,6 +51,7 @@ namespace ProCP.Classes
             this.Crop_Health = health;
             this.waterCosts = watercosts;
             this.fertilizerCosts = fertilizer;
+           
         }
         public CropData(DateTime begin, DateTime end, bool Alive, string health, decimal watercosts, decimal fertilizer,decimal totalcosts)
         {
@@ -55,6 +62,7 @@ namespace ProCP.Classes
             this.waterCosts = watercosts;
             this.fertilizerCosts = fertilizer;
             this.totalCosts = totalcosts;
+            
         }
         public CropData(DateTime begin, DateTime end, bool Alive, string health, decimal watercosts, decimal fertilizer, decimal totalcosts,int yield)
         {
@@ -66,6 +74,7 @@ namespace ProCP.Classes
             this.fertilizerCosts = fertilizer;
             this.totalCosts = totalcosts;
             this.yield = yield;
+          
         }
         public CropData(DateTime begin, DateTime end, bool Alive, string health, int yield)
         {
@@ -74,6 +83,7 @@ namespace ProCP.Classes
             this.isAlive = Alive;
             this.Crop_Health = health;
             this.yield = yield;
+        
         }
         public CropData(DateTime begin, DateTime end, bool Alive, string health, decimal totalcosts, int yield)
         {
@@ -83,6 +93,7 @@ namespace ProCP.Classes
             this.Crop_Health = health;
             this.totalCosts = totalcosts;
             this.yield = yield;
+            
         }
 
         public DateTime GetBeginDate()
@@ -122,6 +133,5 @@ namespace ProCP.Classes
             return isAlive;
         }
        
-
     }
 }

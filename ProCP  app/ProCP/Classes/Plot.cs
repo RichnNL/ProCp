@@ -13,13 +13,17 @@ namespace ProCP.Classes
         private SoilType soiltype;
         public List<PlotWeek> plotWeeks;
         private int hasCrop;
+        private int cropsHarvested;
+        private Simulation simulation;
 
 
-        public Plot(string PlotId,SoilType soiltype,int intialWeeks)
+        public Plot(string PlotId,SoilType soiltype,int intialWeeks,Simulation simulation)
         {
             this.PlotId = PlotId;
             this.soiltype = soiltype;
             this.hasCrop = 0;
+            this.cropsHarvested = 0;
+            this.simulation = simulation;
             plotWeeks = new List<PlotWeek>();
             for(int i = 0; i < intialWeeks; i++)
             {
@@ -35,7 +39,7 @@ namespace ProCP.Classes
             int length = crop.GetMaturityLength();
             if (canInsertPlot(length))
             {
-                int week = RCAEA.simulation.CurrentWeek;
+                int week = simulation.CurrentWeek;
                 for (int i = 0; i < length; i++, week++)
                 {
                     plotWeeks[week].setCrop(crop);
@@ -73,15 +77,61 @@ namespace ProCP.Classes
 
         
         public bool RemoveAllCrop(List<int> getploposition) { return false; }
-        public CropData GetCurrentCropData() { return null; }
-        public CropData GetCropSummary() { return null; }
+        public CropData GetCurrentCropData() {
+            CropData cropdata;
+            int now = simulation.CurrentWeek;
+            Crop crop;
+            int beginWeek;
+            if (isNotEmptyAtSpecificWeek(now,out crop, out beginWeek))
+            {
+                bool alive;
+                int health = plotWeeks[now].getCrop().weeks[now - beginWeek].Health;
+                string health_details = "Crop " + crop.GetCropName();
+                if ( health > 1){
+                    alive = false;
+                }
+                else
+                {
+                    alive = true;
+                }
+                if(health > 90)
+                {
+                    health_details += " is very healthly.";
+                }
+                else if(health < 90 && health > 50)
+                {
+                    health_details += " is need more care.";
+                }
+                else if(health < 50 && health > 20)
+                {
+                    health_details += " need more care.";
+                }
+                else
+                {
+                    health_details += " needs urgent care.";
+                }
+
+                cropdata = new CropData(simulation.weekToDate(beginWeek), simulation.weekToDate(beginWeek + crop.GetMaturityLength()), alive, health_details);
+                return cropdata;
+            }
+            else
+            {
+                return null;  
+            }
+
+        }
+        public CropData GetCropSummary() {
+            
+          
+            return null;
+        }
         public CropData GetCropDataByDate(DateTime d) { return null; }
        
         public void NurishLand() { }
 
         public void Manageweeks()
         {
-            int nbrWeeks = RCAEA.simulation.GetNumberOfWeeks();
+            int nbrWeeks = simulation.GetNumberOfWeeks();
             int pweeks = plotWeeks.Count;
             if(nbrWeeks != pweeks)
             {
@@ -90,7 +140,12 @@ namespace ProCP.Classes
                 {
                     temp.Add(new PlotWeek());
                 }
+                
                 plotWeeks = temp;
+                for(int i = 0; i < plotWeeks.Count; i++)
+                {
+                    setWeatherForWeek(i);
+                }
                 setSoilType(this.soiltype);
             }
            
@@ -98,6 +153,7 @@ namespace ProCP.Classes
   
       
         public void CalBeginToEnd() {
+            cropsHarvested = 0;
             if(hasCrop == 0)
             {
                 setSoilType(this.soiltype);
@@ -136,13 +192,13 @@ namespace ProCP.Classes
                 if(CropMaturity == 0)
                 {
                     //if Crop is being intialized
-                    crop.weeks[CropMaturity].maturity = 0;
+                    
                     plotWeeks[week].imageNumber = 0;
                     plotWeeks[week].imageChange = true;
                 }
-                else if(crop.GetMaturityLength() > crop.weeks[CropMaturity].maturity)
+                else if( CropMaturity == crop.GetMaturityLength() && plotWeeks[week].getCrop().weeks[CropMaturity].Health > 0)
                 {
-                    crop.weeks[CropMaturity].maturity = crop.weeks[CropMaturity - 1].maturity + 1; ;
+                    cropsHarvested++;
                 }
                 
             }
@@ -162,9 +218,10 @@ namespace ProCP.Classes
         private bool canInsertPlot(int maturity)
         {
             //Checks if Enough Weeks Available and if the plot is empty
-            int now = RCAEA.simulation.CurrentWeek;
+            int now = simulation.CurrentWeek;
+           
             int then = maturity + now;
-            if (RCAEA.simulation.GetNumberOfWeeks() - then > 0)
+            if (simulation.GetNumberOfWeeks() - then > 0)
             {
                 for(int c = now; c <= then; c++)
                 {
@@ -182,7 +239,7 @@ namespace ProCP.Classes
         }
         private PlotWeek getCurrentPlotWeek()
         {
-            return plotWeeks[RCAEA.simulation.CurrentWeek];
+            return plotWeeks[simulation.CurrentWeek];
         }
 
         private bool isNotEmptyAtSpecificWeek(int week)
@@ -234,7 +291,95 @@ namespace ProCP.Classes
             return true;
             
         }
+        public string getSoilType()
+        {
+            return this.soiltype.GetName();
+        }
+        public string[] getAllCropNamesInPlotWithStartEndDates()
+        {
+            List<string> list = new List<string>();
+            int startweek = -1;
+            int endweek = -1;
+            if(hasCrop == 0)
+            {
+                return null;
+            }
+            for (int i = 0; i< plotWeeks.Count; i++)
+            {
+                if(i == 0 )
+                { 
+                    if (!plotWeeks[i].isEmpty)
+                    {
+                        startweek = i;
+                    }
+                }
+                else
+                {
+                    if (!plotWeeks[i].isEmpty)
+                    {
+                        if (plotWeeks[i - 1].isEmpty || plotWeeks[i].getCrop() != plotWeeks[i - 1].getCrop() || i == plotWeeks.Count - 1)
+                        {
+                            if(startweek == -1)
+                            {
+                                startweek = i;
+                            }
+                            else if(!plotWeeks[i - 1].isEmpty)
+                            {
+                                // The Week holds a crop but is different therefore the week before is the end date and the week is the begin date to another crop
+                                if(i == plotWeeks.Count - 1)
+                                {
+                                    endweek = i;
+                                }
+                                else
+                                {
+                                    endweek = i - 1;
+                                }
+                                list.Add(plotWeeks[i - 1].getCrop().GetCropName());
+                                DateTime date = simulation.weekToDate(startweek);
+                                string Date = simulation.DateToString(date);
+                                list.Add("Start Date: " + Date);
+                                date = simulation.weekToDate(endweek);
+                                Date = simulation.DateToString(date);
+                                list.Add("End Date: " + Date);
+                                startweek = i;
+                                endweek = -1;
+                            }
+                        }
+                        
+                    }
+                    else if(plotWeeks[i].isEmpty && startweek != -1)
+                    {   //The week holds no crop therefore the before is the end date
+                        endweek = i - 1;
+                        list.Add(plotWeeks[i - 1].getCrop().GetCropName());
+                        DateTime date = simulation.weekToDate(startweek);
+                        string Date = simulation.DateToString(date);
+                        list.Add("Start Date: " + Date);
+                        date = simulation.weekToDate(endweek);
+                        Date = simulation.DateToString(date);
+                        list.Add("End Date: " + Date);
+                        startweek = -1;
+                        endweek = -1;
+                    }
+                }
 
+                
+            }
+            return list.ToArray();
+        }
+        public int getNumberOfCrops()
+        {
+            return hasCrop;
+        }
+        public int getNumberOfHarvestedCrops()
+        {
+            return cropsHarvested;
+        }
+        private void setWeatherForWeek(int week)
+        {
+            DateTime date = simulation.weekToDate(week);
+            plotWeeks[week].weather = simulation.database.GetWeather(simulation.Province, date.Month, date.Year);
+        }
+    
         
 
     }
