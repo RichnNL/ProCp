@@ -127,7 +127,9 @@ namespace ProCP.Classes
         }
         public CropData GetCropDataByDate(DateTime d) { return null; }
        
-        public void NurishLand() { }
+        public void NurishLand() 
+        
+        { }
 
         public void Manageweeks()
         {
