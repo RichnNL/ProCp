@@ -130,7 +130,27 @@ namespace ProCP.Classes
         public void NurishLand() 
         
         { }
+        public void CalculateWaterFactor(String s)
+        {
+            foreach (PlotWeek p in plotWeeks)
+            {
+                decimal i = p.weather.GetRain();
+                p.getCrop().currentwater = i;
+                if (s == "small")
+                { p.getCrop().currentwater = 500; }
 
+                else if (s == "medium")
+                { p.getCrop().currentwater = 1000; }
+                else if  (s == "large")
+                { p.getCrop().currentwater = 1500; }
+            }
+
+        }
+        public void calculateWater()
+        { 
+       
+        
+        }
         public void Manageweeks()
         {
             int nbrWeeks = simulation.GetNumberOfWeeks();
