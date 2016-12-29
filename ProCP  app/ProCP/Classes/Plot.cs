@@ -133,16 +133,17 @@ namespace ProCP.Classes
         public void CalculateWaterFactor(String s)
         {
             foreach (PlotWeek p in plotWeeks)
-            {
+            { 
                 decimal i = p.weather.GetRain();
-                p.getCrop().currentwater = i;
+                p.getCrop().currentwater = p.getCrop().currentwater+i;
                 if (s == "small")
-                { p.getCrop().currentwater = 500; }
+                
+                { p.getCrop().currentwater = p.getCrop().currentwater + 500; }
 
                 else if (s == "medium")
-                { p.getCrop().currentwater = 1000; }
+                { p.getCrop().currentwater = p.getCrop().currentwater + 1000; }
                 else if  (s == "large")
-                { p.getCrop().currentwater = 1500; }
+                { p.getCrop().currentwater = p.getCrop().currentwater + 1500; }
             }
 
         }

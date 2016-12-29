@@ -8,6 +8,7 @@ namespace ProCP.Classes
 {
     class Crop
     {
+        public decimal currentwater;
         private string cropName;
         private int maturityLength;
         private decimal waterMinimum;
