@@ -74,8 +74,21 @@ namespace ProCP.Classes
             }
 
         }
+        /// <summary>
+        /// Calculate Soil Factor
+        /// </summary>
+        public void CalculateSoilFactor()
+        {
+            int totalFertilizer = simulation.Fertilizer;
+            int amountEveryWeek = totalFertilizer / simulation.GetNumberOfWeeks();
 
-        
+            foreach (PlotWeek p in plotWeeks)
+            {
+                p.getCrop().currentFertilizer = amountEveryWeek;
+
+            }
+        }
+
         public bool RemoveAllCrop(List<int> getploposition) { return false; }
         public CropData GetCurrentCropData() {
             CropData cropdata;
@@ -86,6 +99,16 @@ namespace ProCP.Classes
             {
                 bool alive;
                 int health = plotWeeks[now].getCrop().weeks[now - beginWeek].Health;
+
+                CalculateSoilFactor();
+                foreach (PlotWeek p in plotWeeks)
+                {
+                    if (p.getCrop().currentFertilizer < p.getCrop().GetNeededNutrition())
+                    {
+                        health -= 10;
+                    }
+                }
+
                 string health_details = "Crop " + crop.GetCropName();
                 if ( health > 1){
                     alive = false;
