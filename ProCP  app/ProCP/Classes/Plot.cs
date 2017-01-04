@@ -74,8 +74,21 @@ namespace ProCP.Classes
             }
 
         }
+        /// <summary>
+        /// Calculate Soil Factor
+        /// </summary>
+        public void CalculateSoilFactor()
+        {
+            int totalFertilizer = simulation.Fertilizer;
+            int amountEveryWeek = totalFertilizer / simulation.GetNumberOfWeeks();
 
-        
+            foreach (PlotWeek p in plotWeeks)
+            {
+                p.getCrop().currentFertilizer = amountEveryWeek;
+
+            }
+        }
+
         public bool RemoveAllCrop(List<int> getploposition) { return false; }
         public CropData GetCurrentCropData() {
             CropData cropdata;
@@ -86,6 +99,16 @@ namespace ProCP.Classes
             {
                 bool alive;
                 int health = plotWeeks[now].getCrop().weeks[now - beginWeek].Health;
+
+                CalculateSoilFactor();
+                foreach (PlotWeek p in plotWeeks)
+                {
+                    if (p.getCrop().currentFertilizer < p.getCrop().GetNeededNutrition())
+                    {
+                        health -= 10;
+                    }
+                }
+
                 string health_details = "Crop " + crop.GetCropName();
                 if ( health > 1){
                     alive = false;
@@ -127,8 +150,31 @@ namespace ProCP.Classes
         }
         public CropData GetCropDataByDate(DateTime d) { return null; }
        
-        public void NurishLand() { }
+        public void NurishLand() 
+        
+        { }
+        public void CalculateWaterFactor(String s)
+        {
+            foreach (PlotWeek p in plotWeeks)
+            { 
+                decimal i = p.weather.GetRain();
+                p.getCrop().currentwater = p.getCrop().currentwater+i;
+                if (s == "small")
+                
+                { p.getCrop().currentwater = p.getCrop().currentwater + 500; }
 
+                else if (s == "medium")
+                { p.getCrop().currentwater = p.getCrop().currentwater + 1000; }
+                else if  (s == "large")
+                { p.getCrop().currentwater = p.getCrop().currentwater + 1500; }
+            }
+
+        }
+        public void calculateWater()
+        { 
+       
+        
+        }
         public void Manageweeks()
         {
             int nbrWeeks = simulation.GetNumberOfWeeks();

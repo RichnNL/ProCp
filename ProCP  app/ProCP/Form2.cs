@@ -630,7 +630,7 @@ namespace ProCP
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
         /// <summary>
         /// Asking user for confirmation whenever going to exit
@@ -638,18 +638,19 @@ namespace ProCP
         /// <param name="e"></param>
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            base.OnFormClosing(e);
-
-            if (e.CloseReason == CloseReason.WindowsShutDown) return;
-
-            // Confirm user wants to close
-            switch (MessageBox.Show(this, "Do you really want to Exit?", "Exit", MessageBoxButtons.YesNo))
+            DialogResult dialogResult = MessageBox.Show("Do you want to save before Exit?", "Exit", MessageBoxButtons.YesNoCancel);
+            if (dialogResult == DialogResult.Yes)
             {
-                case DialogResult.No:
-                    e.Cancel = true;
-                    break;
-                default:
-                    break;
+                e.Cancel = true;
+                save();
+            }
+            else if (dialogResult == DialogResult.Cancel)
+            {
+                e.Cancel = true;
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                e.Cancel = false;
             }
         }
     }
