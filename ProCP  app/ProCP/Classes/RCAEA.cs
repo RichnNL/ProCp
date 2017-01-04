@@ -27,16 +27,8 @@ namespace ProCP.Classes
         }
         public bool loadSimulation(string simulationName)
         {
-           Simulation loadedSimulation = simulationStorage.LoadSimulation(simulationName);
-            if(loadedSimulation != null)
-            {
-                newSimulation(loadedSimulation);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+           List<Plot> loadedSimulationPlots = simulationStorage.LoadSimulation(simulationName);
+            return true;
             
             
         }

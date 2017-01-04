@@ -12,6 +12,7 @@ using System.Data;
 
 namespace ProCP.Classes
 {
+    [Serializable]
     class Database
     {
         private MySqlConnection connection;

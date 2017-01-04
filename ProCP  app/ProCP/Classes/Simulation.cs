@@ -11,9 +11,11 @@ namespace ProCP.Classes
     [Serializable]
     class Simulation
     {
+       
         public delegate void DrawCropHandler(string pictureBox, string CropName, int ImageNumber);
         [field: NonSerialized]
         public event DrawCropHandler OnDraw;
+        [field: NonSerialized]
         Timer time;
         public string SimulationName { get; set; }
         public string SimulationDescription { get; set; }
@@ -350,6 +352,10 @@ namespace ProCP.Classes
         public string DateToString(DateTime date)
         {
             return date.ToString("dd/MM/yyyy");
+        }
+        public List<Plot> getListOfPlots()
+        {
+            return plots;
         }
      
        

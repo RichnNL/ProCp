@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProCP.Classes
 {
+    [Serializable]
     class Plot
     {
         public string PlotId;
@@ -428,7 +429,7 @@ namespace ProCP.Classes
         private void calTempertaute(Crop c, int CropWeek, int PlotWeek)
         {
             decimal temperature = plotWeeks[PlotWeek].getTemperture() - c.GetTemperature();
-            if(temperature)
+            //if(temperature)
         }
     
         
