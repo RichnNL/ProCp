@@ -8,9 +8,11 @@ using System.Timers;
 
 namespace ProCP.Classes
 {
+    [Serializable]
     class Simulation
     {
         public delegate void DrawCropHandler(string pictureBox, string CropName, int ImageNumber);
+        [field: NonSerialized]
         public event DrawCropHandler OnDraw;
         Timer time;
         public string SimulationName { get; set; }
