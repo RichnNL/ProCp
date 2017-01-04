@@ -379,6 +379,11 @@ namespace ProCP.Classes
             DateTime date = simulation.weekToDate(week);
             plotWeeks[week].weather = simulation.database.GetWeather(simulation.Province, date.Month, date.Year);
         }
+        private void calTempertaute(Crop c, int CropWeek, int PlotWeek)
+        {
+            decimal temperature = plotWeeks[PlotWeek].getTemperture() - c.GetTemperature();
+            if(temperature)
+        }
     
         
 

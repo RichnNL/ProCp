@@ -57,6 +57,10 @@ namespace ProCP.Classes
                 return this.crop.GetCropName();
             }
         }
+        public decimal getTemperture()
+        {
+            return weather.GetTemp();
+        }
 
     }
 }
