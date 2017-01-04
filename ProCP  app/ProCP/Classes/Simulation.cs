@@ -13,6 +13,9 @@ namespace ProCP.Classes
         public delegate void DrawCropHandler(string pictureBox, string CropName, int ImageNumber);
         public event DrawCropHandler OnDraw;
         Timer time;
+        public string SimulationName { get; set; }
+        public string SimulationDescription { get; set; }
+        
 
         public List<Plot> plots;
     
@@ -88,7 +91,7 @@ namespace ProCP.Classes
 
 
         public  Database database;
-        private SimulationStorage simulationStorage;
+        
         public Statistics statistics;
 
 
@@ -120,7 +123,6 @@ namespace ProCP.Classes
             this.province = Province;
             setInitalDate();
             database = new Database(Province);
-            simulationStorage = new SimulationStorage(SimulationStorageDatabase);
             statistics = new Statistics();
             InitialPlots();
 
@@ -233,7 +235,7 @@ namespace ProCP.Classes
                 for(int j = 0; j < numberOfPlotRows; j++)
                 {
                     plotId = plotId + i.ToString() + j.ToString();
-                    plots.Add(new Plot(plotId, database.getDefaultSoilType(),totalWeeks));
+                    plots.Add(new Plot(plotId, database.getDefaultSoilType(),totalWeeks,this));
                     plotId = "pb";
                 }
             }
@@ -337,5 +339,17 @@ namespace ProCP.Classes
         {
             return numberOfCrops;
         }
+        public DateTime weekToDate(int week)
+        {
+            DateTime date = this.beginDate;
+            date = date.AddDays(week * 7);
+            return date;
+        }
+        public string DateToString(DateTime date)
+        {
+            return date.ToString("dd/MM/yyyy");
+        }
+     
+       
     }
 }

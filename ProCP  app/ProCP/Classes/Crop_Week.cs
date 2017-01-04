@@ -25,8 +25,9 @@ namespace ProCP.Classes
             get { return health; }
             set
             {
-                if (value > 100) { currentImage = 100; }
-                if (value < 0) { currentImage = 0; }
+                if (value > 100) { health = 100; }
+                if (value < 0) { health = 0; }
+                health = value;
             }
         }
         public Crop_Week() { }
