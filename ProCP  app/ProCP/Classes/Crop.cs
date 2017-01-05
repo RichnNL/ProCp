@@ -9,8 +9,6 @@ namespace ProCP.Classes
     [Serializable]
     class Crop
     {
-        public decimal currentwater;
-        public decimal currentFertilizer;
         private string cropName;
         private int maturityLength;
         private decimal waterMinimum;

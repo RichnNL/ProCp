@@ -15,6 +15,7 @@ namespace ProCP.Classes
         public List<PlotWeek> plotWeeks;
         private int hasCrop;
         private int cropsHarvested;
+        [field:NonSerialized]
         private Simulation simulation;
 
 
@@ -78,16 +79,9 @@ namespace ProCP.Classes
         /// <summary>
         /// Calculate Soil Factor
         /// </summary>
-        public void CalculateSoilFactor()
+        private void CalculateSoilFactor()
         {
-            int totalFertilizer = simulation.Fertilizer;
-            int amountEveryWeek = totalFertilizer / simulation.GetNumberOfWeeks();
-
-            foreach (PlotWeek p in plotWeeks)
-            {
-                p.getCrop().currentFertilizer = amountEveryWeek;
-
-            }
+           
         }
 
         public bool RemoveAllCrop(List<int> getploposition) { return false; }
@@ -100,16 +94,6 @@ namespace ProCP.Classes
             {
                 bool alive;
                 int health = plotWeeks[now].getCrop().weeks[now - beginWeek].Health;
-
-                CalculateSoilFactor();
-                foreach (PlotWeek p in plotWeeks)
-                {
-                    if (p.getCrop().currentFertilizer < p.getCrop().GetNeededNutrition())
-                    {
-                        health -= 10;
-                    }
-                }
-
                 string health_details = "Crop " + crop.GetCropName();
                 if ( health > 1){
                     alive = false;
@@ -158,16 +142,19 @@ namespace ProCP.Classes
         {
             foreach (PlotWeek p in plotWeeks)
             { 
-                decimal i = p.weather.GetRain();
-                p.getCrop().currentwater = p.getCrop().currentwater+i;
+               
                 if (s == "small")
-                
-                { p.getCrop().currentwater = p.getCrop().currentwater + 500; }
+                {
 
+                }
                 else if (s == "medium")
-                { p.getCrop().currentwater = p.getCrop().currentwater + 1000; }
+                {
+
+                }
                 else if  (s == "large")
-                { p.getCrop().currentwater = p.getCrop().currentwater + 1500; }
+                {
+
+                }
             }
 
         }
@@ -431,7 +418,10 @@ namespace ProCP.Classes
             decimal temperature = plotWeeks[PlotWeek].getTemperture() - c.GetTemperature();
             //if(temperature)
         }
-    
+        public void setSimulation(Simulation simulation)
+        {
+            this.simulation = simulation;
+        }
         
 
     }

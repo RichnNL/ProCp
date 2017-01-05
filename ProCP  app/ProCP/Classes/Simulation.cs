@@ -13,8 +13,14 @@ namespace ProCP.Classes
     {
        
         public delegate void DrawCropHandler(string pictureBox, string CropName, int ImageNumber);
+        public delegate void SimulationChangedHandler(string itemChanged, string value);
+        public delegate void SimulationNotSaved();
         [field: NonSerialized]
         public event DrawCropHandler OnDraw;
+        [field: NonSerialized]
+        public event SimulationChangedHandler SimulationChangedEvent;
+        [field: NonSerialized]
+        public event SimulationNotSaved NotSavedEvent;
         [field: NonSerialized]
         Timer time;
         public string SimulationName { get; set; }
@@ -24,14 +30,40 @@ namespace ProCP.Classes
         public List<Plot> plots;
     
         private DateTime beginDate;
-        public DateTime BeginDate { get { return beginDate; } set { beginDate = value; } }
+        public DateTime BeginDate { get { return beginDate; } set {
+                if (value != BeginDate)
+                {
+                    if (NotSavedEvent != null)
+                    {
+                        NotSavedEvent();
+                    }
+                }
+
+                beginDate = value; } }
         
         private DateTime endDate;
-        public DateTime EndDate { get { return endDate; }  set { endDate = value;
+        public DateTime EndDate { get { return endDate; }  set {
+                if(value != endDate)
+                {
+                    if(NotSavedEvent != null)
+                    {
+                        NotSavedEvent();
+                    }
+                }
+                endDate = value;
             } }
 
         private DateTime currentDate;
-        public DateTime CurrentDate { get { return currentDate; } set { currentDate = value; } }
+        public DateTime CurrentDate { get { return currentDate; } set {
+                if (value != currentDate)
+                {
+                    if (NotSavedEvent != null)
+                    {
+                        NotSavedEvent();
+                    }
+                }
+
+                currentDate = value; } }
         private int totalWeeks;
         private int currentWeek;
         private int timeBetweenWeeks;
@@ -40,6 +72,13 @@ namespace ProCP.Classes
             get { return currentWeek; }
             set
             {
+                if (value != currentWeek)
+                {
+                    if (NotSavedEvent != null)
+                    {
+                        NotSavedEvent();
+                    }
+                }
                 currentWeek = value;
                 if(currentWeek == totalWeeks)
                 {
@@ -62,6 +101,13 @@ namespace ProCP.Classes
         
         public string Province { get { return province; } set
             {
+                if (value != province)
+                {
+                    if (NotSavedEvent != null)
+                    {
+                        NotSavedEvent();
+                    }
+                }
                 if (numberOfCrops == 0) { 
                 province = value;
                 database.loadAllWeather(this.province);
@@ -69,22 +115,29 @@ namespace ProCP.Classes
                  }
             }
         }
-
+        private int plotsize;
         public int PlotSize
         {
-            get { return PlotSize; }
+            get { return plotsize; }
 
             set
             {
                 if (numberOfCrops == 0)
                 {
+                    if (value != plotsize)
+                    {
+                        if (NotSavedEvent != null)
+                        {
+                            NotSavedEvent();
+                        }
+                    }
                     if (value < 50)
                     {
-                        PlotSize = 50;
+                        plotsize = 50;
                     }
                     else if (value > 250)
                     {
-                        PlotSize = 250;
+                        plotsize = 250;
                     }
                     updatePlots();
                     ;
@@ -103,14 +156,32 @@ namespace ProCP.Classes
         public int Fertilizer
         {
             get { return fertilizer; }
-            set { fertilizer = value; }
+            set {
+                if (value != fertilizer)
+                {
+                    if (NotSavedEvent != null)
+                    {
+                        NotSavedEvent();
+                    }
+                }
+
+                fertilizer = value; }
         }
 
         private int water;
         public int Watering
         {
+
             get { return water; }
-            set { water = value; }
+            set {
+                if (value != water)
+                {
+                    if (NotSavedEvent != null)
+                    {
+                        NotSavedEvent();
+                    }
+                }
+                water = value; }
         }
 
 
@@ -121,7 +192,7 @@ namespace ProCP.Classes
             time.Elapsed += new ElapsedEventHandler(tick);
             //for testing
             plots = new List<Plot>();
-            PlotSize = 100;
+            plotsize = 100;
             numberofPlotColumns = 10;
             numberOfPlotRows = 8;
             this.province = Province;
@@ -155,26 +226,35 @@ namespace ProCP.Classes
         {
             if (numberOfCrops == 0)
             {
-
+                int value = 0;
 
                 switch (fer)
                 {
+                    //small medium larger
                     case "small":
                         {
-                            this.Fertilizer = 1000;
+                            value = 1000;
                         }
                         break;
                     case "medium":
                         {
-                            this.Fertilizer = 2000;
+                            value = 2000;
                         }
                         break;
                     case "large":
                         {
-                            this.Fertilizer = 3000;
+                            value = 3000;
                         }
                         break;
                 }
+                if (value != Fertilizer)
+                {
+                    if (NotSavedEvent != null)
+                    {
+                        NotSavedEvent();
+                    }
+                }
+                this.Fertilizer = value;
             }
         }
         
@@ -182,24 +262,33 @@ namespace ProCP.Classes
         {
             if (numberOfCrops == 0)
             {
+                int value = 0;
                 switch (water)
                 {
                     case "small":
                         {
-                            this.Watering = 3000;
+                            value = 1000;
                         }
                         break;
                     case "medium":
                         {
-                            this.Watering = 6000;
+                            value = 2000;
                         }
                         break;
                     case "large":
                         {
-                            this.Watering = 9000;
+                            value = 3000;
                         }
                         break;
                 }
+                if (value != this.Watering)
+                {
+                    if (NotSavedEvent != null)
+                    {
+                        NotSavedEvent();
+                    }
+                }
+                this.Watering = value;
             }
         }
 
@@ -208,7 +297,14 @@ namespace ProCP.Classes
         {
             if (numberOfCrops == 0)
             {
-                if(date < EndDate.Subtract(new TimeSpan(90, 0, 0, 0)))
+                if (date != beginDate)
+                {
+                    if (NotSavedEvent != null)
+                    {
+                        NotSavedEvent();
+                    }
+                }
+                if (date < EndDate.Subtract(new TimeSpan(90, 0, 0, 0)))
                 {
                     beginDate = date;
                     totalWeeks = GetNumberOfWeeks();
@@ -221,6 +317,13 @@ namespace ProCP.Classes
         {
             if (numberOfCrops == 0)
             {
+                if (date != endDate)
+                {
+                    if (NotSavedEvent != null)
+                    {
+                        NotSavedEvent();
+                    }
+                }
                 if (BeginDate.AddMonths(3) < date)
                 {
                     date = date.AddMonths(3);
@@ -258,7 +361,13 @@ namespace ProCP.Classes
             this.endDate = then;
             this.totalWeeks = GetNumberOfWeeks();
             currentWeek = 0;
+            if(SimulationChangedEvent != null)
+            {
+                SimulationChangedEvent("BeginDate", DateToString(beginDate));
+                SimulationChangedEvent("EndDate", DateToString(endDate));
+            }
         }
+        
 
         private void updatePlots()
         {
@@ -292,6 +401,10 @@ namespace ProCP.Classes
             {
                 numberOfCrops++;
                 drawPlot(plot);
+                if (NotSavedEvent != null)
+                {
+                    NotSavedEvent();
+                }
             }
         }
         public void removeCrop(Plot plot)
@@ -300,6 +413,12 @@ namespace ProCP.Classes
             {
                 drawPlot(plot);
                 numberOfCrops--;
+              
+                    if (NotSavedEvent != null)
+                    {
+                        NotSavedEvent();
+                    }
+                
             }
 
         }
@@ -357,6 +476,112 @@ namespace ProCP.Classes
         {
             return plots;
         }
+        public void ResetSimulation()
+        {
+            setInitalDate();
+            LoadPlotSize("100");
+            if (SimulationChangedEvent != null)
+            {
+                SimulationChangedEvent("Reset", "");
+
+            }
+        }
+        public void LoadSimualtion(string name, string begindate, string enddate, string province , string[] settings, List<Plot> PLOTS)
+        {
+            this.SimulationName = name;
+            loadDates(Convert.ToDateTime(begindate), Convert.ToDateTime(enddate));
+            loadProvince(province);
+            if(Convert.ToInt32(settings[0]) == 1000)
+            {
+                settings[0] = "small";
+            }
+            else if(Convert.ToInt32(settings[0]) == 2000)
+            {
+                settings[0] = "medium";
+            }
+            else if (Convert.ToInt32(settings[0]) == 3000)
+            {
+                settings[0] = "large";
+            }
+            if (Convert.ToInt32(settings[1]) == 1000)
+            {
+                settings[1] = "small";
+            }
+            else if (Convert.ToInt32(settings[1]) == 2000)
+            {
+                settings[1] = "medium";
+            }
+            else if (Convert.ToInt32(settings[1]) == 3000)
+            {
+                settings[1] = "large";
+            }
+            loadFertilizer(settings[0]);
+            loadWater(settings[1]);
+            LoadPlotSize(settings[2]);
+            LoadPlots(PLOTS);
+        }
+      
+        private void loadDates(DateTime begin, DateTime endDate)
+        {
+            this.beginDate = begin;
+            this.endDate = endDate;
+            this.totalWeeks = GetNumberOfWeeks();
+            currentWeek = 0;
+            if(SimulationChangedEvent != null)
+            {
+                SimulationChangedEvent("BeginDate", DateToString(begin));
+                SimulationChangedEvent("EndDate", DateToString(endDate));
+            }
+        }
+        private void loadProvince(string province)
+        {
+            this.province = province;
+            if (SimulationChangedEvent != null)
+            {
+                SimulationChangedEvent("Province",province);  
+            }
+        }
+        private void loadFertilizer(string fertilizer)
+        {
+            SetFertilizer(fertilizer);
+            if (SimulationChangedEvent != null)
+            {
+                SimulationChangedEvent("Fertilizer", fertilizer);
+            }
+        }
+        private void loadWater(string water)
+        {
+            Setwatering(water);
+            if (SimulationChangedEvent != null)
+            {
+                SimulationChangedEvent("Watering", water);
+            }
+        }
+        private void LoadPlotSize(string size)
+        {
+            plotsize = Convert.ToInt32(size);
+            if (SimulationChangedEvent != null)
+            {
+                SimulationChangedEvent("PlotSize", size);
+            }
+        }
+        private void LoadPlots(List<Plot> PLOTS)
+        {
+            this.plots = PLOTS;
+            for(int i = 0; i < plots.Count; i++)
+            {
+                plots[i].setSimulation(this);
+                
+            }
+            for(int i = 0; i <plots.Count; i++)
+            {
+                if(plots[i].getNumberOfCrops() != 0)
+                {
+                    drawPlot(plots[i]);
+                }
+            }
+        }
+       
      
        
     }

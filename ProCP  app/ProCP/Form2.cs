@@ -17,6 +17,7 @@ namespace ProCP
         
         RCAEA rcaea; 
         string province;
+        bool internalChange;
         public Form2()
         {
             InitializeComponent();
@@ -24,12 +25,14 @@ namespace ProCP
             province = "Drenthe";
             //defeault province for now;
             rcaea = new RCAEA(province);
-
+            internalChange = false;
             dateTimePicker1.MinDate = DateTime.Now;
             setMinMaxDates();
             AddSoilTypestoComboBox();
             rcaea.simulation.OnDraw += new Simulation.DrawCropHandler(drawPictureBox);
+            rcaea.simulation.SimulationChangedEvent += new Simulation.SimulationChangedHandler(hostsimulationChanged);
   
+
             populateProvinceOption();
             setClickEventForPictureBoxes();
             populateCropPanelSelection();
@@ -338,7 +341,7 @@ namespace ProCP
         {
             rcaea.simulation.SetEndDate(dateTimePicker2.Value);
 
-            label2.Text = rcaea.simulation.EndDate.ToString("yyyy-MM-dd");
+            EndDateLabel.Text = rcaea.simulation.EndDate.ToString("yyyy-MM-dd");
 
         }
 
@@ -354,11 +357,40 @@ namespace ProCP
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            rcaea.simulation.SetBeginDate(dateTimePicker1.Value);
+            if (!internalChange)
+            {
+                setBeginDate(dateTimePicker1.Value);
+            }
+            
+        }
+        private void setBeginDate(DateTime date)
+        {
+            if (!internalChange)
+            {
+                rcaea.simulation.SetBeginDate(date);
+                
+            }
+            else
+            {
+                dateTimePicker1.Value = date;
+            }
+            
             setMinMaxDates();
+            startDateLabel.Text = rcaea.simulation.BeginDate.ToString("yyyy-MM-dd");
+        }
+        private void setEndDate(DateTime date)
+        {
+            if (!internalChange)
+            {
+                rcaea.simulation.SetEndDate(date);
+            }
+            else
+            {
+                dateTimePicker2.Value = date;
+            }
 
-            label1.Text = rcaea.simulation.BeginDate.ToString("yyyy-MM-dd");
-
+            setMinMaxDates();
+            EndDateLabel.Text = rcaea.simulation.EndDate.ToString("yyyy-MM-dd");
         }
 
         private void pb86_Click(object sender, EventArgs e)
@@ -378,11 +410,34 @@ namespace ProCP
 
         private void provinceCbx_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (rcaea.simulation.getNumberOfCrops() == 0)
+            if (!internalChange)
             {
-                rcaea.simulation.Province = provinceCbx.SelectedItem.ToString();
+                setProvince(provinceCbx.SelectedItem.ToString());
+            }
+                
+        }
+        private void setProvince(string province)
+        {
+            if (rcaea.simulation.getNumberOfCrops() == 0 || internalChange)
+            {
+                if (!internalChange)
+                {
+                    rcaea.simulation.Province = province;
+                }
+                else
+                {
+                    for(int i = 0; i < provinceCbx.Items.Count; i++)
+                    {
+                        if(provinceCbx.Items[i].ToString() == province)
+                        {
+                            this.provinceCbx.SelectedItem = provinceCbx.Items[i];
+                        }
+                    }
+                    
+                }
+                
 
-                if(rcaea.selectedPlot != null)
+                if (rcaea.selectedPlot != null)
                 {
                     FillPlotInfo(rcaea.selectedPlot);
                 }
@@ -429,43 +484,82 @@ namespace ProCP
 
         private void fertilizerCbx_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            if (rcaea.simulation.getNumberOfCrops() == 0)
+            if (!internalChange)
             {
-
-
-                rcaea.simulation.SetFertilizer(fertilizerCbx.SelectedItem.ToString());
-		if (rcaea.selectedPlot != null)
-            {
-                FillPlotInfo(rcaea.selectedPlot);
+                setFertilizer(fertilizerCbx.SelectedItem.ToString());
             }
+          
+
+
+        }
+        private void setFertilizer(string fertilizer)
+        {
+            if (rcaea.simulation.getNumberOfCrops() == 0 || internalChange)
+            {
+
+                if (!internalChange)
+                {
+                    rcaea.simulation.SetFertilizer(fertilizer);
+                }
+                else
+                {
+                    for (int i = 0; i < fertilizerCbx.Items.Count; i++)
+                    {
+                        if (fertilizerCbx.Items[i].ToString() == fertilizer)
+                        {
+                            this.fertilizerCbx.SelectedItem = fertilizerCbx.Items[i];
+                        }
+                    }
+                }
+                if (rcaea.selectedPlot != null)
+                {
+                    FillPlotInfo(rcaea.selectedPlot);
+                }
             }
             else
             {
                 error(true);
             }
-
-
         }
 
         private void wateringCbx_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            if (rcaea.simulation.getNumberOfCrops() == 0)
+            if (!internalChange)
             {
-
-
-                rcaea.simulation.Setwatering(wateringCbx.SelectedItem.ToString());
-			    if (rcaea.selectedPlot != null)
-            {
-                FillPlotInfo(rcaea.selectedPlot);
+                setWatering(wateringCbx.SelectedItem.ToString());
             }
+
+        }
+        private void setWatering(string watering)
+        {
+            if (rcaea.simulation.getNumberOfCrops() == 0 || internalChange)
+            {
+
+                if (!internalChange)
+                {
+                    rcaea.simulation.Setwatering(watering);
+                }
+                else
+                {
+                    for (int i = 0; i < wateringCbx.Items.Count; i++)
+                    {
+                        if (wateringCbx.Items[i].ToString() == watering)
+                        {
+                            this.wateringCbx.SelectedItem = wateringCbx.Items[i];
+                        }
+                    }
+                }
+               
+                if (rcaea.selectedPlot != null)
+                {
+                    FillPlotInfo(rcaea.selectedPlot);
+                }
             }
             else
             {
                 error(true);
             }
-
         }
 
         private void soilTypeCbx_SelectedIndexChanged(object sender, EventArgs e)
@@ -519,7 +613,7 @@ namespace ProCP
             SaveWindow save = new SaveWindow(this);
             save.Show();
         }
-        private void save()
+        public void save()
         {
             if (rcaea.SimulationNameIsSet())
             {
@@ -562,9 +656,7 @@ namespace ProCP
         private void newSimulation()
         {
             province = "Drenthe";
-            Simulation NewSimulation = new Simulation("connection.ini", "connection.ini", province);
-            NewSimulation.OnDraw += new Simulation.DrawCropHandler(drawPictureBox);
-            rcaea.newSimulation(NewSimulation);
+            rcaea.resetSimulation();
             }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
@@ -598,30 +690,11 @@ namespace ProCP
                 error("Load unsuccessful");
             }
         }
-        public string[] loadSimulationNames()
-        {
-            return rcaea.simulationStorage.LoadSimulationNames();
-        }
-        public string[] loadSimulationDescription()
+        public List<string[]> loadSimulationDetails()
         {
             return rcaea.simulationStorage.LoadSimulationDescriptions();
         }
-        public string[] loadSimulationCosts()
-        {
-            return rcaea.simulationStorage.LoadSimulationCosts();
-        }
-        public string[] loadSimulationDescriptions()
-        {
-            return rcaea.simulationStorage.LoadSimulationDescriptions();
-        }
-        public string[] loadSimulationDates()
-        {
-            return rcaea.simulationStorage.LoadSimulationDates();
-        }
-        public string[] loadSimulationProfits()
-        {
-            return rcaea.simulationStorage.LoadSimulationProfit();
-        }
+      
 
         private void playBtn_Click(object sender, EventArgs e)
         {
@@ -632,25 +705,108 @@ namespace ProCP
         {
             this.Close();
         }
-        /// <summary>
         /// Asking user for confirmation whenever going to exit
-        /// </summary>
-        /// <param name="e"></param>
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Do you want to save before Exit?", "Exit", MessageBoxButtons.YesNoCancel);
-            if (dialogResult == DialogResult.Yes)
+            if (rcaea.simulationStorage.changedSinceLastSave)
             {
-                e.Cancel = true;
-                save();
+                DialogResult dialogResult = MessageBox.Show("Do you want to save before Exit?", "Exit", MessageBoxButtons.YesNoCancel);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    e.Cancel = true;
+                    save();
+                }
+                else if (dialogResult == DialogResult.Cancel)
+                {
+                    e.Cancel = true;
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    e.Cancel = false;
+                }
             }
-            else if (dialogResult == DialogResult.Cancel)
-            {
-                e.Cancel = true;
-            }
-            else if (dialogResult == DialogResult.No)
+            else
             {
                 e.Cancel = false;
+            }
+          
+        }
+        public bool simulationSaved()
+        {
+            if (rcaea.simulationStorage.changedSinceLastSave)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        private void hostsimulationChanged(string change, string value)
+        {
+            internalChange = true;
+            if (change == "BeginDate")
+            {
+                DateTime date = Convert.ToDateTime(value);
+                setBeginDate(date);
+            }
+            else if (change == "EndDate")
+            {
+                DateTime date = Convert.ToDateTime(value);
+                setEndDate(date);
+            }
+            else if (change == "Province")
+            {
+                setProvince(value);
+            }
+            else if(change == "Reset")
+            {
+                InitializeProperties();
+            }
+            else if(change == "Fertilizer")
+            {
+                setFertilizer(value);
+            }
+            else if (change == "Watering")
+            {
+                setWatering(value);
+            }
+            else if(change == "PlotSize")
+            {
+                setPlotSize(Convert.ToInt32(value));
+            }
+            internalChange = false;
+        }
+
+        private void plotSizeNmr_ValueChanged(object sender, EventArgs e)
+        {
+            if (!internalChange)
+            {
+                setPlotSize(Convert.ToInt32(plotSizeNmr.Value));
+            }
+        }
+        private void setPlotSize(int size)
+        {
+           
+          if(rcaea.simulation.getNumberOfCrops() == 0 || internalChange)
+            {
+                if (!internalChange)
+                {
+                    rcaea.simulation.PlotSize = size;
+                }
+                else
+                {
+                    plotSizeNmr.Value = size;
+                }
+
+                if (rcaea.selectedPlot != null)
+                {
+                    FillPlotInfo(rcaea.selectedPlot);
+                }
+            }
+            else
+            {
+                error(true);
             }
         }
     }

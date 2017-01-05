@@ -26,98 +26,75 @@ namespace ProCP.Classes
         {
             if (!String.IsNullOrEmpty(simulationName))
             {
-                form.loadSimulation(simulationName);
+                if (!form.simulationSaved())
+                {
+                    DialogResult result = MessageBox.Show("The current Simulation will be overwritten do you wish to save?","Warning", MessageBoxButtons.YesNo);
+                    if(result == DialogResult.Yes)
+                    {
+                        form.save();
+                        return;
+                    }
+                    else
+                    {
+                        form.loadSimulation(simulationName);
+                    }
+                }
+                else
+                {
+                    form.loadSimulation(simulationName);
+                }
+                
                     this.Close();  
             }
         }
         private void loadSimulationName()
         {
-            string[] names = null;
-            names = form.loadSimulationNames();
-            if(names != null)
+            List<string[]> sim = form.loadSimulationDetails();
+            if(sim.Count != 0)
             {
-                foreach (string s in names)
+                foreach (string[] s in sim)
                 {
-                    simulationList.Items.Add(s);
-                }
-                empty = false;
-            }
-            else
-            {
-                empty = true;
-                simulationList.Items.Add("No Simulations Saved");
-                return;
-            }
-            names = form.loadSimulationDescriptions();
-            ListViewItem item = new ListViewItem();
-            if(names != null)
-            {
-                foreach (string s in names)
-                {
-                    item.SubItems.Add(s);
-                }
-                simulationList.Items.Add(item);
-            }
-            else
-            {
-                simulationList.Columns.Remove(Description);
-            }
-            names = form.loadSimulationDates();
-            ListViewItem item2 = new ListViewItem();
-            if (names != null)
-            {
-                foreach (string s in names)
-                {
-                    item2.SubItems.Add(s);
-                }
-                simulationList.Items.Add(item2);
-            }
-            else
-            {
-                simulationList.Columns.Remove(Date);
-            }
-            names = form.loadSimulationCosts();
-            ListViewItem item3 = new ListViewItem();
-            if (names != null)
-            {
-                foreach (string s in names)
-                {
-                    item3.SubItems.Add(s);
-                }
-                simulationList.Items.Add(item3);
-            }
-            else
-            {
-                simulationList.Columns.Remove(Cost);
-            }
-            names = form.loadSimulationProfits();
-            ListViewItem item4 = new ListViewItem();
-            if (names != null)
-            {
-                foreach (string s in names)
-                {
-                    item4.SubItems.Add(s);
-                }
-                simulationList.Items.Add(item4);
-            }
-            else
-            {
-                simulationList.Columns.Remove(Profit);
-            }
+                    ListViewItem item = new ListViewItem();
+                    item.Text = s[0];
+                    for (int i = 1; i < 7; i++)
+                    {
+                        if (String.IsNullOrEmpty(s[i]))
+                        {
+                            item.SubItems.Add("");
+                        }
+                        else
+                        {
+                            item.SubItems.Add(s[i]);
+                        }
+                    }
+                    simulationList.Items.Add(item);
 
-
+                }
+            }
+            else
+            {
+                simulationList.Items.Add("No Entries Found");
+            }
+            
+            
+            
         }
 
       
         private void simulationList_SelectedIndexChanged(object sender, EventArgs e)
         {
             ListViewItem selectedItem = simulationList.SelectedItems[0];
-            simulationName = selectedItem.SubItems[0].ToString();
+            simulationName = selectedItem.SubItems[0].Text.ToString();
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void LoadWindow_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
