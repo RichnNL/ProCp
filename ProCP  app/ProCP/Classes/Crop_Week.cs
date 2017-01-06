@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProCP.Classes
 {
+    [Serializable]
     class Crop_Week
     {
       

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProCP.Classes
 {
+    [Serializable]
     class CropData
     {
         private int yield = 0;

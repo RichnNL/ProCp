@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProCP.Classes
 {
+    [Serializable]
     class Weather
     {
         private decimal rainamount;

@@ -14,98 +14,110 @@ namespace ProCP.Classes
     {
         public bool changedSinceLastSave;
         private string connectionInfo;
-        public MySqlConnection connection;
-        private string ConnectionInfo;
-        public  SimulationStorage(string connection) {
-            string connectionInfo = getConnectionInfo();
+        private MySqlConnection sqlconnection;
+        public SimulationStorage(string connection)
+        {
+            this.connectionInfo = getConnectionInfo(connection);
+            this.sqlconnection = new MySqlConnection(connectionInfo);
         }
+       
         public bool SaveSimulation(Simulation simulation) {
             
-            string sql = "INSERT INTO simulations (Name, Description, Date, Cost, Profit, Binary_File) VALUES (@name, @description, @Date, @Cost, @Profit, @Binary_File)";
-            MySqlCommand command = new MySqlCommand(sql, connection);
-            command.Parameters.AddWithValue("name", simulation.SimulationName);
-            command.Parameters.AddWithValue("description", simulation.SimulationDescription);
-            command.Parameters.AddWithValue("Date", simulation.DateToString(simulation.BeginDate));
+            
+            string sqlcosts = "INSERT INTO simulations (Name, Description, Province, BeginDate, EndDate,Settings, Cost, Profit, Binary_File) VALUES (@name, @description,@Province, @BeginDate, @EndDate, @Settings, @Cost, @Profit, @Binary_File)";
+            string sql = "INSERT INTO simulations(Name, Description, Province, BeginDate, EndDate, Settings, Binary_File) VALUES (@Name, @Description, @Province, @BeginDate, @EndDate, @Settings, @Binary_File)";
+            //if() set sql statement
+            MySqlCommand command = new MySqlCommand();
+            command.CommandText = sql;
+            command.CommandType = System.Data.CommandType.Text;
+            command.Connection = sqlconnection;
+            command.Parameters.Add("@Name", MySqlDbType.VarChar).Value = simulation.SimulationName;
+            command.Parameters.Add("@Description", MySqlDbType.VarChar).Value = simulation.SimulationDescription;
+            command.Parameters.Add("@Province", MySqlDbType.VarChar).Value = simulation.Province;
+            command.Parameters.Add("@BeginDate", MySqlDbType.Date).Value = simulation.BeginDate;
+            command.Parameters.Add("@EndDate", MySqlDbType.Date).Value = simulation.EndDate;
+            command.Parameters.Add("@Settings", MySqlDbType.VarChar).Value = simulation.Fertilizer + "," + simulation.Watering + "," + simulation.PlotSize.ToString();
+
+            BinaryFormatter bf = new BinaryFormatter();
+            MemoryStream ms = new MemoryStream();
+
+            //MemoryStream memStream = new MemoryStream();
+            //StreamWriter sw = new StreamWriter(memStream);
+
+            bf.Serialize(ms, simulation.getListOfPlots());
+            command.Parameters.Add("@Binary_File", MySqlDbType.VarBinary, Int32.MaxValue).Value = ms.ToArray();
+
+
             //command.Parameters.AddWithValue("Cost", cost); 
             // command.Parameters.AddWithValue("Profit", profit);
-            var bite = SimulationToByte(simulation);
-            command.Parameters.AddWithValue("Binary_File", bite);
+
             try
             {
+                sqlconnection.Open();
                 command.ExecuteNonQuery();
                 changedSinceLastSave = true;
+               
                 return true;
             }
             catch(Exception ex)
             {
+                MessageBox.Show(ex.Message);
                 return false;
+            }
+            finally
+            {
+                sqlconnection.Close();
             }
             
         }
-        public string[] LoadSimulationNames()
-        {
-            List<string> list = new List<string>();
-            string sql = "SELECT Name FROM simulations";
-            MySqlCommand command = new MySqlCommand(sql, connection);
+        
+        public List<Plot>  LoadSimulation(string filename, out string[] details) {
+            string sql = "SELECT * FROM simulations WHERE Name = @filename";
+            MySqlCommand command = new MySqlCommand(sql, sqlconnection);
+            command.Parameters.Add("@filename", MySqlDbType.VarChar).Value = filename;
+            details = new string[5];
+            List<Plot> loadedPlots = new List<Plot>();
+            byte[] b;
             try
             {
-                connection.Open();
+                sqlconnection.Open();
                 MySqlDataReader reader = command.ExecuteReader();
-
-                string name;
 
                 while (reader.Read())
                 {
-                    name = Convert.ToString(reader["Name"]);
-                    list.Add(name);
+                    details[0] = Convert.ToString(reader["Name"]);
+                    details[1] = Convert.ToString(reader["Description"]);
+                    details[2] = Convert.ToString(reader["Province"]);
+                    details[3] = Convert.ToString(reader["BeginDate"]);
+                    details[4] = Convert.ToString(reader["EndDate"]);
+                    b = ((byte[])reader["Binary_File"]).ToArray();
+                    loadedPlots = ByteArrayToSimulation(b);
                 }
+                
             }
             catch (Exception ex)
             {
-               
+                MessageBox.Show("Error reading list");
+
             }
-            if(list.Count() > 0)
+            finally
             {
-                return list.ToArray();
+                sqlconnection.Close();
             }
-            else
-            {
-                return null;
-            }
-           
-        }
-        public Simulation LoadSimulation(string filename) {
-            string sql = "SELECT Binary_File FROM simulations where Name = 'filename'";
-            MySqlCommand command = new MySqlCommand(sql, connection);
-           
-                using (var sqlQueryResult = command.ExecuteReader())
-                {
-                     if (sqlQueryResult != null)
-                     {
-                        sqlQueryResult.Read();
-                    byte[] simulation = new byte[(sqlQueryResult.GetBytes(0, 0, null, 0, int.MaxValue))];
-                    sqlQueryResult.GetBytes(0, 0, simulation, 0, simulation.Length);
-                    return ByteArrayToSimulation(simulation);
-                        }
-                     else
-                     {
-                       return null;
-                      }
-                }
-              
+            return loadedPlots;
         }
         
         public void somethingChanged()
         {
             changedSinceLastSave = false;
         }
-        private string getConnectionInfo()
+        private string getConnectionInfo(string connection)
         {
             string cnx = null;
             try
             {
                 
-                using (StreamReader sr = new StreamReader("connection.ini"))
+                using (StreamReader sr = new StreamReader(connection))
                 {
                     cnx = sr.ReadToEnd();
 
@@ -118,157 +130,63 @@ namespace ProCP.Classes
 
             return cnx;
         }
-        private byte[] SimulationToByte(Simulation simulation)
+      
+        private List<Plot> ByteArrayToSimulation(byte[] byteArray)
         {
-            if(simulation == null)
+            using (MemoryStream memoryStream = new MemoryStream(byteArray))
             {
-                return null;
-            }
-            BinaryFormatter bf = new BinaryFormatter();
-            using (var ms = new MemoryStream())
-            {
-                bf.Serialize(ms, simulation);
-                return ms.ToArray();
-            }
-        }
-        private Simulation ByteArrayToSimulation(byte[] byteArray)
-        {
-            using (var memStream = new MemoryStream())
-            {
-                var binForm = new BinaryFormatter();
-                memStream.Write(byteArray, 0, byteArray.Length);
-                memStream.Seek(0, SeekOrigin.Begin);
-                var obj = binForm.Deserialize(memStream);
-                return (Simulation)obj;
+                try
+                {
+                    BinaryFormatter binaryformatter = new BinaryFormatter();
+                    memoryStream.Seek(0, SeekOrigin.Begin);
+                    var obj = binaryformatter.Deserialize(memoryStream);
+                    return (List<Plot>)obj;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return null;
+                }
+
             }
         }
-        public string[] LoadSimulationDescriptions()
+        public List<string[]> LoadSimulationDescriptions()
         {
-            List<string> list = new List<string>();
-            string sql = "SELECT Description FROM simulations";
-            MySqlCommand command = new MySqlCommand(sql, connection);
+            List<string[]> row = new List<string[]>();
+            string[] column = new string[7];
+            string sql = "SELECT Name, Description, Province, BeginDate, EndDate, Cost, Profit FROM simulations";
+            MySqlCommand command = new MySqlCommand(sql, sqlconnection);
             try
             {
-                connection.Open();
+                sqlconnection.Open();
                 MySqlDataReader reader = command.ExecuteReader();
 
-                string name;
-
-                while (reader.Read())
+                 while (reader.Read())
                 {
-                    name = Convert.ToString(reader["Description"]);
-                    list.Add(name);
+                    column[0] = Convert.ToString(reader["Name"]);
+                    column[1] = Convert.ToString(reader["Settings"]);
+                    column[2] = Convert.ToString(reader["Province"]);
+                    column[3] = Convert.ToString(reader["BeginDate"]);
+                    column[4] = Convert.ToString(reader["EndDate"]);
+                    column[5] = Convert.ToString(reader["Cost"]);
+                    column[6] = Convert.ToString(reader["Profit"]);
+                    row.Add(column.ToArray());
                 }
             }
             catch (Exception ex)
             {
+                MessageBox.Show("Error reading list");
                 
             }
-            if (list.Count() > 0)
+            finally
             {
-                return list.ToArray();
+                sqlconnection.Close();
             }
-            else
-            {
-                return null;
-            }
+            return row;
+           
         }
-        public string[] LoadSimulationDates()
-        {
-            List<string> list = new List<string>();
-            string sql = "SELECT Date FROM simulations";
-            MySqlCommand command = new MySqlCommand(sql, connection);
-            try
-            {
-                connection.Open();
-                MySqlDataReader reader = command.ExecuteReader();
-
-                string name;
-
-                while (reader.Read())
-                {
-                    name = Convert.ToString(reader["Date"]);
-                    list.Add(name);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                MessageBox.Show("Error Loading Simulation Dates");
-            }
-            if (list.Count() > 0)
-            {
-                return list.ToArray();
-            }
-            else
-            {
-                return null;
-            }
-        }
-        public string[] LoadSimulationCosts()
-        {
-            List<string> list = new List<string>();
-            string sql = "SELECT Cost FROM simulations";
-            MySqlCommand command = new MySqlCommand(sql, connection);
-            try
-            {
-                connection.Open();
-                MySqlDataReader reader = command.ExecuteReader();
-
-                string name;
-
-                while (reader.Read())
-                {
-                    name = Convert.ToString(reader["Cost"]);
-                    list.Add(name);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                MessageBox.Show("Error Loading Simulation Costs");
-            }
-            if (list.Count() > 0)
-            {
-                return list.ToArray();
-            }
-            else
-            {
-                return null;
-            }
-        }
-        public string[] LoadSimulationProfit()
-        {
-            List<string> list = new List<string>();
-            string sql = "SELECT Profit FROM simulations";
-            MySqlCommand command = new MySqlCommand(sql, connection);
-            try
-            {
-                connection.Open();
-                MySqlDataReader reader = command.ExecuteReader();
-
-                string name;
-
-                while (reader.Read())
-                {
-                    name = Convert.ToString(reader["Profit"]);
-                    list.Add(name);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                MessageBox.Show("Error Loading Simulation Profits");
-            }
-            if (list.Count() > 0)
-            {
-                return list.ToArray();
-            }
-            else
-            {
-                return null;
-            }
-        }
-
+        
+        
+      
     }
 }

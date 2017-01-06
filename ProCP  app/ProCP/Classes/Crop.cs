@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ProCP.Classes
 {
+    [Serializable]
     class Crop
     {
-        public decimal currentwater;
         private string cropName;
         private int maturityLength;
         private decimal waterMinimum;

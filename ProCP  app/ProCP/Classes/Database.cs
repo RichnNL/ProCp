@@ -12,6 +12,7 @@ using System.Data;
 
 namespace ProCP.Classes
 {
+    [Serializable]
     class Database
     {
         private MySqlConnection connection;
@@ -223,7 +224,7 @@ namespace ProCP.Classes
         }
         public void loadAllWeather(string Province)
         {
-            string sql = "SELECT * FROM weather where Province = 'Province  '" ;
+            string sql = "SELECT * FROM weather where Province = 'Province'";
             MySqlCommand command = new MySqlCommand(sql, connection);
 
             List<Weather> temp = new List<Weather>();

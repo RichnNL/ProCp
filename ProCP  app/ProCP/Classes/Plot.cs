@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProCP.Classes
 {
+    [Serializable]
     class Plot
     {
         public string PlotId;
@@ -14,6 +15,7 @@ namespace ProCP.Classes
         public List<PlotWeek> plotWeeks;
         private int hasCrop;
         private int cropsHarvested;
+        [field:NonSerialized]
         private Simulation simulation;
 
 
@@ -74,8 +76,14 @@ namespace ProCP.Classes
             }
 
         }
+        /// <summary>
+        /// Calculate Soil Factor
+        /// </summary>
+        private void CalculateSoilFactor()
+        {
+           
+        }
 
-        
         public bool RemoveAllCrop(List<int> getploposition) { return false; }
         public CropData GetCurrentCropData() {
             CropData cropdata;
@@ -134,16 +142,19 @@ namespace ProCP.Classes
         {
             foreach (PlotWeek p in plotWeeks)
             { 
-                decimal i = p.weather.GetRain();
-                p.getCrop().currentwater = p.getCrop().currentwater+i;
+               
                 if (s == "small")
-                
-                { p.getCrop().currentwater = p.getCrop().currentwater + 500; }
+                {
 
+                }
                 else if (s == "medium")
-                { p.getCrop().currentwater = p.getCrop().currentwater + 1000; }
+                {
+
+                }
                 else if  (s == "large")
-                { p.getCrop().currentwater = p.getCrop().currentwater + 1500; }
+                {
+
+                }
             }
 
         }
@@ -402,7 +413,15 @@ namespace ProCP.Classes
             DateTime date = simulation.weekToDate(week);
             plotWeeks[week].weather = simulation.database.GetWeather(simulation.Province, date.Month, date.Year);
         }
-    
+        private void calTempertaute(Crop c, int CropWeek, int PlotWeek)
+        {
+            decimal temperature = plotWeeks[PlotWeek].getTemperture() - c.GetTemperature();
+            //if(temperature)
+        }
+        public void setSimulation(Simulation simulation)
+        {
+            this.simulation = simulation;
+        }
         
 
     }

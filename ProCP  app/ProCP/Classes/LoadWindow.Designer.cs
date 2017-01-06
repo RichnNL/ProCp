@@ -33,14 +33,16 @@
             this.simulationList = new System.Windows.Forms.ListView();
             this.Simulation = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Description = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Date = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.col2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Cost = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Profit = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.col3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Province = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // OkButton
             // 
-            this.OkButton.Location = new System.Drawing.Point(174, 286);
+            this.OkButton.Location = new System.Drawing.Point(330, 355);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(74, 60);
             this.OkButton.TabIndex = 1;
@@ -50,7 +52,7 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(358, 286);
+            this.cancelButton.Location = new System.Drawing.Point(635, 355);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(74, 60);
             this.cancelButton.TabIndex = 2;
@@ -63,13 +65,16 @@
             this.simulationList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Simulation,
             this.Description,
-            this.Date,
+            this.col2,
+            this.col3,
+            this.Province,
             this.Cost,
             this.Profit});
+            this.simulationList.FullRowSelect = true;
             this.simulationList.Location = new System.Drawing.Point(12, 23);
             this.simulationList.MultiSelect = false;
             this.simulationList.Name = "simulationList";
-            this.simulationList.Size = new System.Drawing.Size(583, 257);
+            this.simulationList.Size = new System.Drawing.Size(1053, 305);
             this.simulationList.TabIndex = 3;
             this.simulationList.UseCompatibleStateImageBehavior = false;
             this.simulationList.View = System.Windows.Forms.View.Details;
@@ -78,38 +83,49 @@
             // Simulation
             // 
             this.Simulation.Text = "Name";
-            this.Simulation.Width = 148;
+            this.Simulation.Width = 120;
             // 
             // Description
             // 
             this.Description.Text = "Description";
-            this.Description.Width = 109;
+            this.Description.Width = 312;
             // 
-            // Date
+            // col2
             // 
-            this.Date.Text = "Date";
-            this.Date.Width = 109;
+            this.col2.Text = "BeginDate";
+            this.col2.Width = 136;
             // 
             // Cost
             // 
             this.Cost.Text = "Cost";
-            this.Cost.Width = 108;
+            this.Cost.Width = 107;
             // 
             // Profit
             // 
             this.Profit.Text = "Profit";
-            this.Profit.Width = 86;
+            this.Profit.Width = 401;
+            // 
+            // col3
+            // 
+            this.col3.Text = "EndDate";
+            this.col3.Width = 132;
+            // 
+            // Province
+            // 
+            this.Province.Text = "Province";
+            this.Province.Width = 120;
             // 
             // LoadWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(621, 358);
+            this.ClientSize = new System.Drawing.Size(1094, 459);
             this.Controls.Add(this.simulationList);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.OkButton);
             this.Name = "LoadWindow";
             this.Text = "LoadWindow";
+            this.Load += new System.EventHandler(this.LoadWindow_Load);
             this.ResumeLayout(false);
 
         }
@@ -120,8 +136,10 @@
         private System.Windows.Forms.ListView simulationList;
         private System.Windows.Forms.ColumnHeader Simulation;
         private System.Windows.Forms.ColumnHeader Description;
-        private System.Windows.Forms.ColumnHeader Date;
+        private System.Windows.Forms.ColumnHeader col2;
         private System.Windows.Forms.ColumnHeader Cost;
         private System.Windows.Forms.ColumnHeader Profit;
+        private System.Windows.Forms.ColumnHeader col3;
+        private System.Windows.Forms.ColumnHeader Province;
     }
 }
