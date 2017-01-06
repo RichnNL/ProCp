@@ -86,10 +86,10 @@ namespace ProCP.Classes
                 while (reader.Read())
                 {
                     details[0] = Convert.ToString(reader["Name"]);
-                    details[1] = Convert.ToString(reader["Description"]);
                     details[2] = Convert.ToString(reader["Province"]);
                     details[3] = Convert.ToString(reader["BeginDate"]);
                     details[4] = Convert.ToString(reader["EndDate"]);
+                    details[1] = Convert.ToString(reader["Settings"]);
                     b = ((byte[])reader["Binary_File"]).ToArray();
                     loadedPlots = ByteArrayToSimulation(b);
                 }
@@ -154,7 +154,7 @@ namespace ProCP.Classes
         {
             List<string[]> row = new List<string[]>();
             string[] column = new string[7];
-            string sql = "SELECT Name, Description, Province, BeginDate, EndDate, Cost, Profit FROM simulations";
+            string sql = "SELECT * FROM simulations";
             MySqlCommand command = new MySqlCommand(sql, sqlconnection);
             try
             {
@@ -164,7 +164,7 @@ namespace ProCP.Classes
                  while (reader.Read())
                 {
                     column[0] = Convert.ToString(reader["Name"]);
-                    column[1] = Convert.ToString(reader["Settings"]);
+                    column[1] = Convert.ToString(reader["Description"]);
                     column[2] = Convert.ToString(reader["Province"]);
                     column[3] = Convert.ToString(reader["BeginDate"]);
                     column[4] = Convert.ToString(reader["EndDate"]);

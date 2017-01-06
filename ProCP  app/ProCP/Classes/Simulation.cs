@@ -486,7 +486,7 @@ namespace ProCP.Classes
 
             }
         }
-        public void LoadSimualtion(string name, string begindate, string enddate, string province , string[] settings, List<Plot> PLOTS)
+        public void LoadSimualtion(string name, string province, string begindate, string enddate, string[] settings, List<Plot> PLOTS)
         {
             this.SimulationName = name;
             loadDates(Convert.ToDateTime(begindate), Convert.ToDateTime(enddate));

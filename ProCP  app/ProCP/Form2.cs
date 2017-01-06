@@ -26,7 +26,7 @@ namespace ProCP
             //defeault province for now;
             rcaea = new RCAEA(province);
             internalChange = false;
-            dateTimePicker1.MinDate = DateTime.Now;
+            dateTimePicker1.MinDate = new DateTime(2015, 1, 1);
             setMinMaxDates();
             AddSoilTypestoComboBox();
             rcaea.simulation.OnDraw += new Simulation.DrawCropHandler(drawPictureBox);
@@ -339,9 +339,12 @@ namespace ProCP
 
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
-            rcaea.simulation.SetEndDate(dateTimePicker2.Value);
+            if (!internalChange)
+            {
+                setEndDate(dateTimePicker2.Value);
+            }
 
-            EndDateLabel.Text = rcaea.simulation.EndDate.ToString("yyyy-MM-dd");
+            
 
         }
 
@@ -371,7 +374,7 @@ namespace ProCP
                 
             }
             else
-            {
+            { 
                 dateTimePicker1.Value = date;
             }
             
@@ -386,6 +389,7 @@ namespace ProCP
             }
             else
             {
+                dateTimePicker2.MinDate = new DateTime(2015, 1, 1);
                 dateTimePicker2.Value = date;
             }
 
@@ -431,6 +435,7 @@ namespace ProCP
                         if(provinceCbx.Items[i].ToString() == province)
                         {
                             this.provinceCbx.SelectedItem = provinceCbx.Items[i];
+                            break;
                         }
                     }
                     
@@ -508,6 +513,7 @@ namespace ProCP
                         if (fertilizerCbx.Items[i].ToString() == fertilizer)
                         {
                             this.fertilizerCbx.SelectedItem = fertilizerCbx.Items[i];
+                            break;
                         }
                     }
                 }
@@ -547,6 +553,7 @@ namespace ProCP
                         if (wateringCbx.Items[i].ToString() == watering)
                         {
                             this.wateringCbx.SelectedItem = wateringCbx.Items[i];
+                            break;
                         }
                     }
                 }
