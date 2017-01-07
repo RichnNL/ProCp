@@ -10,10 +10,9 @@ namespace ProCP.Classes
     class PlotWeek
     {
         public bool isEmpty { get; set; }
-        public decimal WaterSaturation { get; set; }
-        public decimal SaturationLooseRate { get; set; }
-        public decimal SoilNutrition { get; set; }
-        public decimal MaximumSoilNutrition { get; set; }
+        public decimal Water { get { return Water; } set { Water = value; if (Water < 0) { Water = 0; } ;} }
+        public decimal SoilNutrition { get { return SoilNutrition; } set { SoilNutrition = value; if (SoilNutrition < 0) { SoilNutrition = 0; }; } }
+       
         public Weather weather;
         private Crop crop;
         public bool imageChange { get; set; }

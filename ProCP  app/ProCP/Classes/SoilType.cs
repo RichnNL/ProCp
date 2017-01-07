@@ -10,19 +10,25 @@ namespace ProCP.Classes
     class SoilType
     {
         private string name;
-        private decimal waterRentention;
-        private decimal startingSoilNutrition;
+        private decimal Maximum_Water;
+        private decimal Maxium_Nutrition;
+        private decimal Water_Loose_Rate;
+        private decimal Nutrition_Loose_Rate;
 
-        public SoilType(string name, decimal waterRentention, decimal startingSoilNutrition) {
+        public SoilType(string name, decimal maximum_water, decimal waterlooserate, decimal maximum_nutrition, decimal nutritionlooserate) {
             this.name = name;
-            this.waterRentention = waterRentention;
-            this.startingSoilNutrition = startingSoilNutrition;
+            this.Maximum_Water = maximum_water;
+            this.Water_Loose_Rate = waterlooserate;
+            this.Maxium_Nutrition = maximum_nutrition;
+            this.Nutrition_Loose_Rate = nutritionlooserate;
         }
         
         
         public string GetName() { return name; }
-        public decimal GetWaterRentention() { return waterRentention; }
-        public decimal GetStartingSoilNutrition() { return startingSoilNutrition; }
+        public decimal GetWaterLooseRate() { return Water_Loose_Rate; }
+        public decimal GetMaximumNutrition() { return Maxium_Nutrition; }
+        public decimal GetMaximumWater() { return Water_Loose_Rate;}
+        public decimal GetNutritionLooseRate() { return Nutrition_Loose_Rate; }
         
     }
 }

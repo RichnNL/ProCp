@@ -135,34 +135,47 @@ namespace ProCP.Classes
         }
         public CropData GetCropDataByDate(DateTime d) { return null; }
        
-        public void NurishLand() 
-        
-        { }
-        public void CalculateWaterFactor(String s)
+        private void NurishLand(int week, int CropMaturity, Crop crop)
         {
-            foreach (PlotWeek p in plotWeeks)
-            { 
-               
-                if (s == "small")
-                {
+            // Add Water From Rain
+            AddWaterToSoil(week, plotWeeks[week].weather.GetRain());
+            NurishWithWater(week, CropMaturity, crop);
+        }
+        private void NurishLand(int week)
+        {
+            // Add Water From Rain
+            AddWaterToSoil(week, plotWeeks[week].weather.GetRain());
+            
+        }
+        private void NurishWithWater(int week, int CropMaturity, Crop crop)
+        {
 
-                }
-                else if (s == "medium")
-                {
+            
+        }
+       
+        private void AddWaterToSoil(int week, decimal waterAmount)
+        {
+            //Get the Water from the week before
+            if (week != 0)
+            {
+                plotWeeks[week].Water = plotWeeks[week - 1].Water;
+            }
+            // Calculate the Water Loose Rate
+            plotWeeks[week].Water -= soiltype.GetWaterLooseRate();
+            
 
-                }
-                else if  (s == "large")
-                {
+            //Add Water Amount
+            plotWeeks[week].Water += waterAmount;
+            if (plotWeeks[week].Water > soiltype.GetMaximumWater())
+            {
+                plotWeeks[week].Water = soiltype.GetMaximumWater();
 
-                }
             }
 
+
         }
-        public void calculateWater()
-        { 
        
-        
-        }
+     
         public void Manageweeks()
         {
             int nbrWeeks = simulation.GetNumberOfWeeks();
@@ -209,6 +222,11 @@ namespace ProCP.Classes
                             CalCurrentDate(startWeek, i,c);
                         }
                     }
+                   else if(j != 0 && plotWeeks[startWeek].isEmpty)
+                    {
+                        NurishLand(startWeek);
+                        
+                    }
                     else
                     {
                         startWeek++;
@@ -222,7 +240,9 @@ namespace ProCP.Classes
             // setting week entered based on last week
             if(isNotEmptyAtSpecificWeek(week))
             {
-                // run plotWeekCalculations
+                // run Caluclations for that week
+
+                // First Cultivate Lands
                 if(CropMaturity == 0)
                 {
                     //if Crop is being intialized
@@ -230,9 +250,20 @@ namespace ProCP.Classes
                     plotWeeks[week].imageNumber = 0;
                     plotWeeks[week].imageChange = true;
                 }
-                else if( CropMaturity == crop.GetMaturityLength() && plotWeeks[week].getCrop().weeks[CropMaturity].Health > 0)
+                else if( CropMaturity == crop.GetMaturityLength() && crop.weeks[CropMaturity].Health > 0)
                 {
+                    if(plotWeeks[week +1] != null && plotWeeks[week + 1].isEmpty)
+                    {
+                        plotWeeks[week].imageChange = true;
+                        plotWeeks[week].imageNumber = -1;
+                    }
+                    
                     cropsHarvested++;
+                }
+                else if(crop.weeks[CropMaturity].Health == 0 && crop.weeks[CropMaturity - 1].Health != 0)
+                {
+                    plotWeeks[week].imageChange = true;
+                    plotWeeks[week].imageNumber = 5;
                 }
                 
             }
@@ -242,11 +273,25 @@ namespace ProCP.Classes
         public void setSoilType(SoilType soiltype)
         {
             this.soiltype = soiltype;
-            this.plotWeeks[0].MaximumSoilNutrition = soiltype.GetStartingSoilNutrition();
-            this.plotWeeks[0].SoilNutrition = soiltype.GetStartingSoilNutrition();
+            resetPlotWeeks();
+          
             if (hasCrop != 0)
             {
                 CalBeginToEnd();
+            }
+        }
+        private void resetPlotWeeks()
+        {
+            for (int i = 0; i < plotWeeks.Count; i++)
+            {
+                if(i == 0)
+                {
+                    this.plotWeeks[i].SoilNutrition = soiltype.GetMaximumNutrition() / 3;
+                }
+                this.plotWeeks[i].SoilNutrition = 0;
+                this.plotWeeks[i].imageNumber = -1;
+                this.plotWeeks[i].imageChange = false;
+               
             }
         }
         private bool canInsertPlot(int maturity)

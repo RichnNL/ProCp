@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 05, 2017 at 03:15 PM
+-- Generation Time: Jan 07, 2017 at 01:21 PM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -201,20 +201,22 @@ INSERT INTO `simulations` (`Sim_ID`, `Name`, `Description`, `Province`, `BeginDa
 CREATE TABLE `soil` (
   `Soil_ID` int(11) NOT NULL,
   `Type` varchar(32) NOT NULL,
-  `Water_Retention` double NOT NULL,
-  `Nutrients` double NOT NULL
+  `Water_Loose` decimal(10,0) NOT NULL,
+  `Maximum_Water` decimal(10,0) NOT NULL,
+  `Maximum_Nutrients` decimal(10,0) NOT NULL,
+  `Nutrition_Loose` decimal(10,0) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `soil`
 --
 
-INSERT INTO `soil` (`Soil_ID`, `Type`, `Water_Retention`, `Nutrients`) VALUES
-(1, 'Clay', 70, 60),
-(2, 'Peat', 50, 70),
-(3, 'Loam', 40, 80),
-(4, 'Silt', 80, 40),
-(5, 'Sand', 40, 30);
+INSERT INTO `soil` (`Soil_ID`, `Type`, `Water_Loose`, `Maximum_Water`, `Maximum_Nutrients`, `Nutrition_Loose`) VALUES
+(1, 'Loam', '7', '75', '80', '8'),
+(2, 'Peat', '5', '100', '80', '3'),
+(3, 'Clay', '6', '80', '70', '10'),
+(4, 'Silt', '7', '50', '80', '8'),
+(5, 'Sand', '10', '30', '35', '5');
 
 -- --------------------------------------------------------
 

@@ -281,16 +281,21 @@ namespace ProCP.Classes
                 MySqlDataReader reader = command.ExecuteReader();
 
                 string name;
-                int max_water;
-                int nutrients;
+                decimal max_water;
+                decimal max_nutrients;
+                decimal waterloose;
+                decimal nutritionloose;
 
                 while (reader.Read())
                 {
                     name = Convert.ToString(reader["Type"]);
-                    max_water = Convert.ToInt32(reader["Water_Retention"]);
-                    nutrients = Convert.ToInt32(reader["Nutrients"]);
+                   waterloose = Convert.ToDecimal(reader["Water_Loose"]);
+                    max_water = Convert.ToDecimal(reader["Maximum_Water"]);
+                    max_nutrients = Convert.ToDecimal(reader["Maximum_Nutrients"]);
+                    nutritionloose = Convert.ToDecimal(reader["Nutrition_Loose"]);
+          
 
-                    temp.Add(new SoilType(name, max_water, nutrients));
+                     temp.Add(new SoilType(name, max_water,max_nutrients, waterloose, nutritionloose));
                 }
             }
             catch (Exception ex)

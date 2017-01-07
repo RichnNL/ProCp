@@ -476,9 +476,23 @@ namespace ProCP
         {
             if (String.IsNullOrEmpty(pictureBox) || String.IsNullOrEmpty(CropName) || ImageNumber == -1)
             {
+                if (((PictureBox)this.panel1.Controls[pictureBox]).BackColor == Color.Red)
+                {
+                    ((PictureBox)this.panel1.Controls[pictureBox]).BackColor = Color.Peru;
+                }
                 ((PictureBox)this.panel1.Controls[pictureBox]).Image = null;
             }
-            else {
+            else if(ImageNumber == 5)
+            {
+                ((PictureBox)this.panel1.Controls[pictureBox]).BackColor = Color.Red;
+            }
+            else
+            {
+                if (((PictureBox)this.panel1.Controls[pictureBox]).BackColor == Color.Red)
+                {
+                    ((PictureBox)this.panel1.Controls[pictureBox]).BackColor = Color.Peru;
+                }
+                
                 ((PictureBox)this.panel1.Controls[pictureBox]).Image = rcaea.simulation.database.GetImage(CropName, ImageNumber);
             }
         }

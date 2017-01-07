@@ -233,17 +233,17 @@ namespace ProCP.Classes
                     //small medium larger
                     case "small":
                         {
-                            value = 1000;
+                            value = 5;
                         }
                         break;
                     case "medium":
                         {
-                            value = 2000;
+                            value = 10;
                         }
                         break;
                     case "large":
                         {
-                            value = 3000;
+                            value = 20;
                         }
                         break;
                 }
@@ -267,17 +267,17 @@ namespace ProCP.Classes
                 {
                     case "small":
                         {
-                            value = 1000;
+                            value = 5;
                         }
                         break;
                     case "medium":
                         {
-                            value = 2000;
+                            value = 10;
                         }
                         break;
                     case "large":
                         {
-                            value = 3000;
+                            value = 20;
                         }
                         break;
                 }
@@ -491,27 +491,27 @@ namespace ProCP.Classes
             this.SimulationName = name;
             loadDates(Convert.ToDateTime(begindate), Convert.ToDateTime(enddate));
             loadProvince(province);
-            if(Convert.ToInt32(settings[0]) == 1000)
+            if(Convert.ToInt32(settings[0]) == 5)
             {
                 settings[0] = "small";
             }
-            else if(Convert.ToInt32(settings[0]) == 2000)
+            else if(Convert.ToInt32(settings[0]) == 10)
             {
                 settings[0] = "medium";
             }
-            else if (Convert.ToInt32(settings[0]) == 3000)
+            else if (Convert.ToInt32(settings[0]) == 20)
             {
                 settings[0] = "large";
             }
-            if (Convert.ToInt32(settings[1]) == 1000)
+            if (Convert.ToInt32(settings[1]) == 5)
             {
                 settings[1] = "small";
             }
-            else if (Convert.ToInt32(settings[1]) == 2000)
+            else if (Convert.ToInt32(settings[1]) == 10)
             {
                 settings[1] = "medium";
             }
-            else if (Convert.ToInt32(settings[1]) == 3000)
+            else if (Convert.ToInt32(settings[1]) == 20)
             {
                 settings[1] = "large";
             }
