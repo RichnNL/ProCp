@@ -139,7 +139,26 @@ namespace ProCP.Classes
         {
             // Add Water From Rain
             AddWaterToSoil(week, plotWeeks[week].weather.GetRain());
-            NurishWithWater(week, CropMaturity, crop);
+
+            // Crop Absorb Water
+            AddWaterToSoil(week, -(crop.GetThirst()));
+
+            decimal waterAmount;
+            decimal fertilizerAmount;
+            decimal AmountOfWaterToAdd = 0;
+            if(simulation.Watering == "Minimal")
+            {
+                AmountOfWaterToAdd = crop.GetWaterMinimum() + (crop.GetWaterMinimum() / 100);
+            }
+            else if (simulation.Watering == "Sufficent")
+            {
+                AmountOfWaterToAdd = ((crop.GetWaterMaximum() + crop.GetWaterMinimum()) / 2) - (crop.GetWaterMinimum() / 100);
+            }
+            else if (simulation.Watering == "Abundant")
+            {
+                AmountOfWaterToAdd = crop.GetWaterMaximum() - ((crop.GetWaterMaximum() + crop.GetWaterMinimum()) / 10);
+            }
+            //run caluclation not finished
         }
         private void NurishLand(int week)
         {
@@ -147,11 +166,7 @@ namespace ProCP.Classes
             AddWaterToSoil(week, plotWeeks[week].weather.GetRain());
             
         }
-        private void NurishWithWater(int week, int CropMaturity, Crop crop)
-        {
-
-            
-        }
+    
        
         private void AddWaterToSoil(int week, decimal waterAmount)
         {

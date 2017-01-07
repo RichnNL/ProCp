@@ -152,8 +152,8 @@ namespace ProCP.Classes
         public Statistics statistics;
 
 
-        private int fertilizer;
-        public int Fertilizer
+        private string fertilizer;
+        public string Fertilizer
         {
             get { return fertilizer; }
             set {
@@ -168,8 +168,8 @@ namespace ProCP.Classes
                 fertilizer = value; }
         }
 
-        private int water;
-        public int Watering
+        private string water;
+        public string Watering
         {
 
             get { return water; }
@@ -224,71 +224,30 @@ namespace ProCP.Classes
 
         public void SetFertilizer(string fer)
         {
-            if (numberOfCrops == 0)
-            {
-                int value = 0;
-
-                switch (fer)
-                {
-                    //small medium larger
-                    case "small":
-                        {
-                            value = 5;
-                        }
-                        break;
-                    case "medium":
-                        {
-                            value = 10;
-                        }
-                        break;
-                    case "large":
-                        {
-                            value = 20;
-                        }
-                        break;
-                }
-                if (value != Fertilizer)
+                if (fer != Fertilizer)
                 {
                     if (NotSavedEvent != null)
                     {
                         NotSavedEvent();
                     }
                 }
-                this.Fertilizer = value;
-            }
-        }
+                this.Fertilizer = fer;
+         }
+        
         
         public void Setwatering(string water)
         {
             if (numberOfCrops == 0)
             {
-                int value = 0;
-                switch (water)
-                {
-                    case "small":
-                        {
-                            value = 5;
-                        }
-                        break;
-                    case "medium":
-                        {
-                            value = 10;
-                        }
-                        break;
-                    case "large":
-                        {
-                            value = 20;
-                        }
-                        break;
-                }
-                if (value != this.Watering)
+              
+                if (water!= this.Watering)
                 {
                     if (NotSavedEvent != null)
                     {
                         NotSavedEvent();
                     }
                 }
-                this.Watering = value;
+                this.Watering = water;
             }
         }
 
@@ -491,30 +450,6 @@ namespace ProCP.Classes
             this.SimulationName = name;
             loadDates(Convert.ToDateTime(begindate), Convert.ToDateTime(enddate));
             loadProvince(province);
-            if(Convert.ToInt32(settings[0]) == 5)
-            {
-                settings[0] = "small";
-            }
-            else if(Convert.ToInt32(settings[0]) == 10)
-            {
-                settings[0] = "medium";
-            }
-            else if (Convert.ToInt32(settings[0]) == 20)
-            {
-                settings[0] = "large";
-            }
-            if (Convert.ToInt32(settings[1]) == 5)
-            {
-                settings[1] = "small";
-            }
-            else if (Convert.ToInt32(settings[1]) == 10)
-            {
-                settings[1] = "medium";
-            }
-            else if (Convert.ToInt32(settings[1]) == 20)
-            {
-                settings[1] = "large";
-            }
             loadFertilizer(settings[0]);
             loadWater(settings[1]);
             LoadPlotSize(settings[2]);
