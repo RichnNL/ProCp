@@ -194,7 +194,7 @@ namespace ProCP.Classes
         {
             foreach (Weather w in weathers)
             {
-                if(w.GetProvince() == province && w.getMonth() == month && w.getYear() == year)
+                if(w.GetProvince() == province && w.getMonth() == month)
                 {
                     return w;
                 }
@@ -224,8 +224,10 @@ namespace ProCP.Classes
         }
         public void loadAllWeather(string Province)
         {
-            string sql = "SELECT * FROM weather where Province = 'Province'";
+            string sql = "SELECT * FROM weather WHERE Province = @Province";
             MySqlCommand command = new MySqlCommand(sql, connection);
+         
+            command.Parameters.Add("@Province", MySqlDbType.VarChar).Value = Province;
 
             List<Weather> temp = new List<Weather>();
 
@@ -247,9 +249,9 @@ namespace ProCP.Classes
                     Temperature = Convert.ToDecimal(reader["Temp_Avg"]);
                     rainamount = Convert.ToDecimal(reader["Rain_Avg"]);
                     date = Convert.ToString(reader["Month_Year"]);
-
-                    Year= Convert.ToInt32(date.Substring(0, 4));
-                    Month = Convert.ToInt32(date.Substring(5, 2));
+                    DateTime d = Convert.ToDateTime(date);
+                    Year = d.Year;
+                    Month = d.Month;
                     temp.Add(new Weather(province,Month,Year,rainamount,Temperature));
 
                 }
@@ -293,9 +295,9 @@ namespace ProCP.Classes
                     max_water = Convert.ToDecimal(reader["Maximum_Water"]);
                     max_nutrients = Convert.ToDecimal(reader["Maximum_Nutrients"]);
                     nutritionloose = Convert.ToDecimal(reader["Nutrition_Loose"]);
-          
 
-                     temp.Add(new SoilType(name, max_water,max_nutrients, waterloose, nutritionloose));
+                    //string name, decimal maximum_water, decimal waterlooserate, decimal maximum_nutrition, decimal nutritionlooserate
+                    temp.Add(new SoilType(name, max_water, waterloose, max_nutrients, nutritionloose));
                 }
             }
             catch (Exception ex)

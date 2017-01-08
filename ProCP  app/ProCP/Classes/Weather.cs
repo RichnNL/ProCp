@@ -13,9 +13,8 @@ namespace ProCP.Classes
         private decimal Temperature;
         private string Province;
         private int year;
-        private int Month {
-            set { if (value > 12) { Month = 12; }else if (value < 1) { Month = 1; } }
-            get { return Month; } }
+
+        private int Month;
 
         public Weather(string province, int month, int year,decimal rainamount, decimal temp) {
             this.Province = province;

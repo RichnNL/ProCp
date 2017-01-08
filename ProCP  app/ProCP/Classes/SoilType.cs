@@ -27,7 +27,7 @@ namespace ProCP.Classes
         public string GetName() { return name; }
         public decimal GetWaterLooseRate() { return Water_Loose_Rate; }
         public decimal GetMaximumNutrition() { return Maxium_Nutrition; }
-        public decimal GetMaximumWater() { return Water_Loose_Rate;}
+        public decimal GetMaximumWater() { return Maximum_Water;}
         public decimal GetNutritionLooseRate() { return Nutrition_Loose_Rate; }
         
     }

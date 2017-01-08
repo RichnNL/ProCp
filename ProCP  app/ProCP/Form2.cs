@@ -41,8 +41,8 @@ namespace ProCP
         }
         private void InitializeProperties()
         {
-            this.wateringCbx.SelectedItem = wateringCbx.Items[1];
-            this.fertilizerCbx.SelectedItem = fertilizerCbx.Items[1];
+            this.wateringCbx.SelectedItem = wateringCbx.Items[0];
+            this.fertilizerCbx.SelectedItem = fertilizerCbx.Items[0];
             this.soilTypeCbx.SelectedItem = soilTypeCbx.Items[0];
         }
         private void setMinMaxDates()
