@@ -1276,9 +1276,11 @@
             // 
             this.timeTrackBar.Location = new System.Drawing.Point(315, 886);
             this.timeTrackBar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.timeTrackBar.Maximum = 100;
             this.timeTrackBar.Name = "timeTrackBar";
             this.timeTrackBar.Size = new System.Drawing.Size(1108, 69);
             this.timeTrackBar.TabIndex = 4;
+            this.timeTrackBar.Scroll += new System.EventHandler(this.timeTrackBar_Scroll);
             // 
             // playBtn
             // 
@@ -1509,13 +1511,13 @@
             this.peasMenuStripItem,
             this.potatoMenuStripItem});
             this.yrMenuStrip.Name = "yrMenuStrip";
-            this.yrMenuStrip.Size = new System.Drawing.Size(173, 154);
+            this.yrMenuStrip.Size = new System.Drawing.Size(186, 154);
             // 
             // lettuceMenuStripItem
             // 
             this.lettuceMenuStripItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lettuceMenuStripItem.Name = "lettuceMenuStripItem";
-            this.lettuceMenuStripItem.Size = new System.Drawing.Size(172, 30);
+            this.lettuceMenuStripItem.Size = new System.Drawing.Size(185, 30);
             this.lettuceMenuStripItem.Text = "Lettuce";
             this.lettuceMenuStripItem.Click += new System.EventHandler(this.lettuceStripMenuItem_Click);
             // 
@@ -1523,7 +1525,7 @@
             // 
             this.mushroomMenuStripItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.mushroomMenuStripItem.Name = "mushroomMenuStripItem";
-            this.mushroomMenuStripItem.Size = new System.Drawing.Size(172, 30);
+            this.mushroomMenuStripItem.Size = new System.Drawing.Size(185, 30);
             this.mushroomMenuStripItem.Text = "Mushroom";
             this.mushroomMenuStripItem.Click += new System.EventHandler(this.mushroomMenuStripItem_Click);
             // 
@@ -1531,7 +1533,7 @@
             // 
             this.onionMenuStripItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.onionMenuStripItem.Name = "onionMenuStripItem";
-            this.onionMenuStripItem.Size = new System.Drawing.Size(172, 30);
+            this.onionMenuStripItem.Size = new System.Drawing.Size(185, 30);
             this.onionMenuStripItem.Text = "Onion";
             this.onionMenuStripItem.Click += new System.EventHandler(this.onionMenuStripItem_Click);
             // 
@@ -1539,7 +1541,7 @@
             // 
             this.peasMenuStripItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.peasMenuStripItem.Name = "peasMenuStripItem";
-            this.peasMenuStripItem.Size = new System.Drawing.Size(172, 30);
+            this.peasMenuStripItem.Size = new System.Drawing.Size(185, 30);
             this.peasMenuStripItem.Text = "Peas";
             this.peasMenuStripItem.Click += new System.EventHandler(this.peasMenuStripItem_Click);
             // 
@@ -1547,7 +1549,7 @@
             // 
             this.potatoMenuStripItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.potatoMenuStripItem.Name = "potatoMenuStripItem";
-            this.potatoMenuStripItem.Size = new System.Drawing.Size(172, 30);
+            this.potatoMenuStripItem.Size = new System.Drawing.Size(185, 30);
             this.potatoMenuStripItem.Text = "Potatoes";
             this.potatoMenuStripItem.Click += new System.EventHandler(this.potatoMenuStripItem_Click);
             // 
@@ -1575,25 +1577,25 @@
             this.testToolStripMenuItem1,
             this.testToolStripMenuItem2});
             this.springMenuStrip.Name = "contextMenuStrip1";
-            this.springMenuStrip.Size = new System.Drawing.Size(180, 94);
+            this.springMenuStrip.Size = new System.Drawing.Size(185, 94);
             // 
             // Cauliflower
             // 
             this.Cauliflower.Image = ((System.Drawing.Image)(resources.GetObject("Cauliflower.Image")));
             this.Cauliflower.Name = "Cauliflower";
-            this.Cauliflower.Size = new System.Drawing.Size(179, 30);
+            this.Cauliflower.Size = new System.Drawing.Size(184, 30);
             this.Cauliflower.Text = "Cauliflower";
             // 
             // testToolStripMenuItem1
             // 
             this.testToolStripMenuItem1.Name = "testToolStripMenuItem1";
-            this.testToolStripMenuItem1.Size = new System.Drawing.Size(179, 30);
+            this.testToolStripMenuItem1.Size = new System.Drawing.Size(184, 30);
             this.testToolStripMenuItem1.Text = "Test";
             // 
             // testToolStripMenuItem2
             // 
             this.testToolStripMenuItem2.Name = "testToolStripMenuItem2";
-            this.testToolStripMenuItem2.Size = new System.Drawing.Size(179, 30);
+            this.testToolStripMenuItem2.Size = new System.Drawing.Size(184, 30);
             this.testToolStripMenuItem2.Text = "Test";
             // 
             // summerSplitBtn
@@ -1619,24 +1621,24 @@
             this.testToolStripMenuItem4,
             this.testToolStripMenuItem5});
             this.summerMenuStrip.Name = "contextMenuStrip1";
-            this.summerMenuStrip.Size = new System.Drawing.Size(115, 94);
+            this.summerMenuStrip.Size = new System.Drawing.Size(128, 94);
             // 
             // testToolStripMenuItem3
             // 
             this.testToolStripMenuItem3.Name = "testToolStripMenuItem3";
-            this.testToolStripMenuItem3.Size = new System.Drawing.Size(114, 30);
+            this.testToolStripMenuItem3.Size = new System.Drawing.Size(127, 30);
             this.testToolStripMenuItem3.Text = "Test";
             // 
             // testToolStripMenuItem4
             // 
             this.testToolStripMenuItem4.Name = "testToolStripMenuItem4";
-            this.testToolStripMenuItem4.Size = new System.Drawing.Size(114, 30);
+            this.testToolStripMenuItem4.Size = new System.Drawing.Size(127, 30);
             this.testToolStripMenuItem4.Text = "Test";
             // 
             // testToolStripMenuItem5
             // 
             this.testToolStripMenuItem5.Name = "testToolStripMenuItem5";
-            this.testToolStripMenuItem5.Size = new System.Drawing.Size(114, 30);
+            this.testToolStripMenuItem5.Size = new System.Drawing.Size(127, 30);
             this.testToolStripMenuItem5.Text = "Test";
             // 
             // fallSplitBtn
@@ -1662,24 +1664,24 @@
             this.testToolStripMenuItem7,
             this.testToolStripMenuItem8});
             this.fallMenuStrip.Name = "contextMenuStrip1";
-            this.fallMenuStrip.Size = new System.Drawing.Size(115, 94);
+            this.fallMenuStrip.Size = new System.Drawing.Size(128, 94);
             // 
             // testToolStripMenuItem6
             // 
             this.testToolStripMenuItem6.Name = "testToolStripMenuItem6";
-            this.testToolStripMenuItem6.Size = new System.Drawing.Size(114, 30);
+            this.testToolStripMenuItem6.Size = new System.Drawing.Size(127, 30);
             this.testToolStripMenuItem6.Text = "Test";
             // 
             // testToolStripMenuItem7
             // 
             this.testToolStripMenuItem7.Name = "testToolStripMenuItem7";
-            this.testToolStripMenuItem7.Size = new System.Drawing.Size(114, 30);
+            this.testToolStripMenuItem7.Size = new System.Drawing.Size(127, 30);
             this.testToolStripMenuItem7.Text = "Test";
             // 
             // testToolStripMenuItem8
             // 
             this.testToolStripMenuItem8.Name = "testToolStripMenuItem8";
-            this.testToolStripMenuItem8.Size = new System.Drawing.Size(114, 30);
+            this.testToolStripMenuItem8.Size = new System.Drawing.Size(127, 30);
             this.testToolStripMenuItem8.Text = "Test";
             // 
             // winterSplitBtn

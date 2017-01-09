@@ -715,11 +715,41 @@ namespace ProCP
         {
             return rcaea.simulationStorage.LoadSimulationDescriptions();
         }
-      
+
 
         private void playBtn_Click(object sender, EventArgs e)
         {
-
+            if (playBtn.Text == "Play")
+            {
+                startSimulation();
+            }
+            else if (playBtn.Text == "Pause")
+            {
+                PauseSimulation();
+            }
+            else if (playBtn.Text == "Reset")
+            {
+                restartSimulation();
+            }
+        }
+        private void startSimulation()
+        {
+            playBtn.Text = "Pause";
+            rcaea.simulation.Run();
+        }
+        private void PauseSimulation()
+        {
+            playBtn.Text = "Play";
+            rcaea.simulation.Stop();
+        }
+        private void endofSimulation()
+        {
+            playBtn.Text = "Reset";
+        }
+        private void restartSimulation()
+        {
+            playBtn.Text = "Play";
+            rcaea.simulation.Restart();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -796,6 +826,18 @@ namespace ProCP
             {
                 setPlotSize(Convert.ToInt32(value));
             }
+            else if(change == "Time")
+            {
+                seek(Convert.ToInt32(value));
+            }
+            else if(change == "End")
+            {
+                endofSimulation();
+            }
+            else if(change == "Tick")
+            {
+                timeTrackBar.Maximum = Convert.ToInt32(value);
+            }
             internalChange = false;
         }
 
@@ -828,6 +870,25 @@ namespace ProCP
             else
             {
                 error(true);
+            }
+        }
+
+        private void timeTrackBar_Scroll(object sender, EventArgs e)
+        {
+            if (!internalChange)
+            {
+                seek(timeTrackBar.Value);
+            }
+        }
+        private void seek(int percentage)
+        {
+            if (internalChange)
+            {
+                timeTrackBar.Value = percentage;
+            }
+            else
+            {
+                rcaea.simulation.Seek(percentage);
             }
         }
     }

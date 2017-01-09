@@ -25,8 +25,15 @@ namespace ProCP.Classes
         Timer time;
         public string SimulationName { get; set; }
         public string SimulationDescription { get; set; }
-        
 
+        private int totalticks;
+        private int totalTicks {
+            get { return totalticks; }
+            set { totalticks = value; if (SimulationChangedEvent != null)
+                {
+                    SimulationChangedEvent("Tick", value.ToString());
+                }; }
+        }
         public List<Plot> plots;
     
         private DateTime beginDate;
@@ -83,6 +90,10 @@ namespace ProCP.Classes
                 if(currentWeek == totalWeeks)
                 {
                     Stop();
+                    if (SimulationChangedEvent != null)
+                    {
+                        SimulationChangedEvent("End", "");
+                    }
                 }
                 if(numberOfCrops != 0)
                 {
@@ -187,6 +198,7 @@ namespace ProCP.Classes
 
         public Simulation(string DataBaseConnection,string SimulationStorageDatabase,string Province) {
             numberOfCrops = 0;
+            totalTicks = 100;
             timeBetweenWeeks = 2000;
             time = new Timer(timeBetweenWeeks);
             time.Elapsed += new ElapsedEventHandler(tick);
@@ -205,11 +217,16 @@ namespace ProCP.Classes
         private void tick(object o, ElapsedEventArgs e)
         {
             CurrentWeek++;
+            if (SimulationChangedEvent != null)
+            {
+                SimulationChangedEvent("Time", currentWeek.ToString());
+            }
         }
         public void Run() {
-            
-            time.Start();
-
+            if(currentWeek != totalWeeks)
+            {
+                time.Start();
+            }
             
         }
         public void Stop() {
@@ -218,8 +235,9 @@ namespace ProCP.Classes
         public void Restart() {
             CurrentWeek = 0 ;
         }
-        public void Seek(int percentage) {
-            // to do change currentweek based on totalweeks
+        public void Seek(int percentage)
+        {
+            CurrentWeek = (totalWeeks * percentage) / totalticks;
         }
 
         public void SetFertilizer(string fer)
