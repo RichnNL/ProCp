@@ -42,6 +42,7 @@ namespace ProCP.Classes
                 Settings[1] = details[1].Substring(begin + 1, (end - begin) - 1);
                 Settings[2] = details[1].Substring(end + 1, (details[1].Length -1) - end);
                 simulation.LoadSimualtion(details[0], details[2], details[3], details[4], Settings, loadedSimulationPlots);
+                simulationStorage.changedSinceLastSave = true;
                 return true;
             }
             else
@@ -68,6 +69,8 @@ namespace ProCP.Classes
         public void resetSimulation()
         {
             simulation.ResetSimulation();
+            simulationStorage.changedSinceLastSave = true;
+
         }
         public void setSimulationName(string name)
         {

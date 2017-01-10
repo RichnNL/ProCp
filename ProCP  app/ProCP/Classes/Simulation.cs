@@ -24,6 +24,7 @@ namespace ProCP.Classes
         [field: NonSerialized]
         Timer time;
         public string SimulationName { get; set; }
+        private bool seeking;
         public string SimulationDescription { get; set; }
 
         private int totalticks;
@@ -72,7 +73,7 @@ namespace ProCP.Classes
 
                 currentDate = value; } }
         private int totalWeeks;
-        private int currentWeek;
+        private volatile int currentWeek;
         private int timeBetweenWeeks;
         public int CurrentWeek
         {
@@ -81,24 +82,19 @@ namespace ProCP.Classes
             {
                 if (value != currentWeek)
                 {
-                    if (NotSavedEvent != null)
+                    currentWeek = value;
+                    if(currentWeek > totalWeeks)
                     {
-                        NotSavedEvent();
+                        currentWeek = totalWeeks;
                     }
-                }
-                currentWeek = value;
-                if(currentWeek == totalWeeks)
-                {
-                    Stop();
-                    if (SimulationChangedEvent != null)
+                    if (numberOfCrops != 0)
                     {
-                        SimulationChangedEvent("End", "");
+                        currentWeekChanged();
                     }
+                    
+                   
                 }
-                if(numberOfCrops != 0)
-                {
-                    currentWeekChanged();
-                }
+                
                 
                 ;
             }
@@ -198,9 +194,11 @@ namespace ProCP.Classes
 
         public Simulation(string DataBaseConnection,string SimulationStorageDatabase,string Province) {
             numberOfCrops = 0;
+            seeking = false;
             totalTicks = 100;
-            timeBetweenWeeks = 2000;
-            time = new Timer(timeBetweenWeeks);
+            timeBetweenWeeks = 5000;
+            time = new Timer();
+            time.Interval = timeBetweenWeeks;
             time.Elapsed += new ElapsedEventHandler(tick);
             //for testing
             plots = new List<Plot>();
@@ -216,11 +214,8 @@ namespace ProCP.Classes
         }
         private void tick(object o, ElapsedEventArgs e)
         {
-            CurrentWeek++;
-            if (SimulationChangedEvent != null)
-            {
-                SimulationChangedEvent("Time", currentWeek.ToString());
-            }
+           CurrentWeek = CurrentWeek + 1;
+           
         }
         public void Run() {
             if(currentWeek != totalWeeks)
@@ -237,7 +232,13 @@ namespace ProCP.Classes
         }
         public void Seek(int percentage)
         {
-            CurrentWeek = (totalWeeks * percentage) / totalticks;
+            decimal percent = Convert.ToDecimal(percentage);
+            decimal total = Convert.ToDecimal(totalWeeks);
+            decimal totalT = Convert.ToDecimal(totalticks);
+            decimal current = (total * percent) / totalT;
+            seeking = true;
+            CurrentWeek = Convert.ToInt32(Math.Ceiling(current));
+            seeking = false;
         }
 
         public void SetFertilizer(string fer)
@@ -311,8 +312,9 @@ namespace ProCP.Classes
             }
         }
         
-        private void InitialPlots() {
-            
+        private void InitialPlots()
+        {
+            plots.Clear();
             for(int i = 0; i< numberofPlotColumns; i++)
             {
                 string plotId = "pb";
@@ -412,6 +414,19 @@ namespace ProCP.Classes
 
         private void currentWeekChanged()
         {
+
+            if(SimulationChangedEvent != null && !seeking)
+            {
+                if(currentWeek == totalWeeks)
+                {
+                    SimulationChangedEvent("End", "");
+                }
+                else
+                {
+                    SimulationChangedEvent("Time", currentWeek.ToString());
+                }
+               
+            }
             foreach(Plot p in plots)
             {
                 if (p.plotWeeks[CurrentWeek].imageChange)
@@ -457,6 +472,14 @@ namespace ProCP.Classes
         {
             setInitalDate();
             LoadPlotSize("100");
+            InitialPlots();
+            for (int i = 0; i < plots.Count; i++)
+            {
+                if (plots[i].getNumberOfCrops() != 0)
+                {
+                    drawPlot(plots[i]);
+                }
+            }
             if (SimulationChangedEvent != null)
             {
                 SimulationChangedEvent("Reset", "");
@@ -465,6 +488,11 @@ namespace ProCP.Classes
         }
         public void LoadSimualtion(string name, string province, string begindate, string enddate, string[] settings, List<Plot> PLOTS)
         {
+            if (SimulationChangedEvent != null)
+            {
+                SimulationChangedEvent("Reset", "");
+
+            }
             this.SimulationName = name;
             loadDates(Convert.ToDateTime(begindate), Convert.ToDateTime(enddate));
             loadProvince(province);
@@ -520,7 +548,8 @@ namespace ProCP.Classes
         }
         private void LoadPlots(List<Plot> PLOTS)
         {
-            this.plots = PLOTS;
+            this.plots.Clear();
+            this.plots = PLOTS.ToList();
             for(int i = 0; i < plots.Count; i++)
             {
                 plots[i].setSimulation(this);

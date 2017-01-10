@@ -21,13 +21,13 @@ namespace ProCP
         public Form2()
         {
             InitializeComponent();
-            
             province = "Drenthe";
             //defeault province for now;
             rcaea = new RCAEA(province);
             internalChange = false;
-            dateTimePicker1.MinDate = new DateTime(2015, 1, 1);
-            setMinMaxDates();
+            
+
+          
             AddSoilTypestoComboBox();
             rcaea.simulation.OnDraw += new Simulation.DrawCropHandler(drawPictureBox);
             rcaea.simulation.SimulationChangedEvent += new Simulation.SimulationChangedHandler(hostsimulationChanged);
@@ -36,20 +36,49 @@ namespace ProCP
             populateProvinceOption();
             setClickEventForPictureBoxes();
             populateCropPanelSelection();
-            InitializeProperties();
+            InitializeProperties();  
             plotInfoLstbx.Items.Add("No Plot Selected");
         }
+
+        private void Backgroundworker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         private void InitializeProperties()
         {
             this.wateringCbx.SelectedItem = wateringCbx.Items[0];
             this.fertilizerCbx.SelectedItem = fertilizerCbx.Items[0];
             this.soilTypeCbx.SelectedItem = soilTypeCbx.Items[0];
+            plotSizeNmr.Value = 100;
+            dateTimePicker1.MinDate = new DateTime(2015, 1, 1);
+            dateTimePicker1.MaxDate = new DateTime(2018, 12, 31);
+            setMinMaxDates();
         }
+      
         private void setMinMaxDates()
         {
            
             dateTimePicker2.MinDate = dateTimePicker1.Value.AddMonths(3);
             dateTimePicker2.MaxDate = dateTimePicker1.Value.AddMonths(36);
+            DateTime d = dateTimePicker1.Value;
+            int year = (dateTimePicker2.Value.Year - d.Year);
+            int day = (dateTimePicker2.Value.DayOfYear - d.DayOfYear) + (year * 365);
+            day = day / 6;
+            startDateLabel.Text = d.ToString("dd/MM/yyyy");
+            d =  d.AddDays(day);
+            datelabel1.Text = d.ToString("dd/MM/yyyy");
+            d = d.AddDays(day);
+            datelabel2.Text = d.ToString("dd/MM/yyyy");
+            d = d.AddDays(day);
+            datelabel3.Text = d.ToString("dd/MM/yyyy");
+            d = d.AddDays(day);
+            datelabel4.Text = d.ToString("dd/MM/yyyy");
+            d = d.AddDays(day);
+            datelabel5.Text = d.ToString("dd/MM/yyyy");
+            EndDateLabel.Text = dateTimePicker2.Value.ToString("dd/MM/yyyy");
+
+
         }
         private void showCropInfo()
         {
@@ -394,7 +423,7 @@ namespace ProCP
             }
 
             setMinMaxDates();
-            EndDateLabel.Text = rcaea.simulation.EndDate.ToString("yyyy-MM-dd");
+            
         }
 
         private void pb86_Click(object sender, EventArgs e)
@@ -499,6 +528,24 @@ namespace ProCP
         private void Form2_Load(object sender, EventArgs e)
         {
 
+        }
+        private void resetPictureBoxes()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                string plotId = "pb";
+                for (int j = 0; j < 8; j++)
+                {
+                    plotId = plotId + i.ToString() + j.ToString();
+                    ((PictureBox)this.panel1.Controls[plotId]).Image = null;
+                    if (((PictureBox)this.panel1.Controls[plotId]).BackColor == Color.Red)
+                    {
+                        ((PictureBox)this.panel1.Controls[plotId]).BackColor = Color.Peru;
+                    }
+                    plotId = "pb";
+                }
+            }
+           
         }
 
         private void fertilizerCbx_SelectedIndexChanged(object sender, EventArgs e)
@@ -678,11 +725,28 @@ namespace ProCP
         {
             province = "Drenthe";
             rcaea.resetSimulation();
-            }
+        }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            newSimulation();
+            if (!rcaea.simulationStorage.changedSinceLastSave)
+            {
+                DialogResult result = MessageBox.Show("The current Simulation will be overwritten do you wish to save?", "Warning", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    save();
+                    return;
+                }
+                else
+                {
+                    newSimulation();
+                }
+            }
+            else
+            {
+                newSimulation();
+            }
+         
         }
         public void setSimulationNameandDecription(string name, string description)
         {
@@ -759,7 +823,7 @@ namespace ProCP
         /// Asking user for confirmation whenever going to exit
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            if (rcaea.simulationStorage.changedSinceLastSave)
+            if (!rcaea.simulationStorage.changedSinceLastSave)
             {
                 DialogResult dialogResult = MessageBox.Show("Do you want to save before Exit?", "Exit", MessageBoxButtons.YesNoCancel);
                 if (dialogResult == DialogResult.Yes)
@@ -812,6 +876,7 @@ namespace ProCP
             }
             else if(change == "Reset")
             {
+                resetPictureBoxes();
                 InitializeProperties();
             }
             else if(change == "Fertilizer")
@@ -884,12 +949,21 @@ namespace ProCP
         {
             if (internalChange)
             {
-                timeTrackBar.Value = percentage;
+                MethodInvoker invoke = delegate
+                {
+                    timeTrackBar.Value = percentage;
+                };
+                this.Invoke(invoke);
             }
+
+                
+                
             else
             {
+
                 rcaea.simulation.Seek(percentage);
             }
         }
+       
     }
 }
