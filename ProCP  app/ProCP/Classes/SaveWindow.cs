@@ -37,5 +37,10 @@ namespace ProCP.Classes
         {
             this.Close();
         }
+
+        private void SaveWindow_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

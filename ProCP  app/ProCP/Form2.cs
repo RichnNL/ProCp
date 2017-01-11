@@ -14,8 +14,8 @@ namespace ProCP
 {
     public partial class Form2 : Form
     {
-        
-        RCAEA rcaea; 
+
+        RCAEA rcaea;
         string province;
         bool internalChange;
         public Form2()
@@ -25,18 +25,18 @@ namespace ProCP
             //defeault province for now;
             rcaea = new RCAEA(province);
             internalChange = false;
-            
 
-          
+
+
             AddSoilTypestoComboBox();
             rcaea.simulation.OnDraw += new Simulation.DrawCropHandler(drawPictureBox);
             rcaea.simulation.SimulationChangedEvent += new Simulation.SimulationChangedHandler(hostsimulationChanged);
-  
+
 
             populateProvinceOption();
             setClickEventForPictureBoxes();
             populateCropPanelSelection();
-            InitializeProperties();  
+            InitializeProperties();
             plotInfoLstbx.Items.Add("No Plot Selected");
         }
 
@@ -55,10 +55,10 @@ namespace ProCP
             dateTimePicker1.MaxDate = new DateTime(2018, 12, 31);
             setMinMaxDates();
         }
-      
+
         private void setMinMaxDates()
         {
-           
+
             dateTimePicker2.MinDate = dateTimePicker1.Value.AddMonths(3);
             dateTimePicker2.MaxDate = dateTimePicker1.Value.AddMonths(36);
             DateTime d = dateTimePicker1.Value;
@@ -66,7 +66,7 @@ namespace ProCP
             int day = (dateTimePicker2.Value.DayOfYear - d.DayOfYear) + (year * 365);
             day = day / 6;
             startDateLabel.Text = d.ToString("dd/MM/yyyy");
-            d =  d.AddDays(day);
+            d = d.AddDays(day);
             datelabel1.Text = d.ToString("dd/MM/yyyy");
             d = d.AddDays(day);
             datelabel2.Text = d.ToString("dd/MM/yyyy");
@@ -87,7 +87,7 @@ namespace ProCP
         private void PictureBoxSingleClicked(object sender, MouseEventArgs e)
         {
             PictureBox pbox = (PictureBox)sender;
-            if(rcaea.selectedPlot == rcaea.simulation.getPlot(pbox.Name))
+            if (rcaea.selectedPlot == rcaea.simulation.getPlot(pbox.Name))
             {
                 rcaea.selectedPlot = null;
                 soilTypeCbx.Enabled = false;
@@ -101,10 +101,10 @@ namespace ProCP
                 rcaea.selectedPlot = rcaea.simulation.getPlot(pbox.Name);
                 soilTypeCbx.Enabled = true;
                 string soiltype = rcaea.selectedPlot.getSoilType();
-                for(int i = 0; i < soilTypeCbx.Items.Count; i++)
+                for (int i = 0; i < soilTypeCbx.Items.Count; i++)
                 {
                     string value = soilTypeCbx.GetItemText(soilTypeCbx.Items[i]);
-                    if(value == soiltype)
+                    if (value == soiltype)
                     {
                         soilTypeCbx.SelectedIndex = i;
                         break;
@@ -113,31 +113,31 @@ namespace ProCP
                 rcaea.submitChange = true;
                 FillPlotInfo(rcaea.selectedPlot);
             }
-            
-            
+
+
 
         }
         private void PictureBoxDoubleClicked(object sender, MouseEventArgs e)
         {
             PictureBox pbox = (PictureBox)sender;
-            
+
             rcaea.selectedPlot = rcaea.simulation.getPlot(pbox.Name);
             if (e.Button == MouseButtons.Left)
-            {  
-                if(rcaea.componentSelected != "" && rcaea.componentSelected != null)
+            {
+                if (rcaea.componentSelected != "" && rcaea.componentSelected != null)
                 {
                     rcaea.simulation.addCrop(rcaea.simulation.database.GetCrop(rcaea.componentSelected), rcaea.selectedPlot);
                     FillPlotInfo(rcaea.selectedPlot);
                 }
             }
-            else if(e.Button == MouseButtons.Right)
+            else if (e.Button == MouseButtons.Right)
             {
                 rcaea.simulation.removeCrop(rcaea.selectedPlot);
                 FillPlotInfo(rcaea.selectedPlot);
             }
             EnabledEditing();
 
-           
+
         }
         private void EnabledEditing()
         {
@@ -156,13 +156,13 @@ namespace ProCP
         }
         private void setClickEventForPictureBoxes()
         {
-            foreach(Plot p in rcaea.simulation.plots)
+            foreach (Plot p in rcaea.simulation.plots)
             {
-                
+
                 ((PictureBox)this.panel1.Controls[p.PlotId]).MouseClick += new MouseEventHandler((PictureBoxSingleClicked));
                 ((PictureBox)this.panel1.Controls[p.PlotId]).MouseDoubleClick += new MouseEventHandler((PictureBoxDoubleClicked));
             }
-           
+
         }
         private void populateCropPanelSelection()
         {
@@ -178,7 +178,7 @@ namespace ProCP
             summerMenuStrip.Items.Clear();
             winterMenuStrip.Items.Clear();
 
-            foreach(string s in all)
+            foreach (string s in all)
             {
                 ToolStripMenuItem item = createStripMenuItem(s);
                 yrMenuStrip.Items.Add(item);
@@ -245,8 +245,8 @@ namespace ProCP
             if (e.Button == MouseButtons.Left)
             {
                 ToolStripItem item = (ToolStripItem)sender;
-               summerSplitBtn.Image = rcaea.simulation.database.GetImage(item.Name, 3);
-               summerSplitBtn.Text = item.Text;
+                summerSplitBtn.Image = rcaea.simulation.database.GetImage(item.Name, 3);
+                summerSplitBtn.Text = item.Text;
                 rcaea.componentSelected = item.Text;
             }
         }
@@ -294,7 +294,7 @@ namespace ProCP
             }
             this.provinceCbx.SelectedItem = this.provinceCbx.Items[0];
         }
-        
+
 
 
         private void overviewTotalCostLbl_Click(object sender, EventArgs e)
@@ -319,8 +319,8 @@ namespace ProCP
 
         private void lettuceStripMenuItem_Click(object sender, EventArgs e)
         {
-           
-       
+
+
         }
 
         private void mushroomMenuStripItem_Click(object sender, EventArgs e)
@@ -330,39 +330,39 @@ namespace ProCP
 
         private void onionMenuStripItem_Click(object sender, EventArgs e)
         {
-          
+
         }
 
         private void peasMenuStripItem_Click(object sender, EventArgs e)
         {
-        
+
         }
 
         private void potatoMenuStripItem_Click(object sender, EventArgs e)
         {
-            
+
         }
         private void CauliFlowerMenuStripItem_Click(object sender, EventArgs e)
         {
-        
+
         }
 
         private void soilTypeLbl_Click(object sender, EventArgs e)
         {
-           
+
         }
         private void assignPlotSoil(Plot p)
         {
-                if(rcaea.selectedPlot != null || rcaea.submitChange)
-                 {
+            if (rcaea.selectedPlot != null || rcaea.submitChange)
+            {
                 p.setSoilType(rcaea.simulation.database.getSoilType(soilTypeCbx.SelectedItem.ToString()));
 
                 FillPlotInfo(rcaea.selectedPlot);
-                
-            }
-                
 
-                
+            }
+
+
+
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -377,7 +377,7 @@ namespace ProCP
                 setEndDate(dateTimePicker2.Value);
             }
 
-            
+
 
         }
 
@@ -397,20 +397,20 @@ namespace ProCP
             {
                 setBeginDate(dateTimePicker1.Value);
             }
-            
+
         }
         private void setBeginDate(DateTime date)
         {
             if (!internalChange)
             {
                 rcaea.simulation.SetBeginDate(date);
-                
+
             }
             else
-            { 
+            {
                 dateTimePicker1.Value = date;
             }
-            
+
             setMinMaxDates();
             startDateLabel.Text = rcaea.simulation.BeginDate.ToString("yyyy-MM-dd");
         }
@@ -427,7 +427,7 @@ namespace ProCP
             }
 
             setMinMaxDates();
-            
+
         }
 
         private void pb86_Click(object sender, EventArgs e)
@@ -451,7 +451,7 @@ namespace ProCP
             {
                 setProvince(provinceCbx.SelectedItem.ToString());
             }
-                
+
         }
         private void setProvince(string province)
         {
@@ -463,17 +463,17 @@ namespace ProCP
                 }
                 else
                 {
-                    for(int i = 0; i < provinceCbx.Items.Count; i++)
+                    for (int i = 0; i < provinceCbx.Items.Count; i++)
                     {
-                        if(provinceCbx.Items[i].ToString() == province)
+                        if (provinceCbx.Items[i].ToString() == province)
                         {
                             this.provinceCbx.SelectedItem = provinceCbx.Items[i];
                             break;
                         }
                     }
-                    
+
                 }
-                
+
 
                 if (rcaea.selectedPlot != null)
                 {
@@ -515,7 +515,7 @@ namespace ProCP
                 }
                 ((PictureBox)this.panel1.Controls[pictureBox]).Image = null;
             }
-            else if(ImageNumber == 5)
+            else if (ImageNumber == 5)
             {
                 ((PictureBox)this.panel1.Controls[pictureBox]).BackColor = Color.Red;
             }
@@ -525,7 +525,7 @@ namespace ProCP
                 {
                     ((PictureBox)this.panel1.Controls[pictureBox]).BackColor = Color.Peru;
                 }
-                
+
                 ((PictureBox)this.panel1.Controls[pictureBox]).Image = rcaea.simulation.database.GetImage(CropName, ImageNumber);
             }
         }
@@ -549,7 +549,7 @@ namespace ProCP
                     plotId = "pb";
                 }
             }
-           
+
         }
 
         private void fertilizerCbx_SelectedIndexChanged(object sender, EventArgs e)
@@ -558,7 +558,7 @@ namespace ProCP
             {
                 setFertilizer(fertilizerCbx.SelectedItem.ToString());
             }
-          
+
 
 
         }
@@ -622,7 +622,7 @@ namespace ProCP
                         }
                     }
                 }
-               
+
                 if (rcaea.selectedPlot != null)
                 {
                     FillPlotInfo(rcaea.selectedPlot);
@@ -646,7 +646,7 @@ namespace ProCP
             plotInfoLstbx.Items.Clear();
             plotInfoLstbx.Items.Add("Plot Summary");
             plotInfoLstbx.Items.Add(p.PlotId + ":  SoilType: " + p.getSoilType());
-            if(p.getNumberOfCrops() != 0)
+            if (p.getNumberOfCrops() != 0)
             {
                 plotInfoLstbx.Items.Add("Total Crops Set in Plot" + p.getNumberOfCrops().ToString());
                 plotInfoLstbx.Items.Add("Crops Harvested: " + p.getNumberOfHarvestedCrops().ToString());
@@ -655,14 +655,14 @@ namespace ProCP
             {
                 plotInfoLstbx.Items.Add("No Crops Set in Plot");
             }
-            
+
             plotInfoLstbx.Items.Add("------------------");
             if (p.getNumberOfCrops() != 0)
             {
                 if (p.plotWeeks[rcaea.simulation.CurrentWeek].isEmpty)
                 {
                     string[] Crops = p.getAllCropNamesInPlotWithStartEndDates();
-                    foreach(string s in Crops)
+                    foreach (string s in Crops)
                     {
                         plotInfoLstbx.Items.Add(s);
                     }
@@ -685,10 +685,10 @@ namespace ProCP
                         plotInfoLstbx.Items.Add("Current Status: ");
                         plotInfoLstbx.Items.Add(currentPlot.getHealth());
                     }
-                    
-                    
+
+
                 }
-                
+
 
             }
         }
@@ -715,7 +715,7 @@ namespace ProCP
             {
                 saveAs();
             }
-          
+
         }
         private void load()
         {
@@ -763,12 +763,12 @@ namespace ProCP
             {
                 newSimulation();
             }
-         
+
         }
         public void setSimulationNameandDecription(string name, string description)
         {
             rcaea.setSimulationName(name);
-            if (!String.IsNullOrEmpty(description)){
+            if (!String.IsNullOrEmpty(description)) {
                 rcaea.setSimulationDescription(description);
             }
             if (rcaea.SaveSimulation())
@@ -861,7 +861,7 @@ namespace ProCP
             {
                 e.Cancel = false;
             }
-          
+
         }
         public bool simulationSaved()
         {
@@ -891,14 +891,14 @@ namespace ProCP
             {
                 setProvince(value);
             }
-            else if(change == "Reset")
+            else if (change == "Reset")
             {
                 resetPictureBoxes();
                 InitializeProperties();
                 EnabledEditing();
 
             }
-            else if(change == "Fertilizer")
+            else if (change == "Fertilizer")
             {
                 setFertilizer(value);
             }
@@ -906,19 +906,19 @@ namespace ProCP
             {
                 setWatering(value);
             }
-            else if(change == "PlotSize")
+            else if (change == "PlotSize")
             {
                 setPlotSize(Convert.ToInt32(value));
             }
-            else if(change == "Time")
+            else if (change == "Time")
             {
                 seek(Convert.ToInt32(value));
             }
-            else if(change == "End")
+            else if (change == "End")
             {
                 endofSimulation();
             }
-            else if(change == "Tick")
+            else if (change == "Tick")
             {
                 timeTrackBar.Maximum = Convert.ToInt32(value);
             }
@@ -938,8 +938,8 @@ namespace ProCP
         }
         private void setPlotSize(int size)
         {
-           
-          if(rcaea.simulation.getNumberOfCrops() == 0 || internalChange)
+
+            if (rcaea.simulation.getNumberOfCrops() == 0 || internalChange)
             {
                 if (!internalChange)
                 {
@@ -979,8 +979,8 @@ namespace ProCP
                 this.Invoke(invoke);
             }
 
-                
-                
+
+
             else
             {
 
@@ -990,8 +990,26 @@ namespace ProCP
 
         private void reportBtn_Click(object sender, EventArgs e)
         {
-            ReportWindow rptWindow = new Classes.ReportWindow();
+            ReportWindow rptWindow = new ReportWindow(this);
             rptWindow.Show();
         }
+        public string SendReport()
+        {
+            List<CropData> list = new List<Classes.CropData>();
+            list = rcaea.selectedPlot.GetCropSummary();
+            
+
+            
+
+            string a = "Number of Crops: " + "\nTotal: " + "\nCrops \t  \tCost \t\tYield \t\tProfit ";
+            //loop ....
+            foreach(CropData c in list)
+            {
+                a += "\nCarrots \t \t " + c.GetTotalCost().ToString()  + "\t \t"+ c.GetYield().ToString()+ "\t \t50";
+            }
+            
+            return a;
+        }
+            
     }
 }
