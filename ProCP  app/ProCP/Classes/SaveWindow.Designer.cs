@@ -38,9 +38,10 @@
             // 
             // OkButton
             // 
-            this.OkButton.Location = new System.Drawing.Point(83, 205);
+            this.OkButton.Location = new System.Drawing.Point(55, 133);
+            this.OkButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.OkButton.Name = "OkButton";
-            this.OkButton.Size = new System.Drawing.Size(78, 55);
+            this.OkButton.Size = new System.Drawing.Size(52, 36);
             this.OkButton.TabIndex = 0;
             this.OkButton.Text = "Ok";
             this.OkButton.UseVisualStyleBackColor = true;
@@ -48,9 +49,10 @@
             // 
             // CancelButton
             // 
-            this.CancelButton.Location = new System.Drawing.Point(187, 205);
+            this.CancelButton.Location = new System.Drawing.Point(125, 133);
+            this.CancelButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(78, 55);
+            this.CancelButton.Size = new System.Drawing.Size(52, 36);
             this.CancelButton.TabIndex = 1;
             this.CancelButton.Text = "Cancel";
             this.CancelButton.UseVisualStyleBackColor = true;
@@ -58,49 +60,55 @@
             // 
             // saveText
             // 
-            this.saveText.Location = new System.Drawing.Point(83, 84);
+            this.saveText.Location = new System.Drawing.Point(55, 55);
+            this.saveText.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.saveText.Name = "saveText";
-            this.saveText.Size = new System.Drawing.Size(182, 26);
+            this.saveText.Size = new System.Drawing.Size(123, 20);
             this.saveText.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(79, 61);
+            this.label1.Location = new System.Drawing.Point(53, 40);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(175, 20);
+            this.label1.Size = new System.Drawing.Size(117, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "Please Enter File Name";
             // 
             // descriptionText
             // 
-            this.descriptionText.Location = new System.Drawing.Point(83, 153);
+            this.descriptionText.Location = new System.Drawing.Point(55, 99);
+            this.descriptionText.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.descriptionText.Name = "descriptionText";
-            this.descriptionText.Size = new System.Drawing.Size(182, 26);
+            this.descriptionText.Size = new System.Drawing.Size(123, 20);
             this.descriptionText.TabIndex = 4;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(79, 130);
+            this.label2.Location = new System.Drawing.Point(53, 84);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(213, 20);
+            this.label2.Size = new System.Drawing.Size(142, 13);
             this.label2.TabIndex = 5;
             this.label2.Text = "Please Enter File Description";
             // 
             // SaveWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(368, 287);
+            this.ClientSize = new System.Drawing.Size(245, 187);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.descriptionText);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.saveText);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.OkButton);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "SaveWindow";
             this.Text = "SaveWindow";
+            this.Load += new System.EventHandler(this.SaveWindow_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

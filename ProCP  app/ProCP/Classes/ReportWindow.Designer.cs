@@ -73,6 +73,7 @@
             this.Controls.Add(this.richTextBox1);
             this.Name = "ReportWindow";
             this.Text = "ReportWindow";
+            this.Load += new System.EventHandler(this.ReportWindow_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

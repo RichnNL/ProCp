@@ -141,7 +141,7 @@ namespace ProCP.Classes
             }
 
         }
-        public CropData[] GetCropSummary()
+        public List<CropData> GetCropSummary()
         {
             List<CropData> list = new List<CropData>();
             int startweek = -1;
@@ -201,7 +201,7 @@ namespace ProCP.Classes
 
 
             }
-            return list.ToArray();
+            return list;
         }
 
 

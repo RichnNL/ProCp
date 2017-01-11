@@ -13,13 +13,14 @@ namespace ProCP.Classes
 {
     public partial class ReportWindow : Form
     {
-        public ReportWindow()
+        Form2 form;
+        public ReportWindow(Form2 form)
         {
             InitializeComponent();
-            
-            richTextBox1.Text = "Number of Crops: " + "\nTotal: " + "\nCrops \t  \tCost \t\tYield \t\tProfit ";
-            //loop ....
-            richTextBox1.Text+="\nCarrots \t \t20 \t \t10 \t \t50";
+            this.form = form;
+
+            string b=form.SendReport();
+            richTextBox1.Text = b;
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
@@ -36,6 +37,11 @@ namespace ProCP.Classes
                 filename = saveFileDialog.FileName;
                 richTextBox1.SaveFile(filename + ".txt", RichTextBoxStreamType.PlainText);
             }
+        }
+
+        private void ReportWindow_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
