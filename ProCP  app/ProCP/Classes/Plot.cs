@@ -624,7 +624,13 @@ namespace ProCP.Classes
         {
             this.simulation = simulation;
         }
-        
 
+        private decimal seedCost(Crop crop)
+        {
+            decimal cost = crop.GetBuyPrice() * simulation.PlotSize;
+            return cost;
+        }
+
+        
     }
 }

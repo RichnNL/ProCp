@@ -19,7 +19,7 @@ namespace ProCP.Classes
         public List<Crop> Crops;
         public List<SoilType> SoilTypes;
         public List<Weather> weathers;
-        public List<Price> prices;
+        //public List<Price> prices;
         public List<Images> images;
 
         public Database(string StartingProvince)
@@ -32,7 +32,7 @@ namespace ProCP.Classes
             loadAllWeather(StartingProvince);
              SoilTypes = GetAllSoilTypes();
             Crops = LoadAllCrops();
-            prices = LoadSellPrices();
+            //prices = LoadSellPrices();
             LoadImages();
             //testing
             string[] name = getProvinceNames();
@@ -59,43 +59,44 @@ namespace ProCP.Classes
             return cnx;
         }
        
-        private List<Price> LoadSellPrices() {
-            List<Price> temp = new List<Price>();
+        //private List<Price> LoadSellPrices() {
+        //    List<Price> temp = new List<Price>();
 
-            string sql = "SELECT crop_info.Name, sell_prices.Price_Per_Unit, seed_cost.Cost_m2 FROM crop_info INNER JOIN sell_prices ON crop_info.CROP_ID=sell_prices.Crop_ID INNER JOIN seed_cost ON crop_info.CROP_ID=seed_cost.Crop_ID";
-            MySqlCommand command = new MySqlCommand(sql, connection);
+        //    string sql = "SELECT crop_info.Name, sell_prices.Price_Per_Unit, seed_cost.Cost_m2 FROM crop_info INNER JOIN sell_prices ON crop_info.CROP_ID=sell_prices.Crop_ID INNER JOIN seed_cost ON crop_info.CROP_ID=seed_cost.Crop_ID";
+        //    MySqlCommand command = new MySqlCommand(sql, connection);
 
-            try
-            {
-                connection.Open();
-                MySqlDataReader reader = command.ExecuteReader();
+        //    try
+        //    {
+        //        connection.Open();
+        //        MySqlDataReader reader = command.ExecuteReader();
                 
-                string cropName;
-                decimal sellPrice;
-                decimal buyPrice;
+        //        string cropName;
+        //        decimal sellPrice;
+        //        decimal buyPrice;
 
-                while (reader.Read())
-                {
-                    cropName = Convert.ToString(reader["Name"]);
-                    sellPrice = Convert.ToDecimal(reader["Price_Per_Unit"]);
-                    buyPrice = Convert.ToDecimal(reader["Cost_m2"]);
-                    temp.Add(new Price(cropName, sellPrice, buyPrice));
-                }
-            }
-            catch (Exception ex)
-            {
-                //MessageBox.Show(ex.Message);
-                MessageBox.Show("Error Loading Prices");
-            }
-            finally
-            {
-                connection.Close();
-            }
+        //        while (reader.Read())
+        //        {
+        //            cropName = Convert.ToString(reader["Name"]);
+        //            sellPrice = Convert.ToDecimal(reader["Price_Per_Unit"]);
+        //            buyPrice = Convert.ToDecimal(reader["Cost_m2"]);
+        //            temp.Add(new Price(cropName, sellPrice, buyPrice));
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        //MessageBox.Show(ex.Message);
+        //        MessageBox.Show("Error Loading Prices");
+        //    }
+        //    finally
+        //    {
+        //        connection.Close();
+        //    }
 
-            return temp;
+        //    return temp;
+
+        //}
 
 
-        }
         private void LoadImages() {
             string sql = "SELECT Name,Image_0,Image_1,Image_2,Image_3 FROM crop_info";
 
@@ -123,7 +124,7 @@ namespace ProCP.Classes
         
         private List<Crop> LoadAllCrops() 
         {
-            String sql = "SELECT * FROM crop_info";
+            String sql = "SELECT * FROM crop_info INNER JOIN sell_prices ON crop_info.CROP_ID=sell_prices.Crop_ID INNER JOIN seed_cost ON crop_info.CROP_ID=seed_cost.Crop_ID";
             MySqlCommand command = new MySqlCommand(sql, connection);
 
             List<Crop> temp = new List<Crop>();
@@ -142,6 +143,8 @@ namespace ProCP.Classes
                 decimal temperature;
                 string season;
                 int yield;
+                decimal sellPrice;
+                decimal buyPrice;
                 
 
                 while (reader.Read())
@@ -155,9 +158,11 @@ namespace ProCP.Classes
                     temperature = Convert.ToDecimal(reader["Temperature"]);
                     season = Convert.ToString(reader["Season"]);
                     yield = Convert.ToInt32(reader["Yield"]);
+                    sellPrice = Convert.ToDecimal(reader["Cost_m2"]);
+                    buyPrice = Convert.ToDecimal(reader["Price_Per_Unit"]);                    
 
 
-                    temp.Add(new Crop(cropName, maturity, waterMin, waterMax, thirst, neededNutrition, temperature, season, yield));
+                    temp.Add(new Crop(cropName, maturity, waterMin, waterMax, thirst, neededNutrition, temperature, season, yield, sellPrice, buyPrice));
                 }
 
             }
