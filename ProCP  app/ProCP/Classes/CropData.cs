@@ -30,6 +30,8 @@ namespace ProCP.Classes
 
         private string Crop_Health = "";
 
+        private decimal profits = 0;
+
        
 
         public CropData(string health)
@@ -76,6 +78,19 @@ namespace ProCP.Classes
             this.totalCosts = totalcosts;
             this.yield = yield;
           
+        }
+        public CropData(DateTime begin, DateTime end, bool Alive, string health, decimal watercosts, decimal fertilizer, decimal totalcosts, int yield,decimal profit)
+        {
+            this.beginDate = begin;
+            this.endDate = end;
+            this.isAlive = Alive;
+            this.Crop_Health = health;
+            this.waterCosts = watercosts;
+            this.fertilizerCosts = fertilizer;
+            this.totalCosts = totalcosts;
+            this.yield = yield;
+            this.profits = profit;
+
         }
         public CropData(DateTime begin, DateTime end, bool Alive, string health, int yield)
         {
