@@ -208,7 +208,7 @@ namespace ProCP.Classes
             this.province = Province;
             setInitalDate();
             database = new Database(Province);
-            statistics = new Statistics();
+            statistics = new Statistics(this);
             InitialPlots();
 
         }

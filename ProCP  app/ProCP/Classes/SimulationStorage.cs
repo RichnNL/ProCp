@@ -22,10 +22,15 @@ namespace ProCP.Classes
         }
        
         public bool SaveSimulation(Simulation simulation) {
-            
-            
-            string sqlcosts = "INSERT INTO simulations (Name, Description, Province, BeginDate, EndDate,Settings, Cost, Profit, Binary_File) VALUES (@name, @description,@Province, @BeginDate, @EndDate, @Settings, @Cost, @Profit, @Binary_File)";
+
             string sql = "INSERT INTO simulations(Name, Description, Province, BeginDate, EndDate, Settings, Binary_File) VALUES (@Name, @Description, @Province, @BeginDate, @EndDate, @Settings, @Binary_File)";
+            if ( simulation.statistics.CalTotalCosts() > 0 && simulation.statistics.CalTotalProfit() > 0)
+            {
+                sql = "INSERT INTO simulations (Name, Description, Province, BeginDate, EndDate,Settings, Cost, Profit, Binary_File) VALUES (@name, @description,@Province, @BeginDate, @EndDate, @Settings, @Cost, @Profit, @Binary_File)";
+            }
+          
+            
+            
             //if() set sql statement
             MySqlCommand command = new MySqlCommand();
             command.CommandText = sql;
@@ -38,6 +43,11 @@ namespace ProCP.Classes
             command.Parameters.Add("@EndDate", MySqlDbType.Date).Value = simulation.EndDate;
             command.Parameters.Add("@Settings", MySqlDbType.VarChar).Value = simulation.Fertilizer + "," + simulation.Watering + "," + simulation.PlotSize.ToString();
 
+            if(simulation.statistics.CalTotalCosts() > 0 && simulation.statistics.CalTotalProfit() > 0)
+            {
+                command.Parameters.Add("@Cost", MySqlDbType.Decimal).Value = simulation.statistics.CalTotalCosts();
+                command.Parameters.Add("@Profit", MySqlDbType.Decimal).Value = simulation.statistics.CalTotalProfit();
+            }
             BinaryFormatter bf = new BinaryFormatter();
             MemoryStream ms = new MemoryStream();
 

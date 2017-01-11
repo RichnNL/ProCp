@@ -17,6 +17,8 @@ namespace ProCP.Classes
         private int cropsHarvested;
         [field:NonSerialized]
         private Simulation simulation;
+        private decimal PlotWaterCost { get; set; }
+        private decimal PlotFertilizerCost { get; set; }
 
 
         public Plot(string PlotId,SoilType soiltype,int intialWeeks,Simulation simulation)
@@ -96,30 +98,40 @@ namespace ProCP.Classes
                 int health = plotWeeks[now].getCrop().weeks[now - beginWeek].Health;
                 string health_details = "Crop " + crop.GetCropName();
                 if ( health > 1){
-                    alive = false;
-                }
-                else
-                {
                     alive = true;
-                }
-                if(health > 90)
-                {
-                    health_details += " is very healthly.";
-                }
-                else if(health < 90 && health > 50)
-                {
-                    health_details += " is need more care.";
-                }
-                else if(health < 50 && health > 20)
-                {
-                    health_details += " need more care.";
+                    if (health > 90)
+                    {
+                        health_details += " is very healthly.";
+                    }
+                    else if (health < 90 && health > 50)
+                    {
+                        health_details += " is need more care.";
+                    }
+                    else if (health < 50 && health > 20)
+                    {
+                        health_details += " need more care.";
+                    }
+                    else
+                    {
+                        health_details += " needs urgent care.";
+                    }
+                    
                 }
                 else
                 {
-                    health_details += " needs urgent care.";
+                    alive = false;
+                    health_details = reasonOfDeath(crop);
+
                 }
 
-                cropdata = new CropData(simulation.weekToDate(beginWeek), simulation.weekToDate(beginWeek + crop.GetMaturityLength()), alive, health_details);
+                if (crop.GetMaturityLength() == now - beginWeek)
+                {
+                    cropdata = new CropData(simulation.weekToDate(beginWeek), simulation.weekToDate(beginWeek + crop.GetMaturityLength()), alive, health_details, crop.WaterCosts, crop.FertilizerCosts, crop.WaterCosts + crop.FertilizerCosts + seedCost(crop), crop.GetCropYield());
+                }
+                else
+                {
+                    cropdata = new CropData(simulation.weekToDate(beginWeek), simulation.weekToDate(beginWeek + crop.GetMaturityLength()), alive, health_details, crop.WaterCosts, crop.FertilizerCosts, crop.WaterCosts + crop.FertilizerCosts + seedCost(crop));
+                }
                 return cropdata;
             }
             else
@@ -128,13 +140,177 @@ namespace ProCP.Classes
             }
 
         }
-        public CropData GetCropSummary() {
-            
-          
-            return null;
+        public CropData[] GetCropSummary()
+        {
+            List<CropData> list = new List<CropData>();
+            int startweek = -1;
+            int endweek = -1;
+            if (hasCrop == 0)
+            {
+                return null;
+            }
+            for (int i = 0; i < plotWeeks.Count; i++)
+            {
+                if (i == 0)
+                {
+                    if (!plotWeeks[i].isEmpty)
+                    {
+                        startweek = i;
+                    }
+                }
+                else
+                {
+                    if (!plotWeeks[i].isEmpty)
+                    {
+                        if (plotWeeks[i - 1].isEmpty || plotWeeks[i].getCrop() != plotWeeks[i - 1].getCrop() || i == plotWeeks.Count - 1)
+                        {
+                            if (startweek == -1)
+                            {
+                                startweek = i;
+                            }
+                            else if (!plotWeeks[i - 1].isEmpty)
+                            {
+                                // The Week holds a crop but is different therefore the week before is the end date and the week is the begin date to another crop
+                                if (i == plotWeeks.Count - 1)
+                                {
+                                    endweek = i;
+                                }
+                                else
+                                {
+                                    endweek = i - 1;
+                                }
+                                CropData data = GetCropDataByDate(endweek);
+                                list.Add(data);
+                                startweek = i;
+                                endweek = -1;
+                            }
+                        }
+
+                    }
+                    else if (plotWeeks[i].isEmpty && startweek != -1)
+                    {   //The week holds no crop therefore the before is the end date
+                        endweek = i - 1;
+                        CropData data = GetCropDataByDate(endweek);
+                        
+                        list.Add(data);
+                        startweek = -1;
+                        endweek = -1;
+                    }
+                }
+
+
+            }
+            return list.ToArray();
         }
-        public CropData GetCropDataByDate(DateTime d) { return null; }
-       
+
+
+    
+        public CropData GetCropDataByDate(DateTime d)
+        {
+            CropData cropdata;
+            int now = simulation.getWeekNumAtSpecficDate(d);
+            Crop crop;
+            int beginWeek;
+            if (isNotEmptyAtSpecificWeek(now, out crop, out beginWeek))
+            {
+                bool alive;
+                int health = plotWeeks[now].getCrop().weeks[now - beginWeek].Health;
+                string health_details = "Crop " + crop.GetCropName();
+                if (health > 1)
+                {
+                    alive = true;
+                    if (health > 90)
+                    {
+                        health_details += " is very healthly.";
+                    }
+                    else if (health < 90 && health > 50)
+                    {
+                        health_details += " is need more care.";
+                    }
+                    else if (health < 50 && health > 20)
+                    {
+                        health_details += " need more care.";
+                    }
+                    else
+                    {
+                        health_details += " needs urgent care.";
+                    }
+                }
+                else
+                {
+                    alive = false;
+                    health_details = reasonOfDeath(crop);
+                }
+
+                if (crop.GetMaturityLength() == now - beginWeek)
+                {
+                    cropdata = new CropData(simulation.weekToDate(beginWeek), simulation.weekToDate(beginWeek + crop.GetMaturityLength()), alive, health_details, crop.WaterCosts, crop.FertilizerCosts, crop.WaterCosts + crop.FertilizerCosts + seedCost(crop), crop.GetCropYield());
+                }
+                else
+                {
+                    cropdata = new CropData(simulation.weekToDate(beginWeek), simulation.weekToDate(beginWeek + crop.GetMaturityLength()), alive, health_details, crop.WaterCosts, crop.FertilizerCosts, crop.WaterCosts + crop.FertilizerCosts + seedCost(crop));
+                }
+                return cropdata;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public CropData GetCropDataByDate(int weekNumber)
+        {
+            CropData cropdata;
+            int now = weekNumber ;
+            Crop crop;
+            int beginWeek;
+            if (isNotEmptyAtSpecificWeek(now, out crop, out beginWeek))
+            {
+                bool alive;
+                int health = plotWeeks[now].getCrop().weeks[now - beginWeek].Health;
+                string health_details = "Crop " + crop.GetCropName();
+                if (health > 1)
+                {
+                    alive = true;
+                    if (health > 90)
+                    {
+                        health_details += " is very healthly.";
+                    }
+                    else if (health < 90 && health > 50)
+                    {
+                        health_details += " is need more care.";
+                    }
+                    else if (health < 50 && health > 20)
+                    {
+                        health_details += " need more care.";
+                    }
+                    else
+                    {
+                        health_details += " needs urgent care.";
+                    }
+                }
+                else
+                {
+                    alive = false;
+                    health_details = reasonOfDeath(crop);
+                }
+          
+                if(crop.GetMaturityLength() == now - beginWeek)
+                {
+                    cropdata = new CropData(simulation.weekToDate(beginWeek), simulation.weekToDate(beginWeek + crop.GetMaturityLength()), alive, health_details, crop.WaterCosts, crop.FertilizerCosts, crop.WaterCosts + crop.FertilizerCosts + seedCost(crop),crop.GetCropYield());
+                }
+                else
+                {
+                    cropdata = new CropData(simulation.weekToDate(beginWeek), simulation.weekToDate(beginWeek + crop.GetMaturityLength()), alive, health_details, crop.WaterCosts, crop.FertilizerCosts, crop.WaterCosts + crop.FertilizerCosts + seedCost(crop));
+                }
+                
+                return cropdata;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         private void NurishLand(int week, Crop crop)
         {
             CalculateWeatherFactors(week);
@@ -162,6 +338,8 @@ namespace ProCP.Classes
             {
                 AmountOfWaterToAdd = AmountOfWaterToAdd - plotWeeks[week].Water;
                 AddWaterToSoil(week, AmountOfWaterToAdd);
+                PlotWaterCost += addWaterCost(AmountOfWaterToAdd);
+                crop.WaterCosts += addWaterCost(AmountOfWaterToAdd);
             }
 
             //Nutrition Factors 
@@ -185,6 +363,8 @@ namespace ProCP.Classes
             {
                 AmountOfFertilizerToAdd = AmountOfFertilizerToAdd - plotWeeks[week].SoilNutrition;
                 AddFertilizerToSoil(week, (AmountOfFertilizerToAdd));
+                PlotFertilizerCost += addFertilizerCost(AmountOfFertilizerToAdd);
+                crop.FertilizerCosts += addFertilizerCost(AmountOfFertilizerToAdd);
             }
         }
     
@@ -208,7 +388,7 @@ namespace ProCP.Classes
        
         private void AddWaterToSoil(int week, decimal waterAmount)
         {
-            //Need to add Costs
+            
             //Get the Water from the week before
             if (week != 0)
             {
@@ -275,6 +455,8 @@ namespace ProCP.Classes
       
         public void CalBeginToEnd() {
             cropsHarvested = 0;
+            PlotWaterCost = 0;
+            PlotFertilizerCost = 0;
             if(hasCrop == 0)
             {
                 setSoilType(this.soiltype);
@@ -320,7 +502,8 @@ namespace ProCP.Classes
                 if(CropMaturity == 0)
                 {
                     //Crop is being intialized
-                    
+                    crop.FertilizerCosts = 0;
+                    crop.WaterCosts = 0;
                     plotWeeks[week].imageNumber = 0;
                     plotWeeks[week].imageChange = true;
                 }
@@ -629,6 +812,70 @@ namespace ProCP.Classes
         {
             decimal cost = crop.GetBuyPrice() * simulation.PlotSize;
             return cost;
+        }
+        private decimal addWaterCost(decimal Amount)
+        {
+            //TODO ZISIS!!!
+            return 1;
+        }
+        private decimal addFertilizerCost(decimal Amount)
+        {
+            //TODO ZISIS
+            return 1;
+        }
+        private string reasonOfDeath(Crop crop)
+        {
+            int weekofdeath = 0;
+            int weekThatHoldsCrop = 0;
+            for(int i = 0; i < plotWeeks.Count; i++)
+            {
+                if(!plotWeeks[i].isEmpty && plotWeeks[i].getCrop() == crop)
+                {
+                    weekThatHoldsCrop = i;
+                    break;
+                }
+            }
+            for(int i = weekofdeath; i < crop.GetMaturityLength(); i++)
+            {
+                if(crop.weeks[i].Health < 4)
+                {
+                    weekofdeath = i -1;
+                    break;
+                }
+                else
+                {
+                    weekThatHoldsCrop++;
+                }
+                
+
+
+            }
+            if(plotWeeks[weekThatHoldsCrop].Water < crop.GetThirst())
+            {
+                return crop.GetCropName() + " Died from lack of Water";
+            }
+            else if(plotWeeks[weekThatHoldsCrop].SoilNutrition < crop.GetNeededNutrition())
+            {
+                return crop.GetCropName() + " Died from lack of Nutrients";
+            }
+            decimal temp = plotWeeks[weekThatHoldsCrop].weather.GetTemp();
+            decimal tempDifference = temp - crop.GetTemperature();
+            if (tempDifference < -4)
+            {
+                // Too cold 
+              return crop.GetCropName() + " died because it is too cold";
+            }
+            else if (tempDifference > 5)
+            {
+                //Too Hot
+               return crop.GetCropName() + " Died because it is too warm";
+            }
+            else
+            {
+                return "Unknown Reasons";
+            }
+
+
         }
 
         

@@ -20,6 +20,7 @@ namespace ProCP.Classes
         private string cropSeason;
         private decimal sellPrice;
         private decimal buyPrice;
+        
 
 
         public List<Crop_Week> weeks;
@@ -56,8 +57,11 @@ namespace ProCP.Classes
         public int GetCropYield() { return cropYield; }
         public decimal GetSellPrice() { return sellPrice; }
         public decimal GetBuyPrice() { return buyPrice; }
+        public decimal FertilizerCosts { get; set; }
+        public decimal WaterCosts { get; set; }
+
        
-        public decimal GetNeededNutrition() { return 0; }
+        public decimal GetNeededNutrition() { return neededNutrition; }
         public string GetCropName()
         {
             return this.cropName;

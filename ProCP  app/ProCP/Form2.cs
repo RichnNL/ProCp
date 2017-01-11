@@ -135,20 +135,24 @@ namespace ProCP
                 rcaea.simulation.removeCrop(rcaea.selectedPlot);
                 FillPlotInfo(rcaea.selectedPlot);
             }
-            if (rcaea.simulation.getNumberOfCrops()>0)
+            EnabledEditing();
+
+           
+        }
+        private void EnabledEditing()
+        {
+            if (rcaea.simulation.getNumberOfCrops() > 0)
             {
                 provinceCbx.Enabled = false;
                 wateringCbx.Enabled = false;
                 fertilizerCbx.Enabled = false;
             }
-            else if ( rcaea.simulation.getNumberOfCrops()==0)
+            else if (rcaea.simulation.getNumberOfCrops() == 0)
             {
                 provinceCbx.Enabled = true;
                 wateringCbx.Enabled = true;
                 fertilizerCbx.Enabled = true;
             }
-
-           
         }
         private void setClickEventForPictureBoxes()
         {
@@ -666,11 +670,23 @@ namespace ProCP
                 else
                 {
                     CropData currentPlot = p.GetCurrentCropData();
-                    plotInfoLstbx.Items.Add("Currently Selected Crop");
-                    plotInfoLstbx.Items.Add("Set at " + rcaea.simulation.DateToString(currentPlot.GetBeginDate()));
-                    plotInfoLstbx.Items.Add("Matured at: " + rcaea.simulation.DateToString(currentPlot.GetEndDate()));
-                    plotInfoLstbx.Items.Add("Current Status: ");
-                    plotInfoLstbx.Items.Add(currentPlot.getHealth());
+                    if (currentPlot.getIsAlive())
+                    {
+                        plotInfoLstbx.Items.Add("Currently Selected Crop");
+                        plotInfoLstbx.Items.Add("Set at " + rcaea.simulation.DateToString(currentPlot.GetBeginDate()));
+                        plotInfoLstbx.Items.Add("Matured at: " + rcaea.simulation.DateToString(currentPlot.GetEndDate()));
+                        plotInfoLstbx.Items.Add("Current Status: ");
+                        plotInfoLstbx.Items.Add(currentPlot.getHealth());
+                    }
+                    else
+                    {
+                        plotInfoLstbx.Items.Add("Currently Selected Crop");
+                        plotInfoLstbx.Items.Add("Set at " + rcaea.simulation.DateToString(currentPlot.GetBeginDate()));
+                        plotInfoLstbx.Items.Add("Current Status: ");
+                        plotInfoLstbx.Items.Add(currentPlot.getHealth());
+                    }
+                    
+                    
                 }
                 
 
@@ -725,6 +741,7 @@ namespace ProCP
         {
             province = "Drenthe";
             rcaea.resetSimulation();
+
         }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
@@ -878,6 +895,8 @@ namespace ProCP
             {
                 resetPictureBoxes();
                 InitializeProperties();
+                EnabledEditing();
+
             }
             else if(change == "Fertilizer")
             {
@@ -904,6 +923,10 @@ namespace ProCP
                 timeTrackBar.Maximum = Convert.ToInt32(value);
             }
             internalChange = false;
+        }
+        private void allowOptions()
+        {
+
         }
 
         private void plotSizeNmr_ValueChanged(object sender, EventArgs e)
