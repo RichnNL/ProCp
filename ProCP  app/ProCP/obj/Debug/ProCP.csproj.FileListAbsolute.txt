@@ -24,3 +24,4 @@ C:\Users\Tsanko\Documents\GitHub\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.Classes.
 C:\Users\Tsanko\Documents\GitHub\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.Form2.resources
 C:\Users\Tsanko\Documents\GitHub\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.Properties.Resources.resources
 C:\Users\Tsanko\Documents\GitHub\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.csproj.GenerateResource.Cache
+C:\Users\Tsanko\Documents\GitHub\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.Classes.ReportWindow.resources
