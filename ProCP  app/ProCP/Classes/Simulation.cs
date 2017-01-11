@@ -196,7 +196,7 @@ namespace ProCP.Classes
             numberOfCrops = 0;
             seeking = false;
             totalTicks = 100;
-            timeBetweenWeeks = 5000;
+            timeBetweenWeeks = 1000;
             time = new Timer();
             time.Interval = timeBetweenWeeks;
             time.Elapsed += new ElapsedEventHandler(tick);

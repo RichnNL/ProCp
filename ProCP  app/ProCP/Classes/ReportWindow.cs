@@ -16,6 +16,7 @@ namespace ProCP.Classes
         public ReportWindow()
         {
             InitializeComponent();
+            richTextBox1.Text = "Number of Crops: " + "\nTotal: " + "\nCrops \t  \tCost \t\tYield \t\tProfit \nCarrots \t \t20 \t \t10 \t \t50";
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
