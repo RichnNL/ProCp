@@ -12,7 +12,8 @@ using ProCP.Classes;
 
 namespace ProCP
 {
-    public partial class Form2 : Form
+    public partial class 
+        Form2 : Form
     {
         
         RCAEA rcaea; 
@@ -670,21 +671,28 @@ namespace ProCP
                 else
                 {
                     CropData currentPlot = p.GetCurrentCropData();
-                    if (currentPlot.getIsAlive())
+                    if (currentPlot != null)
                     {
-                        plotInfoLstbx.Items.Add("Currently Selected Crop");
-                        plotInfoLstbx.Items.Add("Set at " + rcaea.simulation.DateToString(currentPlot.GetBeginDate()));
-                        plotInfoLstbx.Items.Add("Matured at: " + rcaea.simulation.DateToString(currentPlot.GetEndDate()));
-                        plotInfoLstbx.Items.Add("Current Status: ");
-                        plotInfoLstbx.Items.Add(currentPlot.getHealth());
+
+
+                        if (currentPlot.getIsAlive())
+                        {
+                            plotInfoLstbx.Items.Add("Currently Selected Crop");
+                            plotInfoLstbx.Items.Add("Set at " + rcaea.simulation.DateToString(currentPlot.GetBeginDate()));
+                            plotInfoLstbx.Items.Add("Matured at: " + rcaea.simulation.DateToString(currentPlot.GetEndDate()));
+                            plotInfoLstbx.Items.Add("Current Status: ");
+                            plotInfoLstbx.Items.Add(currentPlot.getHealth());
+                        }
+                        else
+                        {
+                            plotInfoLstbx.Items.Add("Currently Selected Crop");
+                            plotInfoLstbx.Items.Add("Set at " + rcaea.simulation.DateToString(currentPlot.GetBeginDate()));
+                            plotInfoLstbx.Items.Add("Current Status: ");
+                            plotInfoLstbx.Items.Add(currentPlot.getHealth());
+                        }
                     }
-                    else
-                    {
-                        plotInfoLstbx.Items.Add("Currently Selected Crop");
-                        plotInfoLstbx.Items.Add("Set at " + rcaea.simulation.DateToString(currentPlot.GetBeginDate()));
-                        plotInfoLstbx.Items.Add("Current Status: ");
-                        plotInfoLstbx.Items.Add(currentPlot.getHealth());
-                    }
+                   
+                    
                     
                     
                 }

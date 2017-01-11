@@ -87,7 +87,8 @@ namespace ProCP.Classes
      
 
         public bool RemoveAllCrop(List<int> getploposition) { return false; }
-        public CropData GetCurrentCropData() {
+        public CropData GetCurrentCropData()
+        {
             CropData cropdata;
             int now = simulation.CurrentWeek;
             Crop crop;
@@ -95,7 +96,7 @@ namespace ProCP.Classes
             if (isNotEmptyAtSpecificWeek(now,out crop, out beginWeek))
             {
                 bool alive;
-                int health = plotWeeks[now].getCrop().weeks[now - beginWeek].Health;
+                int health = plotWeeks[now].getCrop().weeks[now - beginWeek].Health; // begin week 5 
                 string health_details = "Crop " + crop.GetCropName();
                 if ( health > 1){
                     alive = true;
@@ -465,28 +466,26 @@ namespace ProCP.Classes
             else
             {
                 //to do (only caluclates maturity for now)
-                int startWeek = 0;
-                for(int j = 0; j < plotWeeks.Count; j ++)
+                
+                for(int startWeek = 0 ; startWeek < plotWeeks.Count;)
                 {
                     // If null then has reached the end of PlotWeeks
                     if (!plotWeeks[startWeek].isEmpty)
                     {
                         Crop c = plotWeeks[startWeek].getCrop();
                         int end = c.GetMaturityLength();
-                        for(int i = 0; i < end; i++,startWeek++,j++)
+                        for(int i = 0; i < end; i++,startWeek++)
                         {
                             CalCurrentDate(startWeek, i,c);
                         }
                     }
-                   else if(j != 0 && plotWeeks[startWeek].isEmpty)
+                   else
                     {
                         CalculateWeatherFactors(startWeek);
+                        startWeek++;
                         
                     }
-                    else
-                    {
-                        startWeek++;
-                    }
+                  
                 }
                
 
@@ -507,13 +506,13 @@ namespace ProCP.Classes
                     plotWeeks[week].imageNumber = 0;
                     plotWeeks[week].imageChange = true;
                 }
-                else if( CropMaturity == crop.GetMaturityLength() && crop.weeks[CropMaturity].Health > 0)
+                else if( CropMaturity + 1 == crop.GetMaturityLength() && crop.weeks[CropMaturity].Health > 0)
                 {
                     //Crop Finished 
                     if(plotWeeks[week +1] != null && plotWeeks[week + 1].isEmpty)
                     {
-                        plotWeeks[week].imageChange = true;
-                        plotWeeks[week].imageNumber = -1;
+                        plotWeeks[week + 1].imageChange = true;
+                        plotWeeks[week + 1].imageNumber = -1;
                     }
                     
                     cropsHarvested++;
@@ -631,6 +630,7 @@ namespace ProCP.Classes
                 this.plotWeeks[i].SoilNutrition = 0;
                 this.plotWeeks[i].imageNumber = -1;
                 this.plotWeeks[i].imageChange = false;
+                
                
             }
         }
@@ -639,7 +639,7 @@ namespace ProCP.Classes
             //Checks if Enough Weeks Available and if the plot is empty
             int now = simulation.CurrentWeek;
            
-            int then = maturity + now;
+            int then = (maturity + now) -1;
             if (simulation.GetNumberOfWeeks() - then > 0)
             {
                 for(int c = now; c <= then; c++)
