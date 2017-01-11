@@ -70,6 +70,12 @@
     <Compile Include="Classes\Price.cs" />
     <Compile Include="Classes\RCAEA.cs" />
     <Compile Include="Classes\Report.cs" />
+    <Compile Include="Classes\ReportWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Classes\ReportWindow.Designer.cs">
+      <DependentUpon>ReportWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Classes\SaveWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Classes\LoadWindow.resx">
       <DependentUpon>LoadWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Classes\ReportWindow.resx">
+      <DependentUpon>ReportWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Classes\SaveWindow.resx">
       <DependentUpon>SaveWindow.cs</DependentUpon>

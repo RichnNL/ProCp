@@ -9,7 +9,9 @@ namespace ProCP.Classes
     class Report
     {
         private Simulation simulation;
-        public Report(Simulation s) { }
+        public Report(Simulation s) {
+            simulation = s;
+        }
         public void createReport(Simulation s) { }
         public void SaveReport(Simulation s) { }
 

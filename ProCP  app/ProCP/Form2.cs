@@ -964,6 +964,11 @@ namespace ProCP
                 rcaea.simulation.Seek(percentage);
             }
         }
-       
+
+        private void reportBtn_Click(object sender, EventArgs e)
+        {
+            ReportWindow rptWindow = new Classes.ReportWindow();
+            rptWindow.Show();
+        }
     }
 }
