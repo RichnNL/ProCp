@@ -146,10 +146,10 @@ namespace ProCP.Classes
             List<CropData> list = new List<CropData>();
             int startweek = -1;
             int endweek = -1;
-            if (hasCrop == 0)
-            {
-                return null;
-            }
+            //if (hasCrop == 0)
+            //{
+            //    return null;
+            //}
             for (int i = 0; i < plotWeeks.Count; i++)
             {
                 if (i == 0)

@@ -21,6 +21,7 @@ namespace ProCP.Classes
 
             string b=form.GetReport();
             richTextBox1.Text = b;
+            
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
