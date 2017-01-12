@@ -20,12 +20,12 @@ namespace ProCP.Classes
         private string cropSeason;
         private decimal sellPrice;
         private decimal buyPrice;
-        
+
 
 
         public List<Crop_Week> weeks;
 
-        public Crop(string name, int maturity, decimal wmin, decimal wmax, decimal thirst,decimal nN, decimal temp, string season, int yield, decimal sellPrice, decimal buyPrice)
+        public Crop(string name, int maturity, decimal wmin, decimal wmax, decimal thirst, decimal nN, decimal temp, string season, int yield, decimal sellPrice, decimal buyPrice)
         {
             this.cropName = name;
             this.maturityLength = maturity;
@@ -55,12 +55,14 @@ namespace ProCP.Classes
         public decimal GetTemperature() { return temperature; }
         public string GetSeason() { return cropSeason; }
         public int GetCropYield() {
-            int yield = (weeks[maturityLength - 1].Health * cropYield) / 100;
-            return cropYield; }
+        
+            return cropYield;
+            }
         public decimal GetSellPrice() { return sellPrice; }
         public decimal GetBuyPrice() { return buyPrice; }
         public decimal FertilizerCosts { get; set; }
         public decimal WaterCosts { get; set; }
+      
 
        
         public decimal GetNeededNutrition() { return neededNutrition; }

@@ -127,7 +127,7 @@ namespace ProCP.Classes
 
                 if (crop.GetMaturityLength() == now - beginWeek)
                 {
-                    cropdata = new CropData(simulation.weekToDate(beginWeek), simulation.weekToDate(beginWeek + crop.GetMaturityLength()), alive, health_details, crop.WaterCosts, crop.FertilizerCosts, crop.WaterCosts + crop.FertilizerCosts + seedCost(crop), crop.GetCropYield(), getCropProfits(crop));
+                    cropdata = new CropData(simulation.weekToDate(beginWeek), simulation.weekToDate(beginWeek + crop.GetMaturityLength()), alive, health_details, crop.WaterCosts, crop.FertilizerCosts, crop.WaterCosts + crop.FertilizerCosts + seedCost(crop), getYield(crop),getIdealYield(crop), getCropProfits(crop));
                 }
                 else
                 {
@@ -245,7 +245,7 @@ namespace ProCP.Classes
 
                 if (crop.GetMaturityLength() == now - beginWeek)
                 {
-                    cropdata = new CropData(simulation.weekToDate(beginWeek), simulation.weekToDate(beginWeek + crop.GetMaturityLength()), alive, health_details, crop.WaterCosts, crop.FertilizerCosts, crop.WaterCosts + crop.FertilizerCosts + seedCost(crop), crop.GetCropYield(), getCropProfits(crop));
+                    cropdata = new CropData(simulation.weekToDate(beginWeek), simulation.weekToDate(beginWeek + crop.GetMaturityLength()), alive, health_details, crop.WaterCosts, crop.FertilizerCosts, crop.WaterCosts + crop.FertilizerCosts + seedCost(crop), getYield(crop), getIdealYield(crop), getCropProfits(crop));
                 }
                 else
                 {
@@ -297,7 +297,7 @@ namespace ProCP.Classes
           
                 if(crop.GetMaturityLength() == now - beginWeek)
                 {
-                    cropdata = new CropData(simulation.weekToDate(beginWeek), simulation.weekToDate(beginWeek + crop.GetMaturityLength()), alive, health_details, crop.WaterCosts, crop.FertilizerCosts, crop.WaterCosts + crop.FertilizerCosts + seedCost(crop),crop.GetCropYield(), getCropProfits(crop));
+                    cropdata = new CropData(simulation.weekToDate(beginWeek), simulation.weekToDate(beginWeek + crop.GetMaturityLength()), alive, health_details, crop.WaterCosts, crop.FertilizerCosts, crop.WaterCosts + crop.FertilizerCosts + seedCost(crop), getYield(crop), getIdealYield(crop), getCropProfits(crop));
                 }
                 else
                 {
@@ -438,12 +438,12 @@ namespace ProCP.Classes
             if(nbrWeeks != pweeks)
             {
                 List<PlotWeek> temp = new List<PlotWeek>();
-                for(int i = 1; i < nbrWeeks; i++)
+                for(int i = 0; i < nbrWeeks; i++)
                 {
                     temp.Add(new PlotWeek());
                 }
-                
-                plotWeeks = temp;
+                plotWeeks.Clear();
+                plotWeeks = temp.ToList();
                 for(int i = 0; i < plotWeeks.Count; i++)
                 {
                     setWeatherForWeek(i);
@@ -883,6 +883,19 @@ namespace ProCP.Classes
             }
             else return 0;
 
+            
+        }
+        private int getYield(Crop crop)
+        {
+            int yield = (crop.weeks[crop.GetMaturityLength() - 1].Health * crop.GetCropYield()) / 100;
+            yield = simulation.PlotSize * yield;
+            // Zisis to do
+            return yield;
+        }
+        private int getIdealYield(Crop crop)
+        {
+            //Zisis to do get the yield if the crop had 100 health
+            return simulation.PlotSize * crop.GetCropYield();
             
         }
         

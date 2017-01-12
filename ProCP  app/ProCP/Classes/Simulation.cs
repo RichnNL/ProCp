@@ -45,9 +45,11 @@ namespace ProCP.Classes
                     {
                         NotSavedEvent();
                     }
+                    beginDate = value;
+                    
                 }
 
-                beginDate = value; } }
+                 } }
         
         private DateTime endDate;
         public DateTime EndDate { get { return endDate; }  set {
@@ -57,8 +59,9 @@ namespace ProCP.Classes
                     {
                         NotSavedEvent();
                     }
+                    endDate = value;
                 }
-                endDate = value;
+                
             } }
 
         private DateTime currentDate;
@@ -281,13 +284,14 @@ namespace ProCP.Classes
                     {
                         NotSavedEvent();
                     }
+                    if (date < EndDate.Subtract(new TimeSpan(90, 0, 0, 0)))
+                    {
+                        beginDate = date;
+                        totalWeeks = GetNumberOfWeeks();
+                        dateChanged();
+                    }
                 }
-                if (date < EndDate.Subtract(new TimeSpan(90, 0, 0, 0)))
-                {
-                    beginDate = date;
-                    totalWeeks = GetNumberOfWeeks();
-                    dateChanged();
-                }
+                
 
             }
         }
