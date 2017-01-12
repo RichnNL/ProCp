@@ -94,6 +94,7 @@ namespace ProCP
             PictureBox pbox = (PictureBox)sender;
             if (rcaea.selectedPlot == rcaea.simulation.getPlot(pbox.Name))
             {
+                pbox.BackColor = Color.Peru;
                 rcaea.selectedPlot = null;
                 soilTypeCbx.Enabled = false;
                 rcaea.submitChange = false;
@@ -103,7 +104,12 @@ namespace ProCP
             else
             {
                 rcaea.submitChange = false;
+                if(rcaea.selectedPlot != null)
+                {
+                    ((PictureBox)this.panel1.Controls[rcaea.selectedPlot.PlotId]).BackColor = Color.Peru;
+                }
                 rcaea.selectedPlot = rcaea.simulation.getPlot(pbox.Name);
+                ((PictureBox)this.panel1.Controls[rcaea.selectedPlot.PlotId]).BackColor = Color.DarkOrange;
                 soilTypeCbx.Enabled = true;
                 string soiltype = rcaea.selectedPlot.getSoilType();
                 for (int i = 0; i < soilTypeCbx.Items.Count; i++)
