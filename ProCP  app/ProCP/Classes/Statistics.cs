@@ -14,19 +14,38 @@ namespace ProCP.Classes
             this.simulation = simulation;
         }
   
-        public int CalTotalYield() { return 0; }
-        public Decimal CalTotalProfit() { return 0; }
-        public Decimal CalTotalCosts() { return 0; }
+        public int CalTotalYield() {
+            return 0;
+        }
+        public Decimal CalTotalProfit()
+        {
+            return 0;
+        }
+        public Decimal CalTotalCosts()
+        {
+            return 0;
+        }
        
-        public Decimal CalTotalWaterCost() { return 0; }
-        public Decimal CalTotalFertilizerCost() { return 0; }
+        public Decimal CalTotalWaterCost()
+        {
+            return 0;
+        }
+        public Decimal CalTotalFertilizerCost()
+        {
+            return 0;
+        }
         public string getDataSummary()
         {
             List<CropData> list = new List<Classes.CropData>();
             List<Plot> plots = simulation.getListOfPlots();
             foreach(Plot p in plots)
             {
-                List<CropData> temp = p.GetCropSummary();
+                
+                List<CropData> temp = new List<CropData>();
+                if(temp != null){
+                    continue;
+                }
+                  temp  = p.GetCropSummary();
                 foreach(CropData c in temp)
                 {
                     list.Add(c);
@@ -36,7 +55,7 @@ namespace ProCP.Classes
 
 
 
-            string a = "Number of Crops: " + "\nTotal: " + "\nCrops \t  \tCost \t\tYield \t\tProfit ";
+            string a = "Number of Crops: "  + " \nTotal: " + "\nCrops \t  \tCost \t\tYield \t\tProfit ";
             //loop ....
             foreach (CropData c in list)
             {
