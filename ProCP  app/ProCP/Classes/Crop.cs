@@ -54,7 +54,9 @@ namespace ProCP.Classes
         public decimal GetThirst() { return waterThirst; }
         public decimal GetTemperature() { return temperature; }
         public string GetSeason() { return cropSeason; }
-        public int GetCropYield() { return cropYield; }
+        public int GetCropYield() {
+            int yield = (weeks[maturityLength - 1].Health * cropYield) / 100;
+            return cropYield; }
         public decimal GetSellPrice() { return sellPrice; }
         public decimal GetBuyPrice() { return buyPrice; }
         public decimal FertilizerCosts { get; set; }

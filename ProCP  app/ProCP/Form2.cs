@@ -1000,20 +1000,8 @@ namespace ProCP
         }
         public string SendReport()
         {
-            List<CropData> list = new List<Classes.CropData>();
-            list = rcaea.selectedPlot.GetCropSummary();
-            
-
-            
-
-            string a = "Number of Crops: " + "\nTotal: " + "\nCrops \t  \tCost \t\tYield \t\tProfit ";
-            //loop ....
-            foreach(CropData c in list)
-            {
-                a += "\nCarrots \t \t " + c.GetTotalCost().ToString()  + "\t \t"+ c.GetYield().ToString()+ "\t \t50";
-            }
-            
-            return a;
+            return "";
+            //Tsanko to do just get the string do not do calculations here do that in statistics 
         }
             
     }

@@ -127,7 +127,7 @@ namespace ProCP.Classes
 
                 if (crop.GetMaturityLength() == now - beginWeek)
                 {
-                    cropdata = new CropData(simulation.weekToDate(beginWeek), simulation.weekToDate(beginWeek + crop.GetMaturityLength()), alive, health_details, crop.WaterCosts, crop.FertilizerCosts, crop.WaterCosts + crop.FertilizerCosts + seedCost(crop), crop.GetCropYield(), getCropProfits(crop, health));
+                    cropdata = new CropData(simulation.weekToDate(beginWeek), simulation.weekToDate(beginWeek + crop.GetMaturityLength()), alive, health_details, crop.WaterCosts, crop.FertilizerCosts, crop.WaterCosts + crop.FertilizerCosts + seedCost(crop), crop.GetCropYield(), getCropProfits(crop));
                 }
                 else
                 {
@@ -245,7 +245,7 @@ namespace ProCP.Classes
 
                 if (crop.GetMaturityLength() == now - beginWeek)
                 {
-                    cropdata = new CropData(simulation.weekToDate(beginWeek), simulation.weekToDate(beginWeek + crop.GetMaturityLength()), alive, health_details, crop.WaterCosts, crop.FertilizerCosts, crop.WaterCosts + crop.FertilizerCosts + seedCost(crop), crop.GetCropYield(), getCropProfits(crop, health));
+                    cropdata = new CropData(simulation.weekToDate(beginWeek), simulation.weekToDate(beginWeek + crop.GetMaturityLength()), alive, health_details, crop.WaterCosts, crop.FertilizerCosts, crop.WaterCosts + crop.FertilizerCosts + seedCost(crop), crop.GetCropYield(), getCropProfits(crop));
                 }
                 else
                 {
@@ -297,7 +297,7 @@ namespace ProCP.Classes
           
                 if(crop.GetMaturityLength() == now - beginWeek)
                 {
-                    cropdata = new CropData(simulation.weekToDate(beginWeek), simulation.weekToDate(beginWeek + crop.GetMaturityLength()), alive, health_details, crop.WaterCosts, crop.FertilizerCosts, crop.WaterCosts + crop.FertilizerCosts + seedCost(crop),crop.GetCropYield(), getCropProfits(crop, health));
+                    cropdata = new CropData(simulation.weekToDate(beginWeek), simulation.weekToDate(beginWeek + crop.GetMaturityLength()), alive, health_details, crop.WaterCosts, crop.FertilizerCosts, crop.WaterCosts + crop.FertilizerCosts + seedCost(crop),crop.GetCropYield(), getCropProfits(crop));
                 }
                 else
                 {
@@ -465,9 +465,9 @@ namespace ProCP.Classes
             }
             else
             {
-                //to do (only caluclates maturity for now)
-                
-                for(int startWeek = 0 ; startWeek < plotWeeks.Count;)
+
+                int cropsCalculated = 0;
+                for(int startWeek = 0 ; startWeek < plotWeeks.Count && this.hasCrop != cropsCalculated ;)
                 {
                     // If null then has reached the end of PlotWeeks
                     if (!plotWeeks[startWeek].isEmpty)
@@ -477,6 +477,10 @@ namespace ProCP.Classes
                         for(int i = 0; i < end; i++,startWeek++)
                         {
                             CalCurrentDate(startWeek, i,c);
+                            if(i == end - 1)
+                            {
+                                cropsCalculated++;
+                            }
                         }
                     }
                    else
@@ -685,28 +689,72 @@ namespace ProCP.Classes
         private bool isNotEmptyAtSpecificWeek(int week, out Crop getCrop, out int weekCropWasSet)
         {
             getCrop = null;
-            weekCropWasSet = -1;
+            weekCropWasSet = 0;
             if (plotWeeks[week].isEmpty)
             {
                 return false;
             }
-            if(week == 0)
+            else
             {
-                weekCropWasSet = 0;
-            }
-            getCrop = plotWeeks[week].getCrop();
-            while (week != 0)
-            {
-                Crop test = plotWeeks[week - 1].getCrop();
-                if(test == null || test != getCrop)
+                getCrop = plotWeeks[week].getCrop();
+                // Crop not empty
+                if (week == 0)
                 {
+                    weekCropWasSet = 0;
+                    //Crop must have been set at week 0
+                    return true;
+                }
+                else if(plotWeeks[week -1].isEmpty || plotWeeks[week -1].getCrop() != getCrop)
+                {
+                    // Week before different therefore week is its starting date
                     weekCropWasSet = week;
+                    return true;
                 }
                 else
                 {
-                    week--;
+                    if ((getCrop.weeks.Count - 1) > week)
+                    {
+                        // Not enough weeks must go forward to find begin date
+                        int EndWeek = (plotWeeks.Count) - week; 
+                        for(int search = 1; search < EndWeek; search++)
+                        {
+                            if(search == EndWeek - 1)
+                            {
+                                weekCropWasSet = (week + search) - getCrop.GetMaturityLength();
+                                return true;
+                            }
+                            if (plotWeeks[week + search].isEmpty || plotWeeks[week + search].getCrop() != getCrop)
+                            {
+                                weekCropWasSet = (week + search) - getCrop.GetMaturityLength();
+                                return true;
+                            }
+                        }
+
+                    }
+                    else
+                    {
+
+
+                        //Look backwards until found
+                        for (int search = week - 2; search >= 0; search--)
+                        {
+                            if (search == 0)
+                            {
+                                weekCropWasSet = search + 1;
+                                return true;
+                            }
+                            if (plotWeeks[search].isEmpty || plotWeeks[search].getCrop() != getCrop)
+                            {
+                                weekCropWasSet = search + 1;
+                                return true;
+                            }
+                        }
+                    }
                 }
+                
             }
+          
+           
             return true;
             
         }
@@ -825,13 +873,17 @@ namespace ProCP.Classes
             fertilizerCost = Amount * simulation.PlotSize * simulation.database.FertilizerCost / 100;
             return fertilizerCost;
         }
-        private decimal getCropProfits(Crop crop, int health)
+        private decimal getCropProfits(Crop crop)
         {
             decimal profits = 0;
+            int health = crop.weeks[crop.GetMaturityLength()-1].Health;
+            if (health != 0)
+            {
+                return profits = crop.GetSellPrice() * health * simulation.PlotSize / 100;
+            }
+            else return 0;
 
-            profits = crop.GetSellPrice() * health * simulation.PlotSize / 100;
-
-            return profits;
+            
         }
         
         private string reasonOfDeath(Crop crop)

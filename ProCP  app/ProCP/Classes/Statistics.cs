@@ -20,5 +20,30 @@ namespace ProCP.Classes
        
         public Decimal CalTotalWaterCost() { return 0; }
         public Decimal CalTotalFertilizerCost() { return 0; }
+        public string getDataSummary()
+        {
+            List<CropData> list = new List<Classes.CropData>();
+            List<Plot> plots = simulation.getListOfPlots();
+            foreach(Plot p in plots)
+            {
+                List<CropData> temp = p.GetCropSummary();
+                foreach(CropData c in temp)
+                {
+                    list.Add(c);
+                }
+            }
+
+
+
+
+            string a = "Number of Crops: " + "\nTotal: " + "\nCrops \t  \tCost \t\tYield \t\tProfit ";
+            //loop ....
+            foreach (CropData c in list)
+            {
+                a += "\nCarrots \t \t " + c.GetTotalCost().ToString() + "\t \t" + c.GetYield().ToString() + "\t \t50";
+            }
+
+            return a;
+        }
     }
 }
