@@ -195,7 +195,7 @@ namespace ProCP.Classes
         }
 
 
-        public Simulation(string DataBaseConnection,string SimulationStorageDatabase,string Province) {
+        public Simulation(string DataBaseConnection,string SimulationStorageDatabase,string Province, DateTime StartDate, DateTime EndDate) {
             numberOfCrops = 0;
             seeking = false;
             totalTicks = 100;
@@ -209,7 +209,11 @@ namespace ProCP.Classes
             numberofPlotColumns = 10;
             numberOfPlotRows = 8;
             this.province = Province;
-            setInitalDate();
+            
+            this.beginDate = StartDate;
+            this.endDate = EndDate;
+            this.totalWeeks = GetNumberOfWeeks();
+            currentWeek = 0;
             database = new Database(Province);
             statistics = new Statistics(this);
             InitialPlots();
@@ -347,8 +351,9 @@ namespace ProCP.Classes
             if(SimulationChangedEvent != null)
             {
                 SimulationChangedEvent("BeginDate", DateToString(beginDate));
-                SimulationChangedEvent("EndDate", DateToString(endDate));
+                SimulationChangedEvent("EndnDate", DateToString(endDate));
             }
+          
         }
         
 
@@ -474,6 +479,7 @@ namespace ProCP.Classes
         }
         public void ResetSimulation()
         {
+            
             setInitalDate();
             LoadPlotSize("100");
             InitialPlots();

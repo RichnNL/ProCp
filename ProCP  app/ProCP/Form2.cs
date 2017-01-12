@@ -24,20 +24,21 @@ namespace ProCP
             InitializeComponent();
             province = "Drenthe";
             //defeault province for now;
-            rcaea = new RCAEA(province);
-            internalChange = false;
+            
+            internalChange = true;
 
 
-
+            rcaea = new RCAEA(province,dateTimePicker1.Value,dateTimePicker2.Value);
             AddSoilTypestoComboBox();
             rcaea.simulation.OnDraw += new Simulation.DrawCropHandler(drawPictureBox);
             rcaea.simulation.SimulationChangedEvent += new Simulation.SimulationChangedHandler(hostsimulationChanged);
+            InitializeProperties();
 
 
             populateProvinceOption();
             setClickEventForPictureBoxes();
             populateCropPanelSelection();
-            InitializeProperties();
+            internalChange = false;
             plotInfoLstbx.Items.Add("No Plot Selected");
         }
 
@@ -54,6 +55,8 @@ namespace ProCP
             plotSizeNmr.Value = 100;
             dateTimePicker1.MinDate = new DateTime(2015, 1, 1);
             dateTimePicker1.MaxDate = new DateTime(2018, 12, 31);
+            dateTimePicker1.Value = DateTime.Now;
+            dateTimePicker2.Value = dateTimePicker1.Value.AddMonths(3);
             setMinMaxDates();
         }
 

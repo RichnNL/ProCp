@@ -14,12 +14,13 @@ namespace ProCP.Classes
         public string componentSelected;
         public bool submitChange;
         public SimulationStorage simulationStorage;
-        public RCAEA(string province)
+        public RCAEA(string province,DateTime start, DateTime end)
         {
-            simulation = new Simulation("connection.ini", "connection.ini", province);
+            simulation = new Simulation("connection.ini", "connection.ini", province,start,end);
             submitChange = false;
             simulationStorage = new SimulationStorage("connection.ini");
             simulation.NotSavedEvent += new Simulation.SimulationNotSaved(notsaved);
+            simulationStorage.changedSinceLastSave = true;
         }
         public void generateReport(Simulation sim)
         {
