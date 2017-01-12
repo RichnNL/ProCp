@@ -26,15 +26,19 @@ namespace ProCP
             //defeault province for now;
             
             internalChange = true;
+            dateTimePicker1.MinDate = new DateTime(2015, 1, 1);
+            dateTimePicker1.MaxDate = new DateTime(2018, 12, 31);
+            dateTimePicker1.Value = DateTime.Now;
+            dateTimePicker2.Value = dateTimePicker1.Value.AddMonths(3);
 
-
+          
             rcaea = new RCAEA(province,dateTimePicker1.Value,dateTimePicker2.Value);
             AddSoilTypestoComboBox();
             rcaea.simulation.OnDraw += new Simulation.DrawCropHandler(drawPictureBox);
             rcaea.simulation.SimulationChangedEvent += new Simulation.SimulationChangedHandler(hostsimulationChanged);
-            InitializeProperties();
 
-            
+
+            InitializeProperties();
             populateProvinceOption();
             setClickEventForPictureBoxes();
             populateCropPanelSelection();
@@ -53,10 +57,7 @@ namespace ProCP
             this.fertilizerCbx.SelectedItem = fertilizerCbx.Items[0];
             this.soilTypeCbx.SelectedItem = soilTypeCbx.Items[0];
             plotSizeNmr.Value = 100;
-            dateTimePicker1.MinDate = new DateTime(2015, 1, 1);
-            dateTimePicker1.MaxDate = new DateTime(2018, 12, 31);
-            dateTimePicker1.Value = DateTime.Now;
-            dateTimePicker2.Value = dateTimePicker1.Value.AddMonths(3);
+         
             setMinMaxDates();
         }
 
@@ -148,8 +149,7 @@ namespace ProCP
             if (rcaea.simulation.getNumberOfCrops() > 0)
             {
                 provinceCbx.Enabled = false;
-                wateringCbx.Enabled = false;
-                fertilizerCbx.Enabled = false;
+               
                 dateTimePicker2.Enabled = false;
                 dateTimePicker1.Enabled = false;
                 plotSizeNmr.Enabled = false;
@@ -160,8 +160,7 @@ namespace ProCP
             else if (rcaea.simulation.getNumberOfCrops() == 0)
             {
                 provinceCbx.Enabled = true;
-                wateringCbx.Enabled = true;
-                fertilizerCbx.Enabled = true;
+               
                 dateTimePicker2.Enabled = true;
                 dateTimePicker1.Enabled = true;
                 plotSizeNmr.Enabled = true;
@@ -577,8 +576,7 @@ namespace ProCP
         }
         private void setFertilizer(string fertilizer)
         {
-            if (rcaea.simulation.getNumberOfCrops() == 0 || internalChange)
-            {
+           
 
                 if (!internalChange)
                 {
@@ -599,11 +597,8 @@ namespace ProCP
                 {
                     FillPlotInfo(rcaea.selectedPlot);
                 }
-            }
-            else
-            {
-                error(true);
-            }
+            
+          
         }
 
         private void wateringCbx_SelectedIndexChanged(object sender, EventArgs e)
@@ -617,8 +612,7 @@ namespace ProCP
         }
         private void setWatering(string watering)
         {
-            if (rcaea.simulation.getNumberOfCrops() == 0 || internalChange)
-            {
+          
 
                 if (!internalChange)
                 {
@@ -640,11 +634,8 @@ namespace ProCP
                 {
                     FillPlotInfo(rcaea.selectedPlot);
                 }
-            }
-            else
-            {
-                error(true);
-            }
+            
+         
         }
 
         private void soilTypeCbx_SelectedIndexChanged(object sender, EventArgs e)
@@ -782,6 +773,7 @@ namespace ProCP
         private void newSimulation()
         {
             province = "Drenthe";
+            EnabledEditing();
             rcaea.resetSimulation();
 
         }
@@ -862,18 +854,44 @@ namespace ProCP
         }
         private void PauseSimulation()
         {
-            playBtn.Text = "Play";
-            rcaea.simulation.Stop();
+            
+            if (internalChange)
+            {
+                MethodInvoker invoke = delegate
+                {
+                    playBtn.Text = "Play";
+                   
+                };
+                this.Invoke(invoke);
+            }
+            else
+            {
+                playBtn.Text = "Play";
+                rcaea.simulation.Stop();
+            }
         }
         private void endofSimulation()
         {
-            playBtn.Text = "Reset";
+            if (internalChange)
+            {
+                MethodInvoker invoke = delegate
+                {
+                    playBtn.Text = "Reset";
+                };
+                this.Invoke(invoke);
+            }
+            else
+            {
+                playBtn.Text = "Reset";
+            }
+           
         }
         private void restartSimulation()
         {
             playBtn.Text = "Play";
             rcaea.simulation.Restart();
         }
+      
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -939,6 +957,10 @@ namespace ProCP
                 InitializeProperties();
                 EnabledEditing();
 
+            }
+            else if(change == "SetToBeginning")
+            {
+                resetPictureBoxes();
             }
             else if (change == "Fertilizer")
             {

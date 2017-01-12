@@ -509,17 +509,34 @@ namespace ProCP.Classes
                     crop.WaterCosts = 0;
                     plotWeeks[week].imageNumber = 0;
                     plotWeeks[week].imageChange = true;
+                    if(week != 0)
+                    {
+                        if( plotWeeks[week - 1].isEmpty)
+                        {
+                            plotWeeks[week- 1].imageNumber = -1;
+                            plotWeeks[week- 1].imageChange = true;
+                        }
+                    }
                 }
-                else if( CropMaturity + 1 == crop.GetMaturityLength() && crop.weeks[CropMaturity].Health > 0)
+                else if( CropMaturity + 1 == crop.GetMaturityLength())
                 {
                     //Crop Finished 
-                    if(plotWeeks[week +1] != null && plotWeeks[week + 1].isEmpty)
-                    {
-                        plotWeeks[week + 1].imageChange = true;
-                        plotWeeks[week + 1].imageNumber = -1;
-                    }
                     
-                    cropsHarvested++;
+                    if(plotWeeks.Count  > week + 1)
+                    {
+                      
+                        if(plotWeeks[week + 1].isEmpty)
+                        {
+                            plotWeeks[week + 1].imageChange = true;
+                            plotWeeks[week + 1].imageNumber = -1;
+                        }
+                       
+                    }
+                    if(crop.weeks[CropMaturity].Health > 0)
+                    {
+                        cropsHarvested++;
+                    }
+                  
                 }
                 else if(crop.weeks[CropMaturity].Health == 0 && crop.weeks[CropMaturity - 1].Health != 0)
                 {
@@ -642,7 +659,7 @@ namespace ProCP.Classes
         {
             //Checks if Enough Weeks Available and if the plot is empty
             int now = simulation.CurrentWeek;
-           
+         
             int then = (maturity + now) -1;
             if (simulation.GetNumberOfWeeks() - then > 0)
             {
