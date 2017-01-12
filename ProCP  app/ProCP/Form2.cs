@@ -33,7 +33,7 @@ namespace ProCP
             rcaea.simulation.OnDraw += new Simulation.DrawCropHandler(drawPictureBox);
             rcaea.simulation.SimulationChangedEvent += new Simulation.SimulationChangedHandler(hostsimulationChanged);
 
-
+            
             populateProvinceOption();
             setClickEventForPictureBoxes();
             populateCropPanelSelection();
@@ -147,12 +147,21 @@ namespace ProCP
                 provinceCbx.Enabled = false;
                 wateringCbx.Enabled = false;
                 fertilizerCbx.Enabled = false;
+                dateTimePicker2.Enabled = false;
+                dateTimePicker1.Enabled = false;
+                plotSizeNmr.Enabled = false;
+
+
+
             }
             else if (rcaea.simulation.getNumberOfCrops() == 0)
             {
                 provinceCbx.Enabled = true;
                 wateringCbx.Enabled = true;
                 fertilizerCbx.Enabled = true;
+                dateTimePicker2.Enabled = true;
+                dateTimePicker1.Enabled = true;
+                plotSizeNmr.Enabled = true;
             }
         }
         private void setClickEventForPictureBoxes()
@@ -998,9 +1007,10 @@ namespace ProCP
             ReportWindow rptWindow = new ReportWindow(this);
             rptWindow.Show();
         }
-        public string SendReport()
+        public string GetReport()
         {
-            return "";
+            string b=rcaea.simulation.statistics.getDataSummary();
+            return b;
             //Tsanko to do just get the string do not do calculations here do that in statistics 
         }
             

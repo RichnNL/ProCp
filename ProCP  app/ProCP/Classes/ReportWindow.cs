@@ -19,7 +19,7 @@ namespace ProCP.Classes
             InitializeComponent();
             this.form = form;
 
-            string b=form.SendReport();
+            string b=form.GetReport();
             richTextBox1.Text = b;
         }
 
