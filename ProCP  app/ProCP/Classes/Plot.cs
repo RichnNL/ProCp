@@ -127,7 +127,7 @@ namespace ProCP.Classes
 
                 if (crop.GetMaturityLength() == now - beginWeek)
                 {
-                    cropdata = new CropData(simulation.weekToDate(beginWeek), simulation.weekToDate(beginWeek + crop.GetMaturityLength()), alive, health_details, crop.WaterCosts, crop.FertilizerCosts, crop.WaterCosts + crop.FertilizerCosts + seedCost(crop), crop.GetCropYield(), getCropProfits(crop));
+                    cropdata = new CropData(simulation.weekToDate(beginWeek), simulation.weekToDate(beginWeek + crop.GetMaturityLength()), alive, health_details, crop.WaterCosts, crop.FertilizerCosts, crop.WaterCosts + crop.FertilizerCosts + seedCost(crop), crop.GetCropYield(), getCropProfits(crop, health));
                 }
                 else
                 {
@@ -245,7 +245,7 @@ namespace ProCP.Classes
 
                 if (crop.GetMaturityLength() == now - beginWeek)
                 {
-                    cropdata = new CropData(simulation.weekToDate(beginWeek), simulation.weekToDate(beginWeek + crop.GetMaturityLength()), alive, health_details, crop.WaterCosts, crop.FertilizerCosts, crop.WaterCosts + crop.FertilizerCosts + seedCost(crop), crop.GetCropYield(), getCropProfits(crop));
+                    cropdata = new CropData(simulation.weekToDate(beginWeek), simulation.weekToDate(beginWeek + crop.GetMaturityLength()), alive, health_details, crop.WaterCosts, crop.FertilizerCosts, crop.WaterCosts + crop.FertilizerCosts + seedCost(crop), crop.GetCropYield(), getCropProfits(crop, health));
                 }
                 else
                 {
@@ -297,7 +297,7 @@ namespace ProCP.Classes
           
                 if(crop.GetMaturityLength() == now - beginWeek)
                 {
-                    cropdata = new CropData(simulation.weekToDate(beginWeek), simulation.weekToDate(beginWeek + crop.GetMaturityLength()), alive, health_details, crop.WaterCosts, crop.FertilizerCosts, crop.WaterCosts + crop.FertilizerCosts + seedCost(crop),crop.GetCropYield(), getCropProfits(crop));
+                    cropdata = new CropData(simulation.weekToDate(beginWeek), simulation.weekToDate(beginWeek + crop.GetMaturityLength()), alive, health_details, crop.WaterCosts, crop.FertilizerCosts, crop.WaterCosts + crop.FertilizerCosts + seedCost(crop),crop.GetCropYield(), getCropProfits(crop, health));
                 }
                 else
                 {
@@ -815,17 +815,23 @@ namespace ProCP.Classes
         }
         private decimal addWaterCost(decimal Amount)
         {
-            //TODO ZISIS!!!
-            return 1;
+            decimal waterCost = 0;
+            waterCost = Amount * simulation.PlotSize * simulation.database.WaterCost / 100;
+            return waterCost;
         }
         private decimal addFertilizerCost(decimal Amount)
         {
-            //TODO ZISIS
-            return 1;
+            decimal fertilizerCost = 0;
+            fertilizerCost = Amount * simulation.PlotSize * simulation.database.FertilizerCost / 100;
+            return fertilizerCost;
         }
-        private decimal getCropProfits(Crop crop)
+        private decimal getCropProfits(Crop crop, int health)
         {
-            return 1;
+            decimal profits = 0;
+
+            profits = crop.GetSellPrice() * health * simulation.PlotSize / 100;
+
+            return profits;
         }
         
         private string reasonOfDeath(Crop crop)

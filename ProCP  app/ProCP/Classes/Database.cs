@@ -16,11 +16,16 @@ namespace ProCP.Classes
     class Database
     {
         private MySqlConnection connection;
+        
         public List<Crop> Crops;
         public List<SoilType> SoilTypes;
         public List<Weather> weathers;
         //public List<Price> prices;
         public List<Images> images;
+
+        public decimal WaterCost;
+        public decimal FertilizerCost;
+
 
         public Database(string StartingProvince)
         {
@@ -33,6 +38,9 @@ namespace ProCP.Classes
              SoilTypes = GetAllSoilTypes();
             Crops = LoadAllCrops();
             //prices = LoadSellPrices();
+            WaterCost = GetWaterPrice();
+            FertilizerCost = GetFertilizerPrice();
+
             LoadImages();
             //testing
             string[] name = getProvinceNames();
@@ -394,8 +402,70 @@ namespace ProCP.Classes
             }
             return temp.ToArray();
         }
-        
-        
+
+        private decimal GetWaterPrice()
+        {
+            string sql = "SELECT Cost_Per from improvements WHERE imp_id = 2";
+            MySqlCommand command = new MySqlCommand(sql, connection);
+
+            decimal price = 0;
+
+            try
+            {
+                connection.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    price = Convert.ToDecimal(reader["Cost_Per"]);
+                }
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading water price");
+            }
+
+            finally
+            {
+                connection.Close();
+            }
+
+            return price;
+
+        }
+
+        private decimal GetFertilizerPrice()
+        {
+            string sql = "SELECT Cost_Per from improvements WHERE imp_id = 1";
+            MySqlCommand command = new MySqlCommand(sql, connection);
+
+            decimal price = 0;
+
+            try
+            {
+                connection.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    price = Convert.ToDecimal(reader["Cost_Per"]);
+                }
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading fertilizer price");
+            }
+
+            finally
+            {
+                connection.Close();
+            }
+
+            return price;
+
+        }
 
 
 
