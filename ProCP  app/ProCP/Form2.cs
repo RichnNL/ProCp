@@ -651,6 +651,7 @@ namespace ProCP
             {
                 plotInfoLstbx.Items.Add("Total Crops Set in Plot" + p.getNumberOfCrops().ToString());
                 plotInfoLstbx.Items.Add("Crops Harvested: " + p.getNumberOfHarvestedCrops().ToString());
+               
             }
             else
             {
@@ -682,6 +683,29 @@ namespace ProCP
                             plotInfoLstbx.Items.Add("Matured at: " + rcaea.simulation.DateToString(currentPlot.GetEndDate()));
                             plotInfoLstbx.Items.Add("Current Status: ");
                             plotInfoLstbx.Items.Add(currentPlot.getHealth());
+                            if(fertilizerCbx.SelectedIndex != 0)
+                            {
+                                plotInfoLstbx.Items.Add("Current Water Costs: ");
+                                plotInfoLstbx.Items.Add(currentPlot.GetWaterCost());
+                            }
+                            if(wateringCbx.SelectedIndex != 0)
+                            {
+                                plotInfoLstbx.Items.Add("Current Fertilizer Costs: ");
+                                plotInfoLstbx.Items.Add(currentPlot.GetFertilizerCost());
+                            }
+                            if(currentPlot.GetYield() != 0)
+                            {
+                                plotInfoLstbx.Items.Add("Total Costs: ");
+                                plotInfoLstbx.Items.Add(currentPlot.GetTotalCost());
+                                plotInfoLstbx.Items.Add("Total Profit: ");
+                                plotInfoLstbx.Items.Add(currentPlot.getProfits());
+                                plotInfoLstbx.Items.Add("Yield: ");
+                                plotInfoLstbx.Items.Add(currentPlot.GetYield());
+                                plotInfoLstbx.Items.Add("Possible Yield: ");
+                                plotInfoLstbx.Items.Add(currentPlot.getIdealYield());
+
+                            }
+                            
                         }
                         else
                         {
@@ -689,6 +713,7 @@ namespace ProCP
                             plotInfoLstbx.Items.Add("Set at " + rcaea.simulation.DateToString(currentPlot.GetBeginDate()));
                             plotInfoLstbx.Items.Add("Current Status: ");
                             plotInfoLstbx.Items.Add(currentPlot.getHealth());
+                         
                         }
                     }
 

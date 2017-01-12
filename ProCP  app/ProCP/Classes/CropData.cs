@@ -31,6 +31,7 @@ namespace ProCP.Classes
         private string Crop_Health = "";
 
         private decimal profits = 0;
+        private int idealYield = 0;
 
        
 
@@ -92,6 +93,20 @@ namespace ProCP.Classes
             this.profits = profit;
 
         }
+        public CropData(DateTime begin, DateTime end, bool Alive, string health, decimal watercosts, decimal fertilizer, decimal totalcosts, int yield,int idealyield, decimal profit)
+        {
+            this.beginDate = begin;
+            this.endDate = end;
+            this.isAlive = Alive;
+            this.Crop_Health = health;
+            this.waterCosts = watercosts;
+            this.fertilizerCosts = fertilizer;
+            this.totalCosts = totalcosts;
+            this.yield = yield;
+            this.profits = profit;
+            this.idealYield = idealyield;
+
+        }
         public CropData(DateTime begin, DateTime end, bool Alive, string health, int yield)
         {
             this.beginDate = begin;
@@ -110,6 +125,10 @@ namespace ProCP.Classes
             this.totalCosts = totalcosts;
             this.yield = yield;
             
+        }
+        public decimal getProfits()
+        {
+            return profits;
         }
 
         public DateTime GetBeginDate()
@@ -147,6 +166,10 @@ namespace ProCP.Classes
         public bool getIsAlive()
         {
             return isAlive;
+        }
+        public int getIdealYield()
+        {
+            return idealYield;
         }
        
     }
