@@ -438,12 +438,12 @@ namespace ProCP.Classes
             if(nbrWeeks != pweeks)
             {
                 List<PlotWeek> temp = new List<PlotWeek>();
-                for(int i = 1; i < nbrWeeks; i++)
+                for(int i = 0; i < nbrWeeks; i++)
                 {
                     temp.Add(new PlotWeek());
                 }
-                
-                plotWeeks = temp;
+                plotWeeks.Clear();
+                plotWeeks = temp.ToList();
                 for(int i = 0; i < plotWeeks.Count; i++)
                 {
                     setWeatherForWeek(i);
