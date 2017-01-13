@@ -13,7 +13,7 @@ namespace ProCP.Classes
         public Statistics(Simulation simulation) {
             this.simulation = simulation;
         }
-  private List<CropData> Summary()
+        private List<CropData> Summary()
         {
             List<CropData> list = new List<Classes.CropData>();
             List<Plot> plots = simulation.getListOfPlots();
@@ -36,7 +36,8 @@ namespace ProCP.Classes
         public int CalTotalYield()
         {
             int tyield = 0;
-            foreach (CropData c in Summary())
+            List<CropData> summary = Summary();
+            foreach (CropData c in summary)
             {
                 tyield += c.GetYield();
             }
@@ -44,8 +45,9 @@ namespace ProCP.Classes
         }
         public Decimal CalTotalProfit()
         {
+            List<CropData> summary = Summary();
             decimal tprofit = 0;
-            foreach (CropData c in Summary())
+            foreach (CropData c in summary)
             {
                 tprofit += c.getProfits();
             }
@@ -54,10 +56,11 @@ namespace ProCP.Classes
         }
         public Decimal CalTotalCosts()
         {
+            List<CropData> summary = Summary();
             decimal tcost = 0;
 
 
-            foreach (CropData c in Summary())
+            foreach (CropData c in summary)
             {
                 tcost += c.GetTotalCost();
             }
@@ -66,8 +69,9 @@ namespace ProCP.Classes
        
         public Decimal CalTotalWaterCost()
         {
+            List<CropData> summary = Summary();
             decimal twater = 0;
-            foreach (CropData c in Summary())
+            foreach (CropData c in summary)
             {
                 twater += c.GetWaterCost();
             }
@@ -75,8 +79,9 @@ namespace ProCP.Classes
         }
         public Decimal CalTotalFertilizerCost()
         {
+            List<CropData> summary = Summary();
             decimal tfertilizer= 0;
-            foreach (CropData c in Summary())
+            foreach (CropData c in summary)
             {
                 tfertilizer += c.GetFertilizerCost();
             }
@@ -113,5 +118,51 @@ namespace ProCP.Classes
 
             return a;
         }
+        public decimal getTotalCostsByCrop(string crop)
+        {
+            decimal cost = 0;
+            List<CropData> summary = Summary();
+            foreach (CropData c in summary)
+            {
+                if(c.getCropName() == crop)
+                {
+                    cost += c.GetTotalCost();
+                }
+                
+            }
+            return cost;
+
+        }
+        public decimal getTotalWaterCostsByCrop(string crop)
+        {
+            decimal cost = 0;
+            List<CropData> summary = Summary();
+            foreach (CropData c in summary)
+            {
+                if (c.getCropName() == crop)
+                {
+                    cost += c.GetWaterCost();
+                }
+
+            }
+            return cost;
+
+        }
+        public decimal getTotalFertilizerCostsByCrop(string crop)
+        {
+            decimal cost = 0;
+            List<CropData> summary = Summary();
+            foreach (CropData c in summary)
+            {
+                if (c.getCropName() == crop)
+                {
+                    cost += c.GetFertilizerCost();
+                }
+
+            }
+            return cost;
+
+        }
+
     }
 }

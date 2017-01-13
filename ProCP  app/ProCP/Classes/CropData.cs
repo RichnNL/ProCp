@@ -32,22 +32,22 @@ namespace ProCP.Classes
 
         private decimal profits = 0;
         private int idealYield = 0;
-
+        private string CropName;
+        private string CropLocation;
        
 
-        public CropData(string health)
-        {
-            this.Crop_Health = health;
-        }
-        public CropData(DateTime begin, DateTime end, bool Alive, string health)
+       
+        public CropData(string CropName, string CropLocation, DateTime begin, DateTime end, bool Alive, string health)
         {
             this.beginDate = begin;
             this.endDate = end;
             this.isAlive = Alive;
             this.Crop_Health = health;
+            this.CropName = CropName;
+            this.CropLocation = CropLocation;
          
         }
-        public CropData(DateTime begin, DateTime end, bool Alive, string health, decimal watercosts, decimal fertilizer)
+        public CropData(string CropName, string CropLocation, DateTime begin, DateTime end, bool Alive, string health, decimal watercosts, decimal fertilizer)
         {
             this.beginDate = begin;
             this.endDate = end;
@@ -55,9 +55,11 @@ namespace ProCP.Classes
             this.Crop_Health = health;
             this.waterCosts = watercosts;
             this.fertilizerCosts = fertilizer;
-           
+            this.CropName = CropName;
+            this.CropLocation = CropLocation;
+
         }
-        public CropData(DateTime begin, DateTime end, bool Alive, string health, decimal watercosts, decimal fertilizer,decimal totalcosts)
+        public CropData(string CropName, string CropLocation, DateTime begin, DateTime end, bool Alive, string health, decimal watercosts, decimal fertilizer,decimal totalcosts)
         {
             this.beginDate = begin;
             this.endDate = end;
@@ -66,9 +68,11 @@ namespace ProCP.Classes
             this.waterCosts = watercosts;
             this.fertilizerCosts = fertilizer;
             this.totalCosts = totalcosts;
-            
+            this.CropName = CropName;
+            this.CropLocation = CropLocation;
+
         }
-        public CropData(DateTime begin, DateTime end, bool Alive, string health, decimal watercosts, decimal fertilizer, decimal totalcosts,int yield)
+        public CropData(string CropName, string CropLocation, DateTime begin, DateTime end, bool Alive, string health, decimal watercosts, decimal fertilizer, decimal totalcosts,int yield)
         {
             this.beginDate = begin;
             this.endDate = end;
@@ -78,9 +82,11 @@ namespace ProCP.Classes
             this.fertilizerCosts = fertilizer;
             this.totalCosts = totalcosts;
             this.yield = yield;
-          
+            this.CropName = CropName;
+            this.CropLocation = CropLocation;
+
         }
-        public CropData(DateTime begin, DateTime end, bool Alive, string health, decimal watercosts, decimal fertilizer, decimal totalcosts, int yield,decimal profit)
+        public CropData(string CropName, string CropLocation, DateTime begin, DateTime end, bool Alive, string health, decimal watercosts, decimal fertilizer, decimal totalcosts, int yield,decimal profit)
         {
             this.beginDate = begin;
             this.endDate = end;
@@ -91,9 +97,11 @@ namespace ProCP.Classes
             this.totalCosts = totalcosts;
             this.yield = yield;
             this.profits = profit;
+            this.CropName = CropName;
+            this.CropLocation = CropLocation;
 
         }
-        public CropData(DateTime begin, DateTime end, bool Alive, string health, decimal watercosts, decimal fertilizer, decimal totalcosts, int yield,int idealyield, decimal profit)
+        public CropData(string CropName, string CropLocation, DateTime begin, DateTime end, bool Alive, string health, decimal watercosts, decimal fertilizer, decimal totalcosts, int yield,int idealyield, decimal profit)
         {
             this.beginDate = begin;
             this.endDate = end;
@@ -105,18 +113,22 @@ namespace ProCP.Classes
             this.yield = yield;
             this.profits = profit;
             this.idealYield = idealyield;
+            this.CropName = CropName;
+            this.CropLocation = CropLocation;
 
         }
-        public CropData(DateTime begin, DateTime end, bool Alive, string health, int yield)
+        public CropData(string CropName, string CropLocation, DateTime begin, DateTime end, bool Alive, string health, int yield)
         {
             this.beginDate = begin;
             this.endDate = end;
             this.isAlive = Alive;
             this.Crop_Health = health;
             this.yield = yield;
-        
+            this.CropName = CropName;
+            this.CropLocation = CropLocation;
+
         }
-        public CropData(DateTime begin, DateTime end, bool Alive, string health, decimal totalcosts, int yield)
+        public CropData(string CropName, string CropLocation, DateTime begin, DateTime end, bool Alive, string health, decimal totalcosts, int yield)
         {
             this.beginDate = begin;
             this.endDate = end;
@@ -124,7 +136,18 @@ namespace ProCP.Classes
             this.Crop_Health = health;
             this.totalCosts = totalcosts;
             this.yield = yield;
-            
+            this.CropName = CropName;
+            this.CropLocation = CropLocation;
+
+        }
+
+        public string getCropName()
+        {
+            return CropName;
+        }
+        public string getCropLocation()
+        {
+           return CropLocation;
         }
         public decimal getProfits()
         {
