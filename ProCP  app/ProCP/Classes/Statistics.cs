@@ -108,7 +108,7 @@ namespace ProCP.Classes
 
 
 
-            string a = "Number of Crops: " + simulation.getNumberOfCrops().ToString() + " \nTotal cost: " + CalTotalCosts().ToString() + "\nTotal profit " + CalTotalProfit().ToString() + "\nTotal water costs: " + CalTotalWaterCost().ToString() + "\nTotal fertilizer costs: " + CalTotalFertilizerCost().ToString() + "\nTotal yield: " + CalTotalYield().ToString()  + "\n\nType \t  \tCost \t\tYield \t\tProfit ";
+            string a = "Number of Crops: " + simulation.NumberOfCrops.ToString() + " \nTotal cost: " + CalTotalCosts().ToString() + "\nTotal profit " + CalTotalProfit().ToString() + "\nTotal water costs: " + CalTotalWaterCost().ToString() + "\nTotal fertilizer costs: " + CalTotalFertilizerCost().ToString() + "\nTotal yield: " + CalTotalYield().ToString()  + "\n\nType \t  \tCost \t\tYield \t\tProfit ";
             //loop ....
 
             foreach (CropData c in Summary())
@@ -162,6 +162,41 @@ namespace ProCP.Classes
             }
             return cost;
 
+        }
+        public decimal getTotalCostsByDate(int Week)
+        {
+            decimal total = 0;
+            List<CropData> data = new List<CropData>();
+            List<Plot> plots = simulation.getListOfPlots();
+            foreach(Plot p in plots)
+            {
+                if(p.getNumberOfCrops() != 0)
+                {
+                    int week = Week;
+                    Crop crop = null;
+                    while(week >= 0)
+                    {
+                        if (!p.plotWeeks[week].isEmpty)
+                        {
+                            if(crop != p.plotWeeks[week].getCrop())
+                            {
+                                crop = p.plotWeeks[week].getCrop();
+                                CropData temp = p.GetCropDataByDate(week);
+                                data.Add(temp);
+                            }
+                        }
+                        week--;
+                    }
+                }
+            }
+            if(data.Count > 0)
+            {
+                foreach(CropData cd in data)
+                {
+                    total += cd.GetTotalCost();
+                }
+            }
+            return total;
         }
 
     }

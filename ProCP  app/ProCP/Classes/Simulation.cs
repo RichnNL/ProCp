@@ -64,17 +64,7 @@ namespace ProCP.Classes
                 
             } }
 
-        private DateTime currentDate;
-        public DateTime CurrentDate { get { return currentDate; } set {
-                if (value != currentDate)
-                {
-                    if (NotSavedEvent != null)
-                    {
-                        NotSavedEvent();
-                    }
-                }
 
-                currentDate = value; } }
         private volatile int totalWeeks;
         private volatile int currentWeek;
         private int timeBetweenWeeks;
@@ -155,9 +145,27 @@ namespace ProCP.Classes
             }
         }
       
+        public int NumberOfCrops { get { return numberOfCrops; }
+            set {if (numberOfCrops == 0 && value != 0)
+                {
+                    if(SimulationChangedEvent!= null)
+                    {
+                        SimulationChangedEvent("NumberOfCrops", "1");
+                    }
+                }
+                numberOfCrops = value;
 
+            if(numberOfCrops == 0)
+                {
+                    if(SimulationChangedEvent!= null)
+                    {
+                        SimulationChangedEvent("NumberOfCrops", "0");
+                    }
+                }
+            ; }
+        }
 
-        public  Database database;
+        public Database database;
         
         public Statistics statistics;
 
@@ -427,7 +435,7 @@ namespace ProCP.Classes
         {
             if (plot.AddCrop(crop))
             {
-                numberOfCrops++;
+                NumberOfCrops++;
                 drawPlot(plot);
                 if (NotSavedEvent != null)
                 {
@@ -440,7 +448,7 @@ namespace ProCP.Classes
             if (plot.RemoveCrop(currentWeek))
             {
                 drawPlot(plot);
-                numberOfCrops--;
+                NumberOfCrops--;
               
                     if (NotSavedEvent != null)
                     {
@@ -510,10 +518,7 @@ namespace ProCP.Classes
         {
             return totalWeeks;
         }
-        public int getNumberOfCrops()
-        {
-            return numberOfCrops;
-        }
+       
         public DateTime weekToDate(int week)
         {
             DateTime date = this.beginDate;
@@ -534,6 +539,7 @@ namespace ProCP.Classes
             setInitalDate();
             LoadPlotSize("100");
             InitialPlots();
+            NumberOfCrops = 0;
             for (int i = 0; i < plots.Count; i++)
             {
                 if (plots[i].getNumberOfCrops() != 0)
@@ -609,6 +615,7 @@ namespace ProCP.Classes
         }
         private void LoadPlots(List<Plot> PLOTS)
         {
+            NumberOfCrops = 0;
             this.plots.Clear();
             this.plots = PLOTS.ToList();
             for(int i = 0; i < plots.Count; i++)
@@ -621,6 +628,7 @@ namespace ProCP.Classes
                 if(plots[i].getNumberOfCrops() != 0)
                 {
                     drawPlot(plots[i]);
+                    NumberOfCrops += plots[i].getNumberOfCrops();
                 }
             }
         }

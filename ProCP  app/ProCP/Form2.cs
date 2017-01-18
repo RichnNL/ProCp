@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProCP.Classes;
+using Microsoft.Office.Interop.Word;
+
 
 
 namespace ProCP
@@ -146,32 +148,13 @@ namespace ProCP
                 rcaea.simulation.removeCrop(rcaea.selectedPlot);
                 FillPlotInfo(rcaea.selectedPlot);
             }
-            EnabledEditing();
+            overviewCost2DateTxt.Text = "€" + rcaea.simulation.statistics.getTotalCostsByDate(rcaea.simulation.CurrentWeek);
+            overviewTotalCostTxt.Text = "€" + rcaea.simulation.statistics.CalTotalCosts();
+            overviewTotalProfitTxt.Text = "€" + rcaea.simulation.statistics.CalTotalProfit();
 
 
         }
-        private void EnabledEditing()
-        {
-            if (rcaea.simulation.getNumberOfCrops() > 0)
-            {
-                provinceCbx.Enabled = false;
-               
-                dateTimePicker2.Enabled = false;
-                dateTimePicker1.Enabled = false;
-                plotSizeNmr.Enabled = false;
-
-
-
-            }
-            else if (rcaea.simulation.getNumberOfCrops() == 0)
-            {
-                provinceCbx.Enabled = true;
-               
-                dateTimePicker2.Enabled = true;
-                dateTimePicker1.Enabled = true;
-                plotSizeNmr.Enabled = true;
-            }
-        }
+   
         private void setClickEventForPictureBoxes()
         {
             foreach (Plot p in rcaea.simulation.plots)
@@ -473,8 +456,7 @@ namespace ProCP
         }
         private void setProvince(string province)
         {
-            if (rcaea.simulation.getNumberOfCrops() == 0 || internalChange)
-            {
+            
                 if (!internalChange)
                 {
                     rcaea.simulation.Province = province;
@@ -499,11 +481,8 @@ namespace ProCP
                 }
 
             }
-            else
-            {
-                error(true);
-            }
-        }
+           
+        
 
         private void springSplitBtn_Click(object sender, EventArgs e)
         {
@@ -779,7 +758,6 @@ namespace ProCP
         private void newSimulation()
         {
             province = "Drenthe";
-            EnabledEditing();
             rcaea.resetSimulation();
 
         }
@@ -961,7 +939,7 @@ namespace ProCP
             {
                 resetPictureBoxes();
                 InitializeProperties();
-                EnabledEditing();
+                
 
             }
             else if(change == "SetToBeginning")
@@ -992,6 +970,17 @@ namespace ProCP
             {
                 timeTrackBar.Maximum = Convert.ToInt32(value);
             }
+            else if(change == "NumberOfCrops")
+            {
+                if(value == "0")
+                {
+                    enableEditableControls();
+                }
+                else
+                {
+                    disableEditableControls();
+                }
+            }
             internalChange = false;
         }
         private void allowOptions()
@@ -1009,8 +998,7 @@ namespace ProCP
         private void setPlotSize(int size)
         {
 
-            if (rcaea.simulation.getNumberOfCrops() == 0 || internalChange)
-            {
+            
                 if (!internalChange)
                 {
                     rcaea.simulation.PlotSize = size;
@@ -1024,11 +1012,24 @@ namespace ProCP
                 {
                     FillPlotInfo(rcaea.selectedPlot);
                 }
-            }
-            else
-            {
-                error(true);
-            }
+            
+           
+        }
+        private void enableEditableControls()
+        {
+            reportBtn.Enabled = false;
+            plotSizeNmr.Enabled = true;
+            provinceCbx.Enabled = true;
+            dateTimePicker2.Enabled = true;
+            dateTimePicker1.Enabled = true;
+        }
+        private void disableEditableControls()
+        {
+            reportBtn.Enabled = true;
+            plotSizeNmr.Enabled = false;
+            provinceCbx.Enabled = false;
+            dateTimePicker2.Enabled = false;
+            dateTimePicker1.Enabled = false;
         }
 
         private void timeTrackBar_Scroll(object sender, EventArgs e)
@@ -1056,6 +1057,7 @@ namespace ProCP
 
                 rcaea.simulation.Seek(percentage);
             }
+            overviewCost2DateTxt.Text = "€" + rcaea.simulation.statistics.getTotalCostsByDate(rcaea.simulation.CurrentWeek);
         }
 
         private void reportBtn_Click(object sender, EventArgs e)
@@ -1069,6 +1071,16 @@ namespace ProCP
             return b;
             //Tsanko to do just get the string do not do calculations here do that in statistics 
         }
+
+        private void helpToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void openHelpDocument()
+        {
+            this.Application.Documents.Open(@"C:\Test\NewDocument.docx", ReadOnly: true);
             
+                this.
+        }
     }
 }
