@@ -1324,6 +1324,7 @@
             // 
             // plotSizeNmr
             // 
+            this.plotSizeNmr.Enabled = false;
             this.plotSizeNmr.Increment = new decimal(new int[] {
             10,
             0,
@@ -1357,9 +1358,9 @@
             this.label5.Location = new System.Drawing.Point(6, 209);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(68, 20);
+            this.label5.Size = new System.Drawing.Size(46, 20);
             this.label5.TabIndex = 12;
-            this.label5.Text = "Plot size";
+            this.label5.Text = "Ares:";
             // 
             // dateTimePicker2
             // 
@@ -1804,7 +1805,7 @@
             // helpToolStripMenuItem1
             // 
             this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
-            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(211, 30);
+            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(147, 30);
             this.helpToolStripMenuItem1.Text = "Help";
             this.helpToolStripMenuItem1.Click += new System.EventHandler(this.helpToolStripMenuItem1_Click);
             // 

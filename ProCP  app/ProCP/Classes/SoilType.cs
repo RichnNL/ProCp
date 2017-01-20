@@ -12,23 +12,23 @@ namespace ProCP.Classes
         private string name;
         private decimal Maximum_Water;
         private decimal Maxium_Nutrition;
-        private decimal Water_Loose_Rate;
-        private decimal Nutrition_Loose_Rate;
+        private decimal Water_Lose_Rate;
+        private decimal Nutrition_Lose_Rate;
 
-        public SoilType(string name, decimal maximum_water, decimal waterlooserate, decimal maximum_nutrition, decimal nutritionlooserate) {
+        public SoilType(string name, decimal maximum_water, decimal waterloserate, decimal maximum_nutrition, decimal nutritionloserate) {
             this.name = name;
             this.Maximum_Water = maximum_water;
-            this.Water_Loose_Rate = waterlooserate;
+            this.Water_Lose_Rate = waterloserate;
             this.Maxium_Nutrition = maximum_nutrition;
-            this.Nutrition_Loose_Rate = nutritionlooserate;
+            this.Nutrition_Lose_Rate = nutritionloserate;
         }
         
         
         public string GetName() { return name; }
-        public decimal GetWaterLooseRate() { return Water_Loose_Rate; }
+        public decimal GetWaterLoseRate() { return Water_Lose_Rate; }
         public decimal GetMaximumNutrition() { return Maxium_Nutrition; }
         public decimal GetMaximumWater() { return Maximum_Water;}
-        public decimal GetNutritionLooseRate() { return Nutrition_Loose_Rate; }
+        public decimal GetNutritionLoseRate() { return Nutrition_Lose_Rate; }
         
     }
 }

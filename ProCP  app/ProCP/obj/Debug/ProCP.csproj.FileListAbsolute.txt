@@ -40,3 +40,4 @@ C:\Users\ADMIN\Documents\GitHub\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.Propertie
 C:\Users\ADMIN\Documents\GitHub\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.csproj.GenerateResource.Cache
 C:\Users\ADMIN\Documents\GitHub\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.exe
 C:\Users\ADMIN\Documents\GitHub\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.pdb
+C:\Users\Dyer\Documents\GitHub\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.csproj.ResolveComReference.cache

@@ -115,34 +115,42 @@ namespace ProCP.Classes
                  }
             }
         }
-        private int plotsize;
-        public int PlotSize
+      
+           
+        
+                  
+                  
+                    
+        
+        public void setPlotSize(string plot,int size)
         {
-            get { return plotsize; }
-
-            set
+            foreach(Plot p in plots)
             {
-                if (numberOfCrops == 0)
+                if(p.PlotId == plot)
                 {
-                    if (value != plotsize)
+                    if(p.Ares != size)
                     {
+                        p.Ares = size;
                         if (NotSavedEvent != null)
                         {
                             NotSavedEvent();
                         }
+                        p.CalBeginToEnd();
                     }
-                    if (value < 50)
-                    {
-                        plotsize = 50;
-                    }
-                    else if (value > 250)
-                    {
-                        plotsize = 250;
-                    }
-                    updatePlots();
-                    ;
+                    
                 }
             }
+        }
+        public int getPlotSize(string plot)
+        {
+            foreach (Plot p in plots)
+            {
+                if (p.PlotId == plot)
+                {
+                    return p.Ares;
+                }
+            }
+            return 0;
         }
       
         public int NumberOfCrops { get { return numberOfCrops; }
@@ -211,9 +219,10 @@ namespace ProCP.Classes
             time = new Timer();
             time.Interval = timeBetweenWeeks;
             time.Elapsed += new ElapsedEventHandler(tick);
-          
+            Fertilizer = "None";
+            Watering = "None";
             plots = new List<Plot>();
-            plotsize = 100;
+            
             numberofPlotColumns = 10;
             numberOfPlotRows = 8;
             this.province = Province;
@@ -537,7 +546,10 @@ namespace ProCP.Classes
         {
             
             setInitalDate();
-            LoadPlotSize("100");
+            foreach(Plot p in plots)
+            {
+                p.Ares = 100;
+            }
             InitialPlots();
             NumberOfCrops = 0;
             for (int i = 0; i < plots.Count; i++)
@@ -565,7 +577,6 @@ namespace ProCP.Classes
             loadProvince(province);
             loadFertilizer(settings[0]);
             loadWater(settings[1]);
-            LoadPlotSize(settings[2]);
             LoadPlots(PLOTS);
         }
       
@@ -605,14 +616,7 @@ namespace ProCP.Classes
                 SimulationChangedEvent("Watering", water);
             }
         }
-        private void LoadPlotSize(string size)
-        {
-            plotsize = Convert.ToInt32(size);
-            if (SimulationChangedEvent != null)
-            {
-                SimulationChangedEvent("PlotSize", size);
-            }
-        }
+  
         private void LoadPlots(List<Plot> PLOTS)
         {
             NumberOfCrops = 0;

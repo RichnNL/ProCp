@@ -19,6 +19,7 @@ namespace ProCP.Classes
         private Simulation simulation;
         private decimal PlotWaterCost { get; set; }
         private decimal PlotFertilizerCost { get; set; }
+        public int Ares { get; set; }
 
 
         public Plot(string PlotId,SoilType soiltype,int intialWeeks,Simulation simulation)
@@ -26,6 +27,7 @@ namespace ProCP.Classes
             this.PlotId = PlotId;
             this.soiltype = soiltype;
             this.hasCrop = 0;
+            this.Ares = 100;
             this.cropsHarvested = 0;
             this.simulation = simulation;
             plotWeeks = new List<PlotWeek>();
@@ -335,9 +337,17 @@ namespace ProCP.Classes
             }
 
             //Give the Plot Enough Water
-            if (plotWeeks[week].Water < AmountOfWaterToAdd)
+            if (((plotWeeks[week].Water * 1/10) + plotWeeks[week].Water < AmountOfWaterToAdd))
             {
-                AmountOfWaterToAdd = AmountOfWaterToAdd - plotWeeks[week].Water;
+                if(AmountOfWaterToAdd - plotWeeks[week].Water < (plotWeeks[week].Water * (1 / 10)))
+                {
+                    AmountOfWaterToAdd = (plotWeeks[week].Water * 1 / 10) + (AmountOfWaterToAdd - plotWeeks[week].Water);
+                }
+                else
+                {
+                    AmountOfWaterToAdd = AmountOfWaterToAdd - plotWeeks[week].Water;
+                }
+              
                 AddWaterToSoil(week, AmountOfWaterToAdd);
                 PlotWaterCost += addWaterCost(AmountOfWaterToAdd);
                 crop.WaterCosts += addWaterCost(AmountOfWaterToAdd);
@@ -373,7 +383,7 @@ namespace ProCP.Classes
         private void CalculateWeatherFactors(int week)
         {
             //Rain 
-            AddWaterToSoil(week, plotWeeks[week].weather.GetRain());
+            AddWaterToSoil(week, plotWeeks[week].weather.GetRain()/4);
             //Sun
             decimal temp = plotWeeks[week].weather.GetTemp();
             if (temp > 9 && temp < 15)
@@ -382,30 +392,42 @@ namespace ProCP.Classes
             }
             else if(temp > 14 && temp < 20)
             {
-                AddWaterToSoil(week, -10);
+                AddWaterToSoil(week, -12);
+            }
+            else if(temp > 20)
+            {
+                AddWaterToSoil(week, -17);
             }
         }
     
        
-        private void AddWaterToSoil(int week, decimal waterAmount)
+        private decimal AddWaterToSoil(int week, decimal waterAmountMM)
         {
             
             //Get the Water from the week before
             if (week != 0)
             {
                 plotWeeks[week].Water = plotWeeks[week - 1].Water;
-            }
-            // Calculate the Water Lose Rate
-            plotWeeks[week].Water -= soiltype.GetWaterLooseRate();
-            
+                // Calculate the Water Lose Rate
+                plotWeeks[week].Water -= soiltype.GetWaterLoseRate();
 
+            }
+           
             //Add Water Amount
-            plotWeeks[week].Water += waterAmount;
+            plotWeeks[week].Water += waterAmountMM;
             if (plotWeeks[week].Water > soiltype.GetMaximumWater())
             {
+                waterAmountMM = plotWeeks[week].Water - soiltype.GetMaximumWater();
                 plotWeeks[week].Water = soiltype.GetMaximumWater();
+                return waterAmountMM;
 
             }
+            else if(plotWeeks[week].Water < 0)
+            {
+                waterAmountMM = plotWeeks[week].Water;
+                return waterAmountMM;
+            }
+            return 0;
 
 
         }
@@ -418,7 +440,7 @@ namespace ProCP.Classes
                 plotWeeks[week].SoilNutrition = plotWeeks[week - 1].SoilNutrition;
             }
             // Calculate the Nutrition Lose Rate
-            plotWeeks[week].SoilNutrition -= soiltype.GetNutritionLooseRate();
+            plotWeeks[week].SoilNutrition -= soiltype.GetNutritionLoseRate();
 
 
             //Add Water Amount
@@ -609,25 +631,34 @@ namespace ProCP.Classes
         }
         private void CalculateCropWater(int PlotWeek, int CropWeek, Crop crop)
         {
-            decimal water = plotWeeks[PlotWeek].Water - crop.GetThirst();
-            if (plotWeeks[PlotWeek].Water < crop.GetWaterMinimum())
+            decimal water = plotWeeks[PlotWeek].Water ;
+            decimal enoughWater = (crop.GetWaterMinimum() + crop.GetWaterMaximum()) / 2;
+            if (water < enoughWater)
             {
-                // Not enough Water
-                crop.setCropHealth((int)water, CropWeek);
+                if(water < crop.GetWaterMinimum())
+                {
+                    // Not enough Water
+                    crop.setCropHealth(-15, CropWeek);
+                }
+                else
+                {
+                    crop.setCropHealth(-8, CropWeek);
+                }
+               
             }
             else if (plotWeeks[PlotWeek].Water > crop.GetWaterMaximum())
             {
                 //Too much water
                 crop.setCropHealth(-5, CropWeek);
             }
-            else if (water > 0 && water <= 10)
+            else if (water > enoughWater && water < crop.GetWaterMaximum())
             {
                 // Right Amount of Water
                 crop.setCropHealth(2, CropWeek);
             }
 
                 // Crop Absorb Water
-                AddWaterToSoil(PlotWeek, -(crop.GetThirst()));
+              //  AddWaterToSoil(PlotWeek, -(crop.GetThirst()));
         }
 
         public void setSoilType(SoilType soiltype)
@@ -875,19 +906,22 @@ namespace ProCP.Classes
 
         private decimal seedCost(Crop crop)
         {
-            decimal cost = crop.GetBuyPrice() * simulation.PlotSize;
+            decimal cost = crop.GetBuyPrice() * Ares;
             return cost;
         }
         private decimal addWaterCost(decimal Amount)
         {
             decimal waterCost = 0;
-            waterCost = Amount * simulation.PlotSize * simulation.database.WaterCost / 100;
+            // 1mm over 1meter squard = 1liter of water therefore:
+            long liters = Convert.ToInt64(Amount * (Ares * 100));
+             
+            waterCost = (liters/ 1000) * simulation.database.WaterCost;
             return waterCost;
         }
         private decimal addFertilizerCost(decimal Amount)
         {
             decimal fertilizerCost = 0;
-            fertilizerCost = Amount * simulation.PlotSize * simulation.database.FertilizerCost / 100;
+            fertilizerCost = Amount * Ares * simulation.database.FertilizerCost / 100;
             return fertilizerCost;
         }
         private decimal getCropProfits(Crop crop)
@@ -896,7 +930,7 @@ namespace ProCP.Classes
             int health = crop.weeks[crop.GetMaturityLength()-1].Health;
             if (health != 0)
             {
-                return profits = crop.GetSellPrice() * health * simulation.PlotSize / 100;
+                return profits = (crop.GetSellPrice() * getYield(crop));
             }
             else return 0;
 
@@ -904,15 +938,15 @@ namespace ProCP.Classes
         }
         private int getYield(Crop crop)
         {
-            int yield = (crop.weeks[crop.GetMaturityLength() - 1].Health * crop.GetCropYield()) / 100;
-            yield = simulation.PlotSize * yield;
+            int yield = (crop.weeks[crop.GetMaturityLength() - 1].Health * crop.GetCropYield());
+            yield = Ares * yield;
             // Zisis to do
             return yield;
         }
         private int getIdealYield(Crop crop)
         {
             //Zisis to do get the yield if the crop had 100 health
-            return simulation.PlotSize * crop.GetCropYield();
+            return Ares * crop.GetCropYield();
             
         }
         
@@ -943,7 +977,7 @@ namespace ProCP.Classes
 
 
             }
-            if(plotWeeks[weekThatHoldsCrop].Water < crop.GetThirst())
+            if(plotWeeks[weekThatHoldsCrop].Water < 1)
             {
                 return crop.GetCropName() + " Died from lack of Water";
             }
