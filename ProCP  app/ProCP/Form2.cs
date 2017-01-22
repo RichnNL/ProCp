@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProCP.Classes;
 using Microsoft.Office.Interop.Word;
+using System.IO;
 
 
 
@@ -1095,14 +1096,15 @@ namespace ProCP
         {
             try
             {
+            string path = Directory.GetCurrentDirectory();
                 Microsoft.Office.Interop.Word.Application ap = new Microsoft.Office.Interop.Word.Application();
-                Document document = ap.Documents.Open(@"Help.docx", ReadOnly: true);
+                Document document = ap.Documents.Open(path + "/Help.docx", ReadOnly: true);
                 ap.Visible = true;
         }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
-            }
+           }
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
