@@ -684,7 +684,7 @@ namespace ProCP
                             if(wateringCbx.SelectedIndex != 0)
                             {
                                 plotInfoLstbx.Items.Add("Current Fertilizer Costs: ");
-                                plotInfoLstbx.Items.Add(currentPlot.GetFertilizerCost());
+                                plotInfoLstbx.Items.Add(Convert.ToInt32( currentPlot.GetFertilizerCost()));
                             }
                             if(currentPlot.GetYield() != 0)
                             {

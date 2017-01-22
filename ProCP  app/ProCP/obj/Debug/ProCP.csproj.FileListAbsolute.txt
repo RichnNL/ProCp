@@ -44,3 +44,4 @@ C:\Users\Dyer\Documents\GitHub\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.csproj.Res
 C:\Users\User\Desktop\ICT\Project C-Phase\ProCp\ProCP  app\ProCP\bin\Debug\ProCP.exe.config
 C:\Users\User\Desktop\ICT\Project C-Phase\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.exe
 C:\Users\User\Desktop\ICT\Project C-Phase\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.pdb
+C:\Users\ADMIN\Documents\GitHub\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.csproj.ResolveComReference.cache

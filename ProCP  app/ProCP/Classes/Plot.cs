@@ -362,15 +362,16 @@ namespace ProCP.Classes
 
             if (simulation.Fertilizer == "Minimal")
             {
-                AmountOfFertilizerToAdd = crop.GetNeededNutrition() ;
+                AmountOfFertilizerToAdd = (crop.GetNeededNutrition()/ Convert.ToDecimal(crop.GetMaturityLength())) * Convert.ToDecimal(0.5);
             }
             else if (simulation.Fertilizer == "Sufficent")
             {
-                AmountOfFertilizerToAdd = (crop.GetNeededNutrition() * Convert.ToDecimal(1.25));
+               
+                AmountOfFertilizerToAdd = crop.GetNeededNutrition() / Convert.ToDecimal(crop.GetMaturityLength());
             }
             else if (simulation.Fertilizer == "Abundant")
             {
-                AmountOfFertilizerToAdd = (crop.GetNeededNutrition() * Convert.ToDecimal(1.5));
+                AmountOfFertilizerToAdd = (crop.GetNeededNutrition() / Convert.ToDecimal(crop.GetMaturityLength())) * Convert.ToDecimal(1.5);
             }
 
             //Give the Plot Enough Nutrition
