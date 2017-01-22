@@ -1093,10 +1093,21 @@ namespace ProCP
         }
         private void openHelpDocument()
         {
+            try
+            {
+                Microsoft.Office.Interop.Word.Application ap = new Microsoft.Office.Interop.Word.Application();
+                Document document = ap.Documents.Open(@"Help.docx", ReadOnly: true);
+                ap.Visible = true;
+        }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
 
-            Microsoft.Office.Interop.Word.Application ap = new Microsoft.Office.Interop.Word.Application();
-            Document document = ap.Documents.Open(@"Help.docx", ReadOnly: true);
-
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Name: RCAEA \nVersion: 1.061 \nApplication is up to date \nMade by: Tsanko");
         }
     }
 }
