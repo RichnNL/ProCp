@@ -13,6 +13,7 @@ namespace ProCP.Classes
         public int maturity;
         private int health;
 <<<<<<< HEAD
+<<<<<<< HEAD
         private int currentImage;
         public int CurrentImage
         {
@@ -24,6 +25,9 @@ namespace ProCP.Classes
 =======
 
 >>>>>>> origin/master
+=======
+
+>>>>>>> 4188c42b7c59de13cfdfb18dfc07ff2586e35331
         public int Health
         {
             get { return health; }

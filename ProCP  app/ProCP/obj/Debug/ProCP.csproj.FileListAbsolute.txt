@@ -45,6 +45,7 @@ C:\Users\User\Desktop\ICT\Project C-Phase\ProCp\ProCP  app\ProCP\bin\Debug\ProCP
 C:\Users\User\Desktop\ICT\Project C-Phase\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.exe
 C:\Users\User\Desktop\ICT\Project C-Phase\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.pdb
 <<<<<<< HEAD
+<<<<<<< HEAD
 C:\Users\User\Desktop\ICT\Project C-Phase\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.csproj.ResolveComReference.cache
 C:\Users\User\Desktop\ICT\Project C-Phase\ProCp\ProCP  app\ProCP\bin\Debug\ProCP.exe
 C:\Users\User\Desktop\ICT\Project C-Phase\ProCp\ProCP  app\ProCP\bin\Debug\ProCP.pdb
@@ -60,3 +61,6 @@ C:\Users\User\Desktop\ICT\Project C-Phase\ProCp\ProCP  app\ProCP\obj\Debug\ProCP
 =======
 C:\Users\ADMIN\Documents\GitHub\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.csproj.ResolveComReference.cache
 >>>>>>> origin/master
+=======
+C:\Users\ADMIN\Documents\GitHub\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.csproj.ResolveComReference.cache
+>>>>>>> 4188c42b7c59de13cfdfb18dfc07ff2586e35331

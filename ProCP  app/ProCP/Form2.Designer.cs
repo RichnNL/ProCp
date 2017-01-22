@@ -1259,10 +1259,14 @@
             this.label5.Location = new System.Drawing.Point(4, 136);
             this.label5.Name = "label5";
 <<<<<<< HEAD
+<<<<<<< HEAD
             this.label5.Size = new System.Drawing.Size(46, 13);
 =======
             this.label5.Size = new System.Drawing.Size(31, 13);
 >>>>>>> origin/master
+=======
+            this.label5.Size = new System.Drawing.Size(31, 13);
+>>>>>>> 4188c42b7c59de13cfdfb18dfc07ff2586e35331
             this.label5.TabIndex = 12;
             this.label5.Text = "Ares:";
             // 
@@ -1290,10 +1294,14 @@
             "Minimal",
             "Sufficent",
 <<<<<<< HEAD
+<<<<<<< HEAD
             "Maximum"});
 =======
             "Abundant"});
 >>>>>>> origin/master
+=======
+            "Abundant"});
+>>>>>>> 4188c42b7c59de13cfdfb18dfc07ff2586e35331
             this.wateringCbx.Location = new System.Drawing.Point(68, 87);
             this.wateringCbx.Name = "wateringCbx";
             this.wateringCbx.Size = new System.Drawing.Size(121, 21);
@@ -1633,10 +1641,14 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
 <<<<<<< HEAD
+<<<<<<< HEAD
             this.menuStrip1.Size = new System.Drawing.Size(1278, 24);
 =======
             this.menuStrip1.Size = new System.Drawing.Size(848, 24);
 >>>>>>> origin/master
+=======
+            this.menuStrip1.Size = new System.Drawing.Size(848, 24);
+>>>>>>> 4188c42b7c59de13cfdfb18dfc07ff2586e35331
             this.menuStrip1.TabIndex = 17;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -1700,10 +1712,14 @@
             // 
             this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
 <<<<<<< HEAD
+<<<<<<< HEAD
             this.helpToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
 =======
             this.helpToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
 >>>>>>> origin/master
+=======
+            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+>>>>>>> 4188c42b7c59de13cfdfb18dfc07ff2586e35331
             this.helpToolStripMenuItem1.Text = "Help";
             this.helpToolStripMenuItem1.Click += new System.EventHandler(this.helpToolStripMenuItem1_Click);
             // 
@@ -1711,10 +1727,14 @@
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
 <<<<<<< HEAD
+<<<<<<< HEAD
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
 =======
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 >>>>>>> origin/master
+=======
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+>>>>>>> 4188c42b7c59de13cfdfb18dfc07ff2586e35331
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -1788,10 +1808,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
 <<<<<<< HEAD
+<<<<<<< HEAD
             this.ClientSize = new System.Drawing.Size(1278, 662);
 =======
             this.ClientSize = new System.Drawing.Size(848, 515);
 >>>>>>> origin/master
+=======
+            this.ClientSize = new System.Drawing.Size(848, 515);
+>>>>>>> 4188c42b7c59de13cfdfb18dfc07ff2586e35331
             this.Controls.Add(this.datelabel5);
             this.Controls.Add(this.datelabel4);
             this.Controls.Add(this.datelabel3);
