@@ -540,7 +540,7 @@ namespace ProCP.Classes
         }
         public List<Plot> getListOfPlots()
         {
-            return plots;
+            return plots.ToList();
         }
         public void ResetSimulation()
         {

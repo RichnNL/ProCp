@@ -1387,7 +1387,7 @@
             "None",
             "Minimal",
             "Sufficent",
-            "Maximum"});
+            "Abundant"});
             this.wateringCbx.Location = new System.Drawing.Point(102, 134);
             this.wateringCbx.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.wateringCbx.Name = "wateringCbx";

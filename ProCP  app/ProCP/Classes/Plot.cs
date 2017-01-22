@@ -98,7 +98,7 @@ namespace ProCP.Classes
             if (isNotEmptyAtSpecificWeek(now,out crop, out beginWeek))
             {
                 bool alive;
-                int health = plotWeeks[now].getCrop().weeks[now - beginWeek].Health; // begin week 5 
+                int health = plotWeeks[now].getCrop().weeks[now - beginWeek].Health; 
                 string health_details = "Crop " + crop.GetCropName();
                 if ( health > 1){
                     alive = true;
@@ -127,7 +127,7 @@ namespace ProCP.Classes
 
                 }
 
-                if (crop.GetMaturityLength() == now - beginWeek)
+                if (crop.GetMaturityLength() == (now - beginWeek) + 1 && alive == true)
                 {
                     cropdata = new CropData(crop.GetCropName(), PlotId,simulation.weekToDate(beginWeek), simulation.weekToDate(beginWeek + crop.GetMaturityLength()), alive, health_details, crop.WaterCosts, crop.FertilizerCosts, crop.WaterCosts + crop.FertilizerCosts + seedCost(crop), getYield(crop),getIdealYield(crop), getCropProfits(crop));
                 }
@@ -148,10 +148,10 @@ namespace ProCP.Classes
             List<CropData> list = new List<CropData>();
             int startweek = -1;
             int endweek = -1;
-            //if (hasCrop == 0)
-            //{
-            //    return null;
-            //}
+            if (hasCrop == 0)
+           {
+               return null;
+            }
             for (int i = 0; i < plotWeeks.Count; i++)
             {
                 if (i == 0)
@@ -180,7 +180,7 @@ namespace ProCP.Classes
                                 }
                                 else
                                 {
-                                    endweek = i - 1;
+                                    endweek = i -1 ;
                                 }
                                 CropData data = GetCropDataByDate(endweek);
                                 list.Add(data);
@@ -245,7 +245,7 @@ namespace ProCP.Classes
                     health_details = reasonOfDeath(crop);
                 }
 
-                if (crop.GetMaturityLength() == now - beginWeek)
+                if (crop.GetMaturityLength() == (now - beginWeek) + 1 && alive == true)
                 {
                     cropdata = new CropData(crop.GetCropName(), PlotId, simulation.weekToDate(beginWeek), simulation.weekToDate(beginWeek + crop.GetMaturityLength()), alive, health_details, crop.WaterCosts, crop.FertilizerCosts, crop.WaterCosts + crop.FertilizerCosts + seedCost(crop), getYield(crop), getIdealYield(crop), getCropProfits(crop));
                 }
@@ -297,7 +297,7 @@ namespace ProCP.Classes
                     health_details = reasonOfDeath(crop);
                 }
           
-                if(crop.GetMaturityLength() == now - beginWeek)
+                if(crop.GetMaturityLength() == (now - beginWeek) + 1 && alive == true)
                 {
                     cropdata = new CropData(crop.GetCropName(), PlotId, simulation.weekToDate(beginWeek), simulation.weekToDate(beginWeek + crop.GetMaturityLength()), alive, health_details, crop.WaterCosts, crop.FertilizerCosts, crop.WaterCosts + crop.FertilizerCosts + seedCost(crop), getYield(crop), getIdealYield(crop), getCropProfits(crop));
                 }
@@ -321,36 +321,40 @@ namespace ProCP.Classes
            
             
             decimal AmountOfWaterToAdd = 0;
-           
-
-            if(simulation.Watering == "Minimal")
+            decimal hundred = 100;
+            decimal percentage = 1;
+            if (simulation.Watering == "Minimal")
             {
                 AmountOfWaterToAdd = crop.GetWaterMinimum() + (crop.GetWaterMinimum() / 100);
+                percentage = 5;
             }
             else if (simulation.Watering == "Sufficent")
             {
                 AmountOfWaterToAdd = ((crop.GetWaterMaximum() + crop.GetWaterMinimum()) / 2) - (crop.GetWaterMinimum() / 100);
+                percentage = 10;
             }
             else if (simulation.Watering == "Abundant")
             {
                 AmountOfWaterToAdd = crop.GetWaterMaximum() - ((crop.GetWaterMaximum() + crop.GetWaterMinimum()) / 10);
+                percentage = 15;
             }
-
+            decimal minimumPercentageWater = percentage / hundred;
             //Give the Plot Enough Water
-            if (((plotWeeks[week].Water * 1/10) + plotWeeks[week].Water < AmountOfWaterToAdd))
+            if (((plotWeeks[week].Water - (plotWeeks[week].Water * minimumPercentageWater)) < AmountOfWaterToAdd))
             {
-                if(AmountOfWaterToAdd - plotWeeks[week].Water < (plotWeeks[week].Water * (1 / 10)))
+                
+                if(AmountOfWaterToAdd - plotWeeks[week].Water < (soiltype.GetMaximumWater() * minimumPercentageWater))
                 {
-                    AmountOfWaterToAdd = (plotWeeks[week].Water * 1 / 10) + (AmountOfWaterToAdd - plotWeeks[week].Water);
+                    AmountOfWaterToAdd = (soiltype.GetMaximumWater() * minimumPercentageWater) + (AmountOfWaterToAdd - plotWeeks[week].Water);
                 }
                 else
                 {
                     AmountOfWaterToAdd = AmountOfWaterToAdd - plotWeeks[week].Water;
                 }
-              
-                AddWaterToSoil(week, AmountOfWaterToAdd);
-                PlotWaterCost += addWaterCost(AmountOfWaterToAdd);
-                crop.WaterCosts += addWaterCost(AmountOfWaterToAdd);
+                AmountOfWaterToAdd += soiltype.GetWaterLoseRate();
+              decimal excesswater =  AddWaterToSoil(week, AmountOfWaterToAdd);
+                PlotWaterCost += addWaterCost(AmountOfWaterToAdd - excesswater);
+                crop.WaterCosts += addWaterCost(AmountOfWaterToAdd - excesswater);
             }
 
             //Nutrition Factors 
@@ -570,8 +574,8 @@ namespace ProCP.Classes
                 {
                     //Run Calculations for Crop
                     CalculateCropWater(week, CropMaturity, crop);
-                    CalculateCropNutrition(week, CropMaturity, crop);
-                    CalculateCropTemperature(week, CropMaturity, crop);
+                  //  CalculateCropNutrition(week, CropMaturity, crop);
+                  //  CalculateCropTemperature(week, CropMaturity, crop);
                     CalculateCropGrowth(week, CropMaturity, crop);
                 }
                 
@@ -597,7 +601,7 @@ namespace ProCP.Classes
             if(tempDifference < -4)
             {
                 // Too cold 
-                crop.setCropHealth(-20, CropWeek);
+                crop.setCropHealth(-10, CropWeek);
             }
             else if(tempDifference > 5)
             {
@@ -657,8 +661,8 @@ namespace ProCP.Classes
                 crop.setCropHealth(2, CropWeek);
             }
 
-                // Crop Absorb Water
-              //  AddWaterToSoil(PlotWeek, -(crop.GetThirst()));
+              
+            
         }
 
         public void setSoilType(SoilType soiltype)
@@ -788,7 +792,7 @@ namespace ProCP.Classes
                         {
                             if (search == 0)
                             {
-                                weekCropWasSet = search + 1;
+                                weekCropWasSet = search;
                                 return true;
                             }
                             if (plotWeeks[search].isEmpty || plotWeeks[search].getCrop() != getCrop)
@@ -977,7 +981,7 @@ namespace ProCP.Classes
 
 
             }
-            if(plotWeeks[weekThatHoldsCrop].Water < 1)
+            if(plotWeeks[weekThatHoldsCrop].Water < crop.GetWaterMinimum())
             {
                 return crop.GetCropName() + " Died from lack of Water";
             }

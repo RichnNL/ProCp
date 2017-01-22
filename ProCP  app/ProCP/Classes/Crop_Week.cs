@@ -19,8 +19,9 @@ namespace ProCP.Classes
             set
             {
                 if (value > 100) { health = 100; }
-                if (value < 0) { health = 0; }
-                health = value;
+                else if (value < 0) { health = 0; }
+                else { health = value; }
+
             }
         }
         public Crop_Week() { }
