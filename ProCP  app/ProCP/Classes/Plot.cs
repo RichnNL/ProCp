@@ -942,15 +942,17 @@ namespace ProCP.Classes
         }
         private int getYield(Crop crop)
         {
-            int yield = (crop.weeks[crop.GetMaturityLength() - 1].Health * crop.GetCropYield());
+            int yield = (crop.weeks[crop.GetMaturityLength() - 1].Health * crop.GetCropYield())/100;
             yield = Ares * yield;
             // Zisis to do
             return yield;
         }
         private int getIdealYield(Crop crop)
         {
-            //Zisis to do get the yield if the crop had 100 health
-            return Ares * crop.GetCropYield();
+
+            
+            int yield = Ares * crop.GetCropYield();
+            return yield;
             
         }
         
