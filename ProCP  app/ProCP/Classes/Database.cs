@@ -403,7 +403,8 @@ namespace ProCP.Classes
 
         private decimal GetWaterPrice()
         {
-            string sql = "SELECT Cost_Per from improvements WHERE imp_id = 2";
+            string sql = "SELECT Cost_Per_Kilolitre from improvements WHERE imp_id = 2";
+    
             MySqlCommand command = new MySqlCommand(sql, connection);
 
             decimal price = 0;
@@ -435,7 +436,7 @@ namespace ProCP.Classes
 
         private decimal GetFertilizerPrice()
         {
-            string sql = "SELECT Cost_Per from improvements WHERE imp_id = 1";
+            string sql = "SELECT Cost_Per_Kilolitre from improvements WHERE imp_id = 1";
             MySqlCommand command = new MySqlCommand(sql, connection);
 
             decimal price = 0;
@@ -447,7 +448,7 @@ namespace ProCP.Classes
 
                 while (reader.Read())
                 {
-                    price = Convert.ToDecimal(reader["Cost_Per"]);
+                    price = Convert.ToDecimal(reader["Cost_Per_Kilolitre"]);
                 }
             }
 
