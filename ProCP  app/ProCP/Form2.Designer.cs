@@ -1226,6 +1226,7 @@
             // 
             // plotSizeNmr
             // 
+            this.plotSizeNmr.Enabled = false;
             this.plotSizeNmr.Increment = new decimal(new int[] {
             10,
             0,
@@ -1257,9 +1258,13 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(4, 136);
             this.label5.Name = "label5";
+<<<<<<< HEAD
             this.label5.Size = new System.Drawing.Size(46, 13);
+=======
+            this.label5.Size = new System.Drawing.Size(31, 13);
+>>>>>>> origin/master
             this.label5.TabIndex = 12;
-            this.label5.Text = "Plot size";
+            this.label5.Text = "Ares:";
             // 
             // dateTimePicker2
             // 
@@ -1284,7 +1289,11 @@
             "None",
             "Minimal",
             "Sufficent",
+<<<<<<< HEAD
             "Maximum"});
+=======
+            "Abundant"});
+>>>>>>> origin/master
             this.wateringCbx.Location = new System.Drawing.Point(68, 87);
             this.wateringCbx.Name = "wateringCbx";
             this.wateringCbx.Size = new System.Drawing.Size(121, 21);
@@ -1623,7 +1632,11 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
+<<<<<<< HEAD
             this.menuStrip1.Size = new System.Drawing.Size(1278, 24);
+=======
+            this.menuStrip1.Size = new System.Drawing.Size(848, 24);
+>>>>>>> origin/master
             this.menuStrip1.TabIndex = 17;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -1686,15 +1699,24 @@
             // helpToolStripMenuItem1
             // 
             this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
+<<<<<<< HEAD
             this.helpToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
+=======
+            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+>>>>>>> origin/master
             this.helpToolStripMenuItem1.Text = "Help";
             this.helpToolStripMenuItem1.Click += new System.EventHandler(this.helpToolStripMenuItem1_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+<<<<<<< HEAD
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+=======
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+>>>>>>> origin/master
             this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // startDateLabel
             // 
@@ -1765,7 +1787,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
+<<<<<<< HEAD
             this.ClientSize = new System.Drawing.Size(1278, 662);
+=======
+            this.ClientSize = new System.Drawing.Size(848, 515);
+>>>>>>> origin/master
             this.Controls.Add(this.datelabel5);
             this.Controls.Add(this.datelabel4);
             this.Controls.Add(this.datelabel3);

@@ -13,7 +13,6 @@ namespace ProCP.Classes
         private int maturityLength;
         private decimal waterMinimum;
         private decimal waterMaximum;
-        private decimal waterThirst;
         private decimal neededNutrition;
         private decimal temperature;
         private int cropYield;
@@ -25,13 +24,12 @@ namespace ProCP.Classes
 
         public List<Crop_Week> weeks;
 
-        public Crop(string name, int maturity, decimal wmin, decimal wmax, decimal thirst, decimal nN, decimal temp, string season, int yield, decimal sellPrice, decimal buyPrice)
+        public Crop(string name, int maturity, decimal wmin, decimal wmax, decimal nN, decimal temp, string season, int yield, decimal sellPrice, decimal buyPrice)
         {
             this.cropName = name;
             this.maturityLength = maturity;
             this.waterMinimum = wmin;
             this.waterMaximum = wmax;
-            this.waterThirst = thirst;
             this.neededNutrition = nN;
             this.temperature = temp;
             this.cropSeason = season;
@@ -51,7 +49,6 @@ namespace ProCP.Classes
         public int GetMaturityLength() { return maturityLength; }
         public decimal GetWaterMinimum() { return waterMinimum; }
         public decimal GetWaterMaximum() { return waterMaximum; }
-        public decimal GetThirst() { return waterThirst; }
         public decimal GetTemperature() { return temperature; }
         public string GetSeason() { return cropSeason; }
         public int GetCropYield() {

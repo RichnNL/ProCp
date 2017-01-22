@@ -20,16 +20,19 @@ namespace ProCP.Classes
             foreach (Plot p in plots)
             {
 
-                List<CropData> temp = new List<CropData>();
+                List<CropData> temp = p.GetCropSummary();
                 if (temp == null)
                 {
                     continue;
                 }
-                else temp = p.GetCropSummary();
-                foreach (CropData c in temp)
+                else
                 {
-                    list.Add(c);
+                    foreach (CropData c in temp)
+                    {
+                        list.Add(c);
+                    }
                 }
+               
             }
             return list;
         }
@@ -59,11 +62,14 @@ namespace ProCP.Classes
             List<CropData> summary = Summary();
             decimal tcost = 0;
 
-
-            foreach (CropData c in summary)
+            if(summary != null)
             {
-                tcost += c.GetTotalCost();
+                foreach (CropData c in summary)
+                {
+                    tcost += c.GetTotalCost();
+                }
             }
+           
             return tcost;
         }
        
@@ -71,9 +77,12 @@ namespace ProCP.Classes
         {
             List<CropData> summary = Summary();
             decimal twater = 0;
-            foreach (CropData c in summary)
+            if (summary != null)
             {
-                twater += c.GetWaterCost();
+                foreach (CropData c in summary)
+                {
+                    twater += c.GetWaterCost();
+                }
             }
             return twater;
         }
@@ -81,9 +90,12 @@ namespace ProCP.Classes
         {
             List<CropData> summary = Summary();
             decimal tfertilizer= 0;
-            foreach (CropData c in summary)
+            if (summary != null)
             {
-                tfertilizer += c.GetFertilizerCost();
+                foreach (CropData c in summary)
+                {
+                    tfertilizer += c.GetFertilizerCost();
+                }
             }
             return tfertilizer;
         }
@@ -110,10 +122,17 @@ namespace ProCP.Classes
 
             string a = "Number of Crops: " + simulation.NumberOfCrops.ToString() + " \nTotal cost: " + CalTotalCosts().ToString() + "\nTotal profit " + CalTotalProfit().ToString() + "\nTotal water costs: " + CalTotalWaterCost().ToString() + "\nTotal fertilizer costs: " + CalTotalFertilizerCost().ToString() + "\nTotal yield: " + CalTotalYield().ToString()  + "\n\nType \t  \tCost \t\tYield \t\tProfit ";
             //loop ....
-
-            foreach (CropData c in Summary())
+            List<CropData> summary = Summary();
+            if (summary != null)
             {
-                a += "\nName \t \t " + c.GetTotalCost().ToString() + "\t \t" + c.GetYield().ToString() + "\t \t " + c.getProfits().ToString();
+                foreach (CropData c in Summary())
+                {
+                    a += "\nName \t \t " + c.GetTotalCost().ToString() + "\t \t" + c.GetYield().ToString() + "\t \t " + c.getProfits().ToString();
+                }
+            }
+            else
+            {
+                a = "No Data available";
             }
 
             return a;
@@ -122,13 +141,16 @@ namespace ProCP.Classes
         {
             decimal cost = 0;
             List<CropData> summary = Summary();
-            foreach (CropData c in summary)
+            if (summary != null)
             {
-                if(c.getCropName() == crop)
+                foreach (CropData c in summary)
                 {
-                    cost += c.GetTotalCost();
+                    if (c.getCropName() == crop)
+                    {
+                        cost += c.GetTotalCost();
+                    }
+
                 }
-                
             }
             return cost;
 
@@ -137,13 +159,16 @@ namespace ProCP.Classes
         {
             decimal cost = 0;
             List<CropData> summary = Summary();
-            foreach (CropData c in summary)
+            if (summary != null)
             {
-                if (c.getCropName() == crop)
+                foreach (CropData c in summary)
                 {
-                    cost += c.GetWaterCost();
-                }
+                    if (c.getCropName() == crop)
+                    {
+                        cost += c.GetWaterCost();
+                    }
 
+                }
             }
             return cost;
 
@@ -152,13 +177,16 @@ namespace ProCP.Classes
         {
             decimal cost = 0;
             List<CropData> summary = Summary();
-            foreach (CropData c in summary)
+            if (summary != null)
             {
-                if (c.getCropName() == crop)
+                foreach (CropData c in summary)
                 {
-                    cost += c.GetFertilizerCost();
-                }
+                    if (c.getCropName() == crop)
+                    {
+                        cost += c.GetFertilizerCost();
+                    }
 
+                }
             }
             return cost;
 

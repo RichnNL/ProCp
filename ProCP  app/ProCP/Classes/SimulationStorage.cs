@@ -41,7 +41,7 @@ namespace ProCP.Classes
             command.Parameters.Add("@Province", MySqlDbType.VarChar).Value = simulation.Province;
             command.Parameters.Add("@BeginDate", MySqlDbType.Date).Value = simulation.BeginDate;
             command.Parameters.Add("@EndDate", MySqlDbType.Date).Value = simulation.EndDate;
-            command.Parameters.Add("@Settings", MySqlDbType.VarChar).Value = simulation.Fertilizer + "," + simulation.Watering + "," + simulation.PlotSize.ToString();
+            command.Parameters.Add("@Settings", MySqlDbType.VarChar).Value = simulation.Fertilizer + "," + simulation.Watering;
 
             if(simulation.statistics.CalTotalCosts() > 0 && simulation.statistics.CalTotalProfit() > 0)
             {
@@ -175,9 +175,9 @@ namespace ProCP.Classes
                 {
                     column[0] = Convert.ToString(reader["Name"]);
                     column[1] = Convert.ToString(reader["Description"]);
-                    column[2] = Convert.ToString(reader["Province"]);
-                    column[3] = Convert.ToString(reader["BeginDate"]);
-                    column[4] = Convert.ToString(reader["EndDate"]);
+                    column[4] = Convert.ToString(reader["Province"]);
+                    column[2] = Convert.ToString(reader["BeginDate"]);
+                    column[3] = Convert.ToString(reader["EndDate"]);
                     column[5] = Convert.ToString(reader["Cost"]);
                     column[6] = Convert.ToString(reader["Profit"]);
                     row.Add(column.ToArray());

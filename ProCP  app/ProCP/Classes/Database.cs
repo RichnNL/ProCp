@@ -146,7 +146,6 @@ namespace ProCP.Classes
                 int maturity;
                 decimal waterMin;
                 decimal waterMax;
-                decimal thirst;
                 decimal neededNutrition;
                 decimal temperature;
                 string season;
@@ -161,7 +160,6 @@ namespace ProCP.Classes
                     maturity = Convert.ToInt32(reader["Maturity"]);
                     waterMin = Convert.ToDecimal(reader["Water_Min"]);
                     waterMax = Convert.ToDecimal(reader["Water_Max"]);
-                    thirst = Convert.ToDecimal(reader["Thirst"]);
                     neededNutrition = Convert.ToDecimal(reader["Nutrition_Need"]);
                     temperature = Convert.ToDecimal(reader["Temperature"]);
                     season = Convert.ToString(reader["Season"]);
@@ -170,7 +168,7 @@ namespace ProCP.Classes
                     buyPrice = Convert.ToDecimal(reader["Price_Per_Unit"]);                    
 
 
-                    temp.Add(new Crop(cropName, maturity, waterMin, waterMax, thirst, neededNutrition, temperature, season, yield, sellPrice, buyPrice));
+                    temp.Add(new Crop(cropName, maturity, waterMin, waterMax, neededNutrition, temperature, season, yield, sellPrice, buyPrice));
                 }
 
             }
@@ -298,19 +296,19 @@ namespace ProCP.Classes
                 string name;
                 decimal max_water;
                 decimal max_nutrients;
-                decimal waterloose;
+                decimal waterlose;
                 decimal nutritionloose;
 
                 while (reader.Read())
                 {
                     name = Convert.ToString(reader["Type"]);
-                   waterloose = Convert.ToDecimal(reader["Water_Loose"]);
+                   waterlose = Convert.ToDecimal(reader["Water_Lose_Rate"]);
                     max_water = Convert.ToDecimal(reader["Maximum_Water"]);
                     max_nutrients = Convert.ToDecimal(reader["Maximum_Nutrients"]);
                     nutritionloose = Convert.ToDecimal(reader["Nutrition_Loose"]);
 
                     //string name, decimal maximum_water, decimal waterlooserate, decimal maximum_nutrition, decimal nutritionlooserate
-                    temp.Add(new SoilType(name, max_water, waterloose, max_nutrients, nutritionloose));
+                    temp.Add(new SoilType(name, max_water, waterlose, max_nutrients, nutritionloose));
                 }
             }
             catch (Exception ex)
@@ -405,7 +403,8 @@ namespace ProCP.Classes
 
         private decimal GetWaterPrice()
         {
-            string sql = "SELECT Cost_Per from improvements WHERE imp_id = 2";
+            string sql = "SELECT Cost_Per_Kilolitre from improvements WHERE imp_id = 2";
+    
             MySqlCommand command = new MySqlCommand(sql, connection);
 
             decimal price = 0;
@@ -417,7 +416,7 @@ namespace ProCP.Classes
 
                 while (reader.Read())
                 {
-                    price = Convert.ToDecimal(reader["Cost_Per"]);
+                    price = Convert.ToDecimal(reader["Cost_Per_Kilolitre"]);
                 }
             }
 
@@ -437,7 +436,7 @@ namespace ProCP.Classes
 
         private decimal GetFertilizerPrice()
         {
-            string sql = "SELECT Cost_Per from improvements WHERE imp_id = 1";
+            string sql = "SELECT Cost_Per_Kilolitre from improvements WHERE imp_id = 1";
             MySqlCommand command = new MySqlCommand(sql, connection);
 
             decimal price = 0;
@@ -449,7 +448,7 @@ namespace ProCP.Classes
 
                 while (reader.Read())
                 {
-                    price = Convert.ToDecimal(reader["Cost_Per"]);
+                    price = Convert.ToDecimal(reader["Cost_Per_Kilolitre"]);
                 }
             }
 

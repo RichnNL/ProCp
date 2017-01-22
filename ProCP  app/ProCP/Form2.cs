@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProCP.Classes;
 using Microsoft.Office.Interop.Word;
+using System.IO;
 
 
 
@@ -102,6 +103,8 @@ namespace ProCP
                 rcaea.submitChange = false;
                 plotInfoLstbx.Items.Clear();
                 plotInfoLstbx.Items.Add("No Plot Selected");
+                plotSizeNmr.Enabled = false;
+                
             }
             else
             {
@@ -123,7 +126,10 @@ namespace ProCP
                         break;
                     }
                 }
-                rcaea.submitChange = true;
+                plotSizeNmr.Enabled = true;
+                internalChange = true;
+                setPlotSize(rcaea.selectedPlot.Ares);
+                internalChange = false;
                 FillPlotInfo(rcaea.selectedPlot);
             }
 
@@ -679,7 +685,7 @@ namespace ProCP
                             if(wateringCbx.SelectedIndex != 0)
                             {
                                 plotInfoLstbx.Items.Add("Current Fertilizer Costs: ");
-                                plotInfoLstbx.Items.Add(currentPlot.GetFertilizerCost());
+                                plotInfoLstbx.Items.Add(Convert.ToInt32( currentPlot.GetFertilizerCost()));
                             }
                             if(currentPlot.GetYield() != 0)
                             {
@@ -759,7 +765,25 @@ namespace ProCP
         {
             province = "Drenthe";
             rcaea.resetSimulation();
+            resetButtons();
 
+        }
+        private void resetButtons()
+        {
+            overviewCost2DateTxt.Text = "";
+            overviewTotalCostTxt.Text = "";
+            overviewTotalProfitTxt.Text = "";
+            plotInfoLstbx.Items.Clear();
+            winterSplitBtn.Text = "Winter";
+            winterSplitBtn.Image = null;
+            fallSplitBtn.Text = "Fall";
+            fallSplitBtn.Image = null;
+            springSplitBtn.Text = "Spring";
+            springSplitBtn.Image = null;
+            summerSplitBtn.Text = "";
+            summerSplitBtn.Image = null;
+            yrSplitBtn.Text = "Year Round";
+            yrSplitBtn.Image = null;
         }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
@@ -804,6 +828,7 @@ namespace ProCP
             if (rcaea.loadSimulation(simulationName))
             {
                 error("Load Successful");
+                resetButtons();
             }
             else
             {
@@ -953,11 +978,7 @@ namespace ProCP
             else if (change == "Watering")
             {
                 setWatering(value);
-            }
-            else if (change == "PlotSize")
-            {
-                setPlotSize(Convert.ToInt32(value));
-            }
+            } 
             else if (change == "Time")
             {
                 seek(Convert.ToInt32(value));
@@ -983,42 +1004,38 @@ namespace ProCP
             }
             internalChange = false;
         }
-        private void allowOptions()
-        {
-
-        }
+     
 
         private void plotSizeNmr_ValueChanged(object sender, EventArgs e)
         {
-            if (!internalChange)
+            if (!internalChange && rcaea.selectedPlot != null)
             {
                 setPlotSize(Convert.ToInt32(plotSizeNmr.Value));
             }
+              
+            
         }
         private void setPlotSize(int size)
         {
 
-            
-                if (!internalChange)
-                {
-                    rcaea.simulation.PlotSize = size;
-                }
-                else
-                {
-                    plotSizeNmr.Value = size;
-                }
+            if (internalChange)
+            {
+                plotSizeNmr.Value = size;
+            }
+            else
+            {
+                rcaea.simulation.setPlotSize(rcaea.selectedPlot.PlotId, size);
+            }
+            plotSizeNmr.Enabled = false;
+            plotSizeNmr.ReadOnly = true;
+            plotSizeNmr.ReadOnly = false;
+            plotSizeNmr.Enabled = true;
 
-                if (rcaea.selectedPlot != null)
-                {
-                    FillPlotInfo(rcaea.selectedPlot);
-                }
-            
-           
         }
         private void enableEditableControls()
         {
             reportBtn.Enabled = false;
-            plotSizeNmr.Enabled = true;
+       
             provinceCbx.Enabled = true;
             dateTimePicker2.Enabled = true;
             dateTimePicker1.Enabled = true;
@@ -1026,7 +1043,6 @@ namespace ProCP
         private void disableEditableControls()
         {
             reportBtn.Enabled = true;
-            plotSizeNmr.Enabled = false;
             provinceCbx.Enabled = false;
             dateTimePicker2.Enabled = false;
             dateTimePicker1.Enabled = false;
@@ -1074,12 +1090,26 @@ namespace ProCP
 
         private void helpToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-
+            openHelpDocument();
         }
         private void openHelpDocument()
         {
-            Microsoft.Office.Interop.Word.Application ap = new Microsoft.Office.Interop.Word.Application();
-            Document document = ap.Documents.Open(@"Help.docx", ReadOnly: true);
+            try
+            {
+            string path = Directory.GetCurrentDirectory();
+                Microsoft.Office.Interop.Word.Application ap = new Microsoft.Office.Interop.Word.Application();
+                Document document = ap.Documents.Open(path + "/Help.docx", ReadOnly: true);
+                ap.Visible = true;
+        }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+           }
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Name: RCAEA \nVersion: 1.061 \nApplication is up to date \nMade by: Tsanko");
         }
     }
 }

@@ -33,15 +33,15 @@ namespace ProCP.Classes
             List<Plot> loadedSimulationPlots = simulationStorage.LoadSimulation(simulationName,out details);
             if(details[0] != null && loadedSimulationPlots[0] != null)
             {
-                string[] Settings = new string[3];
+                string[] Settings = new string[2];
  
-                int begin = details[1].IndexOf(",");
-                int end = details[1].IndexOf(",", begin + 1);
+                int comma = details[1].IndexOf(",");
+                
 
 
-                Settings[0] = details[1].Substring(0, begin);
-                Settings[1] = details[1].Substring(begin + 1, (end - begin) - 1);
-                Settings[2] = details[1].Substring(end + 1, (details[1].Length -1) - end);
+                Settings[0] = details[1].Substring(0, comma);
+                Settings[1] = details[1].Substring(comma + 1, (details[1].Length - 1) - comma); 
+               
                 simulation.LoadSimualtion(details[0], details[2], details[3], details[4], Settings, loadedSimulationPlots);
                 simulationStorage.changedSinceLastSave = true;
                 return true;
