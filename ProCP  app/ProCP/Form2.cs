@@ -1093,9 +1093,9 @@ namespace ProCP
         }
         private void openHelpDocument()
         {
-            Microsoft.Office.Interop.Word.Application app = new Microsoft.Office.Interop.Word.Application();
 
-            Document document = app.Application.Documents.Open(@"C:\Help.docx");
+            Microsoft.Office.Interop.Word.Application ap = new Microsoft.Office.Interop.Word.Application();
+            Document document = ap.Documents.Open(@"Help.docx", ReadOnly: true);
 
         }
     }
