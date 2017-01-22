@@ -317,7 +317,7 @@ namespace ProCP.Classes
         private void NurishLand(int week, Crop crop)
         {
             CalculateWeatherFactors(week);
-
+            AddWaterToSoil(week, -soiltype.GetWaterLoseRate());
            
             
             decimal AmountOfWaterToAdd = 0;
@@ -351,7 +351,7 @@ namespace ProCP.Classes
                 {
                     AmountOfWaterToAdd = AmountOfWaterToAdd - plotWeeks[week].Water;
                 }
-                AmountOfWaterToAdd += soiltype.GetWaterLoseRate();
+                
               decimal excesswater =  AddWaterToSoil(week, AmountOfWaterToAdd);
                 PlotWaterCost += addWaterCost(AmountOfWaterToAdd - excesswater);
                 crop.WaterCosts += addWaterCost(AmountOfWaterToAdd - excesswater);
@@ -412,8 +412,7 @@ namespace ProCP.Classes
             if (week != 0)
             {
                 plotWeeks[week].Water = plotWeeks[week - 1].Water;
-                // Calculate the Water Lose Rate
-                plotWeeks[week].Water -= soiltype.GetWaterLoseRate();
+                
 
             }
            
@@ -512,6 +511,7 @@ namespace ProCP.Classes
                    else
                     {
                         CalculateWeatherFactors(startWeek);
+                        AddWaterToSoil(startWeek, soiltype.GetWaterLoseRate());
                         startWeek++;
                         
                     }
