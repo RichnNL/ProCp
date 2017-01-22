@@ -43,3 +43,15 @@ C:\Users\ADMIN\Documents\GitHub\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.pdb
 C:\Users\User\Desktop\ICT\Project C-Phase\ProCp\ProCP  app\ProCP\bin\Debug\ProCP.exe.config
 C:\Users\User\Desktop\ICT\Project C-Phase\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.exe
 C:\Users\User\Desktop\ICT\Project C-Phase\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.pdb
+C:\Users\User\Desktop\ICT\Project C-Phase\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.csproj.ResolveComReference.cache
+C:\Users\User\Desktop\ICT\Project C-Phase\ProCp\ProCP  app\ProCP\bin\Debug\ProCP.exe
+C:\Users\User\Desktop\ICT\Project C-Phase\ProCp\ProCP  app\ProCP\bin\Debug\ProCP.pdb
+C:\Users\User\Desktop\ICT\Project C-Phase\ProCp\ProCP  app\ProCP\bin\Debug\MySql.Data.dll
+C:\Users\User\Desktop\ICT\Project C-Phase\ProCp\ProCP  app\ProCP\bin\Debug\SplitButton.dll
+C:\Users\User\Desktop\ICT\Project C-Phase\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.csprojResolveAssemblyReference.cache
+C:\Users\User\Desktop\ICT\Project C-Phase\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.Classes.LoadWindow.resources
+C:\Users\User\Desktop\ICT\Project C-Phase\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.Classes.ReportWindow.resources
+C:\Users\User\Desktop\ICT\Project C-Phase\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.Classes.SaveWindow.resources
+C:\Users\User\Desktop\ICT\Project C-Phase\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.Form2.resources
+C:\Users\User\Desktop\ICT\Project C-Phase\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.Properties.Resources.resources
+C:\Users\User\Desktop\ICT\Project C-Phase\ProCp\ProCP  app\ProCP\obj\Debug\ProCP.csproj.GenerateResource.Cache

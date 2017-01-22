@@ -12,7 +12,6 @@ namespace ProCP.Classes
       
         public int maturity;
         private int health;
-        public bool Imagechanged;
         private int currentImage;
         public int CurrentImage
         {
