@@ -12,22 +12,7 @@ namespace ProCP.Classes
       
         public int maturity;
         private int health;
-<<<<<<< HEAD
-<<<<<<< HEAD
-        private int currentImage;
-        public int CurrentImage
-        {
-            get { return currentImage; }
-            set { if(value > 4) { currentImage = 4; }
-                  if(value < 1) { currentImage = 1; }
-                    }
-        }
-=======
 
->>>>>>> origin/master
-=======
-
->>>>>>> 4188c42b7c59de13cfdfb18dfc07ff2586e35331
         public int Health
         {
             get { return health; }
